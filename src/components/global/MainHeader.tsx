@@ -7,9 +7,9 @@ import type { ForwardedRef, PropsWithChildren, ReactNode } from "react"
 import { forwardRef } from "react"
 
 type Props = PropsWithChildren & {
-  className?: string;
-  logoSlot?: ReactNode;
-};
+  className?: string
+  logoSlot?: ReactNode
+}
 
 export const MainHeader = forwardRef(
   (props: Props, ref: ForwardedRef<HTMLElement>): ReactNode => {

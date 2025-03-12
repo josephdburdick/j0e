@@ -7,6 +7,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/global/Collapsible"
 import DateSpan from "@/components/global/DateSpan"
+import Icon from "@/components/global/Icon"
 import RuleHeader from "@/components/global/RuleHeader"
 import { useApi } from "@/components/providers/DataProvider"
 import {
@@ -52,13 +53,13 @@ export default function Experience() {
               </div>
               <div className="col-span-12 items-center md:col-start-4 md:pl-1">
                 <div className="flex justify-between gap-4">
-                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-start text-base font-normal">
-                    <span className="font-semibold">{role.title}</span>
+                  <div className="prose-scale flex flex-wrap gap-x-4 gap-y-1 text-start font-normal">
+                    <h6 className="font-semibold">{role.title}</h6>
                     {role.location !== undefined && (
                       <span className="hidden lg:inline">{role.location}</span>
                     )}
                     {role.remote !== undefined && (
-                      <Badge variant="outline">
+                      <Badge variant="outline" size="sm">
                         {role.remote ? "remote" : "on-site"}
                       </Badge>
                     )}{" "}
@@ -69,9 +70,9 @@ export default function Experience() {
           </AccordionTrigger>
           <AccordionContent>
             <div className="grid grid-cols-12">
-              <div className="col-span-12 space-y-2 md:col-span-9 md:col-start-4">
+              <div className="col-span-12 space-y-6 md:col-span-9 md:col-start-4">
                 <div
-                  className="prose dark:prose-invert"
+                  className="prose-wcale dark:prose-invert md:prose"
                   dangerouslySetInnerHTML={{
                     __html: convertNewLinesToHTML(role.description),
                   }}
@@ -93,18 +94,14 @@ export default function Experience() {
       id={toKebabCase(experience.company)}
       className="grid gap-2 pt-16 md:pt-10"
     >
-      <div className="grid grid-cols-12">
+      <div className="relative grid grid-cols-12">
         <div className="col-span-12 font-semibold md:col-span-8 md:col-start-4">
-          <RuleHeader>{experience.company}</RuleHeader>
+          <RuleHeader className="flex items-center gap-2">
+            <h5>{experience.company}</h5>
+          </RuleHeader>
         </div>
       </div>
-      <Accordion
-        type="single"
-        collapsible
-        key={`role-${key}`}
-        defaultValue={`unqork-0`}
-        asChild
-      >
+      <Accordion type="single" collapsible key={`role-${key}`} asChild>
         <ul className="grid-auto-rows grid items-start gap-8">
           {experience.roles.map((role, key) =>
             renderRole(
@@ -165,15 +162,15 @@ export default function Experience() {
       <div className="container space-y-4">
         <header className="space-y-2 pb-12 text-center">
           <RuleHeader side="both" className="font-light">
-            {data.experience.attributes.title}
+            <h3>{data.experience.attributes.title}</h3>
           </RuleHeader>
-          <h5 className="text-balance text-3xl font-bold">
+          <h4 className="text-balance text-3xl font-bold">
             {data.experience.attributes.subtitle}
-          </h5>
+          </h4>
         </header>
       </div>
-      <div className="flex w-full flex-1">
-        <ul className="grid-auto-rows mx-auto grid gap-16">
+      <div className="relative flex w-full flex-1">
+        <ul className="grid-auto-rows mx-auto grid w-full gap-16">
           {renderExperiences}
         </ul>
       </div>

@@ -40,11 +40,11 @@ function Intro() {
             </MainHeader>
 
             <main
-              className="w-full items-center space-y-8 md:space-y-16"
+              className="container w-full items-center space-y-8 md:space-y-16"
               ref={headerRef}
             >
-              <div
-                className="container prose prose-scale dark:prose-invert"
+              <h2
+                className="prose prose-scale max-w-[65ch] text-pretty dark:prose-invert"
                 dangerouslySetInnerHTML={{ __html: data.intro.html }}
               />
               <LogoMarquee />
@@ -53,7 +53,7 @@ function Intro() {
               <div className="container">
                 <div className="flex items-center justify-between gap-4">
                   <div className="hidden shrink-0 items-center gap-2 text-xs text-muted-foreground md:flex xl:text-sm">
-                    <Icon.mapPin />
+                    <Icon.mapPin className="text-lime-500" />
                     <WeatherComponent />
                   </div>
                   <MainNav
@@ -73,7 +73,7 @@ function Intro() {
           isSticky ? "opacity-100" : "opacity-0",
         )}
       >
-        <MainHeader className="container z-10 py-4 md:py-8">
+        <MainHeader className="container relative z-10 py-4 md:py-8">
           <HeaderAd />
         </MainHeader>
       </div>{" "}
