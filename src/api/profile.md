@@ -25,14 +25,14 @@ links:
     url: https://github.com/josephdburdick
     label: Github
     icon: github
-  readcv:
-    url: https://read.cv/josephdburdick
-    label: Read.cv
-    icon: readCV
   instagram:
     url: https://instagr.am/d00m.exe
     label: Instagram
     icon: instagram
+  readcv:
+    url: https://read.cv/josephdburdick
+    label: Read.cv
+    icon: readCV
   email:
     url: mailto:josephdburdick@gmail.com
     label: Email

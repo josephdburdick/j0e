@@ -12,7 +12,18 @@ export const metadata: Metadata = {
 
 export default async function Links() {
   const data = await api()
-  const links: ContactLink[] = Object.values(data.profile.attributes.links)
+
+  const links: ContactLink[] = [
+    ...Object.values({
+      ...data.profile.attributes.links,
+      website: {
+        url: "https://j0e.me",
+        label: "Website",
+        icon: "globe",
+      },
+    }),
+  ]
+
   const name = data.profile.attributes.name || "My Links"
 
   return (
