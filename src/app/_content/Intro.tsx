@@ -11,6 +11,7 @@ import { useApi } from "@/components/providers/DataProvider"
 import { ContactLink } from "@/lib/types"
 import { cn } from "@/lib/utils"
 import { useEffect, useRef, useState } from "react"
+import { createPortal } from "react-dom"
 
 function Intro() {
   const headerRef = useRef<HTMLDivElement | null>(null)
@@ -30,6 +31,7 @@ function Intro() {
       window.removeEventListener("scroll", handleScroll)
     }
   }, [])
+
   return (
     <>
       <section className="flex h-[85dvh] max-h-[2000px] min-h-[600px] flex-col items-center justify-center">
@@ -43,11 +45,10 @@ function Intro() {
               className="container w-full items-center space-y-8 md:space-y-16"
               ref={headerRef}
             >
-              <h2
-                className="prose prose-scale max-w-[65ch] text-pretty dark:prose-invert"
-                dangerouslySetInnerHTML={{ __html: data.intro.html }}
-              />
-              <LogoMarquee />
+              <div className="prose prose-scale max-w-[65ch] text-pretty dark:prose-invert">
+                <div dangerouslySetInnerHTML={{ __html: data.intro.html }} />
+                <LogoMarquee />
+              </div>
             </main>
             <footer className="pb-8 md:pb-16 lg:pb-24 xl:pb-36">
               <div className="container">
@@ -67,16 +68,24 @@ function Intro() {
           </div>
         </div>
       </section>
-      <div
-        className={cn(
-          "fixed top-0 w-full bg-gradient-to-b from-background transition-opacity duration-300 dark:mix-blend-plus-darker dark:backdrop-blur-none",
-          isSticky ? "opacity-100" : "opacity-0",
+      {typeof window !== "undefined" &&
+        createPortal(
+          <div
+            className={cn(
+              "fixed top-0 z-10 w-full transition-all duration-500",
+              isSticky ? "opacity-100" : "opacity-0",
+            )}
+          >
+            <div className="relative">
+              <div className="absolute inset-0 w-full bg-gradient-to-b from-background transition-all duration-500" />
+              <div className="absolute inset-0 backdrop-blur-sm transition-all duration-500 hover:opacity-0 hover:backdrop-blur-0" />
+              <MainHeader className="container z-10 w-full py-4 md:py-8">
+                <HeaderAd />
+              </MainHeader>
+            </div>
+          </div>,
+          document.body,
         )}
-      >
-        <MainHeader className="container relative z-10 py-4 md:py-8">
-          <HeaderAd />
-        </MainHeader>
-      </div>{" "}
     </>
   )
 }
