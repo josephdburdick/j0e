@@ -4,7 +4,7 @@ import useWindowSize from "@/hooks/useWindowSize"
 import toKebabCase from "@/lib/toKebabCase"
 import { ContactLink } from "@/lib/types"
 import { cn } from "@/lib/utils"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 import LinkCard from "./LinkCard"
 
@@ -15,6 +15,7 @@ interface LinkTreeProps {
 
 export default function LinkTree({ links, className }: LinkTreeProps) {
   const { height: windowHeight } = useWindowSize()
+  const [openAccordionId, setOpenAccordionId] = useState<string | null>(null)
 
   // Calculate the height each link should take
   // Account for header, footer, padding, and gaps between cards
@@ -27,21 +28,54 @@ export default function LinkTree({ links, className }: LinkTreeProps) {
   const linkHeight =
     links.length > 0 ? Math.floor(availableHeight / links.length) : 0
 
+  // Function to scroll to an accordion trigger element by ID
+  const scrollToElement = (id: string) => {
+    // Try to find the trigger element first
+    const triggerElement = document.querySelector(
+      `[data-trigger-id="${id}-trigger"]`,
+    )
+
+    // If trigger element is not found, fall back to the accordion container
+    const element = triggerElement || document.getElementById(id)
+
+    if (element) {
+      const headerOffset = 100 // Adjust this value based on your header's height
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.scrollY - headerOffset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      })
+    }
+  }
+
+  // Handle accordion toggle
+  const handleAccordionToggle = (id: string, isOpen: boolean) => {
+    if (isOpen) {
+      setOpenAccordionId(id)
+      // Update URL hash without triggering a page reload
+      window.history.pushState(null, "", `#${id}`)
+      // Scroll to the element
+      setTimeout(() => scrollToElement(id), 50) // Small delay to ensure DOM is updated
+    } else {
+      setOpenAccordionId(null)
+      // Remove hash from URL
+      window.history.pushState(null, "", window.location.pathname)
+    }
+  }
+
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash
       if (hash) {
-        const element = document.querySelector(hash)
-        if (element) {
-          const headerOffset = 100 // Adjust this value based on your header's height
-          const elementPosition = element.getBoundingClientRect().top
-          const offsetPosition = elementPosition + window.scrollY - headerOffset
+        const id = hash.substring(1) // Remove the # character
+        setOpenAccordionId(id)
 
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth",
-          })
-        }
+        // Scroll to the element
+        scrollToElement(id)
+      } else {
+        setOpenAccordionId(null)
       }
     }
 
@@ -60,16 +94,14 @@ export default function LinkTree({ links, className }: LinkTreeProps) {
   return (
     <div className={cn("flex w-full flex-col gap-6", className)}>
       {links.map((link) => {
-        // For links that don't start with http, treat them as internal links
-        // that should scroll to an element with the corresponding ID
-        const isInternalLink = !link.url.startsWith("http")
         const linkId = toKebabCase(link.label)
-
         return (
           <LinkCard
             key={link.url}
-            link={isInternalLink ? { ...link, url: `#${linkId}` } : link}
+            link={link}
             className="flex-grow"
+            onAccordionToggle={handleAccordionToggle}
+            isOpen={openAccordionId === linkId}
           />
         )
       })}

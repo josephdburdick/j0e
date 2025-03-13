@@ -17,10 +17,10 @@ export default async function Links() {
 
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-background to-background/80">
-      <MainHeader className="flex shrink flex-col justify-center gap-3 p-8" />
+      <MainHeader className="flex shrink flex-col justify-center gap-3 p-9" />
 
       <div className="container relative z-20 mx-auto flex flex-1 flex-col px-4">
-        <div className="flex flex-1 flex-col items-center justify-center">
+        <div className="flex flex-1 flex-col items-center justify-start">
           <LinkTree links={links} className="mx-auto w-full max-w-md" />
         </div>
       </div>
