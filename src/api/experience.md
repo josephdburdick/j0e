@@ -2,16 +2,58 @@
 title: Experience
 subtitle: Showcasing over a decade of expertise and innovation across various roles and industries
 experience:
+  - company: Exponential.fi
+    logo: ${basePath}/assets/images/logos/exponential.svg
+    roles:
+      - title: Senior Software Engineer
+        location: San Fransisco, California
+        remote: true
+        type: Full-time
+        date:
+          start: 2022-01-01
+          end: null
+        description: >
+          Built and launched a new Trading Dashboard from scratch, driving a complete UI/UX overhaul
+          to enhance user engagement and streamline the investment experience. Unified balance
+          handling, introduced sorting and filtering for investments, and added support for new
+          assets like Solana.
+
+          Overhauled authentication and security flows (MFA, email verification, Sentry
+          obfuscation), reinforcing data protection and reliability. Championed comprehensive
+          documentation to clarify architectural decisions, boosting onboarding efficiency for new
+          team members.
+
+          Optimized site performance with parallelized data fetching, refined SSR checks, and
+          improved caching strategies—significantly reducing load times. Collaborated directly on
+          UI/UX decisions, ensuring consistent design patterns and intuitive user journeys.
+          Further assisted in marketing strategy by integrating site-wide promotions, aligning product launches with broader campaigns to drive adoption and revenue.
+        skills:
+          [
+            React,
+            Communication,
+            JavaScript,
+            Node,
+            Fullstack,
+            Web Standards,
+            Performance,
+            Authentication,
+            Documentation,
+            DeFi,
+            Sentry,
+            UI/UX,
+            Marketing,
+          ]
+
   - company: Unqork
     logo: ${basePath}/assets/images/logos/unqork.svg
     roles:
-      - title: Senior Software Engineer L1
+      - title: Senior Software Engineer
         location: Manhattan, New York City
         remote: true
         type: Full-time
         date:
           start: 2020-01-01
-          end: null
+          end: 2024-08-01
         description: >
           Founding member of the Platform UI team. While working remotely instrumental in interviewing and recruiting key team members who have significantly contributed to the team's success.
 
@@ -34,7 +76,7 @@ experience:
             Module Development,
             Real-time Development,
           ]
-      - title: Senior Software Engineer
+      - title: Software Engineer Contractor
         location: Manhattan, New York City
         remote: true
         type: Contract
@@ -59,6 +101,7 @@ experience:
             Utility Classes,
             Module Transition,
           ]
+
   - company: Present Day
     logo: ${basePath}/assets/images/logos/presentday.svg
     roles:
@@ -87,6 +130,7 @@ experience:
             Visual Design,
             API Design,
           ]
+
   - company: Joey
     disabled: true
     remote: true
@@ -121,6 +165,7 @@ experience:
             Email Marketing,
             Brand Development,
           ]
+
   - company: Adoptive
     logo: ${basePath}/assets/images/logos/adoptive.webp
     remote: true
@@ -154,6 +199,7 @@ experience:
             Development Standards,
             Award-winning Development,
           ]
+
   - company: Studiografica
     logo: ${basePath}/assets/images/logos/sgc.svg
     remote: false
@@ -184,6 +230,7 @@ experience:
             UI/UX Consultancy,
             Progressive Enhancement,
           ]
+
   - company: David's Bridal
     logo: ${basePath}/assets/images/logos/davids-bridal.svg
     location: Midtown, New York City
@@ -209,6 +256,7 @@ experience:
             Corporate Style Guide,
             Vendor Management,
           ]
+
   - company: Aquent
     logo: ${basePath}/assets/images/logos/aquent.svg
     location: Washington DC
@@ -239,6 +287,7 @@ experience:
             Advertising Campaigns,
             Print Media,
           ]
+
   - company: National Crime Prevention Council
     logo: ${basePath}/assets/images/logos/ncpc.webp
     location: Washington, DC
@@ -259,6 +308,7 @@ experience:
             Media Outreach,
             Press Releases,
           ]
+
       - title: Media Assistant
         type: Full-time
         date:
@@ -274,6 +324,7 @@ experience:
             Report System Design,
             Email Management,
           ]
+
   - company: Fishbowl Marketing
     remote: false
     hidden: true
@@ -287,6 +338,7 @@ experience:
         description: >
           Developed a high number of highly conceptual email campaign templates for restaurants in the United States and European markets.
         skills: [Communication, Email Marketing, Campaign Design]
+
   - company: Virginia Commonwealth University
     logo: ${basePath}/assets/images/logos/vcu.svg
     roles:

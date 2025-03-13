@@ -7,9 +7,9 @@ import type { ForwardedRef, PropsWithChildren, ReactNode } from "react"
 import { forwardRef } from "react"
 
 type Props = PropsWithChildren & {
-  className?: string;
-  logoSlot?: ReactNode;
-};
+  className?: string
+  logoSlot?: ReactNode
+}
 
 export const MainHeader = forwardRef(
   (props: Props, ref: ForwardedRef<HTMLElement>): ReactNode => {
@@ -26,7 +26,7 @@ export const MainHeader = forwardRef(
         )}
         ref={ref}
       >
-        <h1 className="dark:invert">
+        <h1 className="relative z-50 dark:invert">
           {logoSlot || (
             <Image
               src={logo.url}
