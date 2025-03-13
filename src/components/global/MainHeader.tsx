@@ -26,7 +26,7 @@ export const MainHeader = forwardRef(
         )}
         ref={ref}
       >
-        <h1 className="dark:invert">
+        <h1 className="relative z-50 dark:invert">
           {logoSlot || (
             <Image
               src={logo.url}

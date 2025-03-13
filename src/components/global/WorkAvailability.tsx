@@ -1,10 +1,10 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 type Props = {
-  reverse?: boolean;
-};
+  reverse?: boolean
+}
 export default function WorkAvailability(props: Props) {
-  const { reverse = false } = props;
+  const { reverse = false } = props
   return (
     <div>
       <div
@@ -22,5 +22,5 @@ export default function WorkAvailability(props: Props) {
         </span>
       </div>
     </div>
-  );
+  )
 }
