@@ -18,12 +18,15 @@ function Intro() {
   const { data } = useApi()
   const links: ContactLink[] = Object.values(data.profile.attributes.links)
   const [isSticky, setIsSticky] = useState(false)
+  const [scrollPosition, setScrollPosition] = useState(0)
+  const scrollHintRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
       if (!headerRef.current) return
       const { bottom } = headerRef.current?.getBoundingClientRect() || {}
       setIsSticky(bottom < 0)
+      setScrollPosition(window.scrollY)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -32,12 +35,17 @@ function Intro() {
     }
   }, [])
 
+  const scrollHintOpacity = Math.max(
+    0,
+    1 - scrollPosition / (window ? window.innerHeight / 1.25 : 1),
+  )
+
   return (
     <>
-      <section className="flex h-[85dvh] max-h-[2000px] min-h-[600px] flex-col items-center justify-center">
+      <section className="relative flex min-h-[600px] flex-col items-center justify-center sm:min-h-[85dvh] md:min-h-[95dvh]">
         <div className="flex w-full flex-1">
           <div className="grid w-full grid-rows-[auto_1fr_auto] items-center gap-4 lg:gap-6">
-            <MainHeader className="pt-8 md:pt-16 lg:pt-24 xl:pt-36">
+            <MainHeader className="pt-6 md:pt-16 lg:pt-24 xl:pt-36">
               <DarkModeToggle />
             </MainHeader>
 
@@ -46,7 +54,10 @@ function Intro() {
               ref={headerRef}
             >
               <div className="prose prose-scale max-w-[65ch] text-pretty dark:prose-invert">
-                <div dangerouslySetInnerHTML={{ __html: data.intro.html }} />
+                <div
+                  // className="[&>h3:first-child]:pt-0"
+                  dangerouslySetInnerHTML={{ __html: data.intro.html }}
+                />
                 <LogoMarquee />
               </div>
             </main>
@@ -63,6 +74,21 @@ function Intro() {
                     links={links}
                   />
                 </div>
+              </div>
+
+              <div
+                ref={scrollHintRef}
+                className={cn(
+                  "absolute inset-x-0 bottom-0 hidden items-center justify-center pb-4 transition-opacity md:flex",
+                )}
+                style={{
+                  opacity: scrollHintOpacity,
+                }}
+              >
+                <Icon.arrowBigDownDash
+                  className="animate-bounce text-muted"
+                  size={50}
+                />
               </div>
             </footer>
           </div>

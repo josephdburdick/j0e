@@ -1,4 +1,5 @@
 import {
+  ArrowBigDownDash,
   BadgeInfo,
   Ellipsis,
   ExternalLink,
@@ -13,8 +14,8 @@ import {
 } from "lucide-react"
 
 type IconsMap = {
-  [key: string]: React.FC<React.SVGProps<SVGSVGElement>>;
-};
+  [key: string]: React.FC<React.SVGProps<SVGSVGElement>>
+}
 
 const InstagramSVG = () => (
   <svg
@@ -56,6 +57,7 @@ const LinkedInSVG = () => (
 )
 
 const icons: IconsMap = {
+  arrowBigDownDash: ArrowBigDownDash,
   badgeInfo: BadgeInfo,
   ellipsis: Ellipsis,
   send: Send,

@@ -19,12 +19,12 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 import Icon from "./Icon"
 
 type Props = PropsWithChildren & {
-  links: ContactLink[];
-  className?: string;
-  title?: string;
-  description?: string;
-  iconOnly?: boolean;
-};
+  links: ContactLink[]
+  className?: string
+  title?: string
+  description?: string
+  iconOnly?: boolean
+}
 
 export default function MainNav(props: Props) {
   const {
@@ -81,10 +81,15 @@ export default function MainNav(props: Props) {
       <div className="hidden md:block">
         <Popover>
           <PopoverTrigger asChild>{children || renderTrigger}</PopoverTrigger>
-          <PopoverContent side="bottom" align="end" className="w-max space-y-8">
+          <PopoverContent
+            sideOffset={16}
+            side="bottom"
+            align="end"
+            className="w-max space-y-8"
+          >
             {hasText && (
-              <div className="prose dark:prose-invert">
-                <h4>{title}</h4>
+              <div className="prose-scale-sm space-y-1">
+                <h5 className="font-semibold">{title}</h5>
                 <p>{description}</p>
               </div>
             )}
