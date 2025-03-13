@@ -39,20 +39,29 @@ export default function LinkCard({
     ? (Icon[icon as string] as React.FC<React.SVGProps<SVGSVGElement>>)
     : null
 
-  // Generate a unique gradient based on the icon name
+  // Generate a gradient based on the link type
   const getGradient = () => {
-    const colors = [
-      "from-blue-500 to-purple-500",
-      "from-green-400 to-cyan-500",
-      "from-pink-500 to-rose-500",
-      "from-amber-400 to-orange-500",
-      "from-indigo-500 to-blue-500",
-      "from-emerald-400 to-teal-500",
-    ]
+    // Map specific gradients to each platform
+    const gradientMap: Record<string, string> = {
+      // LinkedIn - blue professional gradient
+      linkedin: "from-blue-600 to-blue-400",
+      // GitHub - purple to indigo gradient
+      github: "from-purple-700 to-indigo-500",
+      // Read.cv - elegant teal to emerald gradient
+      readcv: "from-orange-400 to-red-400",
+      // Instagram - vibrant pink to purple to orange gradient
+      instagram: "from-pink-500 via-purple-500 to-orange-500",
+      // Email - fun orange to yellow gradient
+      mail: "from-emerald-500 to-lime-400",
+      // Website - vibrant green to teal gradient
+      website: "from-green-500 to-teal-400",
+    }
 
-    // Use the icon name to deterministically select a gradient
-    const index = icon.charCodeAt(0) % colors.length
-    return colors[index]
+    // Convert icon name to lowercase for matching
+    const iconKey = icon.toLowerCase()
+
+    // Return the mapped gradient or a default one
+    return gradientMap[iconKey] || "from-gray-600 to-gray-400"
   }
 
   const handleAccordionChange = (value: string) => {
