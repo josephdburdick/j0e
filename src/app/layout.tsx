@@ -1,3 +1,4 @@
+import { DataProvider } from "@/components/providers/DataProvider"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
@@ -39,11 +40,15 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
+  const data = await api()
+
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <DataProvider initialData={data}>{children}</DataProvider>
+      </body>
     </html>
   )
 }

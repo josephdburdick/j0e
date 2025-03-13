@@ -3,27 +3,35 @@
 import DarkModeToggle from "@/components/global/DarkModeToggle"
 import HeaderAd from "@/components/global/HeaderAd"
 import Icon from "@/components/global/Icon"
+import LinkButton from "@/components/global/LinkButton"
 import LogoMarquee from "@/components/global/LogoMarquee"
 import MainHeader from "@/components/global/MainHeader"
 import MainNav from "@/components/global/MainNav"
 import WeatherComponent from "@/components/global/Weather"
 import { useApi } from "@/components/providers/DataProvider"
+import { buttonVariants } from "@/components/ui/button"
 import { ContactLink } from "@/lib/types"
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
+
+import ScrollHint from "../../components/global/ScrollHint"
 
 function Intro() {
   const headerRef = useRef<HTMLDivElement | null>(null)
   const { data } = useApi()
   const links: ContactLink[] = Object.values(data.profile.attributes.links)
   const [isSticky, setIsSticky] = useState(false)
+  const [scrollPosition, setScrollPosition] = useState(0)
+  const scrollHintRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
       if (!headerRef.current) return
       const { bottom } = headerRef.current?.getBoundingClientRect() || {}
       setIsSticky(bottom < 0)
+      setScrollPosition(window.scrollY)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -32,13 +40,24 @@ function Intro() {
     }
   }, [])
 
+  const scrollHintOpacity = Math.max(
+    0,
+    1 -
+      scrollPosition /
+        (typeof window !== "undefined" ? window.innerHeight / 1.25 : 1),
+  )
+
   return (
     <>
-      <section className="flex h-[85dvh] max-h-[2000px] min-h-[600px] flex-col items-center justify-center">
+      <section className="relative flex min-h-[600px] flex-col items-center justify-center sm:min-h-[85dvh] md:min-h-[95dvh]">
         <div className="flex w-full flex-1">
           <div className="grid w-full grid-rows-[auto_1fr_auto] items-center gap-4 lg:gap-6">
-            <MainHeader className="pt-8 md:pt-16 lg:pt-24 xl:pt-36">
-              <DarkModeToggle />
+            <MainHeader className="pt-6 md:pt-16 lg:pt-24 xl:pt-36">
+              <div className="flex items-center gap-3">
+                <DarkModeToggle />
+
+                <LinkButton />
+              </div>
             </MainHeader>
 
             <main
@@ -46,7 +65,10 @@ function Intro() {
               ref={headerRef}
             >
               <div className="prose prose-scale max-w-[65ch] text-pretty dark:prose-invert">
-                <div dangerouslySetInnerHTML={{ __html: data.intro.html }} />
+                <div
+                  // className="[&>h3:first-child]:pt-0"
+                  dangerouslySetInnerHTML={{ __html: data.intro.html }}
+                />
                 <LogoMarquee />
               </div>
             </main>
@@ -64,6 +86,11 @@ function Intro() {
                   />
                 </div>
               </div>
+
+              <ScrollHint
+                scrollHintOpacity={scrollHintOpacity}
+                scrollHintRef={scrollHintRef}
+              />
             </footer>
           </div>
         </div>

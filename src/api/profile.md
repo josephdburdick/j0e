@@ -17,26 +17,27 @@ bg:
   alt: Me at the beach with friends
 
 links:
-  email:
-    url: mailto:josephdburdick@gmail.com
-    label: Email
-    icon: mail
-  instagram:
-    url: https://instagr.am/d00m.exe
-    label: Instagram
-    icon: instagram
   linkedin:
     url: https://linkedin.com/in/josephdburdick
     label: LinkedIn
     icon: linkedIn
-  readcv:
-    url: https://read.cv/josephdburdick
-    label: Read.cv
-    icon: readCV
   github:
     url: https://github.com/josephdburdick
     label: Github
     icon: github
+  readcv:
+    url: https://read.cv/josephdburdick
+    label: Read.cv
+    icon: readCV
+  instagram:
+    url: https://instagr.am/d00m.exe
+    label: Instagram
+    icon: instagram
+  email:
+    url: mailto:josephdburdick@gmail.com
+    label: Email
+    icon: mail
+
 intro: >
   j0e.me is the eponymous online home of Joe Burdick— web designer, software engineer, leader, and photographer.
 ---
