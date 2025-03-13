@@ -15,12 +15,12 @@ export default async function Links() {
 
   const links: ContactLink[] = [
     ...Object.values({
-      ...data.profile.attributes.links,
+      ...(data.profile.attributes.links as Record<string, ContactLink>),
       website: {
         url: "https://j0e.me",
         label: "Website",
         icon: "globe",
-      },
+      } as ContactLink,
     }),
   ]
 
