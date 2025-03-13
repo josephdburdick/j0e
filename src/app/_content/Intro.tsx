@@ -3,13 +3,16 @@
 import DarkModeToggle from "@/components/global/DarkModeToggle"
 import HeaderAd from "@/components/global/HeaderAd"
 import Icon from "@/components/global/Icon"
+import LinkButton from "@/components/global/LinkButton"
 import LogoMarquee from "@/components/global/LogoMarquee"
 import MainHeader from "@/components/global/MainHeader"
 import MainNav from "@/components/global/MainNav"
 import WeatherComponent from "@/components/global/Weather"
 import { useApi } from "@/components/providers/DataProvider"
+import { buttonVariants } from "@/components/ui/button"
 import { ContactLink } from "@/lib/types"
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 
@@ -39,7 +42,9 @@ function Intro() {
 
   const scrollHintOpacity = Math.max(
     0,
-    1 - scrollPosition / (window ? window.innerHeight / 1.25 : 1),
+    1 -
+      scrollPosition /
+        (typeof window !== "undefined" ? window.innerHeight / 1.25 : 1),
   )
 
   return (
@@ -48,7 +53,11 @@ function Intro() {
         <div className="flex w-full flex-1">
           <div className="grid w-full grid-rows-[auto_1fr_auto] items-center gap-4 lg:gap-6">
             <MainHeader className="pt-6 md:pt-16 lg:pt-24 xl:pt-36">
-              <DarkModeToggle />
+              <div className="flex items-center gap-3">
+                <DarkModeToggle />
+
+                <LinkButton />
+              </div>
             </MainHeader>
 
             <main
