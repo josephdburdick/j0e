@@ -92,7 +92,7 @@ export default function LinkTree({ links, className }: LinkTreeProps) {
   }, [])
 
   return (
-    <div className={cn("flex w-full flex-col gap-6", className)}>
+    <div className={cn("flex w-full flex-col gap-4", className)}>
       {links.map((link) => {
         const linkId = toKebabCase(link.label)
         return (
