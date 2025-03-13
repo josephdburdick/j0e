@@ -18,18 +18,22 @@ interface LinkCardProps {
   link: ContactLink
   className?: string
   style?: CSSProperties
+  onAccordionToggle?: (id: string, isOpen: boolean) => void
+  isOpen?: boolean
 }
 
-export default function LinkCard({ link, className, style }: LinkCardProps) {
+export default function LinkCard({
+  link,
+  className,
+  style,
+  onAccordionToggle,
+  isOpen,
+}: LinkCardProps) {
   const [isHovered, setIsHovered] = useState(false)
-  const [isExpanded, setIsExpanded] = useState(false)
   const { url, label, icon } = link
 
   // Generate an ID for the link based on the label
   const linkId = toKebabCase(label)
-
-  // Check if the link is external (starts with http or https)
-  const isExternalLink = url.startsWith("http")
 
   const IconComponent = icon
     ? (Icon[icon as string] as React.FC<React.SVGProps<SVGSVGElement>>)
@@ -51,6 +55,13 @@ export default function LinkCard({ link, className, style }: LinkCardProps) {
     return colors[index]
   }
 
+  const handleAccordionChange = (value: string) => {
+    const isNowOpen = !!value
+    if (onAccordionToggle) {
+      onAccordionToggle(linkId, isNowOpen)
+    }
+  }
+
   return (
     <div
       id={linkId}
@@ -67,7 +78,8 @@ export default function LinkCard({ link, className, style }: LinkCardProps) {
         type="single"
         collapsible
         className="h-full w-full"
-        onValueChange={(value) => setIsExpanded(!!value)}
+        value={isOpen ? "qr-code" : ""}
+        onValueChange={handleAccordionChange}
       >
         <AccordionItem value="qr-code" className="h-full border-none">
           <div className="flex h-full flex-col">
@@ -76,8 +88,9 @@ export default function LinkCard({ link, className, style }: LinkCardProps) {
                 "flex h-full items-center justify-between rounded-xl px-6 py-6",
                 "bg-opacity-90 bg-gradient-to-r text-white",
                 getGradient(),
-                isExpanded ? "rounded-b-none" : "",
+                isOpen ? "rounded-b-none" : "",
               )}
+              data-trigger-id={`${linkId}-trigger`}
             >
               <div className="flex w-full items-center justify-between">
                 <div className="flex items-center justify-start gap-2 text-xl font-medium md:text-2xl">
@@ -92,8 +105,8 @@ export default function LinkCard({ link, className, style }: LinkCardProps) {
                 {/* External link button */}
                 <a
                   href={url}
-                  target={isExternalLink ? "_blank" : "_self"}
-                  rel={isExternalLink ? "noreferrer" : undefined}
+                  target="_blank"
+                  rel="noreferrer"
                   className="ml-2 mr-4 rounded-full bg-white/20 p-2 text-white hover:bg-white/30"
                   onClick={(e) => e.stopPropagation()}
                 >
@@ -108,25 +121,17 @@ export default function LinkCard({ link, className, style }: LinkCardProps) {
                 "bg-card/90 backdrop-blur-sm",
               )}
             >
-              {isExternalLink && (
-                <div className="rounded-lg bg-white p-4 shadow-sm">
-                  <div className="mb-2 text-center text-sm text-muted-foreground">
-                    Scan to open on another device
-                  </div>
-                  <QRCode
-                    value={url}
-                    size={200}
-                    style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                    viewBox="0 0 256 256"
-                  />
+              <div className="rounded-lg bg-white p-4 shadow-sm">
+                <div className="mb-2 text-center text-sm text-muted-foreground">
+                  Scan to open on another device
                 </div>
-              )}
-              {!isExternalLink && (
-                <div className="text-center text-sm text-muted-foreground">
-                  This is an internal link that will scroll to the corresponding
-                  section.
-                </div>
-              )}
+                <QRCode
+                  value={url}
+                  size={200}
+                  style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                  viewBox="0 0 256 256"
+                />
+              </div>
             </AccordionContent>
           </div>
         </AccordionItem>

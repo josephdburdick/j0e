@@ -5,7 +5,7 @@ experience:
   - company: Exponential.fi
     logo: ${basePath}/assets/images/logos/exponential.svg
     roles:
-      - title: Senior Software Engineer
+      - title: Lead Software Engineer
         location: San Fransisco, California
         remote: true
         type: Full-time
