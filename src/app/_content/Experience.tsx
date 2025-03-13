@@ -43,8 +43,7 @@ export default function Experience() {
         if (element) {
           const headerOffset = 100 // Adjust this value based on your header's height
           const elementPosition = element.getBoundingClientRect().top
-          const offsetPosition =
-            elementPosition + window.pageYOffset - headerOffset
+          const offsetPosition = elementPosition + window.scrollY - headerOffset
 
           window.scrollTo({
             top: offsetPosition,
@@ -132,7 +131,13 @@ export default function Experience() {
           </RuleHeader>
         </div>
       </div>
-      <Accordion type="single" collapsible key={`role-${key}`} asChild>
+      <Accordion
+        type="single"
+        collapsible
+        key={`role-${key}`}
+        asChild
+        defaultValue={"exponentialfi-0"}
+      >
         <ul className="grid-auto-rows grid items-start">
           {experience.roles.map((role, key) =>
             renderRole(
