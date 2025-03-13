@@ -13,6 +13,8 @@ import { cn } from "@/lib/utils"
 import { useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 
+import ScrollHint from "../../components/global/ScrollHint"
+
 function Intro() {
   const headerRef = useRef<HTMLDivElement | null>(null)
   const { data } = useApi()
@@ -76,20 +78,10 @@ function Intro() {
                 </div>
               </div>
 
-              <div
-                ref={scrollHintRef}
-                className={cn(
-                  "absolute inset-x-0 bottom-0 hidden items-center justify-center pb-4 transition-opacity md:flex",
-                )}
-                style={{
-                  opacity: scrollHintOpacity,
-                }}
-              >
-                <Icon.arrowBigDownDash
-                  className="animate-bounce text-muted"
-                  size={50}
-                />
-              </div>
+              <ScrollHint
+                scrollHintOpacity={scrollHintOpacity}
+                scrollHintRef={scrollHintRef}
+              />
             </footer>
           </div>
         </div>
