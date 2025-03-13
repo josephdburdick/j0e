@@ -22,7 +22,7 @@ import convertNewLinesToHTML from "@/lib/convertNewLinesToHTML"
 import toKebabCase from "@/lib/toKebabCase"
 import { Experience as ExperienceType, Role } from "@/lib/types"
 import { cn } from "@/lib/utils"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function Experience() {
   const { data } = useApi()
@@ -35,6 +35,37 @@ export default function Experience() {
       </li>
     ) : null
 
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash
+      if (hash) {
+        const element = document.querySelector(hash)
+        if (element) {
+          const headerOffset = 100 // Adjust this value based on your header's height
+          const elementPosition = element.getBoundingClientRect().top
+          const offsetPosition =
+            elementPosition + window.pageYOffset - headerOffset
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          })
+        }
+      }
+    }
+
+    // Call the function on component mount
+    handleHashChange()
+
+    // Add event listener for hash changes
+    window.addEventListener("hashchange", handleHashChange)
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange)
+    }
+  }, [])
+
   const renderRole = (
     role: Role & { company: ExperienceType["company"] },
     index: number,
@@ -46,14 +77,14 @@ export default function Experience() {
           <AccordionTrigger>
             <a
               href={`#${toKebabCase(role.company)}`}
-              className="grid grid-cols-12 items-center md:flex-1"
+              className="grid grid-cols-12 items-center gap-1.5 md:flex-1"
             >
               <div className="col-span-12 gap-1 text-xs text-muted-foreground md:col-span-3 md:col-start-1 xl:col-span-2 xl:text-sm">
                 <DateSpan date={role.date} />
               </div>
-              <div className="col-span-12 items-center md:col-start-4 md:pl-1">
+              <div className="col-span-12 items-center md:col-start-4 md:pl-2">
                 <div className="flex justify-between gap-4">
-                  <div className="prose-scale flex flex-wrap gap-x-4 gap-y-1 text-start font-normal">
+                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-start font-normal">
                     <h6 className="font-semibold">{role.title}</h6>
                     {role.location !== undefined && (
                       <span className="hidden lg:inline">{role.location}</span>
@@ -72,7 +103,7 @@ export default function Experience() {
             <div className="grid grid-cols-12">
               <div className="col-span-12 space-y-6 md:col-span-9 md:col-start-4">
                 <div
-                  className="prose-wcale dark:prose-invert md:prose"
+                  className="prose-scale-sm dark:prose-invert md:prose"
                   dangerouslySetInnerHTML={{
                     __html: convertNewLinesToHTML(role.description),
                   }}
@@ -92,17 +123,17 @@ export default function Experience() {
     <li
       key={`experience-${toKebabCase(experience.company)}`}
       id={toKebabCase(experience.company)}
-      className="grid gap-2 pt-16 md:pt-10"
+      className="grid gap-2"
     >
       <div className="relative grid grid-cols-12">
         <div className="col-span-12 font-semibold md:col-span-8 md:col-start-4">
-          <RuleHeader className="flex items-center gap-2">
+          <RuleHeader className="prose-scale-sm flex items-center gap-2">
             <h5>{experience.company}</h5>
           </RuleHeader>
         </div>
       </div>
       <Accordion type="single" collapsible key={`role-${key}`} asChild>
-        <ul className="grid-auto-rows grid items-start gap-8">
+        <ul className="grid-auto-rows grid items-start">
           {experience.roles.map((role, key) =>
             renderRole(
               {
@@ -118,39 +149,37 @@ export default function Experience() {
   )
 
   const renderExperiences = (
-    <div className="container">
-      <ul className="grid-auto-rows mx-auto grid gap-16">
-        {experience
-          .filter((item) => item?.disabled !== true)
-          .slice(0, 3)
-          .map(renderExperience)}
-        {experience.length > 3 && (
-          <Collapsible
-            type="single"
-            collapsible
-            onValueChange={(value: string) => setViewAllToggle(!!value)}
-          >
-            <CollapsibleItem value="expand">
-              <CollapsibleContent>
-                <ul className="grid-auto-rows grid gap-16">
-                  {experience
-                    .filter((item) => item?.disabled !== true)
-                    .slice(3)
-                    .map(renderExperience)}
-                </ul>
-              </CollapsibleContent>
-              <CollapsibleTrigger>
-                <RuleHeader side="both">
-                  <span className="rounded-full border bg-primary px-4 py-2 text-xs text-primary-foreground">
-                    {viewAllToggle ? "View Less" : "View More"} Experience
-                  </span>
-                </RuleHeader>
-              </CollapsibleTrigger>
-            </CollapsibleItem>
-          </Collapsible>
-        )}
-      </ul>
-    </div>
+    <ul className="grid-auto-rows container mx-auto grid gap-8 md:gap-16">
+      {experience
+        .filter((item) => item?.disabled !== true)
+        .slice(0, 3)
+        .map(renderExperience)}
+      {experience.length > 3 && (
+        <Collapsible
+          type="single"
+          collapsible
+          onValueChange={(value: string) => setViewAllToggle(!!value)}
+        >
+          <CollapsibleItem value="expand">
+            <CollapsibleContent>
+              <ul className="grid-auto-rows grid gap-16">
+                {experience
+                  .filter((item) => item?.disabled !== true)
+                  .slice(3)
+                  .map(renderExperience)}
+              </ul>
+            </CollapsibleContent>
+            <CollapsibleTrigger>
+              <RuleHeader side="both">
+                <span className="rounded-full border bg-primary px-4 py-2 text-xs text-primary-foreground">
+                  {viewAllToggle ? "View Less" : "View More"} Experience
+                </span>
+              </RuleHeader>
+            </CollapsibleTrigger>
+          </CollapsibleItem>
+        </Collapsible>
+      )}
+    </ul>
   )
 
   return (
@@ -164,16 +193,12 @@ export default function Experience() {
           <RuleHeader side="both" className="font-light">
             <h3>{data.experience.attributes.title}</h3>
           </RuleHeader>
-          <h4 className="text-balance text-3xl font-bold">
-            {data.experience.attributes.subtitle}
-          </h4>
+          <div className="prose-scale text-balance text-3xl font-bold">
+            <h4>{data.experience.attributes.subtitle}</h4>
+          </div>
         </header>
       </div>
-      <div className="relative flex w-full flex-1">
-        <ul className="grid-auto-rows mx-auto grid w-full gap-16">
-          {renderExperiences}
-        </ul>
-      </div>
+      <div className="relative flex w-full flex-1">{renderExperiences}</div>
     </section>
   )
 }
