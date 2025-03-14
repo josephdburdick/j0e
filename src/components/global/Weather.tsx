@@ -6,6 +6,7 @@ import dynamic from "next/dynamic"
 import { useEffect, useMemo, useState } from "react"
 
 import { Button } from "../ui/button"
+import { Skeleton } from "../ui/skeleton"
 import Icon from "./Icon"
 
 // Define temperature unit enum
@@ -166,11 +167,11 @@ const WeatherContent: React.FC = () => {
 
             return (
               <div key={i} className="text-center">
-                <div className="text-xs">
+                <div>
                   {hour12}
                   {ampm}
                 </div>
-                <div className="text-sm font-medium">{displayTemp}°</div>
+                <div className="font-medium">{displayTemp}°</div>
               </div>
             )
           })}
@@ -228,24 +229,20 @@ const WeatherContent: React.FC = () => {
 
     return (
       <div className="flex items-center justify-center">
-        {IconComponent && <IconComponent className={`h-7 w-7 ${iconColor}`} />}
+        {IconComponent && (
+          <IconComponent size={24} className={` ${iconColor}`} />
+        )}
       </div>
     )
   }
 
-  const LoadingIndicator = () => (
-    <div className="flex items-center justify-center">
-      <div className="h-3 w-3 animate-spin rounded-full border-2 border-gray-300 border-t-gray-500" />
-    </div>
-  )
-
   return isLoading ? (
-    <LoadingIndicator />
+    <LoadingComponent />
   ) : (
     <>
-      {isLoading ? <LoadingIndicator /> : <WeatherIcon />}
-      <div className="flex items-center gap-x-1 text-left font-medium">
-        {isLoading ? <LoadingIndicator /> : renderDailyHighLow()}
+      <WeatherIcon />
+      <div className="flex items-center text-left font-medium">
+        {renderDailyHighLow()}
         <Button
           onClick={toggleUnit}
           size="sm"
@@ -253,6 +250,7 @@ const WeatherContent: React.FC = () => {
           className={cn("cursor-pointer rounded-full px-1.5 py-0.5")}
           disabled={isLoading}
         >
+          {unit === TemperatureUnit.FAHRENHEIT ? "F" : "C"}
           <Icon.toggleLeft
             size={14}
             className={cn(
@@ -260,7 +258,6 @@ const WeatherContent: React.FC = () => {
               unit === TemperatureUnit.FAHRENHEIT ? "rotate-90" : "-rotate-90",
             )}
           />
-          {unit === TemperatureUnit.FAHRENHEIT ? "F" : "C"}
         </Button>
       </div>
     </>
@@ -270,16 +267,26 @@ const WeatherContent: React.FC = () => {
 // Create a client-only version as the default export
 const Weather = dynamic(() => Promise.resolve(WeatherContent), {
   ssr: false,
-  loading: () => (
+  loading: () => <LoadingComponent />,
+})
+
+function LoadingComponent() {
+  const LoadingIndicator = () => (
+    <div className="flex items-center justify-center">
+      <div className="h-3 w-3 animate-spin rounded-full border-2 border-gray-300 border-t-gray-500" />
+    </div>
+  )
+
+  return (
     <>
-      <div className="flex items-center justify-center">
-        <div className="h-3 w-3 animate-spin rounded-full border-2 border-gray-300 border-t-gray-500" />
+      <div className="flex min-h-6 min-w-6 items-center justify-center">
+        <LoadingIndicator />
       </div>
       <div className="flex items-center gap-x-1 text-left font-medium">
-        <div className="h-3 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+        <Skeleton>Loading...</Skeleton>
       </div>
     </>
-  ),
-})
+  )
+}
 
 export default Weather
