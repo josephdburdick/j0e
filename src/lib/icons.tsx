@@ -1,6 +1,9 @@
 import {
   ArrowBigDownDash,
   BadgeInfo,
+  Cloud,
+  CloudDrizzle,
+  CloudSun,
   Ellipsis,
   ExternalLink,
   File,
@@ -12,6 +15,7 @@ import {
   MoonStar,
   QrCode,
   Send,
+  Snowflake,
   SquareTerminal,
   Sun,
 } from "lucide-react"
@@ -62,6 +66,9 @@ const LinkedInSVG = () => (
 const icons: IconsMap = {
   arrowBigDownDash: ArrowBigDownDash,
   badgeInfo: BadgeInfo,
+  cloud: Cloud,
+  cloudDrizzle: CloudDrizzle,
+  cloudSun: CloudSun,
   ellipsis: Ellipsis,
   externalLink: ExternalLink,
   github: SquareTerminal,
@@ -76,6 +83,7 @@ const icons: IconsMap = {
   qrCode: QrCode,
   readCV: File,
   send: Send,
+  snowflake: Snowflake,
   sun: Sun,
 }
 

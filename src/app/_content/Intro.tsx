@@ -49,7 +49,7 @@ function Intro() {
 
   return (
     <>
-      <section className="relative flex min-h-[600px] flex-col items-center justify-center sm:min-h-[85dvh] md:min-h-[95dvh]">
+      <section className="relative flex min-h-[95dvh] flex-col items-center justify-center sm:min-h-[85dvh] md:min-h-[95dvh]">
         <div className="flex w-full flex-1">
           <div className="grid w-full grid-rows-[auto_1fr_auto] items-center gap-4 lg:gap-6">
             <MainHeader className="pt-6 md:pt-16 lg:pt-24 xl:pt-36">
