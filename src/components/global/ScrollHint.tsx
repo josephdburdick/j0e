@@ -34,7 +34,7 @@ const ScrollHint = (props: ScrollHintProps) => {
     <div
       ref={scrollHintRef}
       style={{ opacity: scrollHintOpacity }}
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"
+      className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 transform sm:flex"
     >
       <div className="flex flex-col items-center gap-2 text-gray-200 dark:text-gray-700">
         <span className="text-xs">Scroll</span>
