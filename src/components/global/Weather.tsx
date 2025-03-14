@@ -248,12 +248,11 @@ const WeatherContent: React.FC = () => {
     <>
       <WeatherIcon />
       <div className="flex items-center text-left font-medium">
-        {renderDailyHighLow()}
-        <Button
+        <button
           onClick={toggleUnit}
-          size="sm"
-          variant="ghost"
-          className={cn("ml-auto cursor-pointer rounded-full px-1.5 py-0.5")}
+          className={cn(
+            "flex cursor-pointer items-center gap-1 rounded-full px-0 py-0.5 text-left",
+          )}
           disabled={isLoading}
         >
           <Icon.toggleLeft
@@ -263,7 +262,8 @@ const WeatherContent: React.FC = () => {
               unit === TemperatureUnit.FAHRENHEIT ? "rotate-90" : "-rotate-90",
             )}
           />
-        </Button>
+          {renderDailyHighLow()}
+        </button>
       </div>
     </>
   )
