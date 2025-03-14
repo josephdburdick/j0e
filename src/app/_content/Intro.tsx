@@ -76,7 +76,6 @@ function Intro() {
               <div className="container">
                 <div className="flex items-center justify-between gap-4">
                   <div className="hidden shrink-0 items-center gap-2 text-xs text-muted-foreground md:flex xl:text-sm">
-                    <Icon.mapPin className="text-lime-500" />
                     <WeatherComponent />
                   </div>
                   <MainNav

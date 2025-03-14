@@ -1,7 +1,9 @@
 "use client"
 
+import { cn } from "@/lib/utils"
 import { useEffect, useMemo, useState } from "react"
 
+import { Button } from "../ui/button"
 import Icon from "./Icon"
 
 // Define temperature unit enum
@@ -26,7 +28,7 @@ const getWeatherIcon = (temperature: number): string => {
 }
 
 // Weather icon color mapping function
-const getWeatherIconColor = (temperature: number): string => {
+const getWeatherColor = (temperature: number): string => {
   if (temperature >= 80) return "text-amber-500" // Hot - bright orange/yellow
   if (temperature >= 65) return "text-yellow-400" // Warm - yellow
   if (temperature >= 50) return "text-blue-300" // Mild - light blue
@@ -47,10 +49,12 @@ const WeatherComponent: React.FC = () => {
     high: number
     low: number
   } | null>(null)
+  const [isLoading, setIsLoading] = useState(false) // Add loading state
 
-  useEffect(() => {
-    setIsClient(true) // Set to true when component is mounted on the client
-  }, [])
+  useEffect(
+    () => setIsClient(true), // Set to true when component is mounted on the client
+    [],
+  )
 
   // Fetch the temperature unit preference from local storage
   useEffect(() => {
@@ -70,11 +74,15 @@ const WeatherComponent: React.FC = () => {
     if (isClient) {
       // Ensure this runs only on the client
       const fetchWeather = async () => {
+        setIsLoading(true) // Set loading to true before fetch starts
+
         const params = {
           ...coords,
-          hourly: "temperature_2m",
+          hourly: "temperature_2m,precipitation,relative_humidity_2m",
           temperature_unit: "fahrenheit",
           wind_speed_unit: "mph",
+          current: "is_day",
+          forecast_days: "1",
         }
 
         const queryString = new URLSearchParams(params as any).toString()
@@ -87,6 +95,7 @@ const WeatherComponent: React.FC = () => {
           }
           const data = await response.json()
           const weatherData = data.hourly
+
           setTemperature(weatherData.temperature_2m[0])
 
           // Store forecast data
@@ -103,6 +112,8 @@ const WeatherComponent: React.FC = () => {
           })
         } catch (error) {
           console.error("Error fetching weather data:", error)
+        } finally {
+          setIsLoading(false) // Set loading to false when fetch completes (success or error)
         }
       }
 
@@ -165,40 +176,7 @@ const WeatherComponent: React.FC = () => {
     )
   }
 
-  const renderTrendVisualization = () => {
-    if (!forecast) return null
-
-    return (
-      <div className="mt-2">
-        <p className="text-xs">Today&apos;s trend:</p>
-        <div className="mt-1 flex h-20 items-end space-x-1">
-          {forecast.temperature.slice(0, 8).map((temp, i) => {
-            const height = Math.max(15, (temp / 100) * 80)
-            const displayTemp =
-              unit === TemperatureUnit.FAHRENHEIT
-                ? Math.round(temp)
-                : (((temp - 32) * 5) / 9).toFixed(1)
-
-            return (
-              <div key={i} className="group relative">
-                <div
-                  className={`w-4 ${temp > 50 ? "bg-orange-300" : "bg-blue-300"}`}
-                  style={{ height: `${height}px` }}
-                ></div>
-                <div className="absolute bottom-full hidden rounded bg-gray-800 p-1 text-xs text-white group-hover:block">
-                  {displayTemp}°
-                  {unit === TemperatureUnit.FAHRENHEIT ? "F" : "C"} at{" "}
-                  {new Date(forecast.time[i]).getHours()}:00
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </div>
-    )
-  }
-
-  // Render option 3: Daily high/low
+  //  Daily high/low
   const renderDailyHighLow = () => {
     if (!dailyHighLow) return null
 
@@ -212,11 +190,23 @@ const WeatherComponent: React.FC = () => {
         ? Math.round(dailyHighLow.low)
         : (((dailyHighLow.low - 32) * 5) / 9).toFixed(1)
 
+    // Get colors based on the temperature values
+    const highTempColor = getWeatherColor(dailyHighLow.high)
+    const lowTempColor = getWeatherColor(dailyHighLow.low)
+
+    const tempLabel = (label: string) => (
+      <span className="hidden lg:inline">{label}</span>
+    )
+
     return (
-      <div className="">
-        <span className="text-red-500">H: {highTemp}°</span>
-        {" / "}
-        <span className="text-blue-500">L: {lowTemp}°</span>
+      <div className="flex items-center gap-x-1 text-sm">
+        <span className={lowTempColor}>
+          {tempLabel("L:")} {lowTemp}º
+        </span>
+        <span className="text-muted-foreground">&ndash;</span>
+        <span className={highTempColor}>
+          {tempLabel("H:")} {highTemp}º
+        </span>
       </div>
     )
   }
@@ -228,28 +218,56 @@ const WeatherComponent: React.FC = () => {
     // The temperature state variable is always in Fahrenheit (from the API)
     // No conversion needed for icon selection since our thresholds are in Fahrenheit
     const iconName = getWeatherIcon(temperature)
-    const iconColor = getWeatherIconColor(temperature)
+    const iconColor = getWeatherColor(temperature)
 
     // Use dynamic component rendering
     const IconComponent = Icon[iconName]
 
     return (
-      <div className="flex items-center">
-        {IconComponent && (
-          <IconComponent className={`mr-2 h-6 w-6 ${iconColor}`} />
-        )}
+      <div className="flex items-center justify-center">
+        {IconComponent && <IconComponent className={`h-7 w-7 ${iconColor}`} />}
       </div>
     )
   }
 
-  return (
-    <button onClick={toggleUnit} className="flex cursor-pointer items-center">
-      <WeatherIcon />
-      <div className="flex flex-col items-start">
-        {renderDailyHighLow()}
-        <span className="text-sm">Brooklyn, New York</span>
+  const LoadingIndicator = () => (
+    <div className="flex items-center justify-center">
+      <div className="h-3 w-3 animate-spin rounded-full border-2 border-gray-300 border-t-gray-500" />
+    </div>
+  )
+
+  return isLoading ? (
+    <LoadingIndicator />
+  ) : (
+    <div className="grid grid-cols-[auto_1fr] items-center gap-x-2 gap-y-0.5">
+      {isLoading ? <LoadingIndicator /> : <WeatherIcon />}
+      <div className="flex items-center gap-x-1 text-left font-medium">
+        {isLoading ? <LoadingIndicator /> : renderDailyHighLow()}
+        <Button
+          onClick={toggleUnit}
+          size="sm"
+          variant="ghost"
+          className={cn("cursor-pointer rounded-full px-1.5 py-0.5")}
+          disabled={isLoading}
+        >
+          <Icon.toggleLeft
+            size={14}
+            className={cn(
+              "origin-center",
+              unit === TemperatureUnit.FAHRENHEIT ? "rotate-90" : "-rotate-90",
+            )}
+          />
+          {unit === TemperatureUnit.FAHRENHEIT ? "F" : "C"}
+        </Button>
       </div>
-    </button>
+
+      <div className="flex justify-center">
+        <Icon.mapPin className="text-red-400" />
+      </div>
+      <span className="text-sm text-gray-600 dark:text-gray-400">
+        Brooklyn, New York
+      </span>
+    </div>
   )
 }
 
