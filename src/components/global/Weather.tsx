@@ -1,6 +1,8 @@
 "use client"
 
 import { cn } from "@/lib/utils"
+// Create a client-only wrapper component
+import dynamic from "next/dynamic"
 import { useEffect, useMemo, useState } from "react"
 
 import { Button } from "../ui/button"
@@ -37,7 +39,8 @@ const getWeatherColor = (temperature: number): string => {
   return "text-blue-200" // Freezing - light blue
 }
 
-const WeatherComponent: React.FC = () => {
+// Rename the component to WeatherContent
+const WeatherContent: React.FC = () => {
   const [temperature, setTemperature] = useState<number | null>(null)
   const [unit, setUnit] = useState<TemperatureUnit>(TemperatureUnit.FAHRENHEIT)
   const [isClient, setIsClient] = useState(false) // New state to track client-side rendering
@@ -239,7 +242,7 @@ const WeatherComponent: React.FC = () => {
   return isLoading ? (
     <LoadingIndicator />
   ) : (
-    <div className="grid grid-cols-[auto_1fr] items-center gap-x-2 gap-y-0.5">
+    <>
       {isLoading ? <LoadingIndicator /> : <WeatherIcon />}
       <div className="flex items-center gap-x-1 text-left font-medium">
         {isLoading ? <LoadingIndicator /> : renderDailyHighLow()}
@@ -260,15 +263,23 @@ const WeatherComponent: React.FC = () => {
           {unit === TemperatureUnit.FAHRENHEIT ? "F" : "C"}
         </Button>
       </div>
-
-      <div className="flex justify-center">
-        <Icon.mapPin className="text-red-400" />
-      </div>
-      <span className="text-sm text-gray-600 dark:text-gray-400">
-        Brooklyn, New York
-      </span>
-    </div>
+    </>
   )
 }
 
-export default WeatherComponent
+// Create a client-only version as the default export
+const Weather = dynamic(() => Promise.resolve(WeatherContent), {
+  ssr: false,
+  loading: () => (
+    <>
+      <div className="flex items-center justify-center">
+        <div className="h-3 w-3 animate-spin rounded-full border-2 border-gray-300 border-t-gray-500" />
+      </div>
+      <div className="flex items-center gap-x-1 text-left font-medium">
+        <div className="h-3 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+      </div>
+    </>
+  ),
+})
+
+export default Weather

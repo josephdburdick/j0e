@@ -4,6 +4,7 @@ import DarkModeToggle from "@/components/global/DarkModeToggle"
 import HeaderAd from "@/components/global/HeaderAd"
 import Icon from "@/components/global/Icon"
 import LinkButton from "@/components/global/LinkButton"
+import LocationComponent from "@/components/global/Location"
 import LogoMarquee from "@/components/global/LogoMarquee"
 import MainHeader from "@/components/global/MainHeader"
 import MainNav from "@/components/global/MainNav"
@@ -75,8 +76,11 @@ function Intro() {
             <footer className="pb-8 md:pb-16 lg:pb-24 xl:pb-36">
               <div className="container">
                 <div className="flex items-center justify-between gap-4">
-                  <div className="hidden shrink-0 items-center gap-2 text-xs text-muted-foreground md:flex xl:text-sm">
-                    <WeatherComponent />
+                  <div className="hidden shrink-0 flex-col items-center gap-2 text-xs text-muted-foreground md:flex">
+                    <div className="grid grid-cols-[auto_1fr] items-center gap-x-2 gap-y-0.5">
+                      <WeatherComponent />
+                      <LocationComponent />
+                    </div>
                   </div>
                   <MainNav
                     title="Let's Connect"
