@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils"
 import dynamic from "next/dynamic"
 import { useEffect, useMemo, useState } from "react"
 
+import { Badge } from "../ui/badge"
 import { Button } from "../ui/button"
 import { Skeleton } from "../ui/skeleton"
 import Icon from "./Icon"
@@ -228,10 +229,15 @@ const WeatherContent: React.FC = () => {
     const IconComponent = Icon[iconName]
 
     return (
-      <div className="flex items-center justify-center">
+      <div className="relative flex items-center justify-center">
         {IconComponent && (
           <IconComponent size={24} className={` ${iconColor}`} />
         )}
+        <span className="absolute -right-0.5 -top-0.5">
+          <span className="flex h-2.5 w-2.5 items-center justify-center rounded-full bg-primary text-[8px] text-primary-foreground">
+            {unit === TemperatureUnit.FAHRENHEIT ? "F" : "C"}
+          </span>
+        </span>
       </div>
     )
   }
@@ -247,10 +253,9 @@ const WeatherContent: React.FC = () => {
           onClick={toggleUnit}
           size="sm"
           variant="ghost"
-          className={cn("cursor-pointer rounded-full px-1.5 py-0.5")}
+          className={cn("ml-auto cursor-pointer rounded-full px-1.5 py-0.5")}
           disabled={isLoading}
         >
-          {unit === TemperatureUnit.FAHRENHEIT ? "F" : "C"}
           <Icon.toggleLeft
             size={14}
             className={cn(

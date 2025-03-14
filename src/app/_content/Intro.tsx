@@ -57,40 +57,14 @@ const StickyHeader = () => {
   )
 }
 
-// Extract the scroll hint functionality into a separate component
-const ScrollHintWrapper = () => {
-  const [scrollPosition, setScrollPosition] = useState(0)
-  const scrollHintRef = useRef<HTMLDivElement | null>(null)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
-
-  const scrollHintOpacity = Math.max(
-    0,
-    1 - scrollPosition / (window.innerHeight / 1.25),
-  )
-
-  return (
-    <ScrollHint
-      scrollHintOpacity={scrollHintOpacity}
-      scrollHintRef={scrollHintRef}
-    />
-  )
-}
+const ClientScrollHint = dynamic(
+  () => import("../../components/global/ScrollHint"),
+  {
+    ssr: false,
+  },
+)
 
 const ClientStickyHeader = dynamic(() => Promise.resolve(StickyHeader), {
-  ssr: false,
-})
-
-const ClientScrollHint = dynamic(() => Promise.resolve(ScrollHintWrapper), {
   ssr: false,
 })
 
