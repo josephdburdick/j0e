@@ -81,7 +81,7 @@ function Intro() {
             </MainHeader>
 
             <main className="container w-full items-center space-y-8 md:space-y-16">
-              <div className="prose prose-scale max-w-[65ch] text-pretty dark:prose-invert">
+              <div className="prose prose-scale mx-auto max-w-[65ch] text-pretty text-center dark:prose-invert">
                 <div dangerouslySetInnerHTML={{ __html: data.intro.html }} />
                 <LogoMarquee />
               </div>
