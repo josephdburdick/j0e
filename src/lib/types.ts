@@ -1,3 +1,9 @@
+export type Logo = {
+  src: string
+  width: number
+  height: number
+}
+
 export type ContactLink = {
   url: string
   label: string
@@ -21,8 +27,9 @@ export interface Role {
 export interface Job {
   company: string
   location: string
-  logo?: string
-  visible?: boolean
+  logo?: Logo
+  /* Item is permanently disabled */
+  disabled?: boolean
   roles: Role[]
 }
 
@@ -36,7 +43,7 @@ export type FavIcon = {
 export type Experience = {
   company: string
   location?: string
-  logo?: string
+  logo?: Logo
   /* Item is permanently disabled */
   disabled?: boolean
   /* Item is initially hidden */

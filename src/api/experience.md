@@ -3,7 +3,10 @@ title: Experience
 subtitle: Showcasing my track record of user-focused innovation across diverse roles and industries
 experience:
   - company: Exponential.fi
-    logo: ${basePath}/assets/images/logos/exponential.svg
+    logo:
+      src: ${basePath}/assets/images/logos/exponential.svg
+      width: 601
+      height: 76
     roles:
       - title: Lead Software Engineer
         location: San Fransisco, California
@@ -45,7 +48,10 @@ experience:
           ]
 
   - company: Unqork
-    logo: ${basePath}/assets/images/logos/unqork.svg
+    logo:
+      src: ${basePath}/assets/images/logos/unqork.svg
+      width: 120
+      height: 32
     roles:
       - title: Senior Software Engineer
         location: Manhattan, New York City
@@ -84,7 +90,7 @@ experience:
           start: 2018-02-01
           end: 2020-01-01
         description: >
-          Initially joined as an original member of the “Theme Team” before the creation of Unqork Digital Services. Collaborated in a team to develop over 50 custom themes and demos, laying the foundation for future design initiatives.
+          Initially joined as an original member of the "Theme Team" before the creation of Unqork Digital Services. Collaborated in a team to develop over 50 custom themes and demos, laying the foundation for future design initiatives.
 
           Innovated with the creation of utility classes to enable configurators to make CSS changes independently, a precursor to practices adopted years later by Unqork Digital.
 
@@ -103,7 +109,10 @@ experience:
           ]
 
   - company: Present Day
-    logo: ${basePath}/assets/images/logos/presentday.svg
+    logo:
+      src: ${basePath}/assets/images/logos/presentday.svg
+      width: 85
+      height: 85
     roles:
       - title: Principal Web Engineer
         type: Contract
@@ -147,7 +156,7 @@ experience:
 
           Engaged in technical consulting and directed the design and development of brands and websites.
 
-          Executed email marketing campaigns for clients like Carrot Creative, MTV, David’s Bridal, Sotheby’s, and Tambaran Tribal Art.
+          Executed email marketing campaigns for clients like Carrot Creative, MTV, David's Bridal, Sotheby's, and Tambaran Tribal Art.
 
           Partnered with agencies such as White + Partners, KBGD, and Breensmith Advertising.
 
@@ -167,7 +176,10 @@ experience:
           ]
 
   - company: Adoptive
-    logo: ${basePath}/assets/images/logos/adoptive.webp
+    logo:
+      src: ${basePath}/assets/images/logos/adoptive.webp
+      width: 200
+      height: 200
     remote: true
     roles:
       - title: UX, Lead Front-end Engineer
@@ -201,7 +213,10 @@ experience:
           ]
 
   - company: Studiografica
-    logo: ${basePath}/assets/images/logos/sgc.svg
+    logo:
+      src: ${basePath}/assets/images/logos/sgc.svg
+      width: 518
+      height: 380
     remote: false
     roles:
       - title: UX, Tech Director, Lead Front-end Engineer
@@ -219,7 +234,7 @@ experience:
 
           Spearheaded the development of progressive-enhanced front-end solutions.
 
-          Worked with high-profile brands such as Ciroc Vodka, Macy’s, Casio, W.W. Glass, and David’s Bridal, as well as the Venture Development Center, contributing significantly to both client-facing and internal projects.
+          Worked with high-profile brands such as Ciroc Vodka, Macy's, Casio, W.W. Glass, and David's Bridal, as well as the Venture Development Center, contributing significantly to both client-facing and internal projects.
         skills:
           [
             Communication,
@@ -232,7 +247,10 @@ experience:
           ]
 
   - company: David's Bridal
-    logo: ${basePath}/assets/images/logos/davids-bridal.svg
+    logo:
+      src: ${basePath}/assets/images/logos/davids-bridal.svg
+      width: 180
+      height: 40
     location: Midtown, New York City
     remote: false
     roles:
@@ -258,7 +276,10 @@ experience:
           ]
 
   - company: Aquent
-    logo: ${basePath}/assets/images/logos/aquent.svg
+    logo:
+      src: ${basePath}/assets/images/logos/aquent.svg
+      width: 332
+      height: 46
     location: Washington DC
     disabled: true
     roles:
@@ -289,7 +310,9 @@ experience:
           ]
 
   - company: National Crime Prevention Council
-    logo: ${basePath}/assets/images/logos/ncpc.webp
+    logo:
+      src: ${basePath}/assets/images/logos/ncpc.webp
+
     location: Washington, DC
     disabled: true
     roles:
@@ -299,7 +322,7 @@ experience:
           start: 2007-07-01
           end: 2008-01-01
         description: >
-          Responsible for all aspects of public/media relations including: leveraging the positive assets of the organization’s brand icon, McGruff the Crime Dog®; foster non-traditional media and advertising opportunities for NCPC and conduct aggressive media outreach for the National Citizens’ Crime Prevention Campaign; assist in the development process of production for television public service announcements; act as liaison between NCPC spokespeople and the mass media including major television networks, newspapers, and magazines; handle daily media inquiries, schedule television and phone interviews; prepare talking points, press releases, and media kits; and help promote NCPC story lines.
+          Responsible for all aspects of public/media relations including: leveraging the positive assets of the organization's brand icon, McGruff the Crime Dog®; foster non-traditional media and advertising opportunities for NCPC and conduct aggressive media outreach for the National Citizens' Crime Prevention Campaign; assist in the development process of production for television public service announcements; act as liaison between NCPC spokespeople and the mass media including major television networks, newspapers, and magazines; handle daily media inquiries, schedule television and phone interviews; prepare talking points, press releases, and media kits; and help promote NCPC story lines.
         skills:
           [
             Communication,
@@ -340,7 +363,10 @@ experience:
         skills: [Communication, Email Marketing, Campaign Design]
 
   - company: Virginia Commonwealth University
-    logo: ${basePath}/assets/images/logos/vcu.svg
+    logo:
+      src: ${basePath}/assets/images/logos/vcu.svg
+      width: 157
+      height: 67
     roles:
       - title: Dev-Ops Engineer, Front-end Designer / Engineer
         location: Richmond, Virginia
@@ -374,10 +400,10 @@ experience:
 
 My career has been an exciting journey through various roles, always with a focus on blending technology and design to deliver top-notch user experiences.
 
-At Unqork, I’ve been a key player since day one, helping to build the Platform UI team and develop the Unqork Design System (UQDS). This system has become a cornerstone of the platform, enhancing its functionality and user experience. I’ve also worked on integrating this system into component settings and pioneering innovative component creation using cutting-edge methodologies.
+At Unqork, I've been a key player since day one, helping to build the Platform UI team and develop the Unqork Design System (UQDS). This system has become a cornerstone of the platform, enhancing its functionality and user experience. I've also worked on integrating this system into component settings and pioneering innovative component creation using cutting-edge methodologies.
 
-Before Unqork, I worked at Present Day, where I led full-stack development projects, including a major application for Paraguay’s largest testing laboratory. My work demonstrated my ability to deliver advanced solutions while collaborating across time zones and cultures.
+Before Unqork, I worked at Present Day, where I led full-stack development projects, including a major application for Paraguay's largest testing laboratory. My work demonstrated my ability to deliver advanced solutions while collaborating across time zones and cultures.
 
 At Adoptive, I played a crucial role in projects like YaleMedicine.org and Bundoo.com, earning an honorable mention at the Webby Awards. My contributions to user experience design and strategic planning were instrumental in these successes.
 
-I’m passionate about communication, mentoring, and driving innovation. Whether it’s through developing robust applications or enhancing user interfaces, I strive to create impactful and enjoyable digital experiences.
+I'm passionate about communication, mentoring, and driving innovation. Whether it's through developing robust applications or enhancing user interfaces, I strive to create impactful and enjoyable digital experiences.

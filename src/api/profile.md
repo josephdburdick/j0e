@@ -5,13 +5,13 @@ location: Brooklyn, New York
 coordinates: [40.7143, 73.9442]
 email: josephdburdick@gmail.com
 picture:
-  src: ${basePath}/assets/images/profile.png
+  src: ${basePath}/assets/images/profile.webp
   width: 96
   height: 96
   alt: Joseph Burdick profile picture
 availableForWork: true
 bg:
-  src: ${basePath}/assets/images/bg-beach.jpg
+  src: ${basePath}/assets/images/bg-beach.webp
   width: 6240
   height: 1799
   alt: Me at the beach with friends
