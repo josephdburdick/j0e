@@ -12,7 +12,7 @@ export default function LogoMarquee(props: MarqueeProps) {
   const { itemWidth = "200px" } = props
   const { data } = useApi()
   const jobs: Job[] = data.experience.attributes.experience.filter(
-    (job: Job) => !!job.logo,
+    (job: Job) => !!job.logo && !job.disabled,
   )
 
   return (
@@ -34,9 +34,11 @@ export default function LogoMarquee(props: MarqueeProps) {
             >
               <CardContent className="flex h-full w-full items-center justify-center p-8 text-muted">
                 <Image
-                  src={job.logo}
+                  src={job.logo.src}
+                  width={job.logo.width}
+                  height={job.logo.height}
                   alt={`${job.company} logo`}
-                  className="selection-none pointer-events-none max-h-20 max-w-28 grayscale dark:invert"
+                  className="selection-none pointer-events-none max-h-20 w-auto max-w-28 grayscale dark:invert"
                   loading="lazy"
                 />
               </CardContent>

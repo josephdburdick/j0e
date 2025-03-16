@@ -7,8 +7,8 @@ export default async function Home() {
   return (
     <>
       <Intro />
-      <Experience />
       <Recommendations />
+      <Experience />
       <About />
     </>
   )
