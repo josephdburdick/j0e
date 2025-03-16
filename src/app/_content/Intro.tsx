@@ -36,7 +36,9 @@ const StickyHeader = () => {
     <div
       className={cn(
         "fixed top-0 z-10 w-full transition-all duration-500",
-        isSticky ? "opacity-100" : "opacity-0",
+        isSticky
+          ? "pointer-events-auto opacity-100"
+          : "pointer-events-none opacity-0",
       )}
     >
       <div className="relative">
