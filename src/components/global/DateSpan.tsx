@@ -1,9 +1,9 @@
 type Props = {
   date: {
-    start: string;
-    end: string | null;
-  };
-};
+    start: string
+    end: string | null
+  }
+}
 
 export default function DateSpan({ date }: Props) {
   const renderDate = (dateProp: string | null) => {
@@ -23,13 +23,27 @@ export default function DateSpan({ date }: Props) {
     return `${month} '${year}`
   }
 
+  const startDate = date.start ? new Date(date.start).toISOString() : undefined
+  const endDate = date.end ? new Date(date.end).toISOString() : undefined
+
   return (
-    <div className="flex flex-wrap items-center justify-start gap-2">
-      <time>{renderDate(date.start)}</time>
-      <span className="h-px max-w-6 grow border-t border-muted-foreground">
-        <span className="sr-only">&mdash;</span>
+    <div
+      className="flex flex-wrap items-center justify-start gap-2"
+      role="group"
+      aria-label="Employment duration"
+    >
+      <time dateTime={startDate} aria-label="Start date">
+        {renderDate(date.start)}
+      </time>
+      <span
+        className="h-px max-w-6 grow border-t border-muted-foreground"
+        aria-hidden="true"
+      >
+        <span className="sr-only">to</span>
       </span>
-      <time>{renderDate(date.end)}</time>
+      <time dateTime={endDate} aria-label="End date">
+        {renderDate(date.end)}
+      </time>
     </div>
   )
 }

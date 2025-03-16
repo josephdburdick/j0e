@@ -3,8 +3,8 @@ import type { PropsWithChildren } from "react"
 
 export default function RuleHeader(
   props: PropsWithChildren & {
-    className?: string;
-    side?: "left" | "right" | "both";
+    className?: string
+    side?: "left" | "right" | "both"
   },
 ) {
   const { side = "right", className } = props
