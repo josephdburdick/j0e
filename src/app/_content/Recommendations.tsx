@@ -167,13 +167,17 @@ export default function Recommendations() {
       )}
     >
       <div className="container space-y-4">
-        <header className="space-y-2 pb-12 text-center lg:pb-0">
+        <header className="space-y-2 pb-12 text-center">
           <RuleHeader side="both" className="font-light">
-            {data.recommendations.attributes.title}
+            <h2 id="experience-title" className="text-foreground">
+              {data.recommendations.attributes.title}
+            </h2>
           </RuleHeader>
-          <h5 className="text-balance text-3xl font-semibold">
-            {data.recommendations.attributes.subtitle}
-          </h5>
+          <div className="prose-scale text-balance text-3xl font-bold">
+            <h3 className="text-foreground/90">
+              {data.recommendations.attributes.subtitle}
+            </h3>
+          </div>
         </header>
         {renderRecommendations}
       </div>

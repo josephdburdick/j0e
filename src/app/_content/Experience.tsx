@@ -77,19 +77,28 @@ export default function Experience() {
             <a
               href={`#${toKebabCase(role.company)}`}
               className="grid grid-cols-12 items-center gap-1.5 md:flex-1"
+              aria-label={`${role.title} at ${role.company}`}
             >
-              <div className="col-span-12 gap-1 text-xs text-muted-foreground md:col-span-3 md:col-start-1 xl:col-span-2 xl:text-sm">
+              <div className="col-span-12 gap-1 text-xs text-foreground/90 md:col-span-3 md:col-start-1 xl:col-span-2 xl:text-sm">
                 <DateSpan date={role.date} />
               </div>
               <div className="col-span-12 items-center md:col-start-4 md:pl-2">
                 <div className="flex justify-between gap-4">
                   <div className="flex flex-wrap gap-x-4 gap-y-1 text-start font-normal">
-                    <h6 className="font-semibold">{role.title}</h6>
+                    <h4 className="font-semibold text-foreground">
+                      {role.title}
+                    </h4>
                     {role.location !== undefined && (
-                      <span className="hidden lg:inline">{role.location}</span>
+                      <span className="hidden text-foreground/90 lg:inline">
+                        {role.location}
+                      </span>
                     )}
                     {role.remote !== undefined && (
-                      <Badge variant="outline" size="sm">
+                      <Badge
+                        variant="outline"
+                        size="sm"
+                        className="text-foreground/90"
+                      >
                         {role.remote ? "remote" : "on-site"}
                       </Badge>
                     )}{" "}
@@ -174,11 +183,17 @@ export default function Experience() {
                   .map(renderExperience)}
               </ul>
             </CollapsibleContent>
-            <CollapsibleTrigger>
-              <RuleHeader side="both">
-                <span className="rounded-full border bg-primary px-4 py-2 text-xs text-primary-foreground">
+            <CollapsibleTrigger asChild className="text-center">
+              <RuleHeader side="both" className="flex-grow-0 justify-center">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full bg-primary px-4 py-2 text-xs text-primary-foreground hover:bg-primary/90"
+                  aria-expanded={viewAllToggle}
+                  aria-controls="additional-experience"
+                >
                   {viewAllToggle ? "View Less" : "View More"} Experience
-                </span>
+                </Button>
               </RuleHeader>
             </CollapsibleTrigger>
           </CollapsibleItem>
@@ -190,16 +205,21 @@ export default function Experience() {
   return (
     <section
       className={cn(
-        "md:py16 min-h-[800px] items-center justify-center space-y-8 bg-secondary py-8 lg:py-24 xl:py-36",
+        "md:py16 min-h-[800px] items-center justify-center space-y-8 bg-secondary/80 py-8 lg:py-24 xl:py-36",
       )}
+      aria-labelledby="experience-title"
     >
       <div className="container space-y-4">
         <header className="space-y-2 pb-12 text-center">
           <RuleHeader side="both" className="font-light">
-            <h3>{data.experience.attributes.title}</h3>
+            <h2 id="experience-title" className="text-foreground">
+              {data.experience.attributes.title}
+            </h2>
           </RuleHeader>
           <div className="prose-scale text-balance text-3xl font-bold">
-            <h4>{data.experience.attributes.subtitle}</h4>
+            <h3 className="text-foreground/90">
+              {data.experience.attributes.subtitle}
+            </h3>
           </div>
         </header>
       </div>

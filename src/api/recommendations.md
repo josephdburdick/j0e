@@ -1,6 +1,6 @@
 ---
 title: "Endorsements"
-subtitle: "What my clients and colleagues have to say"
+subtitle: "What clients and colleagues have to say"
 recommendations:
   - name: Praneeth Moka
     company: unqork
