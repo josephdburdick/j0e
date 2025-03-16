@@ -29,7 +29,7 @@ export default function QRCodeDialog({
   return (
     <Drawer>
       <DrawerTrigger asChild>{children}</DrawerTrigger>
-      <DrawerContent className="h-[96vh]">
+      <DrawerContent className="h-[85vh]">
         <div className="mx-auto flex h-full w-full max-w-md flex-col">
           <DrawerHeader>
             <DrawerTitle>{title}</DrawerTitle>
