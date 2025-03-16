@@ -22,14 +22,21 @@ export default function Recommendations() {
   const [api, setApi] = useState<CarouselApi>()
   const recommendations: RecommendationType[] =
     data.recommendations.attributes.recommendations
-  const [current, setCurrent] = useState(
-    Math.floor(recommendations.length / 2),
-  )
+  const [current, setCurrent] = useState(Math.floor(recommendations.length / 2))
 
   useEffect(() => {
     if (!api) return
 
     api.scrollTo(current)
+
+    const onSelect = () => {
+      setCurrent(api.selectedScrollSnap())
+    }
+
+    api.on("select", onSelect)
+    return () => {
+      api.off("select", onSelect)
+    }
   }, [api, current])
   const carouselButtonClassName =
     "relative top-0 left-0 right-0 translate-x-0 translate-y-0"

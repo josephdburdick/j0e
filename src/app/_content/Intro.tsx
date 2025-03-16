@@ -2,7 +2,6 @@
 
 import DarkModeToggle from "@/components/global/DarkModeToggle"
 import HeaderAd from "@/components/global/HeaderAd"
-import Icon from "@/components/global/Icon"
 import LinkButton from "@/components/global/LinkButton"
 import LocationComponent from "@/components/global/Location"
 import LogoMarquee from "@/components/global/LogoMarquee"
@@ -10,17 +9,12 @@ import MainHeader from "@/components/global/MainHeader"
 import MainNav from "@/components/global/MainNav"
 import Weather from "@/components/global/Weather"
 import { useApi } from "@/components/providers/DataProvider"
-import { buttonVariants } from "@/components/ui/button"
 import { ContactLink } from "@/lib/types"
 import { cn } from "@/lib/utils"
 import dynamic from "next/dynamic"
-import Link from "next/link"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 
-import ScrollHint from "../../components/global/ScrollHint"
-
-// Extract the client-side sticky header functionality into a separate component
 const StickyHeader = () => {
   const [isSticky, setIsSticky] = useState(false)
 
@@ -28,7 +22,7 @@ const StickyHeader = () => {
     const handleScroll = () => {
       // Check if we've scrolled past the main content
       const scrollPosition = window.scrollY
-      const triggerPoint = 100 // Adjust based on when you want the header to appear
+      const triggerPoint = 200 // Adjust based on when you want the header to appear
       setIsSticky(scrollPosition > triggerPoint)
     }
 

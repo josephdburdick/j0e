@@ -1,5 +1,6 @@
 import {
   ArrowBigDownDash,
+  ArrowLeft,
   BadgeInfo,
   Cloud,
   CloudDrizzle,
@@ -11,6 +12,7 @@ import {
   Link,
   Mail,
   MapPin,
+  MapPinned,
   Menu,
   MoonStar,
   QrCode,
@@ -66,6 +68,7 @@ const LinkedInSVG = () => (
 )
 
 const icons: IconsMap = {
+  arrowLeft: ArrowLeft,
   arrowBigDownDash: ArrowBigDownDash,
   badgeInfo: BadgeInfo,
   cloud: Cloud,
@@ -80,6 +83,7 @@ const icons: IconsMap = {
   linkedIn: LinkedInSVG,
   mail: Mail,
   mapPin: MapPin,
+  map: MapPinned,
   menu: Menu,
   moon: MoonStar,
   qrCode: QrCode,
@@ -87,7 +91,6 @@ const icons: IconsMap = {
   send: Send,
   snowflake: Snowflake,
   sun: Sun,
-  toggleLeft: ToggleLeft,
 }
 
 export default icons

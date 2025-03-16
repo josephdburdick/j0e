@@ -15,7 +15,7 @@ export default function Footer() {
       children: "View Source Code",
     },
     {
-      href: "https://pagespeed.web.dev/analysis/https-j0e-me/3wq088el4g?form_factor=mobile",
+      href: "https://pagespeed.web.dev/report?url=https%3A%2F%2Fj0e.me",
       children: "PageSpeed Insights",
     },
   ]
