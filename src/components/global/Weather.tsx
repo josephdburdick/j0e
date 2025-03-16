@@ -255,13 +255,6 @@ const WeatherContent: React.FC = () => {
           )}
           disabled={isLoading}
         >
-          <Icon.toggleLeft
-            size={14}
-            className={cn(
-              "origin-center",
-              unit === TemperatureUnit.FAHRENHEIT ? "rotate-90" : "-rotate-90",
-            )}
-          />
           {renderDailyHighLow()}
         </button>
       </div>

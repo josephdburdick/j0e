@@ -1,6 +1,6 @@
 ---
 title: Experience
-subtitle: Showcasing over a decade of expertise and innovation across various roles and industries
+subtitle: Showcasing my track record of user-focused innovation across diverse roles and industries
 experience:
   - company: Exponential.fi
     logo: ${basePath}/assets/images/logos/exponential.svg

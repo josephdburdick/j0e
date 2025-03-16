@@ -22,7 +22,7 @@ export const MainHeader = forwardRef(
     return (
       <header
         className={cn(
-          "container z-50 flex items-center justify-between",
+          "container z-auto flex items-center justify-between",
           className,
         )}
         ref={ref}
