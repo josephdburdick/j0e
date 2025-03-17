@@ -13,7 +13,7 @@ experience:
         remote: true
         type: Full-time
         date:
-          start: 2022-01-01
+          start: 2024-08-01
           end: null
         description: >
           Led front-end development for both the new Trading Dashboard and the new Portfolio Experience,
