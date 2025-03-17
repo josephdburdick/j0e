@@ -7,14 +7,19 @@ import QRCodeButton from "@/components/links/QRCodeButton"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { ContactLink } from "@/lib/types"
 import { cn } from "@/lib/utils"
-import { Metadata } from "next"
+import { Metadata, Viewport } from "next"
 import { headers } from "next/headers"
 import Link from "next/link"
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+}
 
 export const metadata: Metadata = {
   title: "Links",
   description: "All my important links in one place",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
 }
 
 export default async function Links() {
