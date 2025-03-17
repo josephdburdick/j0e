@@ -9,41 +9,40 @@ experience:
       height: 76
     roles:
       - title: Lead Software Engineer
-        location: San Fransisco, California
+        location: San Francisco, California
         remote: true
         type: Full-time
         date:
           start: 2022-01-01
           end: null
         description: >
-          Built and launched a new Trading Dashboard from scratch, driving a complete UI/UX overhaul
-          to enhance user engagement and streamline the investment experience. Unified balance
-          handling, introduced sorting and filtering for investments, and added support for new
-          assets like Solana.
+          Led front-end development for both the new Trading Dashboard and the new Portfolio Experience,
+          delivering a complete UI/UX overhaul to boost user engagement and streamline the investment journey.
 
-          Overhauled authentication and security flows (MFA, email verification, Sentry
-          obfuscation), reinforcing data protection and reliability. Championed comprehensive
-          documentation to clarify architectural decisions, boosting onboarding efficiency for new
-          team members.
+          Overhauled authentication (MFA, email verification) and security measures (Sentry obfuscation),
+          reinforcing data protection and reliability. Authored and maintained comprehensive documentation,
+          accelerating onboarding and clarifying architectural decisions.
 
-          Optimized site performance with parallelized data fetching, refined SSR checks, and
-          improved caching strategies—significantly reducing load times. Collaborated directly on
-          UI/UX decisions, ensuring consistent design patterns and intuitive user journeys.
-          Further assisted in marketing strategy by integrating site-wide promotions, aligning product launches with broader campaigns to drive adoption and revenue.
+          Elevated site performance by parallelizing data fetching, refining SSR checks, and optimizing
+          caching strategies—drastically reducing load times. Collaborated with UI/UX teams on design and
+          user flows, ensuring consistent, intuitive experiences.
+
+          Supported marketing strategy with site-wide promotions and coordinated releases, aligning
+          product launches with broader campaigns to drive adoption and revenue.
         skills:
           [
             React,
-            Communication,
             JavaScript,
             Node,
-            Fullstack,
-            Web Standards,
             Performance,
             Authentication,
-            Documentation,
-            DeFi,
             Sentry,
+            Communication,
+            Web Standards,
+            Documentation,
+            Fullstack,
             UI/UX,
+            DeFi,
             Marketing,
           ]
 
