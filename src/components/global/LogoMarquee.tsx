@@ -39,7 +39,7 @@ export default function LogoMarquee(props: MarqueeProps) {
                   height={job.logo.height}
                   alt={`${job.company} logo`}
                   className="selection-none pointer-events-none max-h-20 w-auto max-w-28 grayscale dark:invert"
-                  loading="lazy"
+                  priority={index < 3}
                 />
               </CardContent>
             </Card>
