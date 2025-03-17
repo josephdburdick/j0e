@@ -43,29 +43,31 @@ export default async function Links() {
   const name = data.profile.attributes.name || "My Links"
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-gradient-to-b from-background to-background/80">
-      <MainHeader className="flex shrink flex-col justify-center gap-3 p-8" />
-      <Link
-        href="/"
-        className={cn(
-          buttonVariants({ variant: "outline", size: "icon" }),
-          "absolute left-4 top-6 rounded-full",
-        )}
-      >
-        <Icon.arrowLeft />
-      </Link>
+    <main className="duration-1000 animate-in fade-in">
+      <div className="relative flex min-h-screen flex-col bg-gradient-to-b from-background to-background/80">
+        <MainHeader className="flex shrink flex-col justify-center gap-3 p-8" />
+        <Link
+          href="/"
+          className={cn(
+            buttonVariants({ variant: "outline", size: "icon" }),
+            "absolute left-4 top-6 rounded-full",
+          )}
+        >
+          <Icon.arrowLeft />
+        </Link>
 
-      <QRCodeButton />
+        <QRCodeButton />
 
-      <div className="container relative z-20 mx-auto flex flex-1 flex-col px-4">
-        <div className="flex flex-1 flex-col items-center justify-start">
-          <LinkTree links={links} className="mx-auto w-full max-w-md" />
+        <div className="container relative z-20 mx-auto flex flex-1 flex-col px-4">
+          <div className="flex flex-1 flex-col items-center justify-start">
+            <LinkTree links={links} className="mx-auto w-full max-w-md" />
+          </div>
         </div>
-      </div>
 
-      <footer className="shrink py-8 text-center text-sm text-muted-foreground">
-        <p>© {new Date().getFullYear()} Present Day</p>
-      </footer>
-    </div>
+        <footer className="shrink py-8 text-center text-sm text-muted-foreground">
+          <p>© {new Date().getFullYear()} Present Day</p>
+        </footer>
+      </div>
+    </main>
   )
 }
