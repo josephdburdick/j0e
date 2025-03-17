@@ -183,19 +183,19 @@ export default function Experience() {
                   .map(renderExperience)}
               </ul>
             </CollapsibleContent>
-            <CollapsibleTrigger asChild className="text-center">
-              <RuleHeader side="both" className="flex-grow-0 justify-center">
+            <RuleHeader side="both" className="flex-grow-0 justify-center">
+              <CollapsibleTrigger asChild className="text-center">
                 <Button
                   variant="outline"
                   size="sm"
-                  className="rounded-full bg-primary px-4 py-2 text-xs text-primary-foreground hover:bg-primary/90"
+                  className="rounded-full px-4 py-2"
                   aria-expanded={viewAllToggle}
                   aria-controls="additional-experience"
                 >
                   {viewAllToggle ? "View Less" : "View More"} Experience
                 </Button>
-              </RuleHeader>
-            </CollapsibleTrigger>
+              </CollapsibleTrigger>
+            </RuleHeader>
           </CollapsibleItem>
         </Collapsible>
       )}
