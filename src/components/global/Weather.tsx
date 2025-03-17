@@ -55,6 +55,7 @@ const WeatherContent: React.FC = () => {
     low: number
   } | null>(null)
   const [isLoading, setIsLoading] = useState(false) // Add loading state
+  const [isHovering, setIsHovering] = useState(false)
 
   useEffect(
     () => setIsClient(true), // Set to true when component is mounted on the client
@@ -138,16 +139,18 @@ const WeatherContent: React.FC = () => {
     }
   }
 
-  const renderTemperature = useMemo(() => {
-    if (unit === TemperatureUnit.FAHRENHEIT && temperature !== null) {
-      return `${Math.round(temperature)}º F in `
-    } else if (unit === TemperatureUnit.CELSIUS && temperature !== null) {
-      const celsius = ((temperature - 32) * 5) / 9
-      return `${celsius.toFixed(1)}º C in`
-    } else {
-      return ""
-    }
-  }, [unit, temperature])
+  const renderCurrentTemp = () => {
+    if (temperature === null) return null
+
+    const displayTemp =
+      unit === TemperatureUnit.FAHRENHEIT
+        ? Math.round(temperature)
+        : (((temperature - 32) * 5) / 9).toFixed(1)
+
+    const tempColor = getWeatherColor(temperature)
+
+    return <span className={cn("text-sm", tempColor)}>{displayTemp}°</span>
+  }
 
   const renderForecast = () => {
     if (!forecast) return null
@@ -200,18 +203,18 @@ const WeatherContent: React.FC = () => {
     const lowTempColor = getWeatherColor(dailyHighLow.low)
 
     const tempLabel = (label: string) => (
-      <span className="hidden lg:inline">{label}</span>
+      <span className="hidden lg:flex lg:items-center lg:justify-center">
+        {label}
+      </span>
     )
 
     return (
-      <div className="flex items-center gap-x-1 text-sm">
-        <span className={lowTempColor}>
-          {tempLabel("L:")} {lowTemp}º
-        </span>
+      <div className="flex items-center gap-1 gap-x-1 text-sm [&>span]:flex [&>span]:items-center [&>span]:justify-center">
+        <span className={lowTempColor}>L{tempLabel("ow")}</span>
+        <span className={lowTempColor}>{lowTemp}º</span>
         <span className="text-muted-foreground">&ndash;</span>
-        <span className={highTempColor}>
-          {tempLabel("H:")} {highTemp}º
-        </span>
+        <span className={highTempColor}>H{tempLabel("igh")}</span>
+        <span className={highTempColor}>{highTemp}º</span>
       </div>
     )
   }
@@ -247,17 +250,34 @@ const WeatherContent: React.FC = () => {
   ) : (
     <>
       <WeatherIcon />
-      <div className="flex items-center text-left font-medium">
-        <button
-          onClick={toggleUnit}
-          className={cn(
-            "flex cursor-pointer items-center gap-1 rounded-full px-0 py-0.5 text-left",
-          )}
-          disabled={isLoading}
-        >
-          {renderDailyHighLow()}
-        </button>
-      </div>
+      <button
+        onClick={toggleUnit}
+        className={cn(
+          "relative flex items-center text-left font-medium",
+          "cursor-pointer rounded-full px-0 py-0.5",
+        )}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        disabled={isLoading}
+      >
+        <div className="relative h-5">
+          {" "}
+          <div
+            className={`absolute transition-opacity duration-200 ${
+              isHovering ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            {renderCurrentTemp()}
+          </div>
+          <div
+            className={`absolute transition-opacity duration-200 ${
+              isHovering ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            {renderDailyHighLow()}
+          </div>
+        </div>
+      </button>
     </>
   )
 }
