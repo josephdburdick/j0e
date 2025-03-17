@@ -8,6 +8,7 @@ export default function LinkButton() {
   return (
     <Link
       href="/links"
+      aria-label="View mobile-friendly links"
       className={cn(
         buttonVariants({
           variant: "outline",

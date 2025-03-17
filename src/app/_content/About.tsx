@@ -54,8 +54,8 @@ export default function Footer() {
       <Image
         src={src}
         alt={alt}
-        width={width}
-        height={height}
+        width={1785}
+        height={515}
         className="z-0 aspect-auto"
       />
     </section>
