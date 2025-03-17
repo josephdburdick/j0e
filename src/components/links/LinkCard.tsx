@@ -43,17 +43,10 @@ export default function LinkCard({
   const getGradient = () => {
     // Map specific gradients to each platform
     const gradientMap: Record<string, string> = {
-      // LinkedIn - blue professional gradient
       linkedin: "from-blue-600 to-blue-400",
-      // GitHub - purple to indigo gradient
-      github: "from-purple-700 to-indigo-500",
-      // Read.cv - elegant teal to emerald gradient
-      readcv: "from-orange-400 to-red-400",
-      // Instagram - vibrant pink to purple to orange gradient
+      github: "from-purple-700 to-purple-400",
       instagram: "from-pink-500 via-purple-500 to-orange-500",
-      // Email - fun orange to yellow gradient
-      mail: "from-emerald-500 to-lime-400",
-      // Website - vibrant green to teal gradient
+      readcv: "from-orange-500 to-lime-400",
       website: "from-green-500 to-teal-400",
     }
 
