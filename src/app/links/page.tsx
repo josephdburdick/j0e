@@ -38,7 +38,7 @@ export default async function Links() {
     },
     {
       url: "https://maps.app.goo.gl/NfePJCr5DY3wmy676",
-      label: "My Pool Table Map",
+      label: "Pool Table Map",
       icon: "map",
     },
   ]
