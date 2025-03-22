@@ -29,6 +29,7 @@ export default function Recommendations() {
       ? Math.floor(recommendations.length / 2)
       : 0
   const [current, setCurrent] = useState(initialRecommendation)
+  const [carouselHeight, setCarouselHeight] = useState("auto")
 
   useEffect(() => {
     if (!api) return
@@ -44,6 +45,24 @@ export default function Recommendations() {
       api.off("select", onSelect)
     }
   }, [api, current])
+
+  useEffect(() => {
+    const activeSlide = document.querySelector(
+      `[data-carousel-item-index="${current}"]`,
+    )
+
+    if (activeSlide) {
+      const slideContent = activeSlide.querySelector("div")
+      const slideContentHeight = slideContent?.clientHeight
+
+      if (slideContentHeight) {
+        const parent = activeSlide.parentNode as HTMLElement
+        parent.style.height = `${slideContentHeight}px`
+        parent.style.transition = "height 300ms ease-in-out"
+      }
+    }
+  }, [current])
+
   const carouselButtonClassName =
     "relative top-0 left-0 right-0 translate-x-0 translate-y-0"
 
@@ -51,7 +70,10 @@ export default function Recommendations() {
     recommendation: RecommendationType,
     index: number,
   ) => (
-    <CarouselItem key={`recommendation-${index}`}>
+    <CarouselItem
+      key={`recommendation-${index}`}
+      data-carousel-item-index={index}
+    >
       <div className="grid grid-cols-4 items-start gap-4 lg:gap-8">
         <div className="col-start-2 hidden grid-cols-3 xl:grid">
           <svg
@@ -160,9 +182,11 @@ export default function Recommendations() {
         <CarouselNext className={carouselButtonClassName} />
       </div>
       {renderAvatars}
-      <CarouselContent>
-        {recommendations.map(renderRecommendation)}
-      </CarouselContent>
+      <div className="container">
+        <CarouselContent>
+          {recommendations.map(renderRecommendation)}
+        </CarouselContent>
+      </div>
     </Carousel>
   )
 
@@ -172,8 +196,8 @@ export default function Recommendations() {
         "md:py16 items-center justify-center space-y-8 bg-gradient-to-b from-secondary py-8 lg:py-24 xl:py-36",
       )}
     >
-      <div className="container space-y-4">
-        <header className="space-y-2 pb-12 text-center">
+      <div className="container">
+        <header className="space-y-2 text-center">
           <RuleHeader side="both" className="font-light">
             <h2 id="experience-title" className="text-foreground">
               {data.recommendations.attributes.title}
@@ -185,8 +209,8 @@ export default function Recommendations() {
             </h3>
           </div>
         </header>
-        {renderRecommendations}
       </div>
+      <div>{renderRecommendations}</div>
     </section>
   )
 }
