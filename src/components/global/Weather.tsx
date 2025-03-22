@@ -249,7 +249,18 @@ const WeatherContent: React.FC = () => {
     <LoadingComponent />
   ) : (
     <>
-      <WeatherIcon />
+      <button
+        onClick={toggleUnit}
+        className={cn(
+          "relative flex items-center text-left font-medium",
+          "cursor-pointer rounded-full px-0 py-0.5",
+        )}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        disabled={isLoading}
+      >
+        <WeatherIcon />
+      </button>
       <button
         onClick={toggleUnit}
         className={cn(

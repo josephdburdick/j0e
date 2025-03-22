@@ -38,7 +38,7 @@ export default async function Links() {
     },
     {
       url: "https://maps.app.goo.gl/NfePJCr5DY3wmy676",
-      label: "Pool Table Map",
+      label: "My Pool Table Map",
       icon: "map",
     },
   ]
@@ -49,8 +49,6 @@ export default async function Links() {
     }),
     ...additionalLinks,
   ]
-
-  const name = data.profile.attributes.name || "My Links"
 
   return (
     <main className="duration-1000 animate-in fade-in">
