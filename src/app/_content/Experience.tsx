@@ -37,19 +37,24 @@ export default function Experience() {
 
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash
-      if (hash) {
-        const element = document.querySelector(hash)
-        if (element) {
-          const headerOffset = 100 // Adjust this value based on your header's height
-          const elementPosition = element.getBoundingClientRect().top
-          const offsetPosition = elementPosition + window.scrollY - headerOffset
+      try {
+        const hash = window.location.hash
+        if (hash) {
+          const element = document.querySelector(hash)
+          if (element) {
+            const headerOffset = 100
+            const elementPosition = element.getBoundingClientRect().top
+            const offsetPosition =
+              elementPosition + window.scrollY - headerOffset
 
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth",
-          })
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            })
+          }
         }
+      } catch (error) {
+        console.log("Unable to detect hash:", error)
       }
     }
 

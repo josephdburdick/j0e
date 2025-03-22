@@ -2,6 +2,16 @@
 title: "Endorsements"
 subtitle: "What clients and colleagues have to say"
 recommendations:
+  - name: Orhan Özalp
+    company: Exponential
+    avatar: ${basePath}/assets/images/avatars/orhan.webp
+    title: Staff Software Engineer at Exponential DeFi
+    shortTitle: Staff Software Engineer
+    date: 2025-03-21
+    relationship: Worked with Joe on the same team
+    body: >
+      I had the pleasure of working with Joe when he was a frontend engineer at Exponential, while I worked on the backend. He took ownership of the entire frontend and even rewrote a version of a frontend I had built—making it significantly better. His attention to detail and ability to improve existing systems stood out. Beyond that, he’s great to work with, always collaborative and open to ideas. Any team would be lucky to have him!
+
   - name: Praneeth Moka
     company: unqork
     avatar: ${basePath}/assets/images/avatars/praneeth.webp

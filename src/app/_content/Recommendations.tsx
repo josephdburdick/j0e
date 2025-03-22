@@ -22,7 +22,13 @@ export default function Recommendations() {
   const [api, setApi] = useState<CarouselApi>()
   const recommendations: RecommendationType[] =
     data.recommendations.attributes.recommendations
-  const [current, setCurrent] = useState(Math.floor(recommendations.length / 2))
+  // if the number of recommendations is odd, start with the middle one
+  // if the number of recommendations is even, start with the first one
+  const initialRecommendation =
+    recommendations.length % 2 !== 0
+      ? Math.floor(recommendations.length / 2)
+      : 0
+  const [current, setCurrent] = useState(initialRecommendation)
 
   useEffect(() => {
     if (!api) return
