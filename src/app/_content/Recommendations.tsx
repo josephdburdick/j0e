@@ -29,7 +29,6 @@ export default function Recommendations() {
       ? Math.floor(recommendations.length / 2)
       : 0
   const [current, setCurrent] = useState(initialRecommendation)
-  const [carouselHeight, setCarouselHeight] = useState("auto")
 
   useEffect(() => {
     if (!api) return
