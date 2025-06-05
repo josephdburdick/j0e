@@ -33,10 +33,10 @@ links:
     url: https://read.cv/josephdburdick
     label: Read.cv
     icon: readCV
-  email:
-    url: mailto:josephdburdick@gmail.com
-    label: Email
-    icon: mail
+  # email:
+  #   url: mailto:josephdburdick@gmail.com
+  #   label: Email
+  #   icon: mail
   cuequest:
     url: https://cue.quest
     label: Cue Quest

@@ -37,7 +37,7 @@ const AccordionTrigger = React.forwardRef<
       {children}
       <span
         className={cn(
-          buttonVariants({ variant: "outline", size: "icon" }),
+          buttonVariants({ variant: "secondary", size: "icon" }),
           "size-6 items-center justify-center rounded-full border border-input",
         )}
       >

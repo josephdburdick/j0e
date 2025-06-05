@@ -13,6 +13,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion"
+import { Button } from "../ui/button"
 
 interface LinkCardProps {
   link: ContactLink
@@ -30,6 +31,7 @@ export default function LinkCard({
   isOpen,
 }: LinkCardProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const [isCopied, setIsCopied] = useState(false)
   const { url, label, icon } = link
 
   // Generate an ID for the link based on the label
@@ -48,7 +50,7 @@ export default function LinkCard({
       instagram: "from-pink-500 via-purple-500 to-orange-500",
       readcv: "from-orange-500 to-lime-400",
       website: "from-green-500 to-teal-400",
-      cuequest: "from-[#006809] to-[#31ee31]",
+      "cue-quest": "from-[#1A936F] to-[#31B88A]",
     }
 
     // Convert icon name to lowercase for matching
@@ -63,6 +65,18 @@ export default function LinkCard({
     if (onAccordionToggle) {
       onAccordionToggle(linkId, isNowOpen)
     }
+  }
+
+  const handleCopyUrl = () => {
+    navigator.clipboard.writeText(url).then(
+      () => {
+        setIsCopied(true)
+        setTimeout(() => setIsCopied(false), 2000)
+      },
+      (err) => {
+        console.error("Failed to copy URL: ", err)
+      },
+    )
   }
 
   return (
@@ -95,32 +109,19 @@ export default function LinkCard({
               )}
               data-trigger-id={`${linkId}-trigger`}
             >
-              <div className="flex w-full items-center justify-between">
-                <div className="flex items-center justify-start gap-2 text-xl font-medium md:text-2xl">
-                  {IconComponent && (
-                    <span className="flex size-8 items-center justify-center text-white">
-                      <IconComponent />
-                    </span>
-                  )}
-                  <span>{label}</span>
-                </div>
-
-                {/* External link button */}
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="ml-2 mr-4 rounded-full bg-white/20 p-2 text-white hover:bg-white/30"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Icon.externalLink className="size-5" />
-                </a>
+              <div className="flex w-full items-center justify-start gap-2 text-xl font-medium md:text-2xl">
+                {IconComponent && (
+                  <span className="flex size-8 items-center justify-center text-white">
+                    <IconComponent />
+                  </span>
+                )}
+                <span>{label}</span>
               </div>
             </AccordionTrigger>
 
             <AccordionContent
               className={cn(
-                "flex items-center justify-center rounded-b-xl px-4 py-6",
+                "flex flex-col items-center justify-center rounded-b-xl px-4 py-6",
                 "bg-card/90 backdrop-blur-sm",
               )}
             >
@@ -134,6 +135,33 @@ export default function LinkCard({
                   style={{ height: "auto", maxWidth: "100%", width: "100%" }}
                   viewBox="0 0 256 256"
                 />
+              </div>
+              <div className="mt-4 flex w-full max-w-[200px] flex-col gap-2 sm:max-w-[232px] sm:flex-row">
+                <Button asChild>
+                  <a href={url} target="_blank" rel="noreferrer">
+                    <Icon.externalLink className="size-4" />
+                    Open {label}
+                  </a>
+                </Button>
+                <Button
+                  onClick={handleCopyUrl}
+                  variant={isCopied ? "info" : "outline-info"}
+                  // className={cn(
+                  //   isCopied
+                  //     ? "bg-green-500 text-white hover:bg-green-600"
+                  //     : "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600",
+                  // )}
+                >
+                  {isCopied ? (
+                    <>
+                      <Icon.check className="size-4" /> Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Icon.copy className="size-4" /> Copy URL
+                    </>
+                  )}
+                </Button>
               </div>
             </AccordionContent>
           </div>
