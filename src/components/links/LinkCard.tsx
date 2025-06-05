@@ -50,7 +50,7 @@ export default function LinkCard({
       instagram: "from-pink-500 via-purple-500 to-orange-500",
       readcv: "from-orange-500 to-lime-400",
       website: "from-green-500 to-teal-400",
-      "cue-quest": "from-[#1A936F] to-[#31B88A]",
+      mapPin: "from-[#1A936F] to-[#31B88A]",
     }
 
     // Convert icon name to lowercase for matching
@@ -136,7 +136,7 @@ export default function LinkCard({
                   viewBox="0 0 256 256"
                 />
               </div>
-              <div className="mt-4 flex w-full max-w-[200px] flex-col gap-2 sm:max-w-[232px] sm:flex-row">
+              <div className="row-wrap mt-4 flex w-full flex-col-reverse gap-2">
                 <Button asChild>
                   <a href={url} target="_blank" rel="noreferrer">
                     <Icon.externalLink className="size-4" />
@@ -146,11 +146,6 @@ export default function LinkCard({
                 <Button
                   onClick={handleCopyUrl}
                   variant={isCopied ? "info" : "outline-info"}
-                  // className={cn(
-                  //   isCopied
-                  //     ? "bg-green-500 text-white hover:bg-green-600"
-                  //     : "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600",
-                  // )}
                 >
                   {isCopied ? (
                     <>
