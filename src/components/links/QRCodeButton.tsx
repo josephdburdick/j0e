@@ -15,11 +15,7 @@ export default function QRCodeButton() {
 
   return (
     <QRCodeDialog url={url}>
-      <Button
-        variant="outline"
-        size="icon"
-        className="absolute right-4 top-6 rounded-full"
-      >
+      <Button variant="outline" size="icon">
         <Icon.qrCode />
       </Button>
     </QRCodeDialog>

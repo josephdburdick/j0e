@@ -1,8 +1,8 @@
 "use client"
 
+import Logo from "@/components/global/Logo"
 import { useApi } from "@/components/providers/DataProvider"
 import { cn } from "@/lib/utils"
-import Image from "next/image"
 import Link from "next/link"
 import type { ForwardedRef, PropsWithChildren, ReactNode } from "react"
 import { forwardRef } from "react"
@@ -27,21 +27,17 @@ export const MainHeader = forwardRef(
         )}
         ref={ref}
       >
-        <h1 className="relative z-50 dark:invert">
-          <Link href="/">
-            {logoSlot || (
-              <Image
-                src={logo.url}
-                width={logo.width}
-                height={logo.height}
-                alt={logo.alt}
-              />
-            )}
-            <span className="sr-only">{name}</span>
-          </Link>
-        </h1>
+        <Logo
+          logoSlot={logoSlot}
+          url={logo.url}
+          width={logo.width}
+          height={logo.height}
+          alt={logo.alt}
+          name={name}
+        />
+
         {props.children && (
-          <div className="flex items-center gap-2">
+          <div className="ml-auto flex items-center gap-2">
             <div className="flex items-end justify-between gap-4 md:items-center">
               {props.children}
             </div>

@@ -48,6 +48,7 @@ export default function LinkCard({
       instagram: "from-pink-500 via-purple-500 to-orange-500",
       readcv: "from-orange-500 to-lime-400",
       website: "from-green-500 to-teal-400",
+      cuequest: "from-[#006809] to-[#31ee31]",
     }
 
     // Convert icon name to lowercase for matching

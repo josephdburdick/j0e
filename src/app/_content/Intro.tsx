@@ -74,7 +74,7 @@ function Intro() {
         <div className="flex w-full flex-1">
           <div className="grid w-full grid-rows-[auto_1fr_auto] items-center gap-4 lg:gap-6">
             <MainHeader className="pt-6 md:pt-16 lg:pt-24 xl:pt-36">
-              <div className="flex items-center gap-3">
+              <div className="ml-auto flex items-center gap-3">
                 <DarkModeToggle />
                 <LinkButton />
               </div>
