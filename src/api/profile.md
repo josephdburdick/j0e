@@ -29,18 +29,14 @@ links:
     url: https://instagr.am/d00m.exe
     label: Instagram
     icon: instagram
-  readcv:
-    url: https://read.cv/josephdburdick
-    label: Read.cv
-    icon: readCV
   # email:
   #   url: mailto:josephdburdick@gmail.com
   #   label: Email
   #   icon: mail
-  cuequest:
-    url: https://cue.quest
-    label: Cue Quest
-    icon: mapPin
+  # cuequest:
+  #   url: https://cue.quest
+  #   label: Cue Quest
+  #   icon: mapPin
 
 intro: >
   j0e.me is the eponymous online home of Joe Burdick— web designer, software engineer, leader, and photographer.

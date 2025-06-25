@@ -27,11 +27,11 @@ export default async function Links() {
   const { name } = data.profile.attributes
 
   const additionalLinks: ContactLink[] = [
-    // {
-    //   url: "https://cue.quest",
-    //   label: "Cue Quest",
-    //   icon: "mapPin",
-    // },
+    {
+      url: "https://cue.quest",
+      label: "Cue Quest",
+      icon: "mapPin",
+    },
     {
       url: "https://j0e.me",
       label: "j0e.me",
