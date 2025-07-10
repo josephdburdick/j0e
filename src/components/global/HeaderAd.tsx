@@ -73,7 +73,7 @@ export default function HeaderAd() {
     <Carousel
       setApi={setApi}
       opts={{
-        // loop: true,
+        loop: true,
         align: "end",
       }}
       orientation="vertical"
