@@ -18,10 +18,10 @@ export const metadata: Metadata = {
   title: "Joe Burdick",
   description: "Web Software Engineer",
   keywords: ["software engineer", "web development", "react", "typescript"],
-  manifest: "/manifest.json",
+  manifest: "/manifest.webmanifest",
   icons: {
-    icon: "/icon-192x192.png",
-    apple: "/icon-192x192.png",
+    icon: "/img/icons/favicon/maskable_icon_x192.webp",
+    apple: "/img/icons/favicon/maskable_icon_x192.webp",
   },
   robots: {
     index: true,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Joe Burdick",
     images: [
       {
-        url: "/icon-512x512.png",
+        url: "/img/icons/favicon/maskable_icon_x512.webp",
         width: 512,
         height: 512,
         alt: "Joe Burdick",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "Joe Burdick",
     description: "Web Software Engineer",
     creator: "@josephdburdick",
-    images: ["/icon-512x512.png"],
+    images: ["/img/icons/favicon/maskable_icon_x512.webp"],
   },
 }
 

@@ -1,0 +1,65 @@
+{
+  "start_url": "/",
+  "name": "Joe Burdick – Web Software Engineer",
+  "short_name": "Joe Burdick",
+  "description": "Joe Burdick - Web Software Engineer",
+  "icons": [
+    {
+      "purpose": "maskable",
+      "sizes": "1024x1024",
+      "src": "/img/icons/favicon/maskable_icon.webp",
+      "type": "image/webp"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "48x48",
+      "src": "/img/icons/favicon/maskable_icon_x48.webp",
+      "type": "image/webp"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "72x72",
+      "src": "/img/icons/favicon/maskable_icon_x72.webp",
+      "type": "image/webp"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "96x96",
+      "src": "/img/icons/favicon/maskable_icon_x96.webp",
+      "type": "image/webp"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "128x128",
+      "src": "/img/icons/favicon/maskable_icon_x128.webp",
+      "type": "image/webp"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "192x192",
+      "src": "/img/icons/favicon/maskable_icon_x192.webp",
+      "type": "image/webp"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "384x384",
+      "src": "/img/icons/favicon/maskable_icon_x384.webp",
+      "type": "image/webp"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "/img/icons/favicon/maskable_icon_x512.webp",
+      "type": "image/webp"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "1024x1024",
+      "src": "/img/icons/favicon/maskable_icon_x1024.webp",
+      "type": "image/webp"
+    }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
