@@ -73,7 +73,7 @@ export default function HeaderAd() {
     <Carousel
       setApi={setApi}
       opts={{
-        loop: true,
+        // loop: true,
         align: "end",
       }}
       orientation="vertical"
@@ -99,7 +99,7 @@ export default function HeaderAd() {
             </Button>
           </MainNav>
         </CarouselItem>
-        <CarouselItem className="pl-1">
+        <CarouselItem className="flex items-center justify-end pl-1">
           <WorkAvailability />
         </CarouselItem>
       </CarouselContent>

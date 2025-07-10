@@ -16,9 +16,9 @@ export default function WorkAvailability(props: Props) {
         <span className="inline-flex h-2 w-2 rounded-full bg-lime-500 md:h-3 md:w-3">
           <span className="inline-flex h-2 w-2 animate-ping rounded-full bg-lime-400 md:h-3 md:w-3"></span>
         </span>
-        <span className="text-xs md:text-sm">
+        <span className="flex items-center justify-center text-xs md:text-sm">
           Available for work{" "}
-          <span className="hidden md:inline">Spring 2025</span>
+          <span className="hidden md:inline">Summer 2025</span>
         </span>
       </div>
     </div>
