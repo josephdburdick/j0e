@@ -11,12 +11,18 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   userScalable: true,
+  themeColor: "#000000",
 }
 
 export const metadata: Metadata = {
-  title: "Joe",
-  description: "Lead Software Engineer",
+  title: "Joe Burdick",
+  description: "Web Software Engineer",
   keywords: ["software engineer", "web development", "react", "typescript"],
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/icon-192x192.png",
+    apple: "/icon-192x192.png",
+  },
   robots: {
     index: true,
     follow: true,
@@ -25,15 +31,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://j0e.me",
-    title: "Joe",
-    description: "Lead Software Engineer",
-    siteName: "Joe",
+    title: "Joe Burdick",
+    description: "Web Software Engineer",
+    siteName: "Joe Burdick",
+    images: [
+      {
+        url: "/icon-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "Joe Burdick",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Joe",
-    description: "Lead Software Engineer",
+    title: "Joe Burdick",
+    description: "Web Software Engineer",
     creator: "@josephdburdick",
+    images: ["/icon-512x512.png"],
   },
 }
 
