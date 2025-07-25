@@ -26,7 +26,7 @@ const buttonVariants = cva(baseButtonClassnames, {
       ),
       outline: cn(
         buttonAppearanceClassnames,
-        "border border-input dark:border-white/10 bg-transparent hover:bg-background-inverse/5 hover:text-accent-foreground focus-visible:ring-accent active:ring-4 active:ring-offset-2 active:ring-accent/40 active:bg-accent/10 active:scale-[0.98]",
+        "border border-input dark:border-white/10 bg-background/50 hover:bg-background-inverse/5 hover:text-accent-foreground focus-visible:ring-accent active:ring-4 active:ring-offset-2 active:ring-accent/40 active:bg-accent/10 active:scale-[0.98]",
       ),
       "outline-warning": cn(
         buttonAppearanceClassnames,
