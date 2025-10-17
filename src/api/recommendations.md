@@ -22,7 +22,9 @@ recommendations:
     body: >
       I had the pleasure of working with Joe for over 2 years on various projects. Joe is one of the nicest and hardworking individuals I have ever met. Joe has a very good eye for catching things that can be simplified which often helped our team immensely. 
 
+
       Joe has a lot of patience which is a very good asset to have and it was evident in the way he was able to successfully handle long running tasks while also maintaining excellent communication with the team on the progress of the task. He’s always available to help his teammates when they are in need.
+
 
       Any team would be lucky to have him and I strongly recommend Joe.
   - name: Roy V. Sutton
@@ -35,6 +37,7 @@ recommendations:
     body: >
       I had the pleasure to manage Joe during my time at Unqork. Joe is someone I consider to be a craftsman. His approach when working with code is to leave the code better than he found it. He has a passion for user interface and for making things right for the users and developers. 
 
+
       One notable project Joe worked on was the company's internal design system. As part of his work, Joe assisted teams throughout the platform with getting the most from the system and helping them leverage the components to reduce code and styling. This work greatly improved readability, maintainability and consistency. In addition, Joe is a person I enjoyed working with.
   - name: Travis Hubbard
     company: unqork
@@ -46,7 +49,9 @@ recommendations:
     body: >
       I had the pleasure of working with Joe at Unqork, and he is a fantastic engineer with a remarkable eye for UI/UX and accessibility. Joe excels at asking insightful questions and raising important considerations, helping teams break down work and fully understand requirements. His deeply analytical mindset enables him to solve business challenges in a holistic and effective manner.
 
+
       Joe is not only a skilled problem-solver but also a great team player. He actively supports his teammates, always being one of the first to jump on calls to answer questions or provide a second pair of eyes. His commitment to driving code quality is evident through his thorough PR comments and willingness to pair with other developers.
+
 
       I thoroughly enjoyed my time working with Joe, and I believe he would be a brilliant addition to any team.
   - name: Eric Ma
@@ -58,6 +63,7 @@ recommendations:
     relationship: Was senior to Joe but didn't manage Joe directly
     body: >
       Joe epitomizes the qualities of what I like to call a responsible engineer. It's one thing to be good at writing code (which Joe is) and it's another to go the extra mile.
+
 
       He just doesn't do the work that he's assigned to do. Joe makes sure to understand the why. This is how you get output from an engineering team that is high quality, that catches edge cases, and that truly solves the problems presenting your users, by having an engineer like Joe asking the right questions and leading by example.
 
