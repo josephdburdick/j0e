@@ -2,6 +2,107 @@
 title: Experience
 subtitle: Showcasing my track record of user-focused innovation across diverse roles and industries
 experience:
+  - company: Cue Quest
+    logo:
+      src: ${basePath}/assets/images/logos/cue-quest.png
+      width: 246
+      height: 220
+    roles:
+      - title: Founder & Principal Engineer
+        location: Brooklyn, New York
+        remote: true
+        type: Contract
+        date:
+          start: 2025-01-01
+          end: null
+        description: >
+          Founded and built Cue Quest from concept to production—a map-based social platform for discovering and reviewing places. Led end-to-end product development including strategy, design systems, and full-stack engineering.
+
+          - **Product Leadership**: Mapped core user flows and delivered polished UI with consistent design system and reusable components
+
+          - **Technical Architecture**: Built with Next.js App Router, TypeScript, tRPC, and Supabase for type-safe, scalable architecture
+
+          - **Core Features**: Map-first discovery, review system, social features (follows, notifications), and comprehensive testing suite
+
+          - **Performance & Quality**: Responsive design, accessibility compliance, and robust testing with Playwright and Vitest
+
+
+          **Tech Stack**: Next.js, TypeScript, tRPC, Supabase, Tailwind, shadcn/ui, Playwright, Vitest
+
+        skills:
+          [
+            "Next.js",
+            "TypeScript",
+            "tRPC",
+            "Supabase",
+            "shadcn/ui",
+            "Tailwind",
+            "Playwright",
+            "Vitest",
+            "Product Strategy",
+            "UX Design",
+            "System Architecture",
+            "API Design",
+            "Database Design",
+            "Testing",
+            "Feature Flags",
+            "Rate Limiting",
+            "Analytics",
+            "Performance",
+            "Documentation",
+          ]
+
+  - company: Delaware Water Disaster
+    logo:
+      src: ${basePath}/assets/images/logos/delaware-water-disaster.png
+      width: 42
+      height: 64
+    roles:
+      - title: Founder & Principal Engineer
+        location: Millsboro, Delaware
+        remote: true
+        type: Contract
+        date:
+          start: 2025-09-01
+          end: 2025-11-01
+        description: >
+          Built and launched a modern content platform for Delaware Water Disaster, a public-interest initiative focused on water-related emergencies and community response.
+
+          - **Full-Stack Development**: Led architecture and development using Next.js, TypeScript, and Payload CMS with Postgres
+
+          - **Content Management**: Created flexible content modeling with rich text editing, media management, and structured collections
+
+          - **User Experience**: Built intuitive editor interface with role-based permissions and comprehensive search functionality
+
+          - **Performance & SEO**: Optimized for fast loading, implemented comprehensive SEO strategies, and ensured accessibility
+
+          Specializing in content platforms and editorial tools through Present Day.
+        skills:
+          [
+            "Next.js",
+            "TypeScript",
+            "Payload CMS",
+            "Postgres",
+            "Railway",
+            "AWS S3",
+            "Tailwind",
+            "shadcn/ui",
+            "Playwright",
+            "Vitest",
+            "Docker",
+            "pnpm",
+            "SEO",
+            "Content Modeling",
+            "Rich Text Editing",
+            "Search",
+            "Authentication",
+            "Authorization",
+            "Performance",
+            "Migrations",
+            "Resend",
+            "Email Delivery",
+          ]
+
   - company: Exponential.fi
     logo:
       src: ${basePath}/assets/images/logos/exponential.svg
@@ -14,21 +115,23 @@ experience:
         type: Full-time
         date:
           start: 2024-08-01
-          end: null
+          end: 2025-08-01
         description: >
-          Led front-end development for both the new Trading Dashboard and the new Portfolio Experience,
-          delivering a complete UI/UX overhaul to boost user engagement and streamline the investment journey.
+          Led front-end development for Exponential.fi's Trading Dashboard and Portfolio Experience, delivering a complete UI/UX overhaul that boosted user engagement and streamlined investment workflows.
 
-          Overhauled authentication (MFA, email verification) and security measures (Sentry obfuscation),
-          reinforcing data protection and reliability. Authored and maintained comprehensive documentation,
-          accelerating onboarding and clarifying architectural decisions.
 
-          Elevated site performance by parallelizing data fetching, refining SSR checks, and optimizing
-          caching strategies—drastically reducing load times. Collaborated with UI/UX teams on design and
-          user flows, ensuring consistent, intuitive experiences.
+          Drove adoption and revenue through strategic product development and cross-functional collaboration.
 
-          Supported marketing strategy with site-wide promotions and coordinated releases, aligning
-          product launches with broader campaigns to drive adoption and revenue.
+          - **Product Development**: Enhanced trading and portfolio interfaces with modern, intuitive design
+
+          - **Security & Auth**: Implemented MFA, email verification, and Sentry-based error monitoring for robust security
+
+          - **Performance**: Optimized data fetching, SSR, and caching to dramatically improve load times
+
+          - **Documentation**: Created comprehensive guides that accelerated team onboarding and clarified architecture
+
+          - **Marketing Integration**: Supported product launches with site-wide promotions and coordinated releases
+
         skills:
           [
             React,
