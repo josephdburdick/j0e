@@ -2,6 +2,107 @@
 title: Experience
 subtitle: Showcasing my track record of user-focused innovation across diverse roles and industries
 experience:
+  - company: Cue Quest
+    logo:
+      src: ${basePath}/assets/images/logos/cue-quest.png
+      width: 250
+      height: 198
+    roles:
+      - title: Founder & Principal Engineer
+        location: Brooklyn, New York
+        remote: true
+        type: Contract
+        date:
+          start: 2025-01-01
+          end: null
+        description: >
+          Founded and built Cue Quest from concept to production—a map-based social platform for discovering and reviewing places. Led end-to-end product development including strategy, design systems, and full-stack engineering.
+
+          - **Product Leadership**: Mapped core user flows and delivered polished UI with consistent design system and reusable components
+
+          - **Technical Architecture**: Built with Next.js App Router, TypeScript, tRPC, and Supabase for type-safe, scalable architecture
+
+          - **Core Features**: Map-first discovery, review system, social features (follows, notifications), and comprehensive testing suite
+
+          - **Performance & Quality**: Responsive design, accessibility compliance, and robust testing with Playwright and Vitest
+
+
+          **Tech Stack**: Next.js, TypeScript, tRPC, Supabase, Tailwind, shadcn/ui, Playwright, Vitest
+
+        skills:
+          [
+            "Next.js",
+            "TypeScript",
+            "tRPC",
+            "Supabase",
+            "shadcn/ui",
+            "Tailwind",
+            "Playwright",
+            "Vitest",
+            "Product Strategy",
+            "UX Design",
+            "System Architecture",
+            "API Design",
+            "Database Design",
+            "Testing",
+            "Feature Flags",
+            "Rate Limiting",
+            "Analytics",
+            "Performance",
+            "Documentation",
+          ]
+
+  - company: Delaware Water Disaster
+    logo:
+      src: ${basePath}/assets/images/logos/delaware-water-disaster.png
+      width: 42
+      height: 64
+    roles:
+      - title: Founder & Principal Engineer
+        location: Millsboro, Delaware
+        remote: true
+        type: Contract
+        date:
+          start: 2025-09-01
+          end: 2025-11-01
+        description: >
+          Built and launched a modern content platform for Delaware Water Disaster, a public-interest initiative focused on water-related emergencies and community response.
+
+          - **Full-Stack Development**: Led architecture and development using Next.js, TypeScript, and Payload CMS with Postgres
+
+          - **Content Management**: Created flexible content modeling with rich text editing, media management, and structured collections
+
+          - **User Experience**: Built intuitive editor interface with role-based permissions and comprehensive search functionality
+
+          - **Performance & SEO**: Optimized for fast loading, implemented comprehensive SEO strategies, and ensured accessibility
+
+          Specializing in content platforms and editorial tools through Present Day.
+        skills:
+          [
+            "Next.js",
+            "TypeScript",
+            "Payload CMS",
+            "Postgres",
+            "Railway",
+            "AWS S3",
+            "Tailwind",
+            "shadcn/ui",
+            "Playwright",
+            "Vitest",
+            "Docker",
+            "pnpm",
+            "SEO",
+            "Content Modeling",
+            "Rich Text Editing",
+            "Search",
+            "Authentication",
+            "Authorization",
+            "Performance",
+            "Migrations",
+            "Resend",
+            "Email Delivery",
+          ]
+
   - company: Exponential.fi
     logo:
       src: ${basePath}/assets/images/logos/exponential.svg
@@ -14,21 +115,23 @@ experience:
         type: Full-time
         date:
           start: 2024-08-01
-          end: null
+          end: 2025-08-01
         description: >
-          Led front-end development for both the new Trading Dashboard and the new Portfolio Experience,
-          delivering a complete UI/UX overhaul to boost user engagement and streamline the investment journey.
+          Led front-end development for Exponential.fi's Trading Dashboard and Portfolio Experience, delivering a complete UI/UX overhaul that boosted user engagement and streamlined investment workflows.
 
-          Overhauled authentication (MFA, email verification) and security measures (Sentry obfuscation),
-          reinforcing data protection and reliability. Authored and maintained comprehensive documentation,
-          accelerating onboarding and clarifying architectural decisions.
 
-          Elevated site performance by parallelizing data fetching, refining SSR checks, and optimizing
-          caching strategies—drastically reducing load times. Collaborated with UI/UX teams on design and
-          user flows, ensuring consistent, intuitive experiences.
+          Drove adoption and revenue through strategic product development and cross-functional collaboration.
 
-          Supported marketing strategy with site-wide promotions and coordinated releases, aligning
-          product launches with broader campaigns to drive adoption and revenue.
+          - **Product Development**: Enhanced trading and portfolio interfaces with modern, intuitive design
+
+          - **Security & Auth**: Implemented MFA, email verification, and Sentry-based error monitoring for robust security
+
+          - **Performance**: Optimized data fetching, SSR, and caching to dramatically improve load times
+
+          - **Documentation**: Created comprehensive guides that accelerated team onboarding and clarified architecture
+
+          - **Marketing Integration**: Supported product launches with site-wide promotions and coordinated releases
+
         skills:
           [
             React,
@@ -62,9 +165,12 @@ experience:
         description: >
           Founding member of the Platform UI team. While working remotely instrumental in interviewing and recruiting key team members who have significantly contributed to the team's success.
 
+
           Spearheaded the development of the Unqork Design System (UQDS), which now forms a core part of Unqork's platform, enhancing both functionality and user experience.
 
+
           After the completion of the UQDS, transitioned to the Module Builder team, integrating the design system into component settings. Contributed to the creation and refinement of 92 module definitions that leverage UQDS.
+
 
           Currently part of the Experience Engineering team, working on innovative component creation using the Runtime team's Vega engine. Involved in pioneering efforts to build and refine new methodologies in a dynamic, real-time development environment.
         skills:
@@ -91,7 +197,9 @@ experience:
         description: >
           Initially joined as an original member of the "Theme Team" before the creation of Unqork Digital Services. Collaborated in a team to develop over 50 custom themes and demos, laying the foundation for future design initiatives.
 
+
           Innovated with the creation of utility classes to enable configurators to make CSS changes independently, a precursor to practices adopted years later by Unqork Digital.
+
 
           Played a key role in transitioning the Module/App Builder from v1 to v2, with much of my input on design, styles, and behavior still in use today.
         skills:
@@ -123,6 +231,7 @@ experience:
         description: >
           Actively engaged in every phase of project development, ensuring comprehensive involvement from inception to completion. Responsible for creating bespoke web applications that consumed external APIs, providing design and UX consultation, and acting as a for-hire engineer for a variety of development needs.
 
+
           Demonstrated advanced full-stack development capabilities through various projects, integrating REST APIs and utilizing server-rendered architectures with technologies such as Node, Express, GraphQL, Apollo, React, and Redux.
 
         skills:
@@ -153,11 +262,15 @@ experience:
         description: >
           Managed and collaborated with a team of designers and developers, overseeing the creation of digital materials.
 
+
           Engaged in technical consulting and directed the design and development of brands and websites.
+
 
           Executed email marketing campaigns for clients like Carrot Creative, MTV, David's Bridal, Sotheby's, and Tambaran Tribal Art.
 
+
           Partnered with agencies such as White + Partners, KBGD, and Breensmith Advertising.
+
 
           Contributed to a variety of projects including the production of print and digital materials for annual reports, brochures, advertisements, logos, presentation binders, CD covers, websites, and interactive kiosks.
         skills:
@@ -191,11 +304,15 @@ experience:
         description: >
           Actively engaged in the creation and advancement of key technical projects, including YaleMedicine.org and Bundoo.com.
 
+
           Played a crucial role in strategic planning and enhancing the user experience design aspects of these projects.
+
 
           Implemented and enforced robust development standards encompassing code style guidelines, linting practices, and efficient Git branch management.
 
+
           My significant contributions to Bundoo were recognized with an honorable mention at the Webby Awards.
+
 
           Led the deployment of the Yale School of Medicine website, utilizing a tech stack that included Gulp, Webpack, React, and PostCSS, alongside aiding in the integration with .NET back-end technologies.
         skills:
@@ -227,11 +344,15 @@ experience:
         description: >
           Oversaw all physical technology resources within the agency.
 
+
           Recruited, trained, and managed a diverse team of freelancers, both locally and internationally.
+
 
           Provided consultancy on UI design, UX development, and creating cross-browser/platform compatible experiences.
 
+
           Spearheaded the development of progressive-enhanced front-end solutions.
+
 
           Worked with high-profile brands such as Ciroc Vodka, Macy's, Casio, W.W. Glass, and David's Bridal, as well as the Venture Development Center, contributing significantly to both client-facing and internal projects.
         skills:
@@ -261,7 +382,9 @@ experience:
         description: >
           Oversaw the design and development of email blasts, web banner advertisements, and features for web and email, as well as landing pages for one of the largest bridal retail stores in the country and its affiliate site, OurWeddingDay.
 
+
           Led the redesign of the corporate style guide, the main website, branding elements, the vendor control panel for logged-in users, and various content pages.
+
 
           Managed the relationship with an outsourced back-end development firm until late 2009. This collaboration continued until the company broadened its focus and created specialized roles for designers and developers.
         skills:
@@ -377,7 +500,9 @@ experience:
         description: >
           Managed design, development, and hosting for the VCU speaker series website, Creating and Consuming Culture in the Digital Age. Collaborated with teams from Boing Boing and Wikipedia.
 
+
           Played a pivotal role in ensuring the website effectively represented the series' focus on digital technologies' impact on culture, humanities, and arts.
+
 
           This series was a collaboration between VCU's Department of English, School of Mass Communications, and the School of the Arts.
         skills: [Communication, Web Design, Hosting, Digital Technologies]
@@ -390,7 +515,9 @@ experience:
         description: >
           Worked closely with Creative Director on print concepts for Creating & Consuming Culture in the Digital Age, a collection of VCU-hosted speaker series.
 
+
           Oversaw the design, copywriting, and production of four posters, prominently displayed on campus, highlighting the series' exploration of digital technology's influence on contemporary culture and the arts.
+
 
           Coordinated with various departments within VCU to ensure the series' successful representation through visual media.
         skills:

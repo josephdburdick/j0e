@@ -150,7 +150,7 @@ export default function Experience() {
         collapsible
         key={`role-${key}`}
         asChild
-        defaultValue={"exponentialfi-0"}
+        defaultValue={"cue-quest-0"}
       >
         <ul className="grid-auto-rows grid items-start">
           {experience.roles.map((role, key) =>
