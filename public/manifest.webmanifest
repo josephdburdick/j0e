@@ -1,65 +1,63 @@
 {
   "start_url": "/",
-  "name": "Joe Burdick – Web Software Engineer",
+  "name": "Joe Burdick - Senior Software Engineer Portfolio",
   "short_name": "Joe Burdick",
-  "description": "Joe Burdick - Web Software Engineer",
+  "description": "Portfolio and resume of Joe Burdick, Senior Software Engineer with 20+ years of experience in web development, React, TypeScript, and design systems.",
+  "categories": [
+    "productivity",
+    "business",
+    "developer",
+    "portfolio",
+    "resume"
+  ],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "id": "j0e-me-portfolio",
   "icons": [
     {
-      "purpose": "maskable",
-      "sizes": "1024x1024",
-      "src": "/img/icons/favicon/maskable_icon.webp",
-      "type": "image/webp"
-    },
-    {
-      "purpose": "maskable",
-      "sizes": "48x48",
-      "src": "/img/icons/favicon/maskable_icon_x48.webp",
-      "type": "image/webp"
-    },
-    {
-      "purpose": "maskable",
-      "sizes": "72x72",
-      "src": "/img/icons/favicon/maskable_icon_x72.webp",
-      "type": "image/webp"
-    },
-    {
-      "purpose": "maskable",
-      "sizes": "96x96",
-      "src": "/img/icons/favicon/maskable_icon_x96.webp",
-      "type": "image/webp"
-    },
-    {
-      "purpose": "maskable",
-      "sizes": "128x128",
-      "src": "/img/icons/favicon/maskable_icon_x128.webp",
-      "type": "image/webp"
-    },
-    {
-      "purpose": "maskable",
+      "src": "/assets/images/meta/icon.png",
       "sizes": "192x192",
-      "src": "/img/icons/favicon/maskable_icon_x192.webp",
-      "type": "image/webp"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "purpose": "maskable",
-      "sizes": "384x384",
-      "src": "/img/icons/favicon/maskable_icon_x384.webp",
-      "type": "image/webp"
-    },
-    {
-      "purpose": "maskable",
+      "src": "/assets/images/meta/icon.png",
       "sizes": "512x512",
-      "src": "/img/icons/favicon/maskable_icon_x512.webp",
-      "type": "image/webp"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "purpose": "maskable",
-      "sizes": "1024x1024",
-      "src": "/img/icons/favicon/maskable_icon_x1024.webp",
-      "type": "image/webp"
+      "src": "/assets/images/meta/icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/images/meta/iPhone_16__iPhone_15_Pro__iPhone_15__iPhone_14_Pro_portrait.png",
+      "sizes": "393x852",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/assets/images/meta/iPad_Pro_portrait.png",
+      "sizes": "1024x1366",
+      "type": "image/png",
+      "form_factor": "wide"
     }
   ],
   "theme_color": "#000000",
   "background_color": "#ffffff",
-  "display": "standalone"
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
 }

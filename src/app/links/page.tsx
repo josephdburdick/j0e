@@ -16,9 +16,57 @@ export const viewport: Viewport = {
   maximumScale: 1,
 }
 
-export const metadata: Metadata = {
-  title: "Links",
-  description: "All my important links in one place",
+export async function generateMetadata(): Promise<Metadata> {
+  const data = await api()
+  const { name } = data.profile.attributes
+
+  return {
+    title: "Contact & Links",
+    description: `All important links and contact information for ${name}. Find social media profiles, resume, portfolio, and professional contact details in one convenient location.`,
+    keywords: [
+      "contact",
+      "links",
+      "social media",
+      "resume",
+      "portfolio",
+      "professional links",
+      "developer contacts",
+      "software engineer contacts",
+      name.toLowerCase(),
+      "linkedin",
+      "github",
+      "instagram",
+    ],
+    openGraph: {
+      title: `${name} - Contact & Links`,
+      description: `All important links and contact information for ${name}. Find social media profiles, resume, portfolio, and professional contact details.`,
+      url: "https://j0e.me/links",
+      type: "website",
+      images: [
+        {
+          url: "/assets/images/profile.webp",
+          width: 96,
+          height: 96,
+          alt: `${name} - Professional Profile Picture`,
+        },
+        {
+          url: "/assets/images/meta/icon.png",
+          width: 512,
+          height: 512,
+          alt: `${name} - Contact Information & Links Logo`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${name} - Contact & Links`,
+      description: `All important links and contact information for ${name}. Find social media profiles, resume, portfolio, and professional contact details.`,
+      images: ["/assets/images/profile.webp", "/assets/images/meta/icon.png"],
+    },
+    alternates: {
+      canonical: "https://j0e.me/links",
+    },
+  }
 }
 
 export default async function Links() {
