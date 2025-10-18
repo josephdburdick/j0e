@@ -152,8 +152,8 @@ export default async function RootLayout({
               jobTitle: "Senior Software Engineer",
               worksFor: {
                 "@type": "Organization",
-                name: "Unqork",
-                url: "https://unqork.com",
+                name: "Present Day",
+                url: "https://presentday.io",
               },
               address: {
                 "@type": "PostalAddress",
