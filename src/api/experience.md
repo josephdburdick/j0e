@@ -58,7 +58,7 @@ experience:
       width: 42
       height: 64
     roles:
-      - title: Founder & Principal Engineer
+      - title: Designer & Full-Stack Engineer
         location: Millsboro, Delaware
         remote: true
         type: Contract
