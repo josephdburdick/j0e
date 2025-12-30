@@ -72,6 +72,7 @@ export default function Recommendations() {
     <CarouselItem
       key={`recommendation-${index}`}
       data-carousel-item-index={index}
+      className={cn(index !== current && "opacity-25", index === current && "")}
     >
       <div className="grid grid-cols-4 items-start gap-4 lg:gap-8">
         <div className="col-start-2 hidden grid-cols-3 xl:grid">
@@ -181,11 +182,9 @@ export default function Recommendations() {
         <CarouselNext className={carouselButtonClassName} />
       </div>
       {renderAvatars}
-      <div className="container">
-        <CarouselContent>
-          {recommendations.map(renderRecommendation)}
-        </CarouselContent>
-      </div>
+      <CarouselContent className="md:gap-10">
+        {recommendations.map(renderRecommendation)}
+      </CarouselContent>
     </Carousel>
   )
 
