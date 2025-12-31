@@ -72,7 +72,11 @@ export default function Recommendations() {
     <CarouselItem
       key={`recommendation-${index}`}
       data-carousel-item-index={index}
-      className={cn(index !== current && "opacity-25", index === current && "")}
+      className={cn(
+        "transition-all duration-300",
+        index !== current && "opacity-25",
+        index === current && "",
+      )}
     >
       <div className="grid grid-cols-4 items-start gap-4 lg:gap-8">
         <div className="col-start-2 hidden grid-cols-3 xl:grid">
