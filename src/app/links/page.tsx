@@ -124,7 +124,6 @@ export default async function Links() {
             />
 
             <div className="flex items-center gap-2">
-              <HapticAudioToggle />
               <QRCodeButton />
             </div>
           </div>
