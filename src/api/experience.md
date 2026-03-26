@@ -2,6 +2,41 @@
 title: Experience
 subtitle: Showcasing my track record of user-focused innovation across diverse roles and industries
 experience:
+  - company: Assembled
+    roles:
+      - title: Senior Software Engineer
+        location: New York
+        type: Full-time
+        date:
+          start: 2026-01-01
+          end: null
+        description: >
+          Owned and shipped features end-to-end, aligning design and backend teams while stabilizing legacy and new API surfaces. Drove incremental refactors that reduced technical debt and improved long-term maintainability.
+
+          - **Smart Fields**: Ran a complex feature from ambiguous designs and an incomplete backend to full delivery, coordinating with design and backend engineering to ship on time with minimal bugs
+
+          - **Centralized Typesafe API**: Conceived and drove a typesafe endpoint-generated API to replace a monolithic type file, generating true input/output models from Go endpoints and converting ~75% of existing usage to validate the approach
+
+          - **Tactile Web**: Prototyped a mobile interaction system for the Fresh Eyes innovation showcase, featuring haptic feedback, device orientation detection, gesture-driven components, a draggable drawer with snap-point vibration, and AI streaming text
+
+          - **Mentorship**: Mentored engineers on code quality and architecture, establishing standards that elevated team output
+
+        skills:
+          [
+            React,
+            TypeScript,
+            Go,
+            Node,
+            Mobile UX,
+            Haptics,
+            API Design,
+            Performance,
+            Communication,
+            Mentorship,
+            Web Standards,
+            Fullstack,
+          ]
+
   - company: Cue Quest
     logo:
       src: ${basePath}/assets/images/logos/cue-quest.png
@@ -25,9 +60,6 @@ experience:
           - **Core Features**: Map-first discovery, review system, social features (follows, notifications), and comprehensive testing suite
 
           - **Performance & Quality**: Responsive design, accessibility compliance, and robust testing with Playwright and Vitest
-
-
-          **Tech Stack**: Next.js, TypeScript, tRPC, Supabase, Tailwind, shadcn/ui, Playwright, Vitest
 
         skills:
           [
