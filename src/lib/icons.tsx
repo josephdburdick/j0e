@@ -25,6 +25,8 @@ import {
   Sun,
   Thermometer,
   ToggleLeft,
+  Volume2,
+  VolumeX,
 } from "lucide-react"
 
 type IconsMap = {
@@ -97,6 +99,8 @@ const icons: IconsMap = {
   send: Send,
   snowflake: Snowflake,
   sun: Sun,
+  volume2: Volume2,
+  volumeX: VolumeX,
 }
 
 export default icons

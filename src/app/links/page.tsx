@@ -1,4 +1,5 @@
 import api from "@/api"
+import HapticAudioToggle from "@/components/global/HapticAudioToggle"
 import Icon from "@/components/global/Icon"
 import Logo from "@/components/global/Logo"
 import MainHeader from "@/components/global/MainHeader"
@@ -122,7 +123,10 @@ export default async function Links() {
               name={name}
             />
 
-            <QRCodeButton />
+            <div className="flex items-center gap-2">
+              <HapticAudioToggle />
+              <QRCodeButton />
+            </div>
           </div>
         </header>
 
