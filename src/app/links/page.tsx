@@ -86,14 +86,9 @@ export default async function Links() {
       icon: "globe",
     },
     {
-      url: "https://docs.google.com/document/d/e/2PACX-1vRVYrg2Shu06oIPDsL1hbEJikpC--95EiFc_1WWw0LFGGlulfwDTiiltayjEBNJAWoXnvm0dYlcWc2f/pub",
+      url: "https://docs.google.com/document/d/e/2PACX-1vT4LDAcqXgtl7xK_vtt4S154K_xhJe8XSWJ2-wOB3Ra5vogHOhP6KxoTTm5ntrzUqdeSIQhnrrGTRxw/pub",
       label: "Resume",
       icon: "fileText",
-    },
-    {
-      url: "https://maps.app.goo.gl/NfePJCr5DY3wmy676",
-      label: "Pool Table Map",
-      icon: "map",
     },
   ]
 
