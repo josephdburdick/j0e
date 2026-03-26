@@ -54,6 +54,18 @@ recommendations:
 
 
       I thoroughly enjoyed my time working with Joe, and I believe he would be a brilliant addition to any team.
+  - name: Michael Foley
+    company: datadog
+    avatar: ${basePath}/assets/images/avatars/foley.webp
+    title: Senior Software Engineer at Datadog
+    shortTitle: Senior Software Engineer
+    date: 2025-03-26
+    relationship: Was senior to Joe but didn't manage Joe directly
+    body: >
+      I had the pleasure of working with Joe and can confidently say he’s one of the most skilled and driven frontend engineers I’ve collaborated with. He brings a strong product mindset to everything he does, ensuring that his work not only meets technical requirements but also delivers real value to users. Joe has a deep understanding of Javascript, CSS, React, Typescript, etc and applies that expertise to build performant, scalable, and well-crafted solutions.
+
+
+      Joe asks the right questions to uncover edge cases, potential bugs, and scalability concerns. I always felt more comfortable with a solution after talking it through with Joe. Beyond his technical strengths, Joe is a pleasure to work with and brings a great energy to the team. Any team would be lucky to have him.
   - name: Eric Ma
     company: unqork
     avatar: ${basePath}/assets/images/avatars/eric.webp
