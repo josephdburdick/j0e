@@ -24,6 +24,9 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   # Build job
   build:
@@ -62,12 +65,12 @@ jobs:
         if: steps.detect-package-manager.outputs.manager == 'bun'
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
       - name: Setup Node cache
         if: steps.detect-package-manager.outputs.manager != 'bun'
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup pnpm
         if: steps.detect-package-manager.outputs.manager == 'pnpm'
