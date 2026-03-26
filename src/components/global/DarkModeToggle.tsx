@@ -29,6 +29,7 @@ const DarkModeToggle = () => {
       variant="secondary"
       className="group relative inline-flex items-center rounded-full border-0 p-0 focus:outline-none"
       onClick={() => setDarkMode(!darkMode)}
+      haptic="medium"
       aria-label="Toggle dark mode"
     >
       <div

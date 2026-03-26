@@ -11,6 +11,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import { triggerHaptic } from "@/lib/haptics"
 import convertNewLinesToHTML from "@/lib/convertNewLinesToHTML"
 import { Recommendation as RecommendationType } from "@/lib/types"
 import { cn } from "@/lib/utils"
@@ -137,7 +138,10 @@ export default function Recommendations() {
     return (
       <button
         key={key}
-        onClick={() => setCurrent(key)}
+        onClick={() => {
+          triggerHaptic("selection")
+          setCurrent(key)
+        }}
         className="relative flex lg:flex-col"
       >
         <div

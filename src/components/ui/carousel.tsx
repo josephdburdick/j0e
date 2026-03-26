@@ -213,6 +213,7 @@ const CarouselPrevious = React.forwardRef<
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
+      haptic="rigid"
       {...props}
     >
       <ArrowLeftIcon className="h-4 w-4" />
@@ -242,6 +243,7 @@ const CarouselNext = React.forwardRef<
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
+      haptic="rigid"
       {...props}
     >
       <ArrowRightIcon className="h-4 w-4" />

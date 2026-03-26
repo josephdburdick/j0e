@@ -1,5 +1,6 @@
 "use client"
 
+import { triggerHaptic } from "@/lib/haptics"
 import toKebabCase from "@/lib/toKebabCase"
 import { ContactLink } from "@/lib/types"
 import { cn } from "@/lib/utils"
@@ -70,10 +71,12 @@ export default function LinkCard({
   const handleCopyUrl = () => {
     navigator.clipboard.writeText(url).then(
       () => {
+        triggerHaptic("success")
         setIsCopied(true)
         setTimeout(() => setIsCopied(false), 2000)
       },
       (err) => {
+        triggerHaptic("error")
         console.error("Failed to copy URL: ", err)
       },
     )
@@ -146,6 +149,7 @@ export default function LinkCard({
                 <Button
                   onClick={handleCopyUrl}
                   variant={isCopied ? "info" : "outline-info"}
+                  haptic={false}
                 >
                   {isCopied ? (
                     <>
