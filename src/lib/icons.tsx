@@ -25,6 +25,8 @@ import {
   Sun,
   Thermometer,
   ToggleLeft,
+  Vibrate,
+  VibrateOff,
   Volume2,
   VolumeX,
 } from "lucide-react"
@@ -99,6 +101,8 @@ const icons: IconsMap = {
   send: Send,
   snowflake: Snowflake,
   sun: Sun,
+  vibrate: Vibrate,
+  vibrateOff: VibrateOff,
   volume2: Volume2,
   volumeX: VolumeX,
 }

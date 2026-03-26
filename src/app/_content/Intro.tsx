@@ -102,7 +102,7 @@ function Intro() {
                   </div>
                   <MainNav
                     title="Let's Connect"
-                    description="Send a message via Email or Social Media"
+                    description="Send a message via Social Media"
                     links={links}
                   />
                 </div>

@@ -87,7 +87,7 @@ export default function HeaderAd() {
     //         links={links}
     //         className="mr-auto"
     //         title="Let's Connect"
-    //         description="Send a message via Email or Social Media"
+    //         description="Send a message via Social Media"
     //       >
     //         <Button
     //           variant="outline"
@@ -108,7 +108,7 @@ export default function HeaderAd() {
       links={links}
       className="mr-auto"
       title="Let's Connect"
-      description="Send a message via Email or Social Media"
+      description="Send a message via Social Media"
     >
       <Button
         variant="outline"

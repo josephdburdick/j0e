@@ -81,8 +81,21 @@ function ensureIOSCheckbox() {
 
 // --- Audio engine ---
 let audioCtx: AudioContext | null = null
-let audioEnabled = false
+let hapticAudioEnabled = true
 const AUDIO_STORAGE_KEY = "haptic-audio"
+
+function getAudioContextConstructor():
+  | (new (contextOptions?: AudioContextOptions) => AudioContext)
+  | null {
+  if (!IS_CLIENT) return null
+  const windowWithWebkit = window as Window & {
+    webkitAudioContext?: new (
+      contextOptions?: AudioContextOptions,
+    ) => AudioContext
+  }
+  if (typeof AudioContext !== "undefined") return AudioContext
+  return windowWithWebkit.webkitAudioContext ?? null
+}
 
 function playClickSound(intensity: number) {
   if (!audioCtx) return
@@ -129,6 +142,8 @@ export function triggerHaptic(preset: HapticPresetName = "light") {
   const config = PRESETS[preset]
   if (!config) return
 
+  if (!hapticAudioEnabled) return
+
   // Android / Chrome: navigator.vibrate with direct durations
   if (HAS_VIBRATE) {
     try {
@@ -145,9 +160,10 @@ export function triggerHaptic(preset: HapticPresetName = "light") {
   }
 
   // Audio feedback when enabled (resume must be requested synchronously from the user gesture on iOS)
-  if (audioEnabled && typeof AudioContext !== "undefined") {
+  const AudioContextCtor = getAudioContextConstructor()
+  if (AudioContextCtor) {
     if (!audioCtx) {
-      audioCtx = new AudioContext()
+      audioCtx = new AudioContextCtor()
     }
     const intensity = config.intensity
     const play = () => playClickSound(intensity)
@@ -160,20 +176,22 @@ export function triggerHaptic(preset: HapticPresetName = "light") {
 }
 
 export function setAudioEnabled(enabled: boolean) {
-  audioEnabled = enabled
+  hapticAudioEnabled = enabled
   if (IS_CLIENT) {
     localStorage.setItem(AUDIO_STORAGE_KEY, enabled ? "true" : "false")
   }
 }
 
 export function getAudioEnabled(): boolean {
-  if (!IS_CLIENT) return false
-  return localStorage.getItem(AUDIO_STORAGE_KEY) === "true"
+  if (!IS_CLIENT) return true
+  const storedPreference = localStorage.getItem(AUDIO_STORAGE_KEY)
+  if (storedPreference === null) return true
+  return storedPreference === "true"
 }
 
 // Hydrate audio preference from localStorage on load
 if (IS_CLIENT) {
-  audioEnabled = localStorage.getItem(AUDIO_STORAGE_KEY) === "true"
+  hapticAudioEnabled = getAudioEnabled()
 }
 
 export function cancelHaptic() {

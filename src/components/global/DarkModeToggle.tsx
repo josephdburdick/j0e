@@ -2,12 +2,14 @@
 
 import { Button, buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import Icon from "./Icon"
 
 const DarkModeToggle = () => {
   const [darkMode, setDarkMode] = useState(false)
+  const [showStatus, setShowStatus] = useState(false)
+  const statusTimeoutRef = useRef<number | null>(null)
 
   useEffect(() => {
     const storedPreference = localStorage.getItem("darkMode") === "true"
@@ -24,37 +26,62 @@ const DarkModeToggle = () => {
     }
   }, [darkMode])
 
+  const showTemporaryStatus = () => {
+    setShowStatus(true)
+    if (statusTimeoutRef.current !== null) {
+      window.clearTimeout(statusTimeoutRef.current)
+    }
+    statusTimeoutRef.current = window.setTimeout(() => {
+      setShowStatus(false)
+    }, 2500)
+  }
+
+  useEffect(() => {
+    return () => {
+      if (statusTimeoutRef.current !== null) {
+        window.clearTimeout(statusTimeoutRef.current)
+      }
+    }
+  }, [])
+
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => !prev)
+    showTemporaryStatus()
+  }
+
   return (
-    <Button
-      className={cn(
-        buttonVariants({ variant: "outline", size: "icon" }),
-        "group relative inline-flex items-center rounded-full border-0 p-0 focus:outline-none",
-      )}
-      onClick={() => setDarkMode(!darkMode)}
-      haptic="medium"
-      aria-label="Toggle dark mode"
-    >
-      <div
+    <div className="relative flex flex-col items-center">
+      <Button
         className={cn(
-          buttonVariants({ variant: "default", size: "lg" }),
-          "pointer-events-none absolute right-full z-0 mr-2 translate-x-1/4 whitespace-nowrap rounded-full px-4 py-2 opacity-0 transition-all duration-300 group-hover:-translate-x-0 group-hover:opacity-100",
+          buttonVariants({ variant: "outline", size: "icon" }),
+          "relative inline-flex items-center rounded-full border-0 p-0 focus:outline-none",
+        )}
+        onClick={toggleDarkMode}
+        haptic="medium"
+        aria-label="Toggle dark mode"
+      >
+        <div
+          className={cn(
+            buttonVariants({ variant: "outline", size: "lg" }),
+            "rounded-full p-2",
+          )}
+        >
+          {darkMode ? (
+            <Icon.sun className="text-yellow-500" />
+          ) : (
+            <Icon.moon className="foreground text-foreground" />
+          )}
+        </div>
+      </Button>
+      <span
+        className={cn(
+          "pointer-events-none absolute top-full mt-2 whitespace-nowrap text-xs text-muted-foreground transition-all duration-300",
+          showStatus ? "translate-y-0 opacity-100" : "-translate-y-1 opacity-0",
         )}
       >
-        Toggle theme
-      </div>
-      <div
-        className={cn(
-          buttonVariants({ variant: "outline", size: "lg" }),
-          "rounded-full p-2",
-        )}
-      >
-        {darkMode ? (
-          <Icon.sun className="text-yellow-500" />
-        ) : (
-          <Icon.moon className="foreground text-foreground" />
-        )}
-      </div>
-    </Button>
+        {darkMode ? "Dark mode on" : "Dark mode off"}
+      </span>
+    </div>
   )
 }
 
