@@ -1,6 +1,7 @@
 "use client"
 
 import DarkModeToggle from "@/components/global/DarkModeToggle"
+import HapticAudioToggle from "@/components/global/HapticAudioToggle"
 import HeaderAd from "@/components/global/HeaderAd"
 import LinkButton from "@/components/global/LinkButton"
 import LocationComponent from "@/components/global/Location"
@@ -75,6 +76,7 @@ function Intro() {
           <div className="grid w-full grid-rows-[auto_1fr_auto] items-center gap-4 lg:gap-6">
             <MainHeader className="pt-6 md:pt-16 lg:pt-24 xl:pt-36">
               <div className="ml-auto flex items-center gap-3">
+                <HapticAudioToggle />
                 <DarkModeToggle />
                 <LinkButton />
               </div>
