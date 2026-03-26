@@ -1,5 +1,6 @@
 "use client"
 
+import { triggerHaptic } from "@/lib/haptics"
 import { cn } from "@/lib/utils"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
 import { ChevronDownIcon } from "@radix-ui/react-icons"
@@ -24,7 +25,7 @@ AccordionItem.displayName = "AccordionItem"
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
+>(({ className, children, onClick, ...props }, ref) => (
   <AccordionPrimitive.Header className="flex">
     <AccordionPrimitive.Trigger
       ref={ref}
@@ -32,6 +33,10 @@ const AccordionTrigger = React.forwardRef<
         "flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all [&[data-state=open]>span>svg]:rotate-180",
         className,
       )}
+      onClick={(e) => {
+        triggerHaptic("selection")
+        onClick?.(e)
+      }}
       {...props}
     >
       {children}

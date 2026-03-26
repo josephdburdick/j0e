@@ -1,5 +1,6 @@
 "use client"
 
+import { triggerHaptic } from "@/lib/haptics"
 import { cn } from "@/lib/utils"
 // Create a client-only wrapper component
 import dynamic from "next/dynamic"
@@ -250,7 +251,10 @@ const WeatherContent: React.FC = () => {
   ) : (
     <>
       <button
-        onClick={toggleUnit}
+        onClick={() => {
+          triggerHaptic("selection")
+          toggleUnit()
+        }}
         className={cn(
           "relative flex items-center text-left font-medium",
           "cursor-pointer rounded-full px-0 py-0.5",
@@ -262,7 +266,10 @@ const WeatherContent: React.FC = () => {
         <WeatherIcon />
       </button>
       <button
-        onClick={toggleUnit}
+        onClick={() => {
+          triggerHaptic("selection")
+          toggleUnit()
+        }}
         className={cn(
           "relative flex items-center text-left font-medium",
           "cursor-pointer rounded-full px-0 py-0.5",

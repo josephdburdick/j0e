@@ -11,6 +11,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
+import { triggerHaptic } from "@/lib/haptics"
 import { ContactLink } from "@/lib/types"
 import { cn } from "@/lib/utils"
 import { PropsWithChildren } from "react"
@@ -36,7 +37,7 @@ export default function MainNav(props: Props) {
   } = props
   const hasText = title || description
   const renderTrigger = (
-    <Button className="rounded-full" size="lg">
+    <Button className="rounded-full" size="lg" haptic="medium">
       <span className="flex items-center gap-2">
         {iconOnly ? (
           <Icon.menu />
@@ -64,6 +65,7 @@ export default function MainNav(props: Props) {
                 target="_blank"
                 rel="noreferrer"
                 className={"text-fore flex items-center gap-4 py-4"}
+                onClick={() => triggerHaptic("light")}
               >
                 <div className="text-muted-foreground">
                   <IconComponent />

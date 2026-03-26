@@ -1,3 +1,4 @@
+import { triggerHaptic } from "@/lib/haptics"
 import { cn } from "@/lib/utils"
 import { PropsWithChildren } from "react"
 
@@ -14,6 +15,7 @@ export default function ExternalLink(props: Props) {
     <a
       className={cn("inline-flex items-center gap-1 text-inherit", className)}
       href={href}
+      onClick={() => triggerHaptic("selection")}
     >
       <span className="underline">{children}</span>
 

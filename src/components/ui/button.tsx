@@ -1,3 +1,4 @@
+import { type HapticPresetName, triggerHaptic } from "@/lib/haptics"
 import { cn } from "@/lib/utils"
 import { Slot } from "@radix-ui/react-slot"
 import { type VariantProps, cva } from "class-variance-authority"
@@ -89,6 +90,7 @@ export interface ButtonProps
   loadingProps?: React.ComponentProps<typeof LoadingSpinner>
   asChild?: boolean
   fullWidth?: boolean
+  haptic?: HapticPresetName | false
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -98,8 +100,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       children,
       fullWidth,
+      haptic,
       loading: isLoading,
       loadingProps = {},
+      onClick,
       size,
       type = "button",
       variant = "default",
@@ -107,6 +111,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
+    const defaultHaptic: HapticPresetName =
+      ["link", "none"].includes(variant as string) ? "selection" : "light"
+    const hapticPreset = haptic === undefined ? defaultHaptic : haptic
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (hapticPreset !== false) {
+        triggerHaptic(hapticPreset)
+      }
+      onClick?.(e)
+    }
+
     const buttonSize = ["none", "link"].includes(variant as string)
       ? "none"
       : (size ?? "default")
@@ -120,7 +135,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     if (asChild) {
       return (
-        <Slot className={buttonClassnames} {...props}>
+        <Slot className={buttonClassnames} onClick={handleClick} {...props}>
           {children}
         </Slot>
       )
@@ -133,6 +148,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         type={type}
         disabled={props.disabled || isLoading}
+        onClick={handleClick}
         {...props}
       >
         <>
