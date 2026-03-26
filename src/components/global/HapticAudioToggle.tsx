@@ -1,37 +1,65 @@
 "use client"
 
 import { Button, buttonVariants } from "@/components/ui/button"
-import { getAudioEnabled, setAudioEnabled } from "@/lib/haptics"
+import { getAudioEnabled, setAudioEnabled, triggerHaptic } from "@/lib/haptics"
 import { cn } from "@/lib/utils"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import Icon from "./Icon"
 
 export default function HapticAudioToggle() {
   const [enabled, setEnabled] = useState(true)
+  const [showStatus, setShowStatus] = useState(false)
+  const [isMobileDevice, setIsMobileDevice] = useState(false)
+  const statusTimeoutRef = useRef<number | null>(null)
 
   useEffect(() => {
     setEnabled(getAudioEnabled())
+    const hasTouch =
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.matchMedia("(pointer: coarse)").matches
+    setIsMobileDevice(hasTouch)
+  }, [])
+
+  const showTemporaryStatus = () => {
+    setShowStatus(true)
+    if (statusTimeoutRef.current !== null) {
+      window.clearTimeout(statusTimeoutRef.current)
+    }
+    statusTimeoutRef.current = window.setTimeout(() => {
+      setShowStatus(false)
+    }, 2500)
+  }
+
+  useEffect(() => {
+    return () => {
+      if (statusTimeoutRef.current !== null) {
+        window.clearTimeout(statusTimeoutRef.current)
+      }
+    }
   }, [])
 
   const toggle = () => {
     const next = !enabled
     setEnabled(next)
     setAudioEnabled(next)
+    if (next) {
+      // Ensure iOS audio is unlocked/played from this same tap.
+      triggerHaptic("selection")
+    }
+    showTemporaryStatus()
   }
 
-  const label = enabled ? "Disable haptic sound" : "Enable haptic sound"
+  const label = enabled ? "Disable haptic feedback" : "Enable haptic feedback"
 
   return (
-    <div className="flex items-center gap-2">
-      <span className="hidden shrink-0 text-xs text-muted-foreground [@media(hover:none)]:block">
-        Sound
-      </span>
+    <div className="relative flex flex-col items-center">
       <Button
         type="button"
         className={cn(
           buttonVariants({ variant: "outline", size: "icon" }),
-          "group relative inline-flex items-center rounded-full border-0 p-0 focus:outline-none",
+          "relative inline-flex items-center rounded-full border-0 p-0 focus:outline-none",
         )}
         onClick={toggle}
         haptic="medium"
@@ -39,26 +67,31 @@ export default function HapticAudioToggle() {
       >
         <div
           className={cn(
-            buttonVariants({ variant: "default", size: "lg" }),
-            "pointer-events-none absolute right-full z-0 mr-2 translate-x-1/4 whitespace-nowrap rounded-full px-4 py-2 opacity-0 transition-all duration-300",
-            "[@media(hover:hover)]:group-hover:-translate-x-0 [@media(hover:hover)]:group-hover:opacity-100",
-          )}
-        >
-          Haptic sound
-        </div>
-        <div
-          className={cn(
             buttonVariants({ variant: "outline", size: "lg" }),
             "rounded-full p-2",
           )}
         >
-          {enabled ? (
+          {isMobileDevice ? (
+            enabled ? (
+              <Icon.vibrate className="text-foreground" />
+            ) : (
+              <Icon.vibrateOff className="text-muted-foreground" />
+            )
+          ) : enabled ? (
             <Icon.volume2 className="text-foreground" />
           ) : (
             <Icon.volumeX className="text-muted-foreground" />
           )}
         </div>
       </Button>
+      <span
+        className={cn(
+          "pointer-events-none absolute top-full mt-2 whitespace-nowrap text-xs text-muted-foreground transition-all duration-300",
+          showStatus ? "translate-y-0 opacity-100" : "-translate-y-1 opacity-0",
+        )}
+      >
+        {isMobileDevice ? "Haptics" : "Audio"} {enabled ? "on" : "off"}
+      </span>
     </div>
   )
 }
