@@ -74,7 +74,7 @@ jobs:
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup pnpm
         if: steps.detect-package-manager.outputs.manager == 'pnpm'
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v3
       - name: Setup Bun
         if: steps.detect-package-manager.outputs.manager == 'bun'
         uses: oven-sh/setup-bun@v2
