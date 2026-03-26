@@ -3,6 +3,10 @@ title: Experience
 subtitle: Showcasing my track record of user-focused innovation across diverse roles and industries
 experience:
   - company: Assembled
+    logo:
+      src: ${basePath}/assets/images/logos/assembled.svg
+      width: 154
+      height: 24
     roles:
       - title: Senior Software Engineer
         location: New York
