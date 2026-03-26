@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import {
   getAudioEnabled,
   setAudioEnabled,
@@ -12,7 +12,7 @@ import { useEffect, useState } from "react"
 import Icon from "./Icon"
 
 export default function HapticAudioToggle() {
-  const [enabled, setEnabled] = useState(false)
+  const [enabled, setEnabled] = useState(true)
 
   useEffect(() => {
     setEnabled(getAudioEnabled())
@@ -22,19 +22,16 @@ export default function HapticAudioToggle() {
     const next = !enabled
     setEnabled(next)
     setAudioEnabled(next)
-    // Play a sample sound so the user hears the toggle
     if (next) {
       triggerHaptic("medium")
     }
   }
 
   return (
-    <Button
-      variant="outline"
-      size="icon"
-      className={cn("rounded-full p-2")}
+    <button
+      type="button"
+      className={cn(buttonVariants({ variant: "outline", size: "icon" }), "rounded-full p-2")}
       onClick={toggle}
-      haptic={false}
       aria-label={enabled ? "Disable haptic sound" : "Enable haptic sound"}
     >
       {enabled ? (
@@ -42,6 +39,6 @@ export default function HapticAudioToggle() {
       ) : (
         <Icon.volumeX className="text-muted-foreground" />
       )}
-    </Button>
+    </button>
   )
 }

@@ -42,54 +42,47 @@ const IS_IOS =
   /iPhone|iPad|iPod/.test(navigator.userAgent)
 
 // --- iOS Taptic Engine via hidden checkbox-switch ---
-let iosCheckbox: HTMLInputElement | null = null
+let iosHapticLabel: HTMLLabelElement | null = null
 
 function ensureIOSCheckbox() {
-  if (iosCheckbox || typeof document === "undefined") return
+  if (iosHapticLabel || typeof document === "undefined") return
 
-  // Off-screen positioning (NOT display:none — that prevents Taptic Engine)
+  // Keep the control in the render tree (not display:none) so iOS can fire Taptics.
+  const switchId = "ios-haptic-switch"
   const label = document.createElement("label")
+  label.setAttribute("for", switchId)
   label.setAttribute("aria-hidden", "true")
   Object.assign(label.style, {
     position: "fixed",
-    left: "-200vw",
-    top: "-200vh",
-    opacity: "0",
+    top: "0",
+    left: "0",
+    width: "28px",
+    height: "18px",
+    opacity: "0.01",
+    zIndex: "-1",
     pointerEvents: "none",
   })
 
   const input = document.createElement("input")
   input.type = "checkbox"
+  input.id = switchId
   input.setAttribute("switch", "")
   Object.assign(input.style, {
     all: "initial",
     appearance: "auto",
-    position: "fixed",
-    left: "-200vw",
-    top: "-200vh",
-    opacity: "0",
-    pointerEvents: "none",
+    width: "100%",
+    height: "100%",
   })
 
   label.appendChild(input)
   document.body.appendChild(label)
-  iosCheckbox = input
+  iosHapticLabel = label
 }
 
 // --- Audio engine ---
 let audioCtx: AudioContext | null = null
 let audioEnabled = false
 const AUDIO_STORAGE_KEY = "haptic-audio"
-
-async function ensureAudioCtx() {
-  if (audioCtx) {
-    if (audioCtx.state === "suspended") await audioCtx.resume()
-    return
-  }
-  if (typeof AudioContext === "undefined") return
-  audioCtx = new AudioContext()
-  if (audioCtx.state === "suspended") await audioCtx.resume()
-}
 
 function playClickSound(intensity: number) {
   if (!audioCtx) return
@@ -145,15 +138,24 @@ export function triggerHaptic(preset: HapticPresetName = "light") {
     }
   }
 
-  // iOS: Taptic Engine via hidden checkbox toggle
+  // iOS: trigger the dedicated switch from the same user-gesture call stack.
   if (IS_IOS) {
     ensureIOSCheckbox()
-    iosCheckbox?.click()
+    iosHapticLabel?.click()
   }
 
-  // Audio feedback when enabled
-  if (audioEnabled) {
-    ensureAudioCtx().then(() => playClickSound(config.intensity))
+  // Audio feedback when enabled (resume must be requested synchronously from the user gesture on iOS)
+  if (audioEnabled && typeof AudioContext !== "undefined") {
+    if (!audioCtx) {
+      audioCtx = new AudioContext()
+    }
+    const intensity = config.intensity
+    const play = () => playClickSound(intensity)
+    if (audioCtx.state === "suspended") {
+      void audioCtx.resume().then(play)
+    } else {
+      play()
+    }
   }
 }
 
