@@ -1,6 +1,7 @@
 import { useApi } from "@/components/providers/DataProvider"
 import { Job } from "@/lib/types"
 import Image from "next/image"
+import { useState } from "react"
 
 import { Card, CardContent } from "../ui/card"
 
@@ -11,40 +12,49 @@ type MarqueeProps = {
 export default function LogoMarquee(props: MarqueeProps) {
   const { itemWidth = "200px" } = props
   const { data } = useApi()
+  const [loadedLogos, setLoadedLogos] = useState<Set<string>>(new Set())
   const jobs: Job[] = data.experience.attributes.experience.filter(
     (job: Job) => !!job.logo && !job.disabled,
   )
 
   return (
     <div className="marquee-wrapper pointer-events-none relative z-10 mx-auto h-36 w-11/12 max-w-screen-xl overflow-hidden">
-      {jobs.map(
-        (job, index) =>
-          job.logo && (
-            <Card
-              className="absolute my-4 h-24 w-52 rounded-lg bg-background shadow-xl"
-              key={index}
-              style={{
-                animationDelay: `calc(30s / ${jobs.length} * (${jobs.length} - ${index + 1}) * -1)`,
-                animationName: "scrollLeft",
-                animationDuration: "30s",
-                animationTimingFunction: "linear",
-                animationIterationCount: "infinite",
-                left: `max(calc(${itemWidth} * ${jobs.length}), 100%)`,
-              }}
-            >
-              <CardContent className="flex h-full w-full items-center justify-center p-8 text-muted">
-                <Image
-                  src={job.logo.src}
-                  width={job.logo.width}
-                  height={job.logo.height}
-                  alt={`${job.company} logo`}
-                  className="selection-none pointer-events-none max-h-20 w-auto max-w-28 grayscale dark:invert"
-                  priority={index < 3}
-                />
-              </CardContent>
-            </Card>
-          ),
-      )}
+      {jobs.map((job, index) => {
+        const logo = job.logo
+        if (!logo) return null
+
+        return (
+          <Card
+            className="absolute my-4 h-24 w-52 rounded-lg bg-background shadow-xl"
+            key={index}
+            style={{
+              animationDelay: `calc(30s / ${jobs.length} * (${jobs.length} - ${index + 1}) * -1)`,
+              animationName: "scrollLeft",
+              animationDuration: "30s",
+              animationTimingFunction: "linear",
+              animationIterationCount: "infinite",
+              left: `max(calc(${itemWidth} * ${jobs.length}), 100%)`,
+            }}
+          >
+            <CardContent className="flex h-full w-full items-center justify-center p-8 text-muted">
+              <Image
+                src={logo.src}
+                width={logo.width}
+                height={logo.height}
+                alt={`${job.company} logo`}
+                className={`selection-none pointer-events-none max-h-20 w-auto max-w-28 grayscale transition-opacity duration-500 dark:invert ${
+                  loadedLogos.has(logo.src) ? "opacity-100" : "opacity-0"
+                }`}
+                loading="eager"
+                onLoad={() => {
+                  if (loadedLogos.has(logo.src)) return
+                  setLoadedLogos((prev) => new Set(prev).add(logo.src))
+                }}
+              />
+            </CardContent>
+          </Card>
+        )
+      })}
     </div>
   )
 }
