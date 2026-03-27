@@ -129,10 +129,28 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   const data = await api()
+  const darkModeBootstrapScript = `(() => {
+    try {
+      const storedPreference = window.localStorage.getItem("darkMode")
+      if (storedPreference === "true") {
+        document.documentElement.classList.add("dark")
+      } else if (storedPreference === "false") {
+        document.documentElement.classList.remove("dark")
+      }
+    } catch {
+      // Ignore when storage is unavailable.
+    }
+  })();`
 
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        <script
+          id="dark-mode-bootstrap"
+          dangerouslySetInnerHTML={{
+            __html: darkModeBootstrapScript,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
