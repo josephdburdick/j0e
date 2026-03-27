@@ -19,6 +19,8 @@ type LogoProps = {
   svgRandomizeOnLoad?: boolean
 }
 
+type SvgLogoElement = React.ReactElement<React.SVGProps<SVGSVGElement>, "svg">
+
 const SVG_FILLABLE_TAGS = new Set([
   "path",
   "rect",
@@ -60,7 +62,13 @@ function shouldAvoidHeavyPreload(): boolean {
   )
 }
 
-function parseSvgViewBox(svg: React.ReactElement): {
+function parseSvgViewBox(
+  svg: React.ReactElement<{
+    viewBox?: string
+    width?: string | number
+    height?: string | number
+  }>,
+): {
   x: number
   y: number
   width: number
@@ -133,25 +141,31 @@ function maskFillFromLogoFill(fill: string | undefined): string {
 function applyMaskToSvgChildren(node: React.ReactNode): React.ReactNode {
   return React.Children.map(node, (child) => {
     if (!React.isValidElement(child)) return child
-    if (typeof child.type !== "string") {
-      if (!child.props.children) return child
-      return React.cloneElement(child, {
-        children: applyMaskToSvgChildren(child.props.children),
+    const element = child as React.ReactElement<{
+      children?: React.ReactNode
+      fill?: string
+      stroke?: string
+      [key: string]: unknown
+    }>
+    if (typeof element.type !== "string") {
+      if (!element.props.children) return element
+      return React.cloneElement(element, {
+        children: applyMaskToSvgChildren(element.props.children),
       })
     }
 
-    const tag = child.type
+    const tag = element.type
     if (SVG_NO_FILL_TAGS.has(tag)) {
-      return child
+      return element
     }
 
-    const updatedChildren = child.props.children
-      ? applyMaskToSvgChildren(child.props.children)
-      : child.props.children
+    const updatedChildren = element.props.children
+      ? applyMaskToSvgChildren(element.props.children)
+      : element.props.children
 
     if (SVG_FILLABLE_TAGS.has(tag)) {
-      const fillProp = child.props.fill as string | undefined
-      const strokeProp = child.props.stroke as string | undefined
+      const fillProp = element.props.fill
+      const strokeProp = element.props.stroke
       const hasExplicitFill =
         fillProp !== undefined &&
         fillProp !== "none" &&
@@ -164,23 +178,27 @@ function applyMaskToSvgChildren(node: React.ReactNode): React.ReactNode {
       const maskFill = hasExplicitFill ? maskFillFromLogoFill(fillProp) : "none"
       const maskStroke = hasStroke ? "#fff" : "none"
 
-      return React.cloneElement(child, {
-        ...child.props,
+      return React.cloneElement(element, {
+        ...element.props,
         fill: maskFill,
         stroke: maskStroke,
         children: updatedChildren,
       })
     }
 
-    if (updatedChildren !== child.props.children) {
-      return React.cloneElement(child, {
-        ...child.props,
+    if (updatedChildren !== element.props.children) {
+      return React.cloneElement(element, {
+        ...element.props,
         children: updatedChildren,
       })
     }
 
-    return child
+    return element
   })
+}
+
+function isSvgLogoElement(node: React.ReactNode): node is SvgLogoElement {
+  return React.isValidElement(node) && node.type === "svg"
 }
 
 export function Logo({
@@ -315,23 +333,19 @@ export function Logo({
     return () => clearTimeout(timeoutId)
   }, [canHoverLoop, hasHoverIntent, hoverFillPool, resolvedFillUrl])
 
-  const hasFillableSvgSlot =
-    React.isValidElement(logoSlot) && logoSlot.type === "svg"
+  const hasFillableSvgSlot = isSvgLogoElement(logoSlot)
 
   const filledSvgLogo = useMemo(() => {
-    if (
-      !hasFillableSvgSlot ||
-      !resolvedFillUrl ||
-      !React.isValidElement(logoSlot)
-    ) {
+    if (!hasFillableSvgSlot || !resolvedFillUrl) {
       return logoSlot
     }
+    const svgLogo = logoSlot
 
-    const maskChildren = applyMaskToSvgChildren(logoSlot.props.children)
+    const maskChildren = applyMaskToSvgChildren(svgLogo.props.children)
     const { x: vbX, y: vbY, width: vbW, height: vbH } =
-      parseSvgViewBox(logoSlot)
+      parseSvgViewBox(svgLogo)
 
-    return React.cloneElement(logoSlot, {
+    return React.cloneElement(svgLogo, {
       children: (
         <>
           <defs>
