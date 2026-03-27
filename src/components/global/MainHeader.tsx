@@ -47,6 +47,8 @@ export const MainHeader = forwardRef(
             "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWVwejJyeTJnd2FlMHYzMDNyeHR6ODB3cTA2N3U0MzYzcXY4cHViZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xTiTngbPfNnMY1cZi0/giphy.gif",
             "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDVsOWZtc2J3bjR1bmRyYm82dTd0eDM5c3Vrb3NndG51c2ZiZmkyOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEdv4GPCpHvDIzz5S/giphy.gif",
             "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjE5enAzbHY5bWlib2hqMjBtZ2QzMzc2NDc1cnY4ZWx6djF0cnpsayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Wy3Q0fuNIJmYn62Lcv/giphy.gif",
+            "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXVrZnF1NmlkNWF2N3lzMXE0cTM5ZjFyem1tZDN3aGcwMGsyaTF3ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/f5kBKQ6oDHE6cyLbVA/giphy.gif",
+            "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExemg3ZzJxeWNiamF2cHA2Y3lvbGM2dHZqYnM5dTRubHBydXEwdXRmZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Jv3uIdgaWvB3fpAlU3/giphy.gif",
           ]}
           svgHoverCycleMs={180}
         />
