@@ -257,7 +257,7 @@ export function Logo({
     }
 
     const next =
-      svgRandomizeOnLoad && hoverFillPool.length > 1 && canHoverLoop
+      svgRandomizeOnLoad && hoverFillPool.length > 1
         ? hoverFillPool[Math.floor(Math.random() * hoverFillPool.length)]
         : (svgFillUrl ?? hoverFillPool[0])
 

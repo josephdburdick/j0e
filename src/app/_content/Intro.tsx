@@ -13,7 +13,7 @@ import { useApi } from "@/components/providers/DataProvider"
 import { ContactLink } from "@/lib/types"
 import { cn } from "@/lib/utils"
 import dynamic from "next/dynamic"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { createPortal } from "react-dom"
 
 /** Stable fallback so `gifs ?? []` does not allocate a new [] every render. */
@@ -115,20 +115,7 @@ function Intro() {
   const [fillOverride, setFillOverride] = useState<string | undefined>(
     undefined,
   )
-  const [supportsHover, setSupportsHover] = useState(false)
-  const gifsKey = gifs.join("|")
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)")
-    const updateSupportsHover = () => setSupportsHover(mediaQuery.matches)
-
-    updateSupportsHover()
-    mediaQuery.addEventListener("change", updateSupportsHover)
-
-    return () => {
-      mediaQuery.removeEventListener("change", updateSupportsHover)
-    }
-  }, [])
+  const gifsSignature = useMemo(() => gifs.join("|"), [gifs])
 
   useEffect(() => {
     if (gifs.length === 0) {
@@ -139,12 +126,6 @@ function Intro() {
       setFillOverride(gifs[0])
       return
     }
-    if (!supportsHover) {
-      // On touch devices prefer one stable fill to avoid unnecessary image churn.
-      setFillOverride(gifs[0])
-      return
-    }
-
     let previousIndex: number | undefined
     try {
       const stored = window.sessionStorage.getItem(LOGO_GIF_INDEX_SESSION_KEY)
@@ -156,7 +137,13 @@ function Intro() {
       previousIndex = undefined
     }
 
-    const nextIndex = pickRandomIndex(gifs.length, previousIndex)
+    const previousGif =
+      previousIndex !== undefined ? gifs[previousIndex] : undefined
+    const currentIndex =
+      previousGif !== undefined ? gifs.indexOf(previousGif) : -1
+    const normalizedPreviousIndex =
+      currentIndex >= 0 ? currentIndex : undefined
+    const nextIndex = pickRandomIndex(gifs.length, normalizedPreviousIndex)
 
     try {
       window.sessionStorage.setItem(
@@ -168,7 +155,7 @@ function Intro() {
     }
 
     setFillOverride(gifs[nextIndex])
-  }, [gifsKey, gifs, supportsHover])
+  }, [gifs, gifsSignature])
 
   const logoFillUrl = fillOverride ?? (gifs.length > 0 ? gifs[0] : undefined)
 
