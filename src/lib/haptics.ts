@@ -1,3 +1,8 @@
+import {
+  getHapticAudioPreference,
+  setHapticAudioPreference,
+} from "@/lib/preferences"
+
 export type HapticPresetName =
   | "success"
   | "warning"
@@ -82,7 +87,6 @@ function ensureIOSCheckbox() {
 // --- Audio engine ---
 let audioCtx: AudioContext | null = null
 let hapticAudioEnabled = true
-const AUDIO_STORAGE_KEY = "haptic-audio"
 
 function getAudioContextConstructor():
   | (new (contextOptions?: AudioContextOptions) => AudioContext)
@@ -100,7 +104,7 @@ function getAudioContextConstructor():
 function playClickSound(intensity: number) {
   if (!audioCtx) return
 
-  const sampleRate = audioCtx.sampleRate
+  const { sampleRate } = audioCtx
   const duration = 0.004 + intensity * 0.008
   const bufferSize = Math.ceil(sampleRate * duration)
   const buffer = audioCtx.createBuffer(1, bufferSize, sampleRate)
@@ -177,16 +181,11 @@ export function triggerHaptic(preset: HapticPresetName = "light") {
 
 export function setAudioEnabled(enabled: boolean) {
   hapticAudioEnabled = enabled
-  if (IS_CLIENT) {
-    localStorage.setItem(AUDIO_STORAGE_KEY, enabled ? "true" : "false")
-  }
+  setHapticAudioPreference(enabled)
 }
 
 export function getAudioEnabled(): boolean {
-  if (!IS_CLIENT) return true
-  const storedPreference = localStorage.getItem(AUDIO_STORAGE_KEY)
-  if (storedPreference === null) return true
-  return storedPreference === "true"
+  return getHapticAudioPreference(true)
 }
 
 // Hydrate audio preference from localStorage on load

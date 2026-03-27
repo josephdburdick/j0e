@@ -1,6 +1,7 @@
 "use client"
 
 import { Button, buttonVariants } from "@/components/ui/button"
+import { getDarkModePreference, setDarkModePreference } from "@/lib/preferences"
 import { cn } from "@/lib/utils"
 import { useEffect, useRef, useState } from "react"
 
@@ -8,23 +9,26 @@ import Icon from "./Icon"
 
 const DarkModeToggle = () => {
   const [darkMode, setDarkMode] = useState(false)
+  const [isInitialized, setIsInitialized] = useState(false)
   const [showStatus, setShowStatus] = useState(false)
   const statusTimeoutRef = useRef<number | null>(null)
 
+  const applyDarkModeClass = (enabled: boolean) => {
+    document.documentElement.classList.toggle("dark", enabled)
+  }
+
   useEffect(() => {
-    const storedPreference = localStorage.getItem("darkMode") === "true"
+    const storedPreference = getDarkModePreference(false)
     setDarkMode(storedPreference)
+    applyDarkModeClass(storedPreference)
+    setIsInitialized(true)
   }, [])
 
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark")
-      localStorage.setItem("darkMode", "true")
-    } else {
-      document.documentElement.classList.remove("dark")
-      localStorage.setItem("darkMode", "false")
-    }
-  }, [darkMode])
+    if (!isInitialized) return
+    applyDarkModeClass(darkMode)
+    setDarkModePreference(darkMode)
+  }, [darkMode, isInitialized])
 
   const showTemporaryStatus = () => {
     setShowStatus(true)
