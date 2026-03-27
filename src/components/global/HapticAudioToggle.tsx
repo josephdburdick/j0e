@@ -69,18 +69,19 @@ export function HapticAudioToggle() {
           className={cn(
             buttonVariants({ variant: "outline", size: "lg" }),
             "rounded-full p-2.5",
+            enabled ? "text-foreground" : "text-muted-foreground",
           )}
         >
           {isMobileDevice ? (
             enabled ? (
-              <Icon.vibrate className="text-foreground" />
+              <Icon.vibrate />
             ) : (
-              <Icon.vibrateOff className="text-muted-foreground" />
+              <Icon.vibrateOff />
             )
           ) : enabled ? (
-            <Icon.volume2 className="text-foreground" />
+            <Icon.volume2 />
           ) : (
-            <Icon.volumeX className="text-muted-foreground" />
+            <Icon.volumeX />
           )}
         </div>
       </Button>
