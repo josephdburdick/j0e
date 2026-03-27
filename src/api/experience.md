@@ -43,7 +43,7 @@ experience:
 
   - company: Cue Quest
     logo:
-      src: ${basePath}/assets/images/logos/cue-quest.png
+      src: ${basePath}/assets/images/logos/cue-quest.webp
       width: 250
       height: 198
     roles:
@@ -90,7 +90,7 @@ experience:
 
   - company: Delaware Water Disaster
     logo:
-      src: ${basePath}/assets/images/logos/delaware-water-disaster.png
+      src: ${basePath}/assets/images/logos/delaware-water-disaster.webp
       width: 42
       height: 64
     roles:

@@ -45,6 +45,8 @@ const SVG_NO_FILL_TAGS = new Set([
   "image",
 ])
 
+const HOVER_INTENT_DELAY_MS = 150
+
 function parseSvgViewBox(svg: React.ReactElement): {
   x: number
   y: number
@@ -188,8 +190,10 @@ export function Logo({
   const displayName = name || data?.profile?.attributes?.name
   const fillMaskId = useId().replace(/:/g, "")
   const hoverTimer = useRef<number | null>(null)
+  const hoverIntentTimer = useRef<number | null>(null)
   /** False until mounted: mobile-safe first paint matches SSR; then reflects fine pointer + hover. */
   const [canHoverLoop, setCanHoverLoop] = useState(false)
+  const [hasHoverIntent, setHasHoverIntent] = useState(false)
   const [activeSvgFillUrl, setActiveSvgFillUrl] = useState<string | undefined>(
     svgFillUrl,
   )
@@ -231,6 +235,9 @@ export function Logo({
 
   useEffect(() => {
     return () => {
+      if (hoverIntentTimer.current !== null) {
+        window.clearTimeout(hoverIntentTimer.current)
+      }
       if (hoverTimer.current !== null) {
         window.clearInterval(hoverTimer.current)
       }
@@ -257,14 +264,19 @@ export function Logo({
     }, svgHoverCycleMs)
   }
 
+  useEffect(() => {
+    if (!canHoverLoop || !hasHoverIntent || hoverFillPool.length <= 1) return
+
+    hoverFillPool.forEach((fillUrl) => {
+      if (fillUrl === resolvedFillUrl) return
+      const image = new window.Image()
+      image.decoding = "async"
+      image.src = fillUrl
+    })
+  }, [canHoverLoop, hasHoverIntent, hoverFillPool, resolvedFillUrl])
+
   const hasFillableSvgSlot =
     React.isValidElement(logoSlot) && logoSlot.type === "svg"
-
-  const fillUrlsForRender = useMemo(() => {
-    if (canHoverLoop) return hoverFillPool
-    const only = resolvedFillUrl
-    return only ? [only] : []
-  }, [canHoverLoop, hoverFillPool, resolvedFillUrl])
 
   const filledSvgLogo = useMemo(() => {
     if (
@@ -296,27 +308,24 @@ export function Logo({
               {maskChildren}
             </mask>
           </defs>
-          {/* One <image> per URL (desktop): fetch once, cycle toggles opacity. Mobile: single URL. */}
-          {fillUrlsForRender.map((fillUrl) => (
+          {resolvedFillUrl && (
             <image
-              key={fillUrl}
-              href={fillUrl}
+              href={resolvedFillUrl}
               x={vbX}
               y={vbY}
               width={vbW}
               height={vbH}
               preserveAspectRatio="xMidYMid slice"
               mask={`url(#${fillMaskId})`}
-              opacity={resolvedFillUrl === fillUrl ? 1 : 0}
+              opacity={1}
             />
-          ))}
+          )}
         </>
       ),
     })
   }, [
     resolvedFillUrl,
     fillMaskId,
-    fillUrlsForRender,
     hasFillableSvgSlot,
     logoSlot,
   ])
@@ -325,8 +334,30 @@ export function Logo({
     <h1 className="z-50 dark:invert">
       <Link
         href={href}
-        onMouseEnter={startHoverCycle}
-        onMouseLeave={stopHoverCycle}
+        onMouseEnter={() => {
+          if (!canHoverLoop || hoverFillPool.length <= 1) return
+          if (hasHoverIntent) {
+            startHoverCycle()
+            return
+          }
+
+          if (hoverIntentTimer.current !== null) {
+            window.clearTimeout(hoverIntentTimer.current)
+          }
+
+          hoverIntentTimer.current = window.setTimeout(() => {
+            hoverIntentTimer.current = null
+            setHasHoverIntent(true)
+            startHoverCycle()
+          }, HOVER_INTENT_DELAY_MS)
+        }}
+        onMouseLeave={() => {
+          if (hoverIntentTimer.current !== null) {
+            window.clearTimeout(hoverIntentTimer.current)
+            hoverIntentTimer.current = null
+          }
+          stopHoverCycle()
+        }}
       >
         {filledSvgLogo ||
           (logo?.url && (

@@ -8,7 +8,7 @@ import LoadingSpinner from "../global/LoadingSpinner"
 
 const baseButtonClassnames = "transition-all"
 const buttonAppearanceClassnames =
-  "relative select-none items-center justify-center transition-all shrink-0 text-base font-medium rounded-full inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background gap-1"
+  "relative select-none items-center justify-center backdrop-blur-sm transition-all shrink-0 text-base font-medium rounded-full inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background gap-1"
 
 const buttonVariants = cva(baseButtonClassnames, {
   variants: {
@@ -111,8 +111,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    const defaultHaptic: HapticPresetName =
-      ["link", "none"].includes(variant as string) ? "selection" : "light"
+    const defaultHaptic: HapticPresetName = ["link", "none"].includes(
+      variant as string,
+    )
+      ? "selection"
+      : "light"
     const hapticPreset = haptic === undefined ? defaultHaptic : haptic
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {

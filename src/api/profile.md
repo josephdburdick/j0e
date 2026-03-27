@@ -12,8 +12,8 @@ picture:
 availableForWork: true
 bg:
   src: ${basePath}/assets/images/bg-beach.webp
-  width: 6240
-  height: 1799
+  width: 2000
+  height: 577
   alt: Me at the beach with friends
 
 # SVG logo GIF fills (J0eLogoSvgSlot / Logo hover pool)

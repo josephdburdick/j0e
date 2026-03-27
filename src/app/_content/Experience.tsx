@@ -78,12 +78,17 @@ export default function Experience() {
     return (
       <li className="grid-auto-rows grid gap-4" id={key} key={key}>
         <AccordionItem value={key}>
-          <AccordionTrigger>
-            <a
-              href={`#${toKebabCase(role.company)}`}
-              className="grid grid-cols-12 items-center gap-1.5 md:flex-1"
-              aria-label={`${role.title} at ${role.company}`}
-            >
+          <AccordionTrigger
+            onClick={() => {
+              if (typeof window === "undefined") return
+              window.history.replaceState(
+                null,
+                "",
+                `#${toKebabCase(role.company)}`,
+              )
+            }}
+          >
+            <div className="grid grid-cols-12 items-center gap-1.5 md:flex-1">
               <div className="col-span-12 gap-1 text-xs text-foreground/90 md:col-span-3 md:col-start-1 xl:col-span-2 xl:text-sm">
                 <DateSpan date={role.date} />
               </div>
@@ -110,7 +115,7 @@ export default function Experience() {
                   </div>
                 </div>
               </div>
-            </a>
+            </div>
           </AccordionTrigger>
           <AccordionContent>
             <div className="grid grid-cols-12">
@@ -141,7 +146,7 @@ export default function Experience() {
       <div className="relative grid grid-cols-12">
         <div className="col-span-12 font-semibold md:col-span-8 md:col-start-4">
           <RuleHeader className="prose-scale-sm flex items-center gap-2">
-            <h5>{experience.company}</h5>
+            <p>{experience.company}</p>
           </RuleHeader>
         </div>
       </div>
@@ -174,35 +179,37 @@ export default function Experience() {
         .slice(0, 3)
         .map(renderExperience)}
       {experience.length > 3 && (
-        <Collapsible
-          type="single"
-          collapsible
-          onValueChange={(value: string) => setViewAllToggle(!!value)}
-        >
-          <CollapsibleItem value="expand">
-            <CollapsibleContent>
-              <ul className="grid-auto-rows grid gap-16">
-                {experience
-                  .filter((item) => item?.disabled !== true)
-                  .slice(3)
-                  .map(renderExperience)}
-              </ul>
-            </CollapsibleContent>
-            <RuleHeader side="both" className="flex-grow-0 justify-center">
-              <CollapsibleTrigger asChild className="text-center">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="rounded-full px-4 py-2"
-                  aria-expanded={viewAllToggle}
-                  aria-controls="additional-experience"
-                >
-                  {viewAllToggle ? "View Less" : "View More"} Experience
-                </Button>
-              </CollapsibleTrigger>
-            </RuleHeader>
-          </CollapsibleItem>
-        </Collapsible>
+        <li>
+          <Collapsible
+            type="single"
+            collapsible
+            onValueChange={(value: string) => setViewAllToggle(!!value)}
+          >
+            <CollapsibleItem value="expand">
+              <CollapsibleContent>
+                <ul className="grid-auto-rows grid gap-16">
+                  {experience
+                    .filter((item) => item?.disabled !== true)
+                    .slice(3)
+                    .map(renderExperience)}
+                </ul>
+              </CollapsibleContent>
+              <RuleHeader side="both" className="flex-grow-0 justify-center">
+                <CollapsibleTrigger asChild className="text-center">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="rounded-full px-4 py-2"
+                    aria-expanded={viewAllToggle}
+                    aria-controls="additional-experience"
+                  >
+                    {viewAllToggle ? "View Less" : "View More"} Experience
+                  </Button>
+                </CollapsibleTrigger>
+              </RuleHeader>
+            </CollapsibleItem>
+          </Collapsible>
+        </li>
       )}
     </ul>
   )

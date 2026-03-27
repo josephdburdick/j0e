@@ -41,11 +41,12 @@ export default function LogoMarquee(props: MarqueeProps) {
                 src={logo.src}
                 width={logo.width}
                 height={logo.height}
+                sizes="112px"
                 alt={`${job.company} logo`}
                 className={`selection-none pointer-events-none max-h-20 w-auto max-w-28 grayscale transition-opacity duration-500 dark:invert ${
                   loadedLogos.has(logo.src) ? "opacity-100" : "opacity-0"
                 }`}
-                loading="eager"
+                loading="lazy"
                 onLoad={() => {
                   if (loadedLogos.has(logo.src)) return
                   setLoadedLogos((prev) => new Set(prev).add(logo.src))
