@@ -72,7 +72,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Links() {
   const data = await api()
-  const { name } = data.profile.attributes
+  const { name, logoSvgHoverGifs } = data.profile.attributes
 
   const additionalLinks: ContactLink[] = [
     {
@@ -120,13 +120,7 @@ export default async function Links() {
                 "aria-hidden": true,
               })}
               name={name}
-              svgFillUrl="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif"
-              svgHoverFillUrls={[
-                "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzE2MHJpZzNmaWQxdzVhdzBoYXh2M3M1bm45d3J3ajFzbzl0Yzl0cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4O7RWwD8zRF4BMyBHe/giphy.gif",
-                "https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif",
-                "https://media.giphy.com/media/26u4nJPf0JtQPdStq/giphy.gif",
-                "https://media.giphy.com/media/xT0GqeSlGSRQutPRh6/giphy.gif",
-              ]}
+              svgHoverFillUrls={logoSvgHoverGifs ?? []}
               svgHoverCycleMs={180}
             />
 

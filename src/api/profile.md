@@ -16,6 +16,18 @@ bg:
   height: 1799
   alt: Me at the beach with friends
 
+# SVG logo GIF fills (J0eLogoSvgSlot / Logo hover pool)
+logoSvgHoverGifs:
+  - https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGk1ZXhlZjJpeHR0MHhrZDZnNzl5eDBuNHJjOXFnZ255Z2J6a2w1cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o84U78CXEB2opZd4I/giphy.gif
+  - https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHRrcGM1aXpkeGF5cTdlcXNyYTRjZjVmb3ltdTNkdXE2bHR0bXk2YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/elzCnIQAjQMWA/giphy.gif
+  - https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3N2U2aDhtejVwanRjZmlxOWptaHFlYmdtOHEyczFqdHQwaDcyam9mayZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/f6qMGmXuOdkwU/giphy.gif
+  - https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWJsejF4cWg4Nzl1bmRoZno1cHZrZzVwbWIyN2FoMjhwa3FhcGY4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0MYtKkFdVsaRN4J2/giphy.gif
+  - https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWVwejJyeTJnd2FlMHYzMDNyeHR6ODB3cTA2N3U0MzYzcXY4cHViZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xTiTngbPfNnMY1cZi0/giphy.gif
+  - https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDVsOWZtc2J3bjR1bmRyYm82dTd0eDM5c3Vrb3NndG51c2ZiZmkyOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEdv4GPCpHvDIzz5S/giphy.gif
+  - https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjE5enAzbHY5bWlib2hqMjBtZ2QzMzc2NDc1cnY4ZWx6djF0cnpsayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Wy3Q0fuNIJmYn62Lcv/giphy.gif
+  - https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXVrZnF1NmlkNWF2N3lzMXE0cTM5ZjFyem1tZDN3aGcwMGsyaTF3ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/f5kBKQ6oDHE6cyLbVA/giphy.gif
+  - https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExemg3ZzJxeWNiamF2cHA2Y3lvbGM2dHZqYnM5dTRubHBydXEwdXRmZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Jv3uIdgaWvB3fpAlU3/giphy.gif
+
 links:
   linkedin:
     url: https://linkedin.com/in/josephdburdick
