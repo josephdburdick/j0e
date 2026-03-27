@@ -1,12 +1,6 @@
 import { Metadata } from "next"
 
 import api from "../api"
-
-function pickInitialLogoSvgFillUrl(gifs: string[]): string | undefined {
-  if (gifs.length === 0) return undefined
-  if (gifs.length === 1) return gifs[0]
-  return gifs[Math.floor(Math.random() * gifs.length)]
-}
 import About from "./_content/About"
 import Experience from "./_content/Experience"
 import Intro from "./_content/Intro"
@@ -66,14 +60,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const data = await api()
-  const initialLogoSvgFillUrl = pickInitialLogoSvgFillUrl(
-    data.profile.attributes.logoSvgHoverGifs ?? [],
-  )
-
   return (
     <main className="duration-1000 animate-in fade-in">
-      <Intro initialLogoSvgFillUrl={initialLogoSvgFillUrl} />
+      <Intro />
       <Recommendations />
       <Experience />
       <About />

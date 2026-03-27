@@ -16,6 +16,22 @@ import dynamic from "next/dynamic"
 import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 
+/** Stable fallback so `gifs ?? []` does not allocate a new [] every render. */
+const EMPTY_GIFS: string[] = []
+const LOGO_GIF_INDEX_SESSION_KEY = "j0e.logo.gif.index"
+
+function pickRandomIndex(length: number, exclude?: number): number {
+  if (length <= 1) return 0
+  const randomUint = new Uint32Array(1)
+  window.crypto.getRandomValues(randomUint)
+  const candidate = randomUint[0] % length
+  if (exclude === undefined || exclude < 0 || exclude >= length) {
+    return candidate
+  }
+  if (candidate !== exclude) return candidate
+  return (candidate + 1) % length
+}
+
 type StickyHeaderProps = {
   svgFillUrl?: string
   svgRandomizeOnLoad?: boolean
@@ -77,18 +93,54 @@ const ClientStickyHeader = dynamic(() => Promise.resolve(StickyHeader), {
   ssr: false,
 })
 
-type IntroProps = {
-  /** Chosen on the server so hero Logo hydrates without href mismatch (do not randomize in the client). */
-  initialLogoSvgFillUrl?: string
-}
-
-function Intro({ initialLogoSvgFillUrl }: IntroProps) {
+function Intro() {
   const { data } = useApi()
   const links: ContactLink[] = Object.values(data.profile.attributes.links)
-  const gifs = data.profile.attributes.logoSvgHoverGifs ?? []
-  const logoFillUrl =
-    initialLogoSvgFillUrl ??
-    (gifs.length > 0 ? gifs[0] : undefined)
+  const gifs = data.profile.attributes.logoSvgHoverGifs ?? EMPTY_GIFS
+  /**
+   * First paint uses gifs[0] so server HTML and hydration match (no href mismatch).
+   * After mount we pick at random so each full page load/refresh can change the GIF.
+   * (Static export freezes server-side random at build time, so random must run on the client.)
+   */
+  const [fillOverride, setFillOverride] = useState<string | undefined>(undefined)
+  const gifsKey = gifs.join("|")
+
+  useEffect(() => {
+    if (gifs.length === 0) {
+      setFillOverride(undefined)
+      return
+    }
+    if (gifs.length === 1) {
+      setFillOverride(gifs[0])
+      return
+    }
+
+    let previousIndex: number | undefined
+    try {
+      const stored = window.sessionStorage.getItem(LOGO_GIF_INDEX_SESSION_KEY)
+      if (stored !== null) {
+        const parsed = Number.parseInt(stored, 10)
+        if (!Number.isNaN(parsed)) previousIndex = parsed
+      }
+    } catch {
+      previousIndex = undefined
+    }
+
+    const nextIndex = pickRandomIndex(gifs.length, previousIndex)
+
+    try {
+      window.sessionStorage.setItem(
+        LOGO_GIF_INDEX_SESSION_KEY,
+        String(nextIndex),
+      )
+    } catch {
+      // Ignore storage failures (private mode, blocked storage, etc.).
+    }
+
+    setFillOverride(gifs[nextIndex])
+  }, [gifsKey, gifs])
+
+  const logoFillUrl = fillOverride ?? (gifs.length > 0 ? gifs[0] : undefined)
 
   return (
     <>
