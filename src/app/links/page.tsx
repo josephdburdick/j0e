@@ -1,8 +1,8 @@
 import api from "@/api"
 import HapticAudioToggle from "@/components/global/HapticAudioToggle"
 import Icon from "@/components/global/Icon"
-import Logo from "@/components/global/Logo"
-import MainHeader from "@/components/global/MainHeader"
+import { createJ0eLogoSvgSlot } from "@/components/global/J0eLogoSvgSlot"
+import { Logo } from "@/components/global/Logo"
 import LinkTree from "@/components/links/LinkTree"
 import QRCodeButton from "@/components/links/QRCodeButton"
 import { buttonVariants } from "@/components/ui/button"
@@ -72,7 +72,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Links() {
   const data = await api()
-  const { logo } = data.site.attributes
   const { name } = data.profile.attributes
 
   const additionalLinks: ContactLink[] = [
@@ -115,12 +114,20 @@ export default async function Links() {
             </Link>
 
             <Logo
-              logoSlot={null}
-              url={logo.url}
-              width={logo.width}
-              height={logo.height}
-              alt={logo.alt}
+              logoSlot={createJ0eLogoSvgSlot({
+                className: "h-7 w-auto md:h-8",
+                role: "img",
+                "aria-hidden": true,
+              })}
               name={name}
+              svgFillUrl="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif"
+              svgHoverFillUrls={[
+                "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzE2MHJpZzNmaWQxdzVhdzBoYXh2M3M1bm45d3J3ajFzbzl0Yzl0cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4O7RWwD8zRF4BMyBHe/giphy.gif",
+                "https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif",
+                "https://media.giphy.com/media/26u4nJPf0JtQPdStq/giphy.gif",
+                "https://media.giphy.com/media/xT0GqeSlGSRQutPRh6/giphy.gif",
+              ]}
+              svgHoverCycleMs={180}
             />
 
             <div className="flex items-center gap-2">
