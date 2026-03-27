@@ -37,7 +37,7 @@ export default function MainNav(props: Props) {
   } = props
   const hasText = title || description
   const renderTrigger = (
-    <Button className="rounded-full" size="lg" haptic="medium">
+    <Button className="min-h-11 rounded-full" size="lg" haptic="medium">
       <span className="flex items-center gap-2">
         {iconOnly ? (
           <Icon.menu />
@@ -91,7 +91,7 @@ export default function MainNav(props: Props) {
           >
             {hasText && (
               <div className="prose-scale-sm space-y-1">
-                <h5 className="font-semibold">{title}</h5>
+                <p className="text-base font-semibold">{title}</p>
                 <p>{description}</p>
               </div>
             )}

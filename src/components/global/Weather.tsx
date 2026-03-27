@@ -34,12 +34,12 @@ const getWeatherIcon = (temperature: number): string => {
 
 // Weather icon color mapping function
 const getWeatherColor = (temperature: number): string => {
-  if (temperature >= 80) return "text-amber-500" // Hot - bright orange/yellow
-  if (temperature >= 65) return "text-yellow-400" // Warm - yellow
-  if (temperature >= 50) return "text-blue-300" // Mild - light blue
-  if (temperature >= 40) return "text-gray-400" // Cool - gray
-  if (temperature >= 32) return "text-blue-400" // Cold - blue
-  return "text-blue-200" // Freezing - light blue
+  if (temperature >= 80) return "text-amber-600 dark:text-amber-400" // Hot
+  if (temperature >= 65) return "text-yellow-700 dark:text-yellow-300" // Warm
+  if (temperature >= 50) return "text-blue-700 dark:text-blue-300" // Mild
+  if (temperature >= 40) return "text-slate-600 dark:text-slate-300" // Cool
+  if (temperature >= 32) return "text-blue-600 dark:text-blue-300" // Cold
+  return "text-cyan-600 dark:text-cyan-300" // Freezing
 }
 
 // Rename the component to WeatherContent
@@ -256,12 +256,13 @@ const WeatherContent: React.FC = () => {
           toggleUnit()
         }}
         className={cn(
-          "relative flex items-center text-left font-medium",
-          "cursor-pointer rounded-full px-0 py-0.5",
+          "relative flex items-center justify-center text-left font-medium",
+          "cursor-pointer rounded-full p-0",
         )}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
         disabled={isLoading}
+        aria-label="Toggle temperature unit"
       >
         <WeatherIcon />
       </button>
@@ -277,8 +278,9 @@ const WeatherContent: React.FC = () => {
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
         disabled={isLoading}
+        aria-label="Toggle temperature unit"
       >
-        <div className="relative h-5">
+        <div className="relative h-5 leading-none">
           {" "}
           <div
             className={`absolute transition-opacity duration-200 ${

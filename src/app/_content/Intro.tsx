@@ -68,7 +68,6 @@ const StickyHeader = ({
     >
       <div className="relative">
         <div className="absolute inset-0 w-full bg-gradient-to-b from-background transition-all duration-500" />
-        <div className="absolute inset-0 backdrop-blur-sm transition-all duration-500 hover:opacity-0 hover:backdrop-blur-0" />
         <MainHeader
           className="container z-10 w-full py-4 md:py-8"
           svgFillUrl={svgFillUrl}
@@ -102,7 +101,9 @@ function Intro() {
    * After mount we pick at random so each full page load/refresh can change the GIF.
    * (Static export freezes server-side random at build time, so random must run on the client.)
    */
-  const [fillOverride, setFillOverride] = useState<string | undefined>(undefined)
+  const [fillOverride, setFillOverride] = useState<string | undefined>(
+    undefined,
+  )
   const gifsKey = gifs.join("|")
 
   useEffect(() => {
@@ -161,6 +162,7 @@ function Intro() {
 
             <main className="container w-full items-center space-y-8 md:space-y-16">
               <div className="prose prose-scale mx-auto max-w-[65ch] text-pretty text-center dark:prose-invert">
+                <h2 className="sr-only">Introduction</h2>
                 <div dangerouslySetInnerHTML={{ __html: data.intro.html }} />
                 <LogoMarquee />
               </div>

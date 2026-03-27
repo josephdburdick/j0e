@@ -58,7 +58,7 @@ const DarkModeToggle = () => {
       <Button
         className={cn(
           buttonVariants({ variant: "outline", size: "icon" }),
-          "relative inline-flex items-center rounded-full border-0 p-0 focus:outline-none",
+          "relative inline-flex min-h-11 min-w-11 items-center rounded-full border-0 p-0 focus:outline-none",
         )}
         onClick={toggleDarkMode}
         haptic="medium"
@@ -67,7 +67,7 @@ const DarkModeToggle = () => {
         <div
           className={cn(
             buttonVariants({ variant: "outline", size: "lg" }),
-            "rounded-full p-2",
+            "rounded-full p-2.5",
           )}
         >
           {darkMode ? (

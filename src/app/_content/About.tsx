@@ -54,8 +54,10 @@ export default function Footer() {
       <Image
         src={src}
         alt={alt}
-        width={1785}
-        height={515}
+        width={width}
+        height={height}
+        sizes="(min-width: 1280px) 1320px, (min-width: 1024px) 900px, 100vw"
+        loading="lazy"
         className="z-0 aspect-auto"
       />
     </section>

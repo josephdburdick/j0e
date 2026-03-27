@@ -142,7 +142,7 @@ export default function Recommendations() {
           triggerHaptic("selection")
           setCurrent(key)
         }}
-        className="relative flex lg:flex-col"
+        className="relative flex min-h-11 min-w-11 lg:flex-col"
       >
         <div
           className={cn(
@@ -201,11 +201,12 @@ export default function Recommendations() {
       className={cn(
         "md:py16 items-center justify-center space-y-8 bg-gradient-to-b from-secondary py-8 lg:py-24 xl:py-36",
       )}
+      aria-labelledby="recommendations-title"
     >
       <div className="container">
         <header className="space-y-2 text-center">
           <RuleHeader side="both" className="font-light">
-            <h2 id="experience-title" className="text-foreground">
+            <h2 id="recommendations-title" className="text-foreground">
               {data.recommendations.attributes.title}
             </h2>
           </RuleHeader>

@@ -14,7 +14,7 @@ export default function LinkButton() {
           variant: "outline",
           size: "lg",
         }),
-        "flex rounded-full p-2 sm:hidden",
+        "flex min-h-11 min-w-11 rounded-full p-2 sm:hidden",
       )}
     >
       <Icon.link size={24} />
