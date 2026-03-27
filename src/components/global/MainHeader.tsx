@@ -64,5 +64,3 @@ export const MainHeader = forwardRef(
 )
 
 MainHeader.displayName = "MainHeader"
-
-export default MainHeader

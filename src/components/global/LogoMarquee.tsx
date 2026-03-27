@@ -9,7 +9,7 @@ type MarqueeProps = {
   itemWidth?: string
 }
 
-export default function LogoMarquee(props: MarqueeProps) {
+export function LogoMarquee(props: MarqueeProps) {
   const { itemWidth = "200px" } = props
   const { data } = useApi()
   const [loadedLogos, setLoadedLogos] = useState<Set<string>>(new Set())
@@ -44,7 +44,7 @@ export default function LogoMarquee(props: MarqueeProps) {
                 height={logo.height}
                 sizes="112px"
                 alt={`${job.company} logo`}
-                className={`selection-none pointer-events-none max-h-20 w-auto max-w-28 grayscale transition-opacity duration-500 dark:invert ${
+                className={`selection-none pointer-events-none max-h-20 w-auto max-w-28 grayscale transition-opacity dark:invert ${
                   loadedLogos.has(logo.src) ? "opacity-100" : "opacity-0"
                 }`}
                 loading={isPriorityLogo ? "eager" : "lazy"}

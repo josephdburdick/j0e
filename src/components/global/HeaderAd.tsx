@@ -11,11 +11,11 @@ import { ContactLink } from "@/lib/types"
 // import { useEffect, useRef, useState } from "react"
 import { Button } from "../ui/button"
 import Icon from "./Icon"
-import MainNav from "./MainNav"
+import { MainNav } from "./MainNav"
 
 // import WorkAvailability from "./WorkAvailability"
 
-export default function HeaderAd() {
+export function HeaderAd() {
   const { data } = useApi()
   const links: ContactLink[] = Object.values(data.profile.attributes.links)
   // const [api, setApi] = useState<CarouselApi | null>(null)

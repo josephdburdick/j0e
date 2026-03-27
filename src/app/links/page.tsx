@@ -1,5 +1,5 @@
 import api from "@/api"
-import HapticAudioToggle from "@/components/global/HapticAudioToggle"
+import { HapticAudioToggle } from "@/components/global/HapticAudioToggle"
 import Icon from "@/components/global/Icon"
 import { createJ0eLogoSvgSlot } from "@/components/global/J0eLogoSvgSlot"
 import { Logo } from "@/components/global/Logo"

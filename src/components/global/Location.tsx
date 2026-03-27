@@ -11,4 +11,4 @@ const Location = () => (
   </>
 )
 
-export default Location
+export { Location }

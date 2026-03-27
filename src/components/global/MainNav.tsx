@@ -27,7 +27,7 @@ type Props = PropsWithChildren & {
   iconOnly?: boolean
 }
 
-export default function MainNav(props: Props) {
+export function MainNav(props: Props) {
   const {
     children = null,
     iconOnly = false,

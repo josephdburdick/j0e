@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react"
 
 import Icon from "./Icon"
 
-export default function HapticAudioToggle() {
+export function HapticAudioToggle() {
   const [enabled, setEnabled] = useState(true)
   const [showStatus, setShowStatus] = useState(false)
   const [isMobileDevice, setIsMobileDevice] = useState(false)

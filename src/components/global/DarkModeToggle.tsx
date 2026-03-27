@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react"
 
 import Icon from "./Icon"
 
-const DarkModeToggle = () => {
+export const DarkModeToggle = () => {
   const [darkMode, setDarkMode] = useState(false)
   const [isInitialized, setIsInitialized] = useState(false)
   const [showStatus, setShowStatus] = useState(false)
@@ -79,7 +79,7 @@ const DarkModeToggle = () => {
       </Button>
       <span
         className={cn(
-          "pointer-events-none absolute top-full mt-2 whitespace-nowrap text-xs text-muted-foreground transition-all duration-300",
+          "pointer-events-none absolute top-full mt-2 whitespace-nowrap text-xs text-muted-foreground transition-all",
           showStatus ? "translate-y-0 opacity-100" : "-translate-y-1 opacity-0",
         )}
       >
@@ -88,5 +88,3 @@ const DarkModeToggle = () => {
     </div>
   )
 }
-
-export default DarkModeToggle

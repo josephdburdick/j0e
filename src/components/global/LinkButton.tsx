@@ -4,7 +4,7 @@ import Link from "next/link"
 import { buttonVariants } from "../ui/button"
 import Icon from "./Icon"
 
-export default function LinkButton() {
+export function LinkButton() {
   return (
     <Link
       href="/links"

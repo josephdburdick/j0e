@@ -1,14 +1,14 @@
 "use client"
 
-import DarkModeToggle from "@/components/global/DarkModeToggle"
-import HapticAudioToggle from "@/components/global/HapticAudioToggle"
-import HeaderAd from "@/components/global/HeaderAd"
-import LinkButton from "@/components/global/LinkButton"
-import LocationComponent from "@/components/global/Location"
-import LogoMarquee from "@/components/global/LogoMarquee"
-import MainHeader from "@/components/global/MainHeader"
-import MainNav from "@/components/global/MainNav"
-import Weather from "@/components/global/Weather"
+import { DarkModeToggle } from "@/components/global/DarkModeToggle"
+import { HapticAudioToggle } from "@/components/global/HapticAudioToggle"
+import { HeaderAd } from "@/components/global/HeaderAd"
+import { LinkButton } from "@/components/global/LinkButton"
+import { Location } from "@/components/global/Location"
+import { LogoMarquee } from "@/components/global/LogoMarquee"
+import { MainHeader } from "@/components/global/MainHeader"
+import { MainNav } from "@/components/global/MainNav"
+import { Weather } from "@/components/global/Weather"
 import { useApi } from "@/components/providers/DataProvider"
 import { ContactLink } from "@/lib/types"
 import { cn } from "@/lib/utils"
@@ -81,14 +81,14 @@ const StickyHeader = ({
   return createPortal(
     <div
       className={cn(
-        "fixed top-0 z-10 w-full will-change-transform transition-[opacity,transform] duration-300 md:duration-500 motion-reduce:duration-0",
+        "fixed top-0 z-10 w-full transition-[opacity,transform] duration-300 will-change-transform motion-reduce:duration-0 md:duration-500",
         isVisible
           ? "pointer-events-auto translate-y-0 opacity-100"
           : "pointer-events-none -translate-y-full opacity-0",
       )}
     >
       <div className="relative">
-        <div className="absolute inset-0 w-full bg-gradient-to-b from-background transition-all duration-300 md:duration-500 motion-reduce:duration-0" />
+        <div className="absolute inset-0 w-full bg-gradient-to-b from-background transition-all duration-300 motion-reduce:duration-0 md:duration-500" />
         <MainHeader
           className="container z-10 w-full py-4 md:py-8"
           svgFillUrl={svgFillUrl}
@@ -113,7 +113,7 @@ const ClientStickyHeader = dynamic(() => Promise.resolve(StickyHeader), {
   ssr: false,
 })
 
-function Intro() {
+export function Intro() {
   const { data } = useApi()
   const links: ContactLink[] = Object.values(data.profile.attributes.links)
   const gifs = data.profile.attributes.logoSvgHoverGifs ?? EMPTY_GIFS
@@ -151,8 +151,7 @@ function Intro() {
       previousIndex !== undefined ? gifs[previousIndex] : undefined
     const currentIndex =
       previousGif !== undefined ? gifs.indexOf(previousGif) : -1
-    const normalizedPreviousIndex =
-      currentIndex >= 0 ? currentIndex : undefined
+    const normalizedPreviousIndex = currentIndex >= 0 ? currentIndex : undefined
     const nextIndex = pickRandomIndex(gifs.length, normalizedPreviousIndex)
 
     try {
@@ -205,7 +204,7 @@ function Intro() {
                   <div className="hidden shrink-0 flex-col items-center gap-2 text-xs text-muted-foreground md:flex">
                     <div className="grid grid-cols-[auto_1fr] items-center gap-x-2 gap-y-1">
                       <Weather />
-                      <LocationComponent />
+                      <Location />
                     </div>
                   </div>
                   <MainNav
@@ -224,5 +223,3 @@ function Intro() {
     </>
   )
 }
-
-export default Intro

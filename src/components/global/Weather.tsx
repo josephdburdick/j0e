@@ -283,14 +283,14 @@ const WeatherContent: React.FC = () => {
         <div className="relative h-5 leading-none">
           {" "}
           <div
-            className={`absolute transition-opacity duration-200 ${
+            className={`absolute transition-opacity ${
               isHovering ? "opacity-0" : "opacity-100"
             }`}
           >
             {renderCurrentTemp()}
           </div>
           <div
-            className={`absolute transition-opacity duration-200 ${
+            className={`absolute transition-opacity ${
               isHovering ? "opacity-100" : "opacity-0"
             }`}
           >
@@ -303,7 +303,7 @@ const WeatherContent: React.FC = () => {
 }
 
 // Create a client-only version as the default export
-const Weather = dynamic(() => Promise.resolve(WeatherContent), {
+export const Weather = dynamic(() => Promise.resolve(WeatherContent), {
   ssr: false,
   loading: () => <LoadingComponent />,
 })
@@ -326,5 +326,3 @@ function LoadingComponent() {
     </>
   )
 }
-
-export default Weather
