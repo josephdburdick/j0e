@@ -11,11 +11,19 @@ import { forwardRef } from "react"
 type Props = PropsWithChildren & {
   className?: string
   logoSlot?: ReactNode
+  /** When both hero and sticky headers mount, pass one URL so each Logo shows the same GIF. */
+  svgFillUrl?: string
+  svgRandomizeOnLoad?: boolean
 }
 
 export const MainHeader = forwardRef(
   (props: Props, ref: ForwardedRef<HTMLElement>): ReactNode => {
-    const { logoSlot = null, className } = props
+    const {
+      logoSlot = null,
+      className,
+      svgFillUrl,
+      svgRandomizeOnLoad,
+    } = props
     const { data } = useApi()
     const { name, logoSvgHoverGifs } = data.profile.attributes
 
@@ -37,8 +45,10 @@ export const MainHeader = forwardRef(
             })
           }
           name={name}
+          svgFillUrl={svgFillUrl}
           svgHoverFillUrls={logoSvgHoverGifs ?? []}
           svgHoverCycleMs={180}
+          svgRandomizeOnLoad={svgRandomizeOnLoad}
         />
 
         {props.children && (
