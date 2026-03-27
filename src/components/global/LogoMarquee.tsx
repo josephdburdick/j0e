@@ -22,6 +22,7 @@ export default function LogoMarquee(props: MarqueeProps) {
       {jobs.map((job, index) => {
         const logo = job.logo
         if (!logo) return null
+        const isPriorityLogo = index === 0
 
         return (
           <Card
@@ -46,7 +47,9 @@ export default function LogoMarquee(props: MarqueeProps) {
                 className={`selection-none pointer-events-none max-h-20 w-auto max-w-28 grayscale transition-opacity duration-500 dark:invert ${
                   loadedLogos.has(logo.src) ? "opacity-100" : "opacity-0"
                 }`}
-                loading="lazy"
+                loading={isPriorityLogo ? "eager" : "lazy"}
+                fetchPriority={isPriorityLogo ? "high" : "auto"}
+                priority={isPriorityLogo}
                 onLoad={() => {
                   if (loadedLogos.has(logo.src)) return
                   setLoadedLogos((prev) => new Set(prev).add(logo.src))

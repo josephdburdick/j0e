@@ -46,23 +46,6 @@ export default function Recommendations() {
     }
   }, [api, current])
 
-  useEffect(() => {
-    const activeSlide = document.querySelector(
-      `[data-carousel-item-index="${current}"]`,
-    )
-
-    if (activeSlide) {
-      const slideContent = activeSlide.querySelector("div")
-      const slideContentHeight = slideContent?.clientHeight
-
-      if (slideContentHeight) {
-        const parent = activeSlide.parentNode as HTMLElement
-        parent.style.height = `${slideContentHeight}px`
-        parent.style.transition = "height 300ms ease-in-out"
-      }
-    }
-  }, [current])
-
   const carouselButtonClassName =
     "relative top-0 left-0 right-0 translate-x-0 translate-y-0"
 
@@ -74,7 +57,7 @@ export default function Recommendations() {
       key={`recommendation-${index}`}
       data-carousel-item-index={index}
       className={cn(
-        "transition-all duration-300",
+        "h-full transition-all duration-300",
         index !== current && "opacity-25",
         index === current && "",
       )}
@@ -190,7 +173,7 @@ export default function Recommendations() {
         <CarouselNext className={carouselButtonClassName} />
       </div>
       {renderAvatars}
-      <CarouselContent className="md:gap-10">
+      <CarouselContent className="items-stretch md:gap-10">
         {recommendations.map(renderRecommendation)}
       </CarouselContent>
     </Carousel>

@@ -47,6 +47,19 @@ const SVG_NO_FILL_TAGS = new Set([
 
 const HOVER_INTENT_DELAY_MS = 150
 
+function shouldAvoidHeavyPreload(): boolean {
+  if (typeof navigator === "undefined") return false
+  const connection = (navigator as Navigator & {
+    connection?: { saveData?: boolean; effectiveType?: string }
+  }).connection
+  if (!connection) return false
+  return (
+    connection.saveData === true ||
+    connection.effectiveType === "slow-2g" ||
+    connection.effectiveType === "2g"
+  )
+}
+
 function parseSvgViewBox(svg: React.ReactElement): {
   x: number
   y: number
@@ -226,7 +239,7 @@ export function Logo({
     }
 
     const next =
-      svgRandomizeOnLoad && hoverFillPool.length > 1
+      svgRandomizeOnLoad && hoverFillPool.length > 1 && canHoverLoop
         ? hoverFillPool[Math.floor(Math.random() * hoverFillPool.length)]
         : (svgFillUrl ?? hoverFillPool[0])
 
@@ -266,13 +279,40 @@ export function Logo({
 
   useEffect(() => {
     if (!canHoverLoop || !hasHoverIntent || hoverFillPool.length <= 1) return
+    if (shouldAvoidHeavyPreload()) return
 
-    hoverFillPool.forEach((fillUrl) => {
-      if (fillUrl === resolvedFillUrl) return
+    const currentIndex = Math.max(hoverFillPool.indexOf(resolvedFillUrl ?? ""), 0)
+    const nextFillUrl = hoverFillPool[(currentIndex + 1) % hoverFillPool.length]
+    if (!nextFillUrl || nextFillUrl === resolvedFillUrl) return
+
+    const preloadNextFill = () => {
       const image = new window.Image()
       image.decoding = "async"
-      image.src = fillUrl
-    })
+      image.src = nextFillUrl
+    }
+
+    const idleWindow = window as Window &
+      typeof globalThis & {
+        requestIdleCallback?: (
+          callback: IdleRequestCallback,
+          options?: IdleRequestOptions,
+        ) => number
+        cancelIdleCallback?: (handle: number) => void
+      }
+
+    if (typeof idleWindow.requestIdleCallback === "function") {
+      const idleId = idleWindow.requestIdleCallback(preloadNextFill, {
+        timeout: 500,
+      })
+      return () => {
+        if (typeof idleWindow.cancelIdleCallback === "function") {
+          idleWindow.cancelIdleCallback(idleId)
+        }
+      }
+    }
+
+    const timeoutId = setTimeout(preloadNextFill, 0)
+    return () => clearTimeout(timeoutId)
   }, [canHoverLoop, hasHoverIntent, hoverFillPool, resolvedFillUrl])
 
   const hasFillableSvgSlot =

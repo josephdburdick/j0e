@@ -2,6 +2,7 @@ import fm from "front-matter"
 import fs from "fs/promises"
 import { marked } from "marked"
 import path from "path"
+import { cache } from "react"
 
 import nextConfig from "../../next.config.mjs"
 
@@ -49,4 +50,6 @@ export async function api(): Promise<Result> {
   return parsedResult
 }
 
-export default api
+const getApiData = cache(api)
+
+export default getApiData
