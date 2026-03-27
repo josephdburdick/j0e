@@ -201,6 +201,12 @@ export function Logo({
     return values.filter((value, index) => values.indexOf(value) === index)
   }, [svgFillUrl, svgHoverFillUrls])
 
+  /** Which GIF is visible; falls back so SSR / pre-effect paint still shows one fill. */
+  const resolvedFillUrl = useMemo(
+    () => activeSvgFillUrl ?? svgFillUrl ?? hoverFillPool[0],
+    [activeSvgFillUrl, svgFillUrl, hoverFillPool],
+  )
+
   useEffect(() => {
     const mq = window.matchMedia("(hover: hover) and (pointer: fine)")
     const update = () => setCanHoverLoop(mq.matches)
@@ -212,11 +218,6 @@ export function Logo({
   useEffect(() => {
     if (hoverFillPool.length === 0) {
       setActiveSvgFillUrl(undefined)
-      return
-    }
-
-    if (!canHoverLoop) {
-      setActiveSvgFillUrl(svgFillUrl ?? hoverFillPool[0])
       return
     }
 
@@ -261,14 +262,14 @@ export function Logo({
 
   const fillUrlsForRender = useMemo(() => {
     if (canHoverLoop) return hoverFillPool
-    const only = svgFillUrl ?? hoverFillPool[0]
+    const only = resolvedFillUrl
     return only ? [only] : []
-  }, [canHoverLoop, hoverFillPool, svgFillUrl])
+  }, [canHoverLoop, hoverFillPool, resolvedFillUrl])
 
   const filledSvgLogo = useMemo(() => {
     if (
       !hasFillableSvgSlot ||
-      !activeSvgFillUrl ||
+      !resolvedFillUrl ||
       !React.isValidElement(logoSlot)
     ) {
       return logoSlot
@@ -306,14 +307,14 @@ export function Logo({
               height={vbH}
               preserveAspectRatio="xMidYMid slice"
               mask={`url(#${fillMaskId})`}
-              opacity={activeSvgFillUrl === fillUrl ? 1 : 0}
+              opacity={resolvedFillUrl === fillUrl ? 1 : 0}
             />
           ))}
         </>
       ),
     })
   }, [
-    activeSvgFillUrl,
+    resolvedFillUrl,
     fillMaskId,
     fillUrlsForRender,
     hasFillableSvgSlot,
