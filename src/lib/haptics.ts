@@ -49,38 +49,45 @@ const IS_IOS =
 // --- iOS Taptic Engine via hidden checkbox-switch ---
 let iosHapticLabel: HTMLLabelElement | null = null
 
+function createElement<K extends keyof HTMLElementTagNameMap>(
+  tag: K,
+  attrs: Record<string, string> = {},
+  styles: Partial<CSSStyleDeclaration> = {},
+): HTMLElementTagNameMap[K] {
+  const el = document.createElement(tag)
+  for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v)
+  Object.assign(el.style, styles)
+  return el
+}
+
 function ensureIOSCheckbox() {
   if (iosHapticLabel || typeof document === "undefined") return
 
-  // Keep the control in the render tree (not display:none) so iOS can fire Taptics.
   const switchId = "ios-haptic-switch"
-  const label = document.createElement("label")
-  label.setAttribute("for", switchId)
-  label.setAttribute("aria-hidden", "true")
-  Object.assign(label.style, {
-    position: "fixed",
-    top: "0",
-    left: "0",
-    width: "28px",
-    height: "18px",
-    opacity: "0.01",
-    zIndex: "-1",
-    pointerEvents: "none",
-  })
 
-  const input = document.createElement("input")
-  input.type = "checkbox"
-  input.id = switchId
-  input.setAttribute("switch", "")
-  Object.assign(input.style, {
-    all: "initial",
-    appearance: "auto",
-    width: "100%",
-    height: "100%",
-  })
+  const input = createElement(
+    "input",
+    { type: "checkbox", id: switchId, switch: "" },
+    { all: "initial", appearance: "auto", width: "100%", height: "100%" },
+  )
+
+  const label = createElement(
+    "label",
+    { for: switchId, "aria-hidden": "true" },
+    {
+      position: "fixed",
+      top: "0",
+      left: "0",
+      width: "28px",
+      height: "18px",
+      opacity: "0.01",
+      zIndex: "-1",
+      pointerEvents: "none",
+    },
+  )
 
   label.appendChild(input)
-  document.body.appendChild(label)
+  document.body.insertAdjacentElement("afterbegin", label)
   iosHapticLabel = label
 }
 
