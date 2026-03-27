@@ -41,15 +41,25 @@ const StickyHeader = ({
   svgFillUrl,
   svgRandomizeOnLoad,
 }: StickyHeaderProps) => {
-  const [isSticky, setIsSticky] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     const triggerPoint = 200
     let rafId: number | null = null
+    let previousScrollY = window.scrollY
 
     const updateStickyState = () => {
       rafId = null
-      setIsSticky(window.scrollY > triggerPoint)
+      const currentScrollY = window.scrollY
+      const isPastTrigger = currentScrollY > triggerPoint
+
+      setIsVisible((previousIsVisible) => {
+        if (!isPastTrigger) return false
+        if (currentScrollY === previousScrollY) return previousIsVisible
+        return currentScrollY < previousScrollY
+      })
+
+      previousScrollY = currentScrollY
     }
 
     const handleScroll = () => {
@@ -71,10 +81,10 @@ const StickyHeader = ({
   return createPortal(
     <div
       className={cn(
-        "fixed top-0 z-10 w-full transition-all duration-300 md:duration-500 motion-reduce:duration-0",
-        isSticky
-          ? "pointer-events-auto opacity-100"
-          : "pointer-events-none opacity-0",
+        "fixed top-0 z-10 w-full will-change-transform transition-[opacity,transform] duration-300 md:duration-500 motion-reduce:duration-0",
+        isVisible
+          ? "pointer-events-auto translate-y-0 opacity-100"
+          : "pointer-events-none -translate-y-full opacity-0",
       )}
     >
       <div className="relative">
