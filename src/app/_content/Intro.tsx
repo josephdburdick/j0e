@@ -44,30 +44,41 @@ const StickyHeader = ({
   const [isSticky, setIsSticky] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Check if we've scrolled past the main content
-      const scrollPosition = window.scrollY
-      const triggerPoint = 200 // Adjust based on when you want the header to appear
-      setIsSticky(scrollPosition > triggerPoint)
+    const triggerPoint = 200
+    let rafId: number | null = null
+
+    const updateStickyState = () => {
+      rafId = null
+      setIsSticky(window.scrollY > triggerPoint)
     }
 
-    window.addEventListener("scroll", handleScroll)
+    const handleScroll = () => {
+      if (rafId !== null) return
+      rafId = window.requestAnimationFrame(updateStickyState)
+    }
+
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
+
     return () => {
       window.removeEventListener("scroll", handleScroll)
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId)
+      }
     }
   }, [])
 
   return createPortal(
     <div
       className={cn(
-        "fixed top-0 z-10 w-full transition-all duration-500",
+        "fixed top-0 z-10 w-full transition-all duration-300 md:duration-500 motion-reduce:duration-0",
         isSticky
           ? "pointer-events-auto opacity-100"
           : "pointer-events-none opacity-0",
       )}
     >
       <div className="relative">
-        <div className="absolute inset-0 w-full bg-gradient-to-b from-background transition-all duration-500" />
+        <div className="absolute inset-0 w-full bg-gradient-to-b from-background transition-all duration-300 md:duration-500 motion-reduce:duration-0" />
         <MainHeader
           className="container z-10 w-full py-4 md:py-8"
           svgFillUrl={svgFillUrl}
@@ -104,7 +115,20 @@ function Intro() {
   const [fillOverride, setFillOverride] = useState<string | undefined>(
     undefined,
   )
+  const [supportsHover, setSupportsHover] = useState(false)
   const gifsKey = gifs.join("|")
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)")
+    const updateSupportsHover = () => setSupportsHover(mediaQuery.matches)
+
+    updateSupportsHover()
+    mediaQuery.addEventListener("change", updateSupportsHover)
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateSupportsHover)
+    }
+  }, [])
 
   useEffect(() => {
     if (gifs.length === 0) {
@@ -112,6 +136,11 @@ function Intro() {
       return
     }
     if (gifs.length === 1) {
+      setFillOverride(gifs[0])
+      return
+    }
+    if (!supportsHover) {
+      // On touch devices prefer one stable fill to avoid unnecessary image churn.
       setFillOverride(gifs[0])
       return
     }
@@ -139,7 +168,7 @@ function Intro() {
     }
 
     setFillOverride(gifs[nextIndex])
-  }, [gifsKey, gifs])
+  }, [gifsKey, gifs, supportsHover])
 
   const logoFillUrl = fillOverride ?? (gifs.length > 0 ? gifs[0] : undefined)
 

@@ -61,7 +61,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
   return (
-    <main className="duration-1000 animate-in fade-in">
+    <main className="duration-700 animate-in fade-in motion-reduce:duration-0">
       <Intro />
       <Recommendations />
       <Experience />
