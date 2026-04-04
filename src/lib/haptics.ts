@@ -13,7 +13,6 @@ export type HapticPresetName =
 
 interface HapticsInstance {
   trigger: (input?: string) => Promise<void>
-  cancel: () => void
 }
 
 let haptics: HapticsInstance | null = null
@@ -28,8 +27,4 @@ if (typeof window !== "undefined") {
 
 export function triggerHaptic(preset: HapticPresetName = "light") {
   haptics?.trigger(preset)
-}
-
-export function cancelHaptic() {
-  haptics?.cancel()
 }
