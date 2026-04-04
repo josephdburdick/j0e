@@ -192,7 +192,3 @@ export function getAudioEnabled(): boolean {
 if (IS_CLIENT) {
   hapticAudioEnabled = getAudioEnabled()
 }
-
-export function cancelHaptic() {
-  if (HAS_VIBRATE) navigator.vibrate(0)
-}
