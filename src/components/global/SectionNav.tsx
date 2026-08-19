@@ -88,10 +88,10 @@ export function SectionNav() {
                 <span
                   aria-hidden="true"
                   className={cn(
-                    "block h-2.5 w-2.5 rounded-full border border-muted-foreground/60 transition-all duration-300 motion-reduce:transition-none",
+                    "block h-2.5 w-2.5 rounded-full transition-all duration-300 motion-reduce:transition-none",
                     isActive
-                      ? "scale-125 border-lime-600 bg-lime-500 dark:border-lime-400"
-                      : "bg-background/60 group-hover:border-foreground/80",
+                      ? "scale-125 bg-lime-500 shadow-[0_0_8px_2px] shadow-lime-500/60"
+                      : "border border-muted-foreground/60 bg-background/60 group-hover:border-foreground/80",
                   )}
                 />
               </a>
