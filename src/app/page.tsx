@@ -4,6 +4,7 @@ import api from "../api"
 import About from "./_content/About"
 import Experience from "./_content/Experience"
 import { Intro } from "./_content/Intro"
+import OpenSource from "./_content/OpenSource"
 import Recommendations from "./_content/Recommendations"
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -65,6 +66,7 @@ export default async function Home() {
       <Intro />
       <Recommendations />
       <Experience />
+      <OpenSource />
       <About />
     </main>
   )

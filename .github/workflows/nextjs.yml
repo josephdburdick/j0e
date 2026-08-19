@@ -12,6 +12,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+  # Weekly rebuild so the GitHub contribution graph stays fresh
+  schedule:
+    - cron: "0 6 * * 1"
+
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -100,6 +104,10 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock', '**/pnpm-lock.yaml', '**/bun.lock', '**/bun.lockb') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.install_command }}
+      - name: Fetch GitHub contribution data
+        run: node scripts/fetch-github-contributions.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.build_command }}
       - name: Upload artifact
