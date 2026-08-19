@@ -20,7 +20,7 @@ export default function Footer() {
     },
   ]
   return (
-    <section className="relative flex flex-col items-center bg-white">
+    <section id="about" className="relative flex flex-col items-center bg-white">
       <div className="border-lime-2200 relative mx-auto h-10 w-10 border-t-4 border-double"></div>
       <div className="container z-10 mt-8 w-full items-center lg:absolute lg:mt-0 lg:flex lg:h-full">
         <div className="grid gap-4 lg:grid-cols-2">

@@ -225,6 +225,7 @@ export default function Experience() {
 
   return (
     <section
+      id="experience"
       className={cn(
         "md:py16 min-h-[800px] items-center justify-center space-y-8 bg-secondary/80 py-8 lg:py-24 xl:py-36",
       )}

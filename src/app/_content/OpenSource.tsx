@@ -62,6 +62,7 @@ export default function OpenSource() {
 
   return (
     <section
+      id="open-source"
       className="items-center justify-center space-y-8 py-8 lg:py-24 xl:py-36"
       aria-labelledby="open-source-title"
     >

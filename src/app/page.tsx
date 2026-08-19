@@ -5,6 +5,7 @@ import About from "./_content/About"
 import Experience from "./_content/Experience"
 import { Intro } from "./_content/Intro"
 import OpenSource from "./_content/OpenSource"
+import { SectionNav } from "@/components/global/SectionNav"
 import Recommendations from "./_content/Recommendations"
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -63,6 +64,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   return (
     <main className="duration-700 animate-in fade-in motion-reduce:duration-0">
+      <SectionNav />
       <Intro />
       <Recommendations />
       <Experience />
