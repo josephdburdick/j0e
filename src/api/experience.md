@@ -19,7 +19,7 @@ experience:
         description: >
           Contract engagement through Present Day. Primary driver of the Assemblage 2.0 design system migration inside a 10,000+ commit production codebase, ranking a top-5 contributor by commit volume. Built foundations, then personally migrated the product onto them rather than handing them off and hoping adoption followed.
 
-          - **Assemblage 2.0**: Built the PageHeaderV2, Page, PageContent, and PageHeaderActionMenu foundation, then migrated ~30 product surfaces onto it—settings, people, staffing, scheduling, knowledge management, and integrations
+          - **App Layout**: Designed and shipped the new App Layout component—a composable page shell (header, content, footer) with scroll-aware sticky headers that pin, collapse, and reveal a divider on scroll, toggleable header slots, and full-bleed or centered reading-column layouts—then migrated 30+ product surfaces onto it
 
           - **Navigation 2.0**: Shipped the GlobalNav rail end-to-end—foundational components, canonical primary nav IA, secondary accordion panel, collapse toggle with hover-intent expand, and a rollout notice for the opt-in flow
 
@@ -31,9 +31,7 @@ experience:
 
           - **Accessibility & mobile**: Fixed virtual keyboards obscuring option lists at the shared component layer, so every select and input flow inherited the improvement instead of taking N per-screen patches
 
-          - **Tactile Web**: Prototyped a mobile interaction system for the Fresh Eyes innovation showcase, featuring haptic feedback, device orientation detection, gesture-driven components, a draggable drawer with snap-point vibration, and AI streaming text
-
-          - **Collaboration & craft**: Reviewed 369 teammate PRs—more than were personally merged—while keeping a median PR of 48 lines, decomposing large migrations into atomic, individually revertible units
+          - **Collaboration**: Reviewed 369 teammate PRs—more than shipped personally—multiplying the whole team's output and catching issues before they reached customers, while keeping changes small and reversible so releases stayed low-risk
 
         skills:
           [
@@ -48,7 +46,6 @@ experience:
             Storybook,
             Accessibility,
             Mobile UX,
-            Haptics,
             API Design,
             Performance,
             Code Review,
