@@ -103,6 +103,15 @@ export default function Experience() {
                         {role.location}
                       </span>
                     )}
+                    {role.showType && role.type !== undefined && (
+                      <Badge
+                        variant="outline"
+                        size="sm"
+                        className="text-foreground/90"
+                      >
+                        {role.type.toLowerCase()}
+                      </Badge>
+                    )}
                     {role.remote !== undefined && (
                       <Badge
                         variant="outline"

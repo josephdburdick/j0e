@@ -10,20 +10,30 @@ experience:
     roles:
       - title: Senior Software Engineer
         location: New York
-        type: Full-time
+        remote: true
+        type: Contract
+        showType: true
         date:
           start: 2026-01-01
           end: null
         description: >
-          Owned and shipped features end-to-end, aligning design and backend teams while stabilizing legacy and new API surfaces. Drove incremental refactors that reduced technical debt and improved long-term maintainability.
+          Contract engagement through Present Day. Primary driver of the Assemblage 2.0 design system migration inside a 10,000+ commit production codebase, ranking a top-5 contributor by commit volume. Built foundations, then personally migrated the product onto them rather than handing them off and hoping adoption followed.
+
+          - **Assemblage 2.0**: Built the PageHeaderV2, Page, PageContent, and PageHeaderActionMenu foundation, then migrated ~30 product surfaces onto it—settings, people, staffing, scheduling, knowledge management, and integrations
+
+          - **Navigation 2.0**: Shipped the GlobalNav rail end-to-end—foundational components, canonical primary nav IA, secondary accordion panel, collapse toggle with hover-intent expand, and a rollout notice for the opt-in flow
+
+          - **Design token migration**: Wrote the codemods and a custom `no-legacy-tokens` ESLint rule that made the spacing, typography, and color migrations tractable—single PRs safely touching 500–680 files, with lint severity escalated from warning to error so the migration actually finished
+
+          - **Agent schedule requests**: Rebuilt the request sheet into a modular, type-based structure with shared types and step builders, shipping a detail overlay that lets agents view, edit, and cancel time off, swaps, revisions, overtime, and VTO in one place
 
           - **Smart Fields**: Ran a complex feature from ambiguous designs and an incomplete backend to full delivery, coordinating with design and backend engineering to ship on time with minimal bugs
 
-          - **Centralized Typesafe API**: Conceived and drove a typesafe endpoint-generated API to replace a monolithic type file, generating true input/output models from Go endpoints and converting ~75% of existing usage to validate the approach
+          - **Accessibility & mobile**: Fixed virtual keyboards obscuring option lists at the shared component layer, so every select and input flow inherited the improvement instead of taking N per-screen patches
 
           - **Tactile Web**: Prototyped a mobile interaction system for the Fresh Eyes innovation showcase, featuring haptic feedback, device orientation detection, gesture-driven components, a draggable drawer with snap-point vibration, and AI streaming text
 
-          - **Mentorship**: Mentored engineers on code quality and architecture, establishing standards that elevated team output
+          - **Collaboration & craft**: Reviewed 369 teammate PRs—more than were personally merged—while keeping a median PR of 48 lines, decomposing large migrations into atomic, individually revertible units
 
         skills:
           [
@@ -31,10 +41,17 @@ experience:
             TypeScript,
             Go,
             Node,
+            Design Systems,
+            Design Tokens,
+            Codemods,
+            ESLint,
+            Storybook,
+            Accessibility,
             Mobile UX,
             Haptics,
             API Design,
             Performance,
+            Code Review,
             Communication,
             Mentorship,
             Web Standards,
@@ -562,9 +579,11 @@ experience:
 
 My career has been an exciting journey through various roles, always with a focus on blending technology and design to deliver top-notch user experiences.
 
-At Unqork, I've been a key player since day one, helping to build the Platform UI team and develop the Unqork Design System (UQDS). This system has become a cornerstone of the platform, enhancing its functionality and user experience. I've also worked on integrating this system into component settings and pioneering innovative component creation using cutting-edge methodologies.
+Currently I'm contracting at Assembled through Present Day, where I drive the Assemblage 2.0 design system migration across a large production codebase. I build the foundational components and then migrate the product onto them myself—page architecture, global navigation, and a token migration made tractable by codemods and a custom lint rule. Alongside the platform work, I ship product features and fix accessibility issues at the shared layer, so every surface inherits the improvement.
 
-Before Unqork, I worked at Present Day, where I led full-stack development projects, including a major application for Paraguay's largest testing laboratory. My work demonstrated my ability to deliver advanced solutions while collaborating across time zones and cultures.
+Earlier at Unqork, I was a key player since day one, helping to build the Platform UI team and develop the Unqork Design System (UQDS). This system became a cornerstone of the platform, enhancing its functionality and user experience. I also worked on integrating that system into component settings and pioneering component creation using cutting-edge methodologies.
+
+Through Present Day, I've led full-stack development projects for over a decade, including a major application for Paraguay's largest testing laboratory. My work demonstrated my ability to deliver advanced solutions while collaborating across time zones and cultures.
 
 At Adoptive, I played a crucial role in projects like YaleMedicine.org and Bundoo.com, earning an honorable mention at the Webby Awards. My contributions to user experience design and strategic planning were instrumental in these successes.
 

@@ -13,6 +13,8 @@ export type ContactLink = {
 export interface Role {
   title: string
   type: string
+  /* Surface `type` as a badge alongside the role's location */
+  showType?: boolean
   date: {
     start: string
     end: string | null
