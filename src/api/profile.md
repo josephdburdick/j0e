@@ -64,13 +64,17 @@ By my early twenties, I had already accumulated extensive experience in web deve
 and project management. Over the years, I have contributed to numerous projects, continuously
 expanding my expertise and passion for creating exceptional digital experiences.
 
-Most recently, I have been a Senior Software Engineer at Unqork, a SaaS platform based in New York City.
-As a founding member of the Platform UI team, I played a pivotal role in developing the
-Unqork Design System (UQDS), which significantly enhanced the platform's functionality and user experience.
-I transitioned to the Module Builder team to integrate the design system into component settings,
-contributing to the creation of 92 module definitions leveraging UQDS. Currently, I am part of
-the Experience Engineering team, working on innovative component creation using the Vega engine.
-Unqork is now valued at over $2 billion.
+Currently I am a Senior Software Engineer contracting at Assembled through Present Day, my consultancy.
+There I drive the Assemblage 2.0 design system migration across a production codebase of more than
+10,000 commits—building the page architecture and global navigation foundations, then migrating the
+product onto them, and writing the codemods and custom lint rules that let a company-wide design token
+migration actually finish.
+
+Previously I spent six years at Unqork, a SaaS platform based in New York City now valued at over
+$2 billion. As a founding member of the Platform UI team, I played a pivotal role in developing the
+Unqork Design System (UQDS), then moved to the Module Builder team to integrate that design system into
+component settings, contributing to 92 module definitions leveraging UQDS. I later joined Experience
+Engineering, working on component creation using the Vega engine.
 
 I currently reside in Brooklyn but have lived a nomadic lifestyle from 2018 to 2022,
 working remotely since 2014. For fun, I collect pool table locations from around the world

@@ -103,6 +103,15 @@ export default function Experience() {
                         {role.location}
                       </span>
                     )}
+                    {role.showType && role.type !== undefined && (
+                      <Badge
+                        variant="outline"
+                        size="sm"
+                        className="text-foreground/90"
+                      >
+                        {role.type.toLowerCase()}
+                      </Badge>
+                    )}
                     {role.remote !== undefined && (
                       <Badge
                         variant="outline"
@@ -216,6 +225,7 @@ export default function Experience() {
 
   return (
     <section
+      id="experience"
       className={cn(
         "md:py16 min-h-[800px] items-center justify-center space-y-8 bg-secondary/80 py-8 lg:py-24 xl:py-36",
       )}
