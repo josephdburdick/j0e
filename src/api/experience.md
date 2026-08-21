@@ -27,11 +27,9 @@ experience:
 
           - **Agent schedule requests**: Rebuilt the request sheet into a modular, type-based structure with shared types and step builders, shipping a detail overlay that lets agents view, edit, and cancel time off, swaps, revisions, overtime, and VTO in one place
 
-          - **Smart Fields**: Ran a complex feature from ambiguous designs and an incomplete backend to full delivery, coordinating with design and backend engineering to ship on time with minimal bugs
+          - **Smart Fields**: Drove a complex feature from ambiguous designs and an incomplete backend to a clean, on-schedule launch, resolving open questions with design and backend engineering along the way
 
           - **Accessibility & mobile**: Fixed virtual keyboards obscuring option lists at the shared component layer, so every select and input flow inherited the improvement instead of taking N per-screen patches
-
-          - **Collaboration**: Reviewed 369 teammate PRs—more than shipped personally—multiplying the whole team's output and catching issues before they reached customers, while keeping changes small and reversible so releases stayed low-risk
 
         skills:
           [
@@ -69,15 +67,15 @@ experience:
           start: 2025-01-01
           end: null
         description: >
-          Founded and built Cue Quest from concept to production—a map-based social platform for discovering and reviewing places. Led end-to-end product development including strategy, design systems, and full-stack engineering.
+          Founded and built Cue Quest from concept to production—a map-based social platform for discovering and reviewing places—owning strategy, design, and full-stack engineering end to end.
 
-          - **Product Leadership**: Mapped core user flows and delivered polished UI with consistent design system and reusable components
+          - **Product & Design**: Mapped the core user flows and built the UI on a reusable component system, so screens stayed consistent as the product grew
 
-          - **Technical Architecture**: Built with Next.js App Router, TypeScript, tRPC, and Supabase for type-safe, scalable architecture
+          - **Architecture**: Next.js App Router, TypeScript, tRPC, and Supabase, with type safety running from the database schema to the UI
 
-          - **Core Features**: Map-first discovery, review system, social features (follows, notifications), and comprehensive testing suite
+          - **Features**: Map-first discovery, reviews, and social features including follows and notifications
 
-          - **Performance & Quality**: Responsive design, accessibility compliance, and robust testing with Playwright and Vitest
+          - **Quality**: Responsive, accessible interfaces backed by Playwright end-to-end tests and Vitest unit coverage
 
         skills:
           [
@@ -116,17 +114,15 @@ experience:
           start: 2025-09-01
           end: 2025-11-01
         description: >
-          Built and launched a modern content platform for Delaware Water Disaster, a public-interest initiative focused on water-related emergencies and community response.
+          Built and launched a content platform for Delaware Water Disaster, a public-interest initiative focused on water-related emergencies and community response. Contracted through Present Day.
 
-          - **Full-Stack Development**: Led architecture and development using Next.js, TypeScript, and Payload CMS with Postgres
+          - **Full-Stack Development**: Owned architecture and development—Next.js, TypeScript, and Payload CMS on Postgres
 
-          - **Content Management**: Created flexible content modeling with rich text editing, media management, and structured collections
+          - **Content Management**: Modeled flexible collections with rich text editing and media management, so editors publish without engineering help
 
-          - **User Experience**: Built intuitive editor interface with role-based permissions and comprehensive search functionality
+          - **Editorial Experience**: Built the editor interface with role-based permissions and site-wide search
 
-          - **Performance & SEO**: Optimized for fast loading, implemented comprehensive SEO strategies, and ensured accessibility
-
-          Specializing in content platforms and editorial tools through Present Day.
+          - **Performance & SEO**: Optimized load performance, search metadata, and accessibility
         skills:
           [
             "Next.js",
@@ -167,20 +163,17 @@ experience:
           start: 2024-08-01
           end: 2025-08-01
         description: >
-          Led front-end development for Exponential.fi's Trading Dashboard and Portfolio Experience, delivering a complete UI/UX overhaul that boosted user engagement and streamlined investment workflows.
+          Led front-end development for Exponential.fi's trading dashboard and portfolio experience, delivering a complete UI/UX overhaul of the core investment workflows.
 
+          - **Product Development**: Redesigned and rebuilt the trading and portfolio interfaces
 
-          Drove adoption and revenue through strategic product development and cross-functional collaboration.
+          - **Security & Auth**: Shipped MFA and email verification, and added Sentry error monitoring
 
-          - **Product Development**: Enhanced trading and portfolio interfaces with modern, intuitive design
+          - **Performance**: Cut load times through data-fetching, SSR, and caching improvements
 
-          - **Security & Auth**: Implemented MFA, email verification, and Sentry-based error monitoring for robust security
+          - **Documentation**: Wrote the architecture and onboarding guides new engineers ramped up on
 
-          - **Performance**: Optimized data fetching, SSR, and caching to dramatically improve load times
-
-          - **Documentation**: Created comprehensive guides that accelerated team onboarding and clarified architecture
-
-          - **Marketing Integration**: Supported product launches with site-wide promotions and coordinated releases
+          - **Marketing**: Coordinated releases with product launches and built site-wide promotions
 
         skills:
           [
@@ -213,16 +206,16 @@ experience:
           start: 2020-01-01
           end: 2024-08-01
         description: >
-          Founding member of the Platform UI team. While working remotely instrumental in interviewing and recruiting key team members who have significantly contributed to the team's success.
+          Founding member of the Platform UI team; interviewed and recruited several of its core engineers.
 
 
-          Spearheaded the development of the Unqork Design System (UQDS), which now forms a core part of Unqork's platform, enhancing both functionality and user experience.
+          Spearheaded development of the Unqork Design System (UQDS), which remains a core part of Unqork's platform.
 
 
-          After the completion of the UQDS, transitioned to the Module Builder team, integrating the design system into component settings. Contributed to the creation and refinement of 92 module definitions that leverage UQDS.
+          After UQDS shipped, moved to the Module Builder team to integrate the design system into component settings, contributing to 92 module definitions built on UQDS.
 
 
-          Currently part of the Experience Engineering team, working on innovative component creation using the Runtime team's Vega engine. Involved in pioneering efforts to build and refine new methodologies in a dynamic, real-time development environment.
+          Finished on the Experience Engineering team, building new components on the Runtime team's Vega engine.
         skills:
           [
             React,
@@ -245,13 +238,13 @@ experience:
           start: 2018-02-01
           end: 2020-01-01
         description: >
-          Initially joined as an original member of the "Theme Team" before the creation of Unqork Digital Services. Collaborated in a team to develop over 50 custom themes and demos, laying the foundation for future design initiatives.
+          Joined as an original member of the "Theme Team" before Unqork Digital Services existed, building 50+ custom themes and demos with the team.
 
 
-          Innovated with the creation of utility classes to enable configurators to make CSS changes independently, a precursor to practices adopted years later by Unqork Digital.
+          Created utility classes that let configurators make CSS changes without engineering support—a practice Unqork Digital adopted years later.
 
 
-          Played a key role in transitioning the Module/App Builder from v1 to v2, with much of my input on design, styles, and behavior still in use today.
+          Helped transition the Module/App Builder from v1 to v2; much of that work on design, styles, and behavior is still in use today.
         skills:
           [
             Angular,
@@ -279,10 +272,10 @@ experience:
         location: Brooklyn, New York City
         remote: true
         description: >
-          Actively engaged in every phase of project development, ensuring comprehensive involvement from inception to completion. Responsible for creating bespoke web applications that consumed external APIs, providing design and UX consultation, and acting as a for-hire engineer for a variety of development needs.
+          Build bespoke web applications, provide design and UX consultation, and take on for-hire engineering work—involved in every phase from inception to launch.
 
 
-          Demonstrated advanced full-stack development capabilities through various projects, integrating REST APIs and utilizing server-rendered architectures with technologies such as Node, Express, GraphQL, Apollo, React, and Redux.
+          Projects have spanned REST and GraphQL API integrations and server-rendered architectures built with Node, Express, Apollo, React, and Redux—including a major application for Paraguay's largest testing laboratory.
 
         skills:
           [
@@ -352,19 +345,16 @@ experience:
           start: 2014-03-01
           end: 2016-08-01
         description: >
-          Actively engaged in the creation and advancement of key technical projects, including YaleMedicine.org and Bundoo.com.
+          Led front-end development on YaleMedicine.org and Bundoo.com, contributing to strategic planning and user experience design on both.
 
 
-          Played a crucial role in strategic planning and enhancing the user experience design aspects of these projects.
+          Set and enforced the team's development standards—code style, linting, and Git branch management.
 
 
-          Implemented and enforced robust development standards encompassing code style guidelines, linting practices, and efficient Git branch management.
+          Bundoo earned an honorable mention at the Webby Awards.
 
 
-          My significant contributions to Bundoo were recognized with an honorable mention at the Webby Awards.
-
-
-          Led the deployment of the Yale School of Medicine website, utilizing a tech stack that included Gulp, Webpack, React, and PostCSS, alongside aiding in the integration with .NET back-end technologies.
+          Led the deployment of the Yale School of Medicine website, built with Gulp, Webpack, React, and PostCSS and integrated with a .NET back end.
         skills:
           [
             React,
@@ -398,10 +388,10 @@ experience:
           Recruited, trained, and managed a diverse team of freelancers, both locally and internationally.
 
 
-          Provided consultancy on UI design, UX development, and creating cross-browser/platform compatible experiences.
+          Consulted on UI design, UX, and cross-browser/platform compatibility.
 
 
-          Spearheaded the development of progressive-enhanced front-end solutions.
+          Built progressively enhanced front ends across client projects.
 
 
           Worked with high-profile brands such as Ciroc Vodka, Macy's, Casio, W.W. Glass, and David's Bridal, as well as the Venture Development Center, contributing significantly to both client-facing and internal projects.
@@ -574,14 +564,14 @@ experience:
           [Communication, Art Direction, Print Design, Digital Technologies]
 ---
 
-My career has been an exciting journey through various roles, always with a focus on blending technology and design to deliver top-notch user experiences.
+My career has moved through design, front-end, and full-stack roles, always focused on blending technology and design into experiences people enjoy using.
 
 Currently I'm contracting at Assembled through Present Day, where I drive the Assemblage 2.0 design system migration across a large production codebase. I build the foundational components and then migrate the product onto them myself—page architecture, global navigation, and a token migration made tractable by codemods and a custom lint rule. Alongside the platform work, I ship product features and fix accessibility issues at the shared layer, so every surface inherits the improvement.
 
-Earlier at Unqork, I was a key player since day one, helping to build the Platform UI team and develop the Unqork Design System (UQDS). This system became a cornerstone of the platform, enhancing its functionality and user experience. I also worked on integrating that system into component settings and pioneering component creation using cutting-edge methodologies.
+Earlier at Unqork, I was there from day one—helping build the Platform UI team and develop the Unqork Design System (UQDS), which became a cornerstone of the platform. I later integrated that system into component settings and built new components on the platform's Vega runtime engine.
 
-Through Present Day, I've led full-stack development projects for over a decade, including a major application for Paraguay's largest testing laboratory. My work demonstrated my ability to deliver advanced solutions while collaborating across time zones and cultures.
+Through Present Day, I've led full-stack development projects for over a decade, including a major application for Paraguay's largest testing laboratory—work that meant collaborating across time zones and cultures.
 
-At Adoptive, I played a crucial role in projects like YaleMedicine.org and Bundoo.com, earning an honorable mention at the Webby Awards. My contributions to user experience design and strategic planning were instrumental in these successes.
+At Adoptive, I led front-end work on YaleMedicine.org and Bundoo.com, the latter earning an honorable mention at the Webby Awards.
 
 I'm passionate about communication, mentoring, and driving innovation. Whether it's through developing robust applications or enhancing user interfaces, I strive to create impactful and enjoyable digital experiences.
