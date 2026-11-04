@@ -5,12 +5,20 @@ import { Drawer as DrawerPrimitive } from "vaul"
 
 import { cn } from "@/lib/utils"
 
+// On iOS, vaul pins <body> with position: fixed and scrolls the window to the
+// top, which shifts the page mid-tap so taps land on the wrong element. Radix's
+// scroll lock is enough here, and no [vaul-drawer-wrapper] exists to scale.
+// Note: vaul inverts this flag; `false` is what turns its iOS scroll hack off.
 const Drawer = ({
-  shouldScaleBackground = true,
+  shouldScaleBackground = false,
+  noBodyStyles = true,
+  disablePreventScroll = false,
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Root>) => (
   <DrawerPrimitive.Root
     shouldScaleBackground={shouldScaleBackground}
+    noBodyStyles={noBodyStyles}
+    disablePreventScroll={disablePreventScroll}
     {...props}
   />
 )
