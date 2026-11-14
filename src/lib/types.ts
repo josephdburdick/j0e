@@ -24,6 +24,15 @@ export interface Role {
   remote?: boolean
   description: string
   skills: string[]
+  engagements?: Engagement[]
+}
+
+export interface Engagement {
+  name: string
+  href?: string
+  note?: string
+  start: string
+  end: string | null
 }
 
 export interface Job {

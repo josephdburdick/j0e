@@ -8,6 +8,7 @@ import { Location } from "@/components/global/Location"
 import { LogoMarquee } from "@/components/global/LogoMarquee"
 import { MainHeader } from "@/components/global/MainHeader"
 import { MainNav } from "@/components/global/MainNav"
+import { NowLine } from "@/components/global/NowLine"
 import { Weather } from "@/components/global/Weather"
 import { useApi } from "@/components/providers/DataProvider"
 import { ContactLink } from "@/lib/types"
@@ -192,6 +193,7 @@ export function Intro() {
               <div className="prose prose-scale mx-auto max-w-[65ch] text-pretty text-center dark:prose-invert">
                 <h2 className="sr-only">Introduction</h2>
                 <div dangerouslySetInnerHTML={{ __html: data.intro.html }} />
+                <NowLine />
                 <LogoMarquee />
               </div>
             </main>
