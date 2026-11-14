@@ -7,6 +7,7 @@ import { Intro } from "./_content/Intro"
 import OpenSource from "./_content/OpenSource"
 import { SectionNav } from "@/components/global/SectionNav"
 import Recommendations from "./_content/Recommendations"
+import Shipped from "./_content/Shipped"
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await api()
@@ -68,6 +69,7 @@ export default async function Home() {
       <Intro />
       <Recommendations />
       <Experience />
+      <Shipped />
       <OpenSource />
       <About />
     </main>
