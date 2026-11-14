@@ -1,11 +1,12 @@
 ---
 title: Open Source
-subtitle: Published packages and products—shipped, documented, and maintained in the open
+subtitle: Published packages—shipped, documented, and maintained in the open
 github:
   url: https://github.com/josephdburdick
   label: "@josephdburdick"
 projects:
   - name: "@present-day/drawer"
+    npm: "@present-day/drawer"
     description: >
       A flexible, performant React drawer/modal component library with smooth
       animations and customizable snap points. Built with TypeScript and Framer
@@ -17,6 +18,7 @@ projects:
         label: GitHub
     tags: [React, TypeScript, Framer Motion, MIT]
   - name: "@present-day/buzz"
+    npm: "@present-day/buzz"
     description: >
       A cross-platform haptic and audio feedback library that brings modern
       tactile interactions to web applications across all devices and platforms.
@@ -27,6 +29,7 @@ projects:
         label: GitHub
     tags: [TypeScript, Haptics, Web Audio, MIT]
   - name: "@present-day/reveal-row"
+    npm: "@present-day/reveal-row"
     description: >
       Horizontally scrollable row that reveals action columns on the left,
       right, or both sides, with three snap positions. Styling is entirely via
@@ -37,13 +40,18 @@ projects:
       - url: https://github.com/present-day/reveal-row
         label: GitHub
     tags: [React, TypeScript, Mobile UX, MIT]
-  - name: Cue Quest
+  - name: "@present-day/carousel"
+    npm: "@present-day/carousel"
     description: >
-      Crowdsourced social billiards app connecting players to places. Map-first
-      discovery, reviews, and social features—founded, designed, and built
-      end-to-end.
+      Headless React carousel built on native CSS scroll snap. The browser owns
+      the momentum and snapping; the package adds active-slide state and the
+      WAI-ARIA carousel pattern, with zero runtime dependencies.
     links:
-      - url: https://cue.quest
-        label: cue.quest
-    tags: [Next.js, TypeScript, tRPC, Supabase]
+      - url: https://www.npmjs.com/package/@present-day/carousel
+        label: npm
+      - url: https://present-day.github.io/carousel/
+        label: Playground
+      - url: https://github.com/present-day/carousel
+        label: GitHub
+    tags: [React, TypeScript, CSS Scroll Snap, MIT]
 ---

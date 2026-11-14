@@ -12,7 +12,7 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-  # Weekly rebuild so the GitHub contribution graph stays fresh
+  # Weekly rebuild so the GitHub contribution graph and npm counts stay fresh
   schedule:
     - cron: "0 6 * * 1"
 
@@ -108,6 +108,8 @@ jobs:
         run: node scripts/fetch-github-contributions.mjs
         env:
           GITHUB_TOKEN: ${{ github.token }}
+      - name: Fetch npm download counts
+        run: node scripts/fetch-npm-downloads.mjs
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.build_command }}
       - name: Upload artifact

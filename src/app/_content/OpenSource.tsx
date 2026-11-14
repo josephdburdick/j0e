@@ -2,15 +2,11 @@
 
 import { ContributionGraph } from "@/components/global/ContributionGraph"
 import ExternalLink from "@/components/global/ExternalLink"
+import { NpmDownloads } from "@/components/global/NpmDownloads"
 import RuleHeader from "@/components/global/RuleHeader"
 import { useApi } from "@/components/providers/DataProvider"
 import { Badge } from "@/components/ui/badge"
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 type ProjectLink = {
   url: string
@@ -19,6 +15,7 @@ type ProjectLink = {
 
 type Project = {
   name: string
+  npm?: string
   description: string
   links: ProjectLink[]
   tags: string[]
@@ -35,6 +32,7 @@ export default function OpenSource() {
     >
       <CardHeader className="pb-3">
         <CardTitle className="break-words text-base">{project.name}</CardTitle>
+        {project.npm && <NpmDownloads name={project.npm} />}
       </CardHeader>
       <CardContent className="flex flex-1 flex-col justify-between gap-4">
         <p className="text-sm text-foreground/90">{project.description}</p>
@@ -42,7 +40,11 @@ export default function OpenSource() {
           <ul className="flex flex-wrap gap-x-2 gap-y-1">
             {project.tags.map((tag) => (
               <li key={tag}>
-                <Badge variant="outline" size="sm" className="text-foreground/90">
+                <Badge
+                  variant="outline"
+                  size="sm"
+                  className="text-foreground/90"
+                >
                   {tag}
                 </Badge>
               </li>
@@ -63,7 +65,7 @@ export default function OpenSource() {
   return (
     <section
       id="open-source"
-      className="items-center justify-center space-y-8 py-8 lg:py-24 xl:py-36"
+      className="items-center justify-center space-y-8 bg-secondary/80 py-8 lg:py-24 xl:py-36"
       aria-labelledby="open-source-title"
     >
       <div className="container space-y-4">
