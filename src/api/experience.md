@@ -64,29 +64,36 @@ experience:
         remote: true
         type: Contract
         date:
-          start: 2025-01-01
+          start: 2023-11-01
           end: null
         description: >
-          Founded and built Cue Quest from concept to production—a map-based social platform for discovering and reviewing places—owning strategy, design, and full-stack engineering end to end.
+          Founded and built Cue Quest, a family of billiards apps, from concept to production—owning strategy, design, and full-stack engineering end to end across nearly 5,000 commits.
 
-          - **Product & Design**: Mapped the core user flows and built the UI on a reusable component system, so screens stayed consistent as the product grew
+          - **Cue Quest app**: A match tracker and table finder for casual players. Log wins against friends, find the nearest billiards spot, and install it straight from the browser
 
-          - **Architecture**: Next.js App Router, TypeScript, tRPC, and Supabase, with type safety running from the database schema to the UI
+          - **Shot Clock**: A tournament shot clock released on the App Store in November 2026. A spare tablet becomes the display, the host runs it from their phone, and spectators watch live in the browser over Supabase Realtime
 
-          - **Features**: Map-first discovery, reviews, and social features including follows and notifications
+          - **Rack**: A venue product in pilot—table queue kiosk, reservations, and league blocks—sharing one Supabase project with the player app
 
-          - **Quality**: Responsive, accessible interfaces backed by Playwright end-to-end tests and Vitest unit coverage
+          - **Architecture**: Next.js App Router, TypeScript, and Supabase, with Expo for native apps and type safety running from the database schema to the UI
+
+          - **Quality**: Localized, accessible interfaces backed by Playwright end-to-end tests and Vitest unit coverage
 
         skills:
           [
             "Next.js",
+            "Expo",
+            "React Native",
             "TypeScript",
             "tRPC",
             "Supabase",
+            "Supabase Realtime",
             "shadcn/ui",
             "Tailwind",
             "Playwright",
             "Vitest",
+            "i18n",
+            "App Store Release",
             "Product Strategy",
             "UX Design",
             "System Architecture",
@@ -98,6 +105,85 @@ experience:
             "Analytics",
             "Performance",
             "Documentation",
+          ]
+
+  - company: Present Day
+    logo:
+      src: ${basePath}/assets/images/logos/presentday.svg
+      width: 85
+      height: 85
+    roles:
+      - title: Founder & Principal Engineer
+        type: Studio
+        date:
+          start: 2017-04-01
+          end: null
+        location: Brooklyn, New York
+        remote: true
+        description: >
+          My design and engineering studio. Clients hire it for design systems and full-stack product work; it also builds and runs its own apps and publishes open-source React packages.
+
+
+          Earlier work spanned REST and GraphQL integrations and server-rendered apps built with Node, Express, Apollo, React, and Redux—including a major application for Paraguay's largest testing laboratory.
+
+        engagements:
+          - name: Assembled
+            href: "#assembled"
+            note: Senior Software Engineer on contract. Design system 2.0, navigation, and token migrations
+            start: 2026-01-01
+            end: null
+          - name: Where Is Johnny
+            href: https://whereisjohnny.com
+            note: Trip tracker with a delayed public map and a private live link for family
+            start: 2026-11-01
+            end: 2026-11-01
+          - name: Cue Quest Shot Clock
+            href: https://apps.apple.com/us/app/cue-quest-shot-clock/id6824671081
+            note: Tournament shot clock for iOS, released on the App Store Nov 2, 2026
+            start: 2026-08-01
+            end: 2026-11-01
+          - name: Rack
+            note: In stealth. Software for billiards venues
+            start: 2026-10-01
+            end: null
+          - name: Ola
+            note: In stealth. A mental health clinic
+            start: 2026-09-01
+            end: null
+          - name: Pooltabl.es
+            href: https://pooltabl.es
+            note: Ongoing US marketplace for pool tables and directory of the pros who service them
+            start: 2026-05-01
+            end: null
+          - name: Delaware Water Disaster
+            href: "#delaware-water-disaster"
+            note: Content platform on Next.js and Payload CMS
+            start: 2025-09-01
+            end: 2025-11-01
+          - name: Open source
+            href: "#open-source"
+            note: Four React packages on npm—drawer, buzz, reveal-row, and carousel
+            start: 2026-04-01
+            end: null
+          - name: Cue Quest
+            href: "#cue-quest"
+            note: The studio's own product. Match tracker and table finder for casual players
+            start: 2023-11-01
+            end: null
+        skills:
+          [
+            React,
+            Next.js,
+            TypeScript,
+            Node,
+            Design Systems,
+            Full-stack Development,
+            Product Strategy,
+            UX Consultation,
+            Visual Design,
+            API Design,
+            Open Source,
+            Client Management,
           ]
 
   - company: Delaware Water Disaster
@@ -256,39 +342,6 @@ experience:
             Theme Development,
             Utility Classes,
             Module Transition,
-          ]
-
-  - company: Present Day
-    logo:
-      src: ${basePath}/assets/images/logos/presentday.svg
-      width: 85
-      height: 85
-    roles:
-      - title: Principal Web Engineer
-        type: Contract
-        date:
-          start: 2017-04-01
-          end: null
-        location: Brooklyn, New York City
-        remote: true
-        description: >
-          Build bespoke web applications, provide design and UX consultation, and take on for-hire engineering work—involved in every phase from inception to launch.
-
-
-          Projects have spanned REST and GraphQL API integrations and server-rendered architectures built with Node, Express, Apollo, React, and Redux—including a major application for Paraguay's largest testing laboratory.
-
-        skills:
-          [
-            React,
-            Node,
-            JavaScript,
-            Web Standards,
-            Full-stack Development,
-            REST API Integration,
-            Server-rendered Architecture,
-            UX Consultation,
-            Visual Design,
-            API Design,
           ]
 
   - company: Joey
@@ -570,7 +623,7 @@ Currently I'm contracting at Assembled through Present Day, where I drive the As
 
 Earlier at Unqork, I was there from day one—helping build the Platform UI team and develop the Unqork Design System (UQDS), which became a cornerstone of the platform. I later integrated that system into component settings and built new components on the platform's Vega runtime engine.
 
-Through Present Day, I've led full-stack development projects for over a decade, including a major application for Paraguay's largest testing laboratory—work that meant collaborating across time zones and cultures.
+Through Present Day, I've led full-stack development projects for over a decade, including a major application for Paraguay's largest testing laboratory—work that meant collaborating across time zones and cultures. The studio also builds its own products: Cue Quest, a billiards match tracker and table finder, and Cue Quest Shot Clock, released on the App Store in November 2026.
 
 At Adoptive, I led front-end work on YaleMedicine.org and Bundoo.com, the latter earning an honorable mention at the Webby Awards.
 

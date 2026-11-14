@@ -7,6 +7,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/global/Collapsible"
 import DateSpan from "@/components/global/DateSpan"
+import { EngagementList } from "@/components/global/EngagementList"
 import Icon from "@/components/global/Icon"
 import RuleHeader from "@/components/global/RuleHeader"
 import { useApi } from "@/components/providers/DataProvider"
@@ -135,6 +136,9 @@ export default function Experience() {
                     __html: convertNewLinesToHTML(role.description),
                   }}
                 ></div>
+                {role.engagements && role.engagements.length > 0 && (
+                  <EngagementList engagements={role.engagements} />
+                )}
                 <ul className="flex flex-wrap items-center gap-x-2 gap-y-1">
                   {role?.skills?.sort().map(renderSkill)}
                 </ul>
