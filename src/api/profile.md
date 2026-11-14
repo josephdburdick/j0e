@@ -64,12 +64,12 @@ By my early twenties, I had already accumulated extensive experience in web deve
 and project management. Over the years, I have contributed to numerous projects, continuously
 expanding my expertise and passion for creating exceptional digital experiences.
 
-Currently I am a Senior Software Engineer contracting at Assembled through Present Day, my studio.
-There I drive the Assemblage 2.0 design system migration across a production codebase of more than
-10,000 commits—building the page architecture and global navigation foundations, then migrating the
-product onto them, and writing the codemods and custom lint rules that let a company-wide design token
-migration actually finish. Through the studio I also build my own products: Cue Quest, and its
-tournament Shot Clock, released on the App Store in November 2026.
+Most recently I was a Senior Software Engineer contracting at Assembled through Present Day, my
+studio, from January to September 2026. There I drove the Assemblage 2.0 design system migration
+across a production codebase of more than 10,000 commits—building the page architecture and global
+navigation foundations, then migrating the product onto them, and writing the codemods and custom lint
+rules that let a company-wide design token migration actually finish. Through the studio I also build
+my own products: Cue Quest, and its tournament Shot Clock, released on the App Store in November 2026.
 
 Previously I spent six years at Unqork, a SaaS platform based in New York City now valued at over
 $2 billion. As a founding member of the Platform UI team, I played a pivotal role in developing the
