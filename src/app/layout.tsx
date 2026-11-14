@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | Joe Burdick",
   },
   description:
-    "Senior Software Engineer with 20+ years of experience building innovative web applications. Expert in React, TypeScript, design systems, and user experience. Currently at Unqork, previously founded E3R platform.",
+    "Senior Software Engineer with 20+ years of experience building innovative web applications. Expert in React, TypeScript, design systems, and user experience. Founder of Present Day, a design and engineering studio, and maker of Cue Quest.",
   keywords: [
     "Joe Burdick",
     "software engineer",

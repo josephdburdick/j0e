@@ -15,7 +15,7 @@ experience:
         showType: true
         date:
           start: 2026-01-01
-          end: null
+          end: 2026-09-01
         description: >
           Contract engagement through Present Day. Primary driver of the Assemblage 2.0 design system migration inside a 10,000+ commit production codebase, ranking a top-5 contributor by commit volume. Built foundations, then personally migrated the product onto them rather than handing them off and hoping adoption followed.
 
@@ -131,7 +131,7 @@ experience:
             href: "#assembled"
             note: Senior Software Engineer on contract. Design system 2.0, navigation, and token migrations
             start: 2026-01-01
-            end: null
+            end: 2026-09-01
           - name: Where Is Johnny
             href: https://whereisjohnny.com
             note: Trip tracker with a delayed public map and a private live link for family
@@ -619,7 +619,7 @@ experience:
 
 My career has moved through design, front-end, and full-stack roles, always focused on blending technology and design into experiences people enjoy using.
 
-Currently I'm contracting at Assembled through Present Day, where I drive the Assemblage 2.0 design system migration across a large production codebase. I build the foundational components and then migrate the product onto them myself—page architecture, global navigation, and a token migration made tractable by codemods and a custom lint rule. Alongside the platform work, I ship product features and fix accessibility issues at the shared layer, so every surface inherits the improvement.
+Most recently I contracted at Assembled through Present Day, from January to September 2026, where I drove the Assemblage 2.0 design system migration across a large production codebase. I built the foundational components and then migrated the product onto them myself—page architecture, global navigation, and a token migration made tractable by codemods and a custom lint rule. Alongside the platform work, I shipped product features and fixed accessibility issues at the shared layer, so every surface inherited the improvement.
 
 Earlier at Unqork, I was there from day one—helping build the Platform UI team and develop the Unqork Design System (UQDS), which became a cornerstone of the platform. I later integrated that system into component settings and built new components on the platform's Vega runtime engine.
 
