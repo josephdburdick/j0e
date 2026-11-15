@@ -1,12 +1,12 @@
 "use client"
 
-import { AppScreens, Screenshot } from "@/components/global/AppScreens"
+import { AppScreens } from "@/components/global/AppScreens"
 import ExternalLink from "@/components/global/ExternalLink"
 import RuleHeader from "@/components/global/RuleHeader"
-import { ShotClockDemo } from "@/components/global/ShotClockDemo"
 import { useApi } from "@/components/providers/DataProvider"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
+import type { Screenshot } from "@/lib/screenshots"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 
@@ -21,7 +21,6 @@ type StealthProject = { name: string; note?: string }
 type App = {
   name: string
   featured?: boolean
-  demo?: "shot-clock"
   icon: string
   tagline: string
   description: string
@@ -159,16 +158,12 @@ export default function Shipped() {
           {featured.map((app) => (
             <Card
               key={app.name}
-              className="grid items-center gap-6 bg-background/60 p-6 sm:grid-cols-[16rem_1fr] lg:grid-cols-[16rem_1fr_16rem]"
+              className="grid items-center gap-6 bg-background/60 p-6 sm:grid-cols-2 sm:gap-8"
             >
-              {app.demo === "shot-clock" && <ShotClockDemo />}
-              <AppDetails app={app} />
               {app.screenshots && (
-                <AppScreens
-                  screenshots={app.screenshots}
-                  className="sm:col-span-2 lg:col-span-1"
-                />
+                <AppScreens title={app.name} screenshots={app.screenshots} />
               )}
+              <AppDetails app={app} />
             </Card>
           ))}
           <div
@@ -184,7 +179,7 @@ export default function Shipped() {
                 className="flex flex-col gap-5 bg-background/60 p-6"
               >
                 {app.screenshots && (
-                  <AppScreens screenshots={app.screenshots} />
+                  <AppScreens title={app.name} screenshots={app.screenshots} />
                 )}
                 <AppDetails app={app} />
               </Card>

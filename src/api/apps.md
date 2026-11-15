@@ -11,7 +11,6 @@ apps:
         kind: mobile
         alt: "The Shot Clock remote on a phone, with extension, pause, and reset buttons"
     featured: true
-    demo: shot-clock
     icon: ${basePath}/assets/images/apps/cue-quest-shot-clock.webp
     tagline: The pool timer the whole room can watch.
     description: >
