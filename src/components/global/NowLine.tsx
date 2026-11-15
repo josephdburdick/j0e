@@ -29,7 +29,7 @@ export function NowLine() {
   return (
     <aside
       aria-label="What I'm doing now"
-      className="not-prose mx-auto grid w-full max-w-md gap-3 rounded-2xl border border-border bg-background/60 p-4 text-left text-sm text-foreground/90 shadow-sm backdrop-blur-sm"
+      className="not-prose mx-auto -mb-8 grid w-full max-w-md gap-3 rounded-2xl border border-border bg-background/60 p-4 pb-8 text-left [mask-image:linear-gradient(to_bottom,black_calc(100%-2rem),transparent)] text-sm text-foreground/90 shadow-sm backdrop-blur-sm"
     >
       <div className="flex items-center justify-between gap-3">
         <span className="inline-flex items-center gap-1.5 rounded-full bg-lime-500/15 px-2 py-0.5 text-xs font-semibold text-lime-700 dark:text-lime-400">
