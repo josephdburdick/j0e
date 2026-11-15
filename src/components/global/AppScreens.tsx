@@ -55,8 +55,27 @@ export function AppScreens({
   className?: string
 }) {
   const large = screenshots.find((shot) => shot.kind !== "mobile")
-  const phone = screenshots.find((shot) => shot.kind === "mobile")
+  const phones = screenshots.filter((shot) => shot.kind === "mobile")
+  const phone = phones[0]
   if (!large && !phone) return null
+
+  if (!large && phones.length > 1) {
+    return (
+      <div className={cn("flex items-center justify-center gap-2", className)}>
+        {phones.map((shot, index) => (
+          <Shot
+            key={shot.src}
+            shot={shot}
+            sizes="(min-width: 768px) 100px, 30vw"
+            className={cn(
+              "w-1/3 max-w-[150px] rounded-xl",
+              index % 2 === 1 && "-translate-y-3 hover:-translate-y-3.5",
+            )}
+          />
+        ))}
+      </div>
+    )
+  }
 
   // Tablet frames are portrait, so they sit side by side with the phone.
   if (large?.kind === "tablet") {

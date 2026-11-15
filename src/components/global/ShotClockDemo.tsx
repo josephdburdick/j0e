@@ -12,6 +12,8 @@ const CENTER = SIZE / 2
 // Server and client trig can differ in the last digit, which breaks hydration.
 const round = (value: number) => Math.round(value * 100) / 100
 
+// Shot Clock's own palette (src/ui/theme.ts in the app), kept dark in both
+// site themes because the app only ships dark.
 export function ShotClockDemo({ className }: { className?: string }) {
   const [left, setLeft] = useState(SHOT)
   const [running, setRunning] = useState(false)
@@ -38,14 +40,14 @@ export function ShotClockDemo({ className }: { className?: string }) {
 
   const tone = left <= 5 ? "red" : left <= 10 ? "amber" : "ok"
   const toneText = {
-    ok: "text-foreground",
-    amber: "text-amber-500",
-    red: "text-red-500",
+    ok: "text-white",
+    amber: "text-[#F59E0B]",
+    red: "text-[#FF3B30]",
   }[tone]
   const toneStroke = {
-    ok: "stroke-foreground",
-    amber: "stroke-amber-500",
-    red: "stroke-red-500",
+    ok: "stroke-[#22C55E]",
+    amber: "stroke-[#F59E0B]",
+    red: "stroke-[#FF3B30]",
   }[tone]
 
   const toggle = () => {
@@ -64,11 +66,14 @@ export function ShotClockDemo({ className }: { className?: string }) {
   }
 
   const buttonClass =
-    "rounded-md border border-border px-3 py-1.5 text-sm font-semibold transition-colors hover:bg-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+    "rounded-md border border-[#292524] px-2.5 py-1.5 text-sm font-semibold text-[#F2F2F2] transition-colors hover:bg-[#1C1917] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#22C55E]"
 
   return (
     <div
-      className={cn("flex flex-col items-center gap-4", className)}
+      className={cn(
+        "flex flex-col items-center gap-4 rounded-2xl bg-[#0C0A09] px-3 py-5",
+        className,
+      )}
       role="group"
       aria-label="Shot clock demo"
     >
@@ -93,7 +98,7 @@ export function ShotClockDemo({ className }: { className?: string }) {
                 strokeLinecap="round"
                 className={cn(
                   "transition-colors duration-200 motion-reduce:duration-0",
-                  i < left ? toneStroke : "stroke-border",
+                  i < left ? toneStroke : "stroke-[#292524]",
                 )}
               />
             )
@@ -108,13 +113,13 @@ export function ShotClockDemo({ className }: { className?: string }) {
           {left}
         </span>
       </div>
-      <div className="flex flex-wrap justify-center gap-2">
+      <div className="flex flex-wrap justify-center gap-1.5">
         <button
           type="button"
           onClick={toggle}
           className={cn(
             buttonClass,
-            "border-foreground bg-foreground text-background hover:bg-foreground/90",
+            "border-[#22C55E] bg-[#22C55E] text-[#052E16] hover:bg-[#16A34A]",
           )}
         >
           {running ? "Pause" : "Start"}

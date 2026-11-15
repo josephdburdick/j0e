@@ -10,7 +10,11 @@ import { Card } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 
-type AppLink = { url: string; label: string }
+type AppLink = {
+  url: string
+  label: string
+  badge?: { light: string; dark: string }
+}
 
 type StealthProject = { name: string; note?: string }
 
@@ -46,6 +50,39 @@ function StatusPill({ app }: { app: App }) {
   )
 }
 
+// Store guidelines require the stores' own badge artwork for this wording.
+function StoreBadge({
+  link,
+  badge,
+}: {
+  link: AppLink
+  badge: NonNullable<AppLink["badge"]>
+}) {
+  return (
+    <a
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+    >
+      <Image
+        src={badge.light}
+        alt={link.label}
+        width={120}
+        height={40}
+        className="h-10 w-auto dark:hidden"
+      />
+      <Image
+        src={badge.dark}
+        alt={link.label}
+        width={120}
+        height={40}
+        className="hidden h-10 w-auto dark:block"
+      />
+    </a>
+  )
+}
+
 function AppDetails({ app }: { app: App }) {
   return (
     <div className="flex min-w-0 flex-1 flex-col gap-3">
@@ -57,11 +94,11 @@ function AppDetails({ app }: { app: App }) {
           height={48}
           className="size-12 shrink-0 rounded-xl"
         />
-        <div className="grid gap-1">
-          <h4 className="font-semibold text-foreground">{app.name}</h4>
-          <div>
-            <StatusPill app={app} />
-          </div>
+        <div className="flex min-w-0 flex-col items-start gap-1">
+          <h4 className="text-base font-semibold leading-tight text-foreground">
+            {app.name}
+          </h4>
+          <StatusPill app={app} />
         </div>
       </div>
       <p className="text-sm text-foreground/90">
@@ -77,12 +114,16 @@ function AppDetails({ app }: { app: App }) {
           </li>
         ))}
       </ul>
-      <div className="mt-auto flex flex-wrap gap-x-4 gap-y-1">
-        {app.links.map((link) => (
-          <ExternalLink key={link.url} href={link.url} className="text-sm">
-            {link.label}
-          </ExternalLink>
-        ))}
+      <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-1">
+        {app.links.map((link) =>
+          link.badge ? (
+            <StoreBadge key={link.url} link={link} badge={link.badge} />
+          ) : (
+            <ExternalLink key={link.url} href={link.url} className="text-sm">
+              {link.label}
+            </ExternalLink>
+          ),
+        )}
       </div>
     </div>
   )
@@ -118,7 +159,7 @@ export default function Shipped() {
           {featured.map((app) => (
             <Card
               key={app.name}
-              className="grid items-center gap-6 bg-background/60 p-6 sm:grid-cols-[14rem_1fr] lg:grid-cols-[14rem_1fr_17rem]"
+              className="grid items-center gap-6 bg-background/60 p-6 sm:grid-cols-[16rem_1fr] lg:grid-cols-[16rem_1fr_16rem]"
             >
               {app.demo === "shot-clock" && <ShotClockDemo />}
               <AppDetails app={app} />
@@ -150,22 +191,29 @@ export default function Shipped() {
             ))}
           </div>
           {stealth.length > 0 && (
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 rounded-xl border border-dashed border-border px-6 py-4 text-sm text-foreground/90">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/10 px-2 py-0.5 text-xs font-semibold text-foreground">
+            <div className="flex flex-col items-start gap-3 rounded-xl border border-dashed border-border px-5 py-4 text-sm text-foreground/90 sm:flex-row sm:items-center sm:justify-center sm:gap-6">
+              <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-foreground/10 px-2 py-0.5 text-xs font-semibold text-foreground">
                 <span
                   aria-hidden="true"
                   className="size-1.5 rounded-full bg-current"
                 />
                 In stealth
               </span>
-              {stealth.map((project) => (
-                <span key={project.name}>
-                  <strong className="font-semibold text-foreground">
-                    {project.name}
-                  </strong>
-                  {project.note && <> · {project.note}</>}
-                </span>
-              ))}
+              <ul className="grid gap-1.5 sm:flex sm:flex-wrap sm:gap-x-6">
+                {stealth.map((project) => (
+                  <li key={project.name}>
+                    <strong className="font-semibold text-foreground">
+                      {project.name}
+                    </strong>
+                    {project.note && (
+                      <span className="text-muted-foreground">
+                        {" "}
+                        · {project.note}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
         </div>

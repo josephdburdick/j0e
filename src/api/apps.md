@@ -23,16 +23,22 @@ apps:
     released: 2026-11-02
     links:
       - url: https://apps.apple.com/us/app/cue-quest-shot-clock/id6824671081
-        label: App Store
+        label: Download on the App Store
+        badge:
+          light: ${basePath}/assets/images/badges/app-store-download-en-black.svg
+          dark: ${basePath}/assets/images/badges/app-store-download-en-white.svg
     tags: [Expo, React Native, Supabase Realtime, i18n]
   - name: Cue Quest
     screenshots:
-      - src: ${basePath}/assets/images/shots/cue-quest-desktop.webp
-        kind: desktop
-        alt: "The Cue Quest home page on desktop, with a map of nearby pool tables"
-      - src: ${basePath}/assets/images/shots/cue-quest-mobile.webp
+      - src: ${basePath}/assets/images/shots/cue-quest-feed.webp
         kind: mobile
-        alt: "The Cue Quest home page on a phone"
+        alt: "The Cue Quest feed: players confirming tables and stamping spots"
+      - src: ${basePath}/assets/images/shots/cue-quest-matches.webp
+        kind: mobile
+        alt: "Cue Quest matches: start a match and see recent scores"
+      - src: ${basePath}/assets/images/shots/cue-quest-passport.webp
+        kind: mobile
+        alt: "Joe's Pool Passport: 60 spots in 6 cities, with milestones in progress"
     icon: ${basePath}/assets/images/apps/cue-quest.webp
     tagline: Track every match. Find your table.
     description: >
@@ -67,10 +73,10 @@ apps:
     screenshots:
       - src: ${basePath}/assets/images/shots/where-is-johnny-desktop.webp
         kind: desktop
-        alt: "Where Is Johnny on desktop: a dotted globe beside the latest trip post"
+        alt: "Where Is Johnny on desktop: the route through Baja California with check-ins beside the trip feed"
       - src: ${basePath}/assets/images/shots/where-is-johnny-mobile.webp
         kind: mobile
-        alt: "Where Is Johnny on a phone, showing the last public stop"
+        alt: "Where Is Johnny on a phone: the map zoomed to Baja California check-ins"
     icon: ${basePath}/assets/images/apps/where-is-johnny.webp
     tagline: A motorcycle trip you can follow.
     description: >

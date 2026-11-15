@@ -6,7 +6,14 @@ items:
     name: Cue Quest Shot Clock
     tail: to the App Store
     href: https://apps.apple.com/us/app/cue-quest-shot-clock/id6824671081
+    icon: ${basePath}/assets/images/apps/cue-quest-shot-clock.webp
+  - lead: Growing
+    name: Pooltabl.es
+    tail: one city at a time
+    href: https://pooltabl.es
+    icon: ${basePath}/assets/images/apps/pooltabl-es.webp
   - lead: Open to new contracts through
     name: Present Day
     href: "#present-day"
+    icon: ${basePath}/assets/images/logos/presentday.svg
 ---
