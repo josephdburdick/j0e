@@ -57,10 +57,11 @@ experience:
           ]
 
   - company: Present Day
+    url: https://present.day
     logo:
       src: ${basePath}/assets/images/logos/presentday.svg
-      width: 85
-      height: 85
+      width: 190
+      height: 152
     roles:
       - title: Founder & Principal Engineer
         type: Studio

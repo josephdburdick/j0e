@@ -37,6 +37,8 @@ export interface Engagement {
 
 export interface Job {
   company: string
+  /** The company's own site, linked from its Experience header. */
+  url?: string
   location: string
   logo?: Logo
   /* Item is permanently disabled */
@@ -53,6 +55,8 @@ export type FavIcon = {
 
 export type Experience = {
   company: string
+  /** The company's own site, linked from its Experience header. */
+  url?: string
   location?: string
   logo?: Logo
   /* Item is permanently disabled */

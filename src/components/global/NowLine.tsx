@@ -20,31 +20,6 @@ const formatUpdated = (value: string) =>
     timeZone: "UTC",
   })
 
-function ItemIcon({ src }: { src: string }) {
-  if (src.endsWith(".svg")) {
-    return (
-      <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-background ring-1 ring-border">
-        <Image
-          src={src}
-          alt=""
-          width={24}
-          height={24}
-          className="size-6 dark:invert"
-        />
-      </span>
-    )
-  }
-  return (
-    <Image
-      src={src}
-      alt=""
-      width={32}
-      height={32}
-      className="size-8 shrink-0 rounded-lg"
-    />
-  )
-}
-
 export function NowLine() {
   const { data } = useApi()
   const now = data.now?.attributes
@@ -76,7 +51,15 @@ export function NowLine() {
       <ul className="grid gap-2.5">
         {items.map((item) => (
           <li key={item.name} className="flex items-center gap-3">
-            {item.icon && <ItemIcon src={item.icon} />}
+            {item.icon && (
+              <Image
+                src={item.icon}
+                alt=""
+                width={32}
+                height={32}
+                className="size-8 shrink-0 rounded-lg"
+              />
+            )}
             <span className="text-pretty leading-snug">
               {item.lead && <>{item.lead} </>}
               {item.href ? (

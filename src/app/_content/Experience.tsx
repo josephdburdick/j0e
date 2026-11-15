@@ -8,6 +8,7 @@ import {
 } from "@/components/global/Collapsible"
 import DateSpan from "@/components/global/DateSpan"
 import { EngagementList } from "@/components/global/EngagementList"
+import ExternalLink from "@/components/global/ExternalLink"
 import Icon from "@/components/global/Icon"
 import RuleHeader from "@/components/global/RuleHeader"
 import { useApi } from "@/components/providers/DataProvider"
@@ -159,7 +160,13 @@ export default function Experience() {
       <div className="relative grid grid-cols-12">
         <div className="col-span-12 font-semibold md:col-span-8 md:col-start-4">
           <RuleHeader className="prose-scale-sm flex items-center gap-2">
-            <p>{experience.company}</p>
+            {experience.url ? (
+              <ExternalLink href={experience.url}>
+                {experience.company}
+              </ExternalLink>
+            ) : (
+              <p>{experience.company}</p>
+            )}
           </RuleHeader>
         </div>
       </div>
