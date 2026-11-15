@@ -2,57 +2,6 @@
 title: Experience
 subtitle: Showcasing my track record of user-focused innovation across diverse roles and industries
 experience:
-  - company: Assembled
-    logo:
-      src: ${basePath}/assets/images/logos/assembled.svg
-      width: 154
-      height: 24
-    roles:
-      - title: Senior Software Engineer
-        location: New York
-        remote: true
-        type: Contract
-        showType: true
-        date:
-          start: 2026-01-01
-          end: 2026-09-01
-        description: >
-          Contract engagement through Present Day. Primary driver of the Assemblage 2.0 design system migration inside a 10,000+ commit production codebase, ranking a top-5 contributor by commit volume. Built foundations, then personally migrated the product onto them rather than handing them off and hoping adoption followed.
-
-          - **App Layout**: Designed and shipped the new App Layout component—a composable page shell (header, content, footer) with scroll-aware sticky headers that pin, collapse, and reveal a divider on scroll, toggleable header slots, and full-bleed or centered reading-column layouts—then migrated 30+ product surfaces onto it
-
-          - **Navigation 2.0**: Shipped the GlobalNav rail end-to-end—foundational components, canonical primary nav IA, secondary accordion panel, collapse toggle with hover-intent expand, and a rollout notice for the opt-in flow
-
-          - **Design token migration**: Wrote the codemods and a custom `no-legacy-tokens` ESLint rule that made the spacing, typography, and color migrations tractable—single PRs safely touching 500–680 files, with lint severity escalated from warning to error so the migration actually finished
-
-          - **Agent schedule requests**: Rebuilt the request sheet into a modular, type-based structure with shared types and step builders, shipping a detail overlay that lets agents view, edit, and cancel time off, swaps, revisions, overtime, and VTO in one place
-
-          - **Smart Fields**: Drove a complex feature from ambiguous designs and an incomplete backend to a clean, on-schedule launch, resolving open questions with design and backend engineering along the way
-
-          - **Accessibility & mobile**: Fixed virtual keyboards obscuring option lists at the shared component layer, so every select and input flow inherited the improvement instead of taking N per-screen patches
-
-        skills:
-          [
-            React,
-            TypeScript,
-            Go,
-            Node,
-            Design Systems,
-            Design Tokens,
-            Codemods,
-            ESLint,
-            Storybook,
-            Accessibility,
-            Mobile UX,
-            API Design,
-            Performance,
-            Code Review,
-            Communication,
-            Mentorship,
-            Web Standards,
-            Fullstack,
-          ]
-
   - company: Cue Quest
     logo:
       src: ${basePath}/assets/images/logos/cue-quest.webp
@@ -184,6 +133,57 @@ experience:
             API Design,
             Open Source,
             Client Management,
+          ]
+
+  - company: Assembled
+    logo:
+      src: ${basePath}/assets/images/logos/assembled.svg
+      width: 154
+      height: 24
+    roles:
+      - title: Senior Software Engineer
+        location: New York
+        remote: true
+        type: Contract
+        showType: true
+        date:
+          start: 2026-01-01
+          end: 2026-09-01
+        description: >
+          Contract engagement through Present Day. Primary driver of the Assemblage 2.0 design system migration inside a 10,000+ commit production codebase, ranking a top-5 contributor by commit volume. Built foundations, then personally migrated the product onto them rather than handing them off and hoping adoption followed.
+
+          - **App Layout**: Designed and shipped the new App Layout component—a composable page shell (header, content, footer) with scroll-aware sticky headers that pin, collapse, and reveal a divider on scroll, toggleable header slots, and full-bleed or centered reading-column layouts—then migrated 30+ product surfaces onto it
+
+          - **Navigation 2.0**: Shipped the GlobalNav rail end-to-end—foundational components, canonical primary nav IA, secondary accordion panel, collapse toggle with hover-intent expand, and a rollout notice for the opt-in flow
+
+          - **Design token migration**: Wrote the codemods and a custom `no-legacy-tokens` ESLint rule that made the spacing, typography, and color migrations tractable—single PRs safely touching 500–680 files, with lint severity escalated from warning to error so the migration actually finished
+
+          - **Agent schedule requests**: Rebuilt the request sheet into a modular, type-based structure with shared types and step builders, shipping a detail overlay that lets agents view, edit, and cancel time off, swaps, revisions, overtime, and VTO in one place
+
+          - **Smart Fields**: Drove a complex feature from ambiguous designs and an incomplete backend to a clean, on-schedule launch, resolving open questions with design and backend engineering along the way
+
+          - **Accessibility & mobile**: Fixed virtual keyboards obscuring option lists at the shared component layer, so every select and input flow inherited the improvement instead of taking N per-screen patches
+
+        skills:
+          [
+            React,
+            TypeScript,
+            Go,
+            Node,
+            Design Systems,
+            Design Tokens,
+            Codemods,
+            ESLint,
+            Storybook,
+            Accessibility,
+            Mobile UX,
+            API Design,
+            Performance,
+            Code Review,
+            Communication,
+            Mentorship,
+            Web Standards,
+            Fullstack,
           ]
 
   - company: Delaware Water Disaster
