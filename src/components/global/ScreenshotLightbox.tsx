@@ -56,7 +56,7 @@ export function ScreenshotLightbox({
             event.preventDefault()
             returnFocusTo.focus()
           }}
-          className="fixed inset-0 z-50 flex flex-col text-white outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95"
+          className="fixed inset-0 z-50 flex flex-col text-white outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
         >
           {shown !== null && (
             <Gallery
@@ -82,6 +82,21 @@ function Gallery({
   initial: number
 }) {
   const [slide, setSlide] = useState(initial)
+  const gallery = useRef<HTMLDivElement>(null)
+
+  // Chrome fires a late scrollsnapchange naming slide 0 after the carousel
+  // jumps to a non-zero starting slide, so read the settled slide from the
+  // scroll position instead (every slide is the track's full width).
+  const syncFromScroll = (reported: number) => {
+    const track = gallery.current?.querySelector(
+      '[aria-roledescription="slide"]',
+    )?.parentElement
+    setSlide(
+      track && track.clientWidth > 0
+        ? Math.round(track.scrollLeft / track.clientWidth)
+        : reported,
+    )
+  }
   const last = screenshots.length - 1
 
   useEffect(() => {
@@ -104,7 +119,7 @@ function Gallery({
   }, [last])
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col">
+    <div ref={gallery} className="flex min-h-0 flex-1 flex-col">
       <header className="flex items-center justify-between gap-4 px-4 pb-2 pt-[max(1rem,env(safe-area-inset-top))] sm:px-6">
         <div className="min-w-0">
           <Dialog.Title className="truncate text-sm font-semibold">
@@ -125,7 +140,7 @@ function Gallery({
       <Carousel
         aria-label={`${title} screenshots`}
         slide={slide}
-        onSlideChange={setSlide}
+        onSlideChange={syncFromScroll}
         align="center"
         className="relative flex min-h-0 flex-1 flex-col"
         classNames={{
@@ -166,8 +181,7 @@ function Gallery({
           classNames={{
             list: "flex justify-center gap-2 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3",
             marker:
-              "overflow-hidden rounded-md opacity-50 ring-2 ring-transparent transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
-            markerActive: "opacity-100 ring-white",
+              "overflow-hidden rounded-md ring-2 ring-transparent transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white aria-[selected=false]:opacity-50 aria-[selected=false]:hover:opacity-80 aria-selected:ring-white",
           }}
           renderMarker={(i) => {
             const shot = screenshots[i]
