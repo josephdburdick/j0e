@@ -171,7 +171,7 @@ export default async function RootLayout({
               worksFor: {
                 "@type": "Organization",
                 name: "Present Day",
-                url: "https://presentday.io",
+                url: "https://present.day",
               },
               address: {
                 "@type": "PostalAddress",
