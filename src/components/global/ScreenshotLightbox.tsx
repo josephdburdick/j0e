@@ -82,21 +82,6 @@ function Gallery({
   initial: number
 }) {
   const [slide, setSlide] = useState(initial)
-  const gallery = useRef<HTMLDivElement>(null)
-
-  // Chrome fires a late scrollsnapchange naming slide 0 after the carousel
-  // jumps to a non-zero starting slide, so read the settled slide from the
-  // scroll position instead (every slide is the track's full width).
-  const syncFromScroll = (reported: number) => {
-    const track = gallery.current?.querySelector(
-      '[aria-roledescription="slide"]',
-    )?.parentElement
-    setSlide(
-      track && track.clientWidth > 0
-        ? Math.round(track.scrollLeft / track.clientWidth)
-        : reported,
-    )
-  }
   const last = screenshots.length - 1
 
   useEffect(() => {
@@ -119,7 +104,7 @@ function Gallery({
   }, [last])
 
   return (
-    <div ref={gallery} className="flex min-h-0 flex-1 flex-col">
+    <div className="flex min-h-0 flex-1 flex-col">
       <header className="flex items-center justify-between gap-4 px-4 pb-2 pt-[max(1rem,env(safe-area-inset-top))] sm:px-6">
         <div className="min-w-0">
           <Dialog.Title className="truncate text-sm font-semibold">
@@ -140,7 +125,7 @@ function Gallery({
       <Carousel
         aria-label={`${title} screenshots`}
         slide={slide}
-        onSlideChange={syncFromScroll}
+        onSlideChange={setSlide}
         align="center"
         className="relative flex min-h-0 flex-1 flex-col"
         classNames={{
