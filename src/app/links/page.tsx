@@ -45,16 +45,10 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: "/assets/images/profile.webp",
-          width: 96,
-          height: 96,
-          alt: `${name} - Professional Profile Picture`,
-        },
-        {
-          url: "/assets/images/meta/icon.png",
-          width: 512,
-          height: 512,
-          alt: `${name} - Contact Information & Links Logo`,
+          url: "/assets/images/meta/social-card.png",
+          width: 1200,
+          height: 630,
+          alt: `${name}: I design and build the whole product.`,
         },
       ],
     },
@@ -62,7 +56,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: `${name} - Contact & Links`,
       description: `All important links and contact information for ${name}. Find social media profiles, resume, portfolio, and professional contact details.`,
-      images: ["/assets/images/profile.webp", "/assets/images/meta/icon.png"],
+      images: ["/assets/images/meta/social-card.png"],
     },
     alternates: {
       canonical: "https://j0e.me/links",

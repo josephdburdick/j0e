@@ -28,6 +28,8 @@ recommendations:
 
       Any team would be lucky to have him and I strongly recommend Joe.
   - name: Roy V. Sutton
+    pull: "Joe is someone I consider to be a craftsman. His approach when working with code is to leave the code better than he found it."
+    pullCredit: Director of Engineering at Unqork. Managed Joe directly.
     company: unqork
     avatar: ${basePath}/assets/images/avatars/roy.webp
     title: Director of Engineering at Unqork
@@ -55,6 +57,8 @@ recommendations:
 
       I thoroughly enjoyed my time working with Joe, and I believe he would be a brilliant addition to any team.
   - name: Michael Foley
+    pull: "I always felt more comfortable with a solution after talking it through with Joe."
+    pullCredit: Senior Software Engineer at Datadog
     company: datadog
     avatar: ${basePath}/assets/images/avatars/foley.webp
     title: Senior Software Engineer at Datadog
@@ -67,6 +71,8 @@ recommendations:
 
       Joe asks the right questions to uncover edge cases, potential bugs, and scalability concerns. I always felt more comfortable with a solution after talking it through with Joe. Beyond his technical strengths, Joe is a pleasure to work with and brings a great energy to the team. Any team would be lucky to have him.
   - name: Eric Ma
+    pull: "He just doesn't do the work that he's assigned to do. Joe makes sure to understand the why."
+    pullCredit: Engineering Manager at Unqork
     company: unqork
     avatar: ${basePath}/assets/images/avatars/eric.webp
     title: Engineering Manager + Caregivers ERSG Engagement Co-Chair at Unqork

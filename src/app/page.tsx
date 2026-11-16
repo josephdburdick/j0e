@@ -1,77 +1,28 @@
-import { Metadata } from "next"
+import { SiteFooter } from "@/components/global/SiteFooter"
+import { SiteHeader } from "@/components/global/SiteHeader"
 
-import api from "../api"
 import About from "./_content/About"
-import Experience from "./_content/Experience"
-import { Intro } from "./_content/Intro"
+import ClientWork from "./_content/ClientWork"
+import Colleagues from "./_content/Colleagues"
+import Hero from "./_content/Hero"
 import OpenSource from "./_content/OpenSource"
-import { SectionNav } from "@/components/global/SectionNav"
-import Recommendations from "./_content/Recommendations"
+import Record from "./_content/Record"
 import Shipped from "./_content/Shipped"
 
-export async function generateMetadata(): Promise<Metadata> {
-  const data = await api()
-  const { name, title, location, intro } = data.profile.attributes
-
-  return {
-    title: "Portfolio & Resume",
-    description: `Portfolio and resume of ${name}, ${title} based in ${location}. ${intro}`,
-    keywords: [
-      "portfolio",
-      "resume",
-      "software engineer",
-      "web developer",
-      "React developer",
-      "TypeScript",
-      "design systems",
-      "UX designer",
-      "frontend engineer",
-      "New York developer",
-      "Brooklyn developer",
-      name.toLowerCase(),
-    ],
-    openGraph: {
-      title: `${name} - Portfolio & Resume`,
-      description: `Portfolio and resume of ${name}, ${title} based in ${location}. ${intro}`,
-      url: "https://j0e.me/",
-      type: "website",
-      images: [
-        {
-          url: "/assets/images/profile.webp",
-          width: 96,
-          height: 96,
-          alt: `${name} - Professional Profile Picture`,
-        },
-        {
-          url: "/assets/images/meta/icon.png",
-          width: 512,
-          height: 512,
-          alt: `${name} - Software Engineer Portfolio Logo`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${name} - Portfolio & Resume`,
-      description: `Portfolio and resume of ${name}, ${title} based in ${location}. ${intro}`,
-      images: ["/assets/images/profile.webp", "/assets/images/meta/icon.png"],
-    },
-    alternates: {
-      canonical: "https://j0e.me/",
-    },
-  }
-}
-
-export default async function Home() {
+export default function Home() {
   return (
-    <main className="duration-700 animate-in fade-in motion-reduce:duration-0">
-      <SectionNav />
-      <Intro />
-      <Recommendations />
-      <Experience />
-      <Shipped />
-      <OpenSource />
-      <About />
-    </main>
+    <>
+      <SiteHeader />
+      <main className="shell flex flex-col text-[17px] leading-[1.55]">
+        <Hero />
+        <ClientWork />
+        <Shipped />
+        <OpenSource />
+        <Colleagues />
+        <Record />
+        <About />
+      </main>
+      <SiteFooter />
+    </>
   )
 }

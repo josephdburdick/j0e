@@ -1,77 +1,100 @@
 {
-  "fetchedAt": "2026-11-14T16:47:41.071Z",
-  "through": "2026-11-13",
+  "fetchedAt": "2026-11-16T07:24:44.346Z",
+  "through": "2026-11-15",
   "packages": [
     {
       "name": "@present-day/drawer",
-      "lastWeek": 101,
+      "lastWeek": 60,
+      "lastMonth": 352,
       "weekly": [
-        202,
+        198,
+        148,
+        133,
+        86,
+        160,
+        200,
         147,
-        122,
-        87,
-        126,
-        225,
-        159,
-        271,
-        124,
-        50,
-        70,
-        101
-      ]
-    },
-    {
-      "name": "@present-day/buzz",
-      "lastWeek": 96,
-      "weekly": [
-        153,
-        125,
-        118,
-        68,
-        122,
-        221,
-        152,
-        232,
-        124,
-        21,
-        68,
-        96
+        286,
+        80,
+        55,
+        103,
+        60
       ]
     },
     {
       "name": "@present-day/reveal-row",
-      "lastWeek": 111,
+      "lastWeek": 73,
+      "lastMonth": 361,
       "weekly": [
         173,
-        137,
-        126,
+        145,
+        122,
+        88,
+        331,
+        236,
+        319,
+        265,
         78,
-        124,
-        431,
-        168,
-        415,
-        127,
-        35,
-        74,
-        111
+        45,
+        109,
+        73
+      ]
+    },
+    {
+      "name": "@present-day/buzz",
+      "lastWeek": 55,
+      "lastMonth": 316,
+      "weekly": [
+        157,
+        130,
+        111,
+        85,
+        153,
+        198,
+        139,
+        249,
+        73,
+        33,
+        101,
+        55
+      ]
+    },
+    {
+      "name": "@present-day/scroll-area",
+      "lastWeek": 7,
+      "lastMonth": 23,
+      "weekly": [
+        0,
+        0,
+        0,
+        0,
+        247,
+        24,
+        5,
+        6,
+        1,
+        7,
+        5,
+        7
       ]
     },
     {
       "name": "@present-day/carousel",
-      "lastWeek": 4,
+      "lastWeek": 126,
+      "lastMonth": 133,
       "weekly": [
-        4,
+        6,
         8,
         2,
-        8,
+        6,
         4,
-        2,
         3,
         4,
-        0,
-        4,
         2,
-        4
+        0,
+        5,
+        2,
+        126
       ]
     }
   ]

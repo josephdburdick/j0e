@@ -1,65 +1,44 @@
-"use client"
-
-import ExternalLink from "@/components/global/ExternalLink"
-import { useApi } from "@/components/providers/DataProvider"
+import api from "@/api"
+import { Chapter, ChapterMark } from "@/components/global/Chapter"
 import Image from "next/image"
+import Link from "next/link"
 
-export default function Footer() {
-  const { data } = useApi()
-  const profile = data.profile.attributes
-  const { width, height, src, alt } = profile.bg
+export default async function About() {
+  const data = await api()
+  const { title, lead, paragraphs } = data.about.attributes
+  const { src, width, height } = data.profile.attributes.bg
 
-  const links = [
-    {
-      href: "https://github.com/josephdburdick/j0e",
-      children: "View Source Code",
-    },
-    {
-      href: "https://pagespeed.web.dev/report?url=https%3A%2F%2Fj0e.me",
-      children: "PageSpeed Insights",
-    },
-  ]
   return (
-    <section id="about" className="relative flex flex-col items-center bg-white">
-      <div className="border-lime-2200 relative mx-auto h-10 w-10 border-t-4 border-double"></div>
-      <div className="container z-10 mt-8 w-full items-center lg:absolute lg:mt-0 lg:flex lg:h-full">
-        <div className="grid gap-4 lg:grid-cols-2">
-          <div className="space-y-2 rounded-3xl text-sm backdrop-blur-md dark:text-black lg:p-8 xl:p-16">
-            <header className="font-semibold">About this site</header>
-            <p>
-              Edited in{" "}
-              <ExternalLink href="https://neovim.io">Neovim</ExternalLink>,
-              composed in{" "}
-              <ExternalLink href="https://www.npmjs.com/package/front-matter">
-                Front Matter
-              </ExternalLink>
-              , statically generated with{" "}
-              <ExternalLink href="https://nextjs.org">Next.js</ExternalLink>,
-              server hosted with{" "}
-              <ExternalLink href="https://github.com/features/actions">
-                Github Actions
-              </ExternalLink>
-              .
-            </p>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 pt-4">
-              {links.map((link, key) => (
-                <ExternalLink key={key} href={link.href} className="text-sm">
-                  {link.children}
-                </ExternalLink>
-              ))}
-            </div>
-          </div>
-        </div>
+    <Chapter
+      id="about"
+      labelledBy="about-title"
+      className="flex-row flex-wrap gap-x-16"
+    >
+      <div className="flex min-w-0 flex-[1_1_260px] flex-col gap-[18px]">
+        <h2 id="about-title">
+          <ChapterMark number="06">{title}</ChapterMark>
+        </h2>
+        <Image
+          src={src}
+          alt="Joe with two friends at the beach, in black and white"
+          width={width}
+          height={height}
+          sizes="(min-width: 1024px) 400px, 100vw"
+          loading="lazy"
+          className="cut h-[280px] w-full object-cover object-[80%_center]"
+        />
       </div>
-      <Image
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        sizes="(min-width: 1280px) 1320px, (min-width: 1024px) 900px, 100vw"
-        loading="lazy"
-        className="z-0 aspect-auto"
-      />
-    </section>
+      <div className="flex min-w-0 max-w-[64ch] flex-[2_1_460px] flex-col gap-[18px]">
+        <p className="text-[21px] leading-[1.4]">{lead}</p>
+        {(paragraphs as string[]).map((paragraph) => (
+          <p key={paragraph} className="text-dim">
+            {paragraph}
+          </p>
+        ))}
+        <Link href="/resume" className="text-link self-start">
+          Full résumé
+        </Link>
+      </div>
+    </Chapter>
   )
 }

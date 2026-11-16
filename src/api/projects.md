@@ -1,57 +1,31 @@
 ---
-title: Open Source
-subtitle: Published packages—shipped, documented, and maintained in the open
+title: Open source
+headline: Parts I needed, published for anyone.
+intro: >
+  Each one came out of a product above. The name opens a demo you can drag on
+  a phone. Counts are npm downloads over the last 30 days.
 github:
   url: https://github.com/josephdburdick
   label: "@josephdburdick"
 projects:
-  - name: "@present-day/drawer"
+  - name: drawer
     npm: "@present-day/drawer"
-    description: >
-      A flexible, performant React drawer/modal component library with smooth
-      animations and customizable snap points. Built with TypeScript and Framer
-      Motion for production-ready applications.
-    links:
-      - url: https://www.npmjs.com/package/@present-day/drawer
-        label: npm
-      - url: https://github.com/present-day/drawer
-        label: GitHub
-    tags: [React, TypeScript, Framer Motion, MIT]
-  - name: "@present-day/buzz"
-    npm: "@present-day/buzz"
-    description: >
-      A cross-platform haptic and audio feedback library that brings modern
-      tactile interactions to web applications across all devices and platforms.
-    links:
-      - url: https://www.npmjs.com/package/@present-day/buzz
-        label: npm
-      - url: https://github.com/present-day/buzz
-        label: GitHub
-    tags: [TypeScript, Haptics, Web Audio, MIT]
-  - name: "@present-day/reveal-row"
+    demo: https://present-day.github.io/drawer/
+    summary: A drawer with snap points that follows your finger
+  - name: reveal-row
     npm: "@present-day/reveal-row"
-    description: >
-      Horizontally scrollable row that reveals action columns on the left,
-      right, or both sides, with three snap positions. Styling is entirely via
-      classNames props—zero bundled CSS.
-    links:
-      - url: https://www.npmjs.com/package/@present-day/reveal-row
-        label: npm
-      - url: https://github.com/present-day/reveal-row
-        label: GitHub
-    tags: [React, TypeScript, Mobile UX, MIT]
-  - name: "@present-day/carousel"
+    demo: https://present-day.github.io/reveal-row/
+    summary: Swipe a row to reveal actions on either side
+  - name: buzz
+    npm: "@present-day/buzz"
+    demo: https://present-day.github.io/buzz/
+    summary: Haptic and audio feedback for web apps
+  - name: scroll-area
+    npm: "@present-day/scroll-area"
+    demo: https://present-day.github.io/scroll-area/
+    summary: A scroll area with edge fades and shadows that follow the theme
+  - name: carousel
     npm: "@present-day/carousel"
-    description: >
-      Headless React carousel built on native CSS scroll snap. The browser owns
-      the momentum and snapping; the package adds active-slide state and the
-      WAI-ARIA carousel pattern, with zero runtime dependencies.
-    links:
-      - url: https://www.npmjs.com/package/@present-day/carousel
-        label: npm
-      - url: https://present-day.github.io/carousel/
-        label: Playground
-      - url: https://github.com/present-day/carousel
-        label: GitHub
-    tags: [React, TypeScript, CSS Scroll Snap, MIT]
+    demo: https://present-day.github.io/carousel/
+    summary: A headless carousel where the browser owns the physics
 ---
