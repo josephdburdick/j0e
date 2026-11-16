@@ -1,9 +1,8 @@
 import api from "@/api"
 import { HapticAudioToggle } from "@/components/global/HapticAudioToggle"
 import Icon from "@/components/global/Icon"
-import { createJ0eLogoSvgSlot } from "@/components/global/J0eLogoSvgSlot"
-import { Logo } from "@/components/global/Logo"
 import LinkTree from "@/components/links/LinkTree"
+import LinksLogo from "@/components/links/LinksLogo"
 import QRCodeButton from "@/components/links/QRCodeButton"
 import { buttonVariants } from "@/components/ui/button"
 import { ContactLink } from "@/lib/types"
@@ -66,7 +65,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Links() {
   const data = await api()
-  const { name, logoSvgHoverGifs } = data.profile.attributes
+  const { name } = data.profile.attributes
 
   const additionalLinks: ContactLink[] = [
     {
@@ -107,16 +106,7 @@ export default async function Links() {
               <Icon.arrowLeft />
             </Link>
 
-            <Logo
-              logoSlot={createJ0eLogoSvgSlot({
-                className: "h-7 w-auto md:h-8",
-                role: "img",
-                "aria-hidden": true,
-              })}
-              name={name}
-              svgHoverFillUrls={logoSvgHoverGifs ?? []}
-              svgHoverCycleMs={180}
-            />
+            <LinksLogo />
 
             <div className="flex items-center gap-2">
               <QRCodeButton />

@@ -1,4 +1,7 @@
-import { DataProvider } from "@/components/providers/DataProvider"
+import {
+  DataProvider,
+  type SiteData,
+} from "@/components/providers/DataProvider"
 import type { Metadata, Viewport } from "next"
 import { Archivo, Inter, JetBrains_Mono } from "next/font/google"
 
@@ -115,6 +118,11 @@ export default async function RootLayout({
 }) {
   const data = await api()
   const { description } = data.meta.attributes
+  const siteData: SiteData = {
+    name: data.profile.attributes.name,
+    logoGifs: data.profile.attributes.logoSvgHoverGifs ?? [],
+    cta: data.site.attributes.contact.cta,
+  }
   const darkModeBootstrapScript = `(() => {
     try {
       const storedPreference = window.localStorage.getItem("darkMode")
@@ -207,7 +215,7 @@ export default async function RootLayout({
       <body
         className={`${inter.variable} ${archivo.variable} ${jetbrainsMono.variable}`}
       >
-        <DataProvider initialData={data}>{children}</DataProvider>
+        <DataProvider data={siteData}>{children}</DataProvider>
       </body>
     </html>
   )

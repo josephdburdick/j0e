@@ -214,11 +214,9 @@ export function Logo({
   svgHoverCycleMs = 220,
   svgRandomizeOnLoad = true,
 }: LogoProps) {
-  const { data } = useApi()
-  const logo = url
-    ? { url, width, height, alt }
-    : data?.profile?.attributes?.logo
-  const displayName = name || data?.profile?.attributes?.name
+  const site = useApi()
+  const logo = url ? { url, width, height, alt } : undefined
+  const displayName = name || site.name
   const fillMaskId = useId().replace(/:/g, "")
   const hoverTimer = useRef<number | null>(null)
   const hoverIntentTimer = useRef<number | null>(null)
@@ -419,7 +417,7 @@ export function Logo({
               src={logo.url}
               width={logo.width}
               height={logo.height}
-              alt={logo.alt}
+              alt={logo.alt ?? ""}
             />
           ))}
         <span className="sr-only">{displayName}</span>

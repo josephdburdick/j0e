@@ -14,13 +14,8 @@ const SECTIONS = [
   { id: "about", label: "About" },
 ]
 
-const EMPTY_GIFS: string[] = []
-
 export function SiteHeader() {
-  const { data } = useApi()
-  const { name, logoSvgHoverGifs } = data.profile.attributes
-  const { cta } = data.site.attributes.contact
-  const gifs: string[] = logoSvgHoverGifs ?? EMPTY_GIFS
+  const { name, logoGifs: gifs, cta } = useApi()
   const fill = useLogoGif(gifs)
 
   return (
