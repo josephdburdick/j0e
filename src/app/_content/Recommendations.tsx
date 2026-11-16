@@ -31,7 +31,7 @@ export default async function Recommendations() {
                 height={52}
                 src={recommendation.avatar}
                 alt=""
-                className="size-[52px] shrink-0 object-cover"
+                className="size-[52px] shrink-0 rounded-full object-cover"
               />
               <div className="flex min-w-0 flex-col">
                 <span className="text-[17px] font-semibold">

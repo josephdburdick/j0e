@@ -12,7 +12,7 @@ secondary:
   label: See the work
   url: "#work"
 stats:
-  - value: "~100"
+  - value: "100+"
     label: product surfaces changed at Assembled
   - value: "~5,000"
     label: commits across the Cue Quest apps

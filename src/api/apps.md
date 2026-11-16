@@ -64,8 +64,8 @@ apps:
       browser, with no app store in the way.
     status: Live · web app · since 2023
     links:
-      - url: https://app.cue.quest
-        label: app.cue.quest
+      - url: https://cue.quest
+        label: cue.quest
     tags: [Next.js, TypeScript, Supabase]
   - name: Pooltabl.es
     screenshots:

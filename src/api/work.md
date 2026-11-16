@@ -23,7 +23,7 @@ projects:
     name: App Layout and Navigation 2.0
     summary: >
       Designed and shipped the page shell and the global nav rail, then moved
-      about 100 product surfaces onto them myself.
+      more than 100 product surfaces onto them myself.
   - client: Assembled
     years: "2026"
     name: Design token migration
