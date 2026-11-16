@@ -1,262 +1,112 @@
-"use client"
-
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleItem,
-  CollapsibleTrigger,
-} from "@/components/global/Collapsible"
-import DateSpan from "@/components/global/DateSpan"
-import { EngagementList } from "@/components/global/EngagementList"
-import ExternalLink from "@/components/global/ExternalLink"
-import Icon from "@/components/global/Icon"
-import RuleHeader from "@/components/global/RuleHeader"
-import { useApi } from "@/components/providers/DataProvider"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import api from "@/api"
+import { Chapter, ChapterMark } from "@/components/global/Chapter"
+import { EngagementList, formatRange } from "@/components/global/EngagementList"
 import convertNewLinesToHTML from "@/lib/convertNewLinesToHTML"
 import toKebabCase from "@/lib/toKebabCase"
-import { Experience as ExperienceType, Role } from "@/lib/types"
-import { cn } from "@/lib/utils"
-import { useEffect, useState } from "react"
+import type { Experience as ExperienceType, Role } from "@/lib/types"
 
-export default function Experience() {
-  const { data } = useApi()
-  const experience: ExperienceType[] = data.experience.attributes.experience
-  const [viewAllToggle, setViewAllToggle] = useState(false)
-  const renderSkill = (skill: string, key: number) =>
-    !!skill ? (
-      <li key={key}>
-        <Badge variant="default">{skill}</Badge>
-      </li>
-    ) : null
+function roleFacts(role: Role) {
+  return [
+    role.location,
+    role.remote === undefined ? undefined : role.remote ? "Remote" : "On-site",
+    role.showType ? role.type : undefined,
+  ].filter(Boolean)
+}
 
-  useEffect(() => {
-    const handleHashChange = () => {
-      try {
-        const hash = window.location.hash
-        if (hash) {
-          const element = document.querySelector(hash)
-          if (element) {
-            const headerOffset = 100
-            const elementPosition = element.getBoundingClientRect().top
-            const offsetPosition =
-              elementPosition + window.scrollY - headerOffset
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth",
-            })
-          }
-        }
-      } catch (error) {
-        console.log("Unable to detect hash:", error)
-      }
-    }
-
-    // Call the function on component mount
-    handleHashChange()
-
-    // Add event listener for hash changes
-    window.addEventListener("hashchange", handleHashChange)
-
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange)
-    }
-  }, [])
-
-  const renderRole = (
-    role: Role & { company: ExperienceType["company"] },
-    index: number,
-  ) => {
-    const key = `${toKebabCase(role.company)}-${index}`
-    return (
-      <li className="grid-auto-rows grid gap-4" id={key} key={key}>
-        <AccordionItem value={key}>
-          <AccordionTrigger
-            onClick={() => {
-              if (typeof window === "undefined") return
-              window.history.replaceState(
-                null,
-                "",
-                `#${toKebabCase(role.company)}`,
-              )
-            }}
-          >
-            <div className="grid grid-cols-12 items-center gap-1.5 md:flex-1">
-              <div className="col-span-12 gap-1 text-xs text-foreground/90 md:col-span-3 md:col-start-1 xl:col-span-2 xl:text-sm">
-                <DateSpan date={role.date} />
-              </div>
-              <div className="col-span-12 items-center md:col-start-4 md:pl-2">
-                <div className="flex justify-between gap-4">
-                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-start font-normal">
-                    <h4 className="font-semibold text-foreground">
-                      {role.title}
-                    </h4>
-                    {role.location !== undefined && (
-                      <span className="hidden text-foreground/90 lg:inline">
-                        {role.location}
-                      </span>
-                    )}
-                    {role.showType && role.type !== undefined && (
-                      <Badge
-                        variant="outline"
-                        size="sm"
-                        className="text-foreground/90"
-                      >
-                        {role.type.toLowerCase()}
-                      </Badge>
-                    )}
-                    {role.remote !== undefined && (
-                      <Badge
-                        variant="outline"
-                        size="sm"
-                        className="text-foreground/90"
-                      >
-                        {role.remote ? "remote" : "on-site"}
-                      </Badge>
-                    )}{" "}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </AccordionTrigger>
-          <AccordionContent>
-            <div className="grid grid-cols-12">
-              <div className="col-span-12 space-y-6 md:col-span-9 md:col-start-4">
-                <div
-                  className="prose-scale-sm dark:prose-invert md:prose"
-                  dangerouslySetInnerHTML={{
-                    __html: convertNewLinesToHTML(role.description),
-                  }}
-                ></div>
-                {role.engagements && role.engagements.length > 0 && (
-                  <EngagementList engagements={role.engagements} />
-                )}
-                <ul className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                  {role?.skills?.sort().map(renderSkill)}
-                </ul>
-              </div>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </li>
-    )
-  }
-
-  const renderExperience = (experience: ExperienceType, key: number) => (
-    <li
-      key={`experience-${toKebabCase(experience.company)}`}
-      id={toKebabCase(experience.company)}
-      className="grid gap-2"
-    >
-      <div className="relative grid grid-cols-12">
-        <div className="col-span-12 font-semibold md:col-span-8 md:col-start-4">
-          <RuleHeader className="prose-scale-sm flex items-center gap-2">
-            {experience.url ? (
-              <ExternalLink href={experience.url}>
-                {experience.company}
-              </ExternalLink>
-            ) : (
-              <p>{experience.company}</p>
-            )}
-          </RuleHeader>
-        </div>
-      </div>
-      <Accordion
-        type="single"
-        collapsible
-        key={`role-${key}`}
-        asChild
-        defaultValue={"cue-quest-0"}
-      >
-        <ul className="grid-auto-rows grid items-start">
-          {experience.roles.map((role, key) =>
-            renderRole(
-              {
-                ...role,
-                company: experience.company,
-              },
-              key,
-            ),
-          )}
-        </ul>
-      </Accordion>
-    </li>
-  )
-
-  const renderExperiences = (
-    <ul className="grid-auto-rows container mx-auto grid gap-8 md:gap-16">
-      {experience
-        .filter((item) => item?.disabled !== true)
-        .slice(0, 3)
-        .map(renderExperience)}
-      {experience.length > 3 && (
-        <li>
-          <Collapsible
-            type="single"
-            collapsible
-            onValueChange={(value: string) => setViewAllToggle(!!value)}
-          >
-            <CollapsibleItem value="expand">
-              <CollapsibleContent>
-                <ul className="grid-auto-rows grid gap-16">
-                  {experience
-                    .filter((item) => item?.disabled !== true)
-                    .slice(3)
-                    .map(renderExperience)}
-                </ul>
-              </CollapsibleContent>
-              <RuleHeader side="both" className="flex-grow-0 justify-center">
-                <CollapsibleTrigger asChild className="text-center">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="rounded-full px-4 py-2"
-                    aria-expanded={viewAllToggle}
-                    aria-controls="additional-experience"
-                  >
-                    {viewAllToggle ? "View Less" : "View More"} Experience
-                  </Button>
-                </CollapsibleTrigger>
-              </RuleHeader>
-            </CollapsibleItem>
-          </Collapsible>
-        </li>
-      )}
-    </ul>
-  )
+function RoleEntry({ role }: { role: Role }) {
+  const facts = roleFacts(role)
+  const skills = [...(role.skills ?? [])].filter(Boolean).sort()
 
   return (
-    <section
-      id="experience"
-      className={cn(
-        "md:py16 min-h-[800px] items-center justify-center space-y-8 bg-secondary/80 py-8 lg:py-24 xl:py-36",
-      )}
-      aria-labelledby="experience-title"
-    >
-      <div className="container space-y-4">
-        <header className="space-y-2 pb-12 text-center">
-          <RuleHeader side="both" className="font-light">
-            <h2 id="experience-title" className="text-foreground">
-              {data.experience.attributes.title}
-            </h2>
-          </RuleHeader>
-          <div className="prose-scale text-balance text-3xl font-bold">
-            <h3 className="text-foreground/90">
-              {data.experience.attributes.subtitle}
-            </h3>
-          </div>
-        </header>
+    <li className="flex flex-wrap gap-x-6 gap-y-2 border-t border-line py-6">
+      <p className="flex-[0_0_170px] whitespace-nowrap pt-1 font-mono text-[13px] text-dim">
+        {formatRange(role.date)}
+      </p>
+      <div className="flex min-w-0 flex-[1_1_420px] flex-col gap-5">
+        <div className="flex flex-col gap-1">
+          <h4 className="text-[19px] font-semibold">{role.title}</h4>
+          {facts.length > 0 && (
+            <p className="text-sm text-dim">{facts.join(" · ")}</p>
+          )}
+        </div>
+        {role.description && (
+          <div
+            className="rich max-w-[70ch]"
+            dangerouslySetInnerHTML={{
+              __html: convertNewLinesToHTML(role.description),
+            }}
+          />
+        )}
+        {role.engagements && role.engagements.length > 0 && (
+          <EngagementList
+            engagements={role.engagements}
+            className="max-w-[70ch]"
+          />
+        )}
+        {skills.length > 0 && (
+          <ul
+            aria-label="Skills"
+            className="flex max-w-[70ch] flex-wrap gap-1.5 font-mono text-xs text-dim"
+          >
+            {skills.map((skill) => (
+              <li key={skill} className="border border-line px-2 py-1">
+                {skill}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      <div className="relative flex w-full flex-1">{renderExperiences}</div>
-    </section>
+    </li>
+  )
+}
+
+export default async function Experience() {
+  const data = await api()
+  const { title, subtitle } = data.experience.attributes
+  const experience: ExperienceType[] = data.experience.attributes.experience
+
+  return (
+    <Chapter id="experience" labelledBy="experience-title">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-10 gap-y-2">
+        <h2 id="experience-title">
+          <ChapterMark number="01">{title}</ChapterMark>
+        </h2>
+        <p className="text-dim">{subtitle}</p>
+      </div>
+      <ul className="flex flex-col border-t-2 border-ink">
+        {experience
+          .filter((item) => item.disabled !== true)
+          .map((item) => (
+            <li
+              key={item.company}
+              id={toKebabCase(item.company)}
+              className="flex scroll-mt-6 flex-col gap-5 border-b border-line pt-8"
+            >
+              <h3 className="display text-[clamp(24px,2.6vw,32px)] leading-[1.1]">
+                {item.url ? (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline-offset-4 transition-colors hover:text-brand hover:underline"
+                  >
+                    {item.company}
+                  </a>
+                ) : (
+                  item.company
+                )}
+              </h3>
+              <ul className="flex flex-col">
+                {item.roles.map((role) => (
+                  <RoleEntry
+                    key={`${role.title}-${role.date.start}`}
+                    role={role}
+                  />
+                ))}
+              </ul>
+            </li>
+          ))}
+      </ul>
+    </Chapter>
   )
 }

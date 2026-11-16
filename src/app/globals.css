@@ -20,6 +20,27 @@
   .cut {
     clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 0 100%);
   }
+  .rich > * + * {
+    margin-top: 0.9em;
+  }
+  .rich ul {
+    @apply list-[square] pl-[1.15em];
+  }
+  .rich li + li {
+    margin-top: 0.6em;
+  }
+  .rich li::marker {
+    @apply text-brand;
+  }
+  .rich strong {
+    @apply font-semibold;
+  }
+  .rich a {
+    @apply text-brand underline underline-offset-4;
+  }
+  .rich code {
+    @apply font-mono text-[0.9em];
+  }
   .text-link {
     @apply inline-block py-2.5 font-semibold text-brand underline underline-offset-4 transition-colors hover:text-ink;
   }

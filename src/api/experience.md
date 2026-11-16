@@ -1,6 +1,6 @@
 ---
 title: Experience
-subtitle: Showcasing my track record of user-focused innovation across diverse roles and industries
+subtitle: Full work history, most recent first
 experience:
   - company: Cue Quest
     logo:
@@ -97,7 +97,7 @@ experience:
             start: 2026-10-01
             end: null
           - name: Ola
-            note: In stealth. A mental health clinic
+            note: In stealth. Software to augment mental health medical staff
             start: 2026-09-01
             end: null
           - name: Pooltabl.es
@@ -112,7 +112,7 @@ experience:
             end: 2025-11-01
           - name: Open source
             href: "#open-source"
-            note: Four React packages on npm—drawer, buzz, reveal-row, and carousel
+            note: Five React packages on npm—drawer, reveal-row, buzz, scroll-area, and carousel
             start: 2026-04-01
             end: null
           - name: Cue Quest

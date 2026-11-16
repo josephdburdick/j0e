@@ -2,7 +2,7 @@ import ExternalLink from "@/components/global/ExternalLink"
 import { Engagement } from "@/lib/types"
 import { cn } from "@/lib/utils"
 
-const formatMonth = (value: string) =>
+export const formatMonth = (value: string) =>
   new Date(value).toLocaleString("en-US", {
     month: "short",
     year: "numeric",
@@ -13,7 +13,7 @@ const sameMonth = (a: string, b: string) =>
   new Date(a).toISOString().slice(0, 7) ===
   new Date(b).toISOString().slice(0, 7)
 
-function formatRange({ start, end }: Engagement) {
+export function formatRange({ start, end }: Pick<Engagement, "start" | "end">) {
   if (end === null) return `${formatMonth(start)} – Present`
   if (sameMonth(start, end)) return formatMonth(start)
   return `${formatMonth(start)} – ${formatMonth(end)}`
@@ -27,7 +27,7 @@ type Props = {
 export function EngagementList({ engagements, className }: Props) {
   return (
     <ul
-      className={cn("ml-1.5 grid border-l border-border", className)}
+      className={cn("ml-1 grid border-l border-line", className)}
       aria-label="Engagements"
     >
       {[...engagements]
@@ -61,20 +61,16 @@ export function EngagementList({ engagements, className }: Props) {
               <span
                 aria-hidden="true"
                 className={cn(
-                  "absolute -left-[4.5px] top-[0.9rem] size-2 rounded-full border-[1.5px]",
-                  current
-                    ? "border-lime-600 bg-lime-600 dark:border-lime-400 dark:bg-lime-400"
-                    : "border-muted-foreground bg-background",
+                  "absolute -left-[4.5px] top-[0.9rem] size-2 border-[1.5px]",
+                  current ? "border-brand bg-brand" : "border-dim bg-paper",
                 )}
               />
-              <span className="font-semibold text-foreground">{name}</span>
-              <span className="whitespace-nowrap text-xs tabular-nums text-muted-foreground">
+              <span className="font-semibold text-ink">{name}</span>
+              <span className="whitespace-nowrap font-mono text-xs text-dim">
                 {formatRange(engagement)}
               </span>
               {engagement.note && (
-                <span className="col-span-2 text-foreground/80">
-                  {engagement.note}
-                </span>
+                <span className="col-span-2 text-dim">{engagement.note}</span>
               )}
             </li>
           )

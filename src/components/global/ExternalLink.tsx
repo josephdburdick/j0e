@@ -1,3 +1,5 @@
+"use client"
+
 import { triggerHaptic } from "@/lib/haptics"
 import { cn } from "@/lib/utils"
 import { PropsWithChildren } from "react"
