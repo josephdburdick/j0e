@@ -15,6 +15,8 @@ export interface Role {
   type: string
   /* Surface `type` as a badge alongside the role's location */
   showType?: boolean
+  /* Role is left off the résumé */
+  disabled?: boolean
   date: {
     start: string
     end: string | null

@@ -1,6 +1,7 @@
 import ExternalLink from "@/components/global/ExternalLink"
 import { Engagement } from "@/lib/types"
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 export const formatMonth = (value: string) =>
   new Date(value).toLocaleString("en-US", {
@@ -37,13 +38,13 @@ export function EngagementList({ engagements, className }: Props) {
         .map((engagement) => {
           const current = engagement.end === null
           const name = engagement.href ? (
-            engagement.href.startsWith("#") ? (
-              <a
+            /^[#/]/.test(engagement.href) ? (
+              <Link
                 href={engagement.href}
                 className="underline-offset-4 hover:underline"
               >
                 {engagement.name}
-              </a>
+              </Link>
             ) : (
               <ExternalLink href={engagement.href}>
                 {engagement.name}

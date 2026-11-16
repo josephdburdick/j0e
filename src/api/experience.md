@@ -28,33 +28,7 @@ experience:
 
           - **Quality**: Localized, accessible interfaces backed by Playwright end-to-end tests and Vitest unit coverage
 
-        skills:
-          [
-            "Next.js",
-            "Expo",
-            "React Native",
-            "TypeScript",
-            "tRPC",
-            "Supabase",
-            "Supabase Realtime",
-            "shadcn/ui",
-            "Tailwind",
-            "Playwright",
-            "Vitest",
-            "i18n",
-            "App Store Release",
-            "Product Strategy",
-            "UX Design",
-            "System Architecture",
-            "API Design",
-            "Database Design",
-            "Testing",
-            "Feature Flags",
-            "Rate Limiting",
-            "Analytics",
-            "Performance",
-            "Documentation",
-          ]
+        skills: [Next.js, Expo, TypeScript, Supabase, Playwright]
 
   - company: Present Day
     url: https://present.day
@@ -105,13 +79,8 @@ experience:
             note: Ongoing US marketplace for pool tables and directory of the pros who service them
             start: 2026-05-01
             end: null
-          - name: Delaware Water Disaster
-            href: "#delaware-water-disaster"
-            note: Content platform on Next.js and Payload CMS
-            start: 2025-09-01
-            end: 2025-11-01
           - name: Open source
-            href: "#open-source"
+            href: "/#open-source"
             note: Five React packages on npm—drawer, reveal-row, buzz, scroll-area, and carousel
             start: 2026-04-01
             end: null
@@ -120,21 +89,7 @@ experience:
             note: The studio's own product. Match tracker and table finder for casual players
             start: 2023-11-01
             end: null
-        skills:
-          [
-            React,
-            Next.js,
-            TypeScript,
-            Node,
-            Design Systems,
-            Full-stack Development,
-            Product Strategy,
-            UX Consultation,
-            Visual Design,
-            API Design,
-            Open Source,
-            Client Management,
-          ]
+        skills: [Design Systems, React, Next.js, Node, Open Source]
 
   - company: Assembled
     logo:
@@ -165,29 +120,10 @@ experience:
 
           - **Accessibility & mobile**: Fixed virtual keyboards obscuring option lists at the shared component layer, so every select and input flow inherited the improvement instead of taking N per-screen patches
 
-        skills:
-          [
-            React,
-            TypeScript,
-            Go,
-            Node,
-            Design Systems,
-            Design Tokens,
-            Codemods,
-            ESLint,
-            Storybook,
-            Accessibility,
-            Mobile UX,
-            API Design,
-            Performance,
-            Code Review,
-            Communication,
-            Mentorship,
-            Web Standards,
-            Fullstack,
-          ]
+        skills: [React, TypeScript, Design Systems, Codemods, Accessibility]
 
   - company: Delaware Water Disaster
+    disabled: true
     logo:
       src: ${basePath}/assets/images/logos/delaware-water-disaster.webp
       width: 42
@@ -262,22 +198,7 @@ experience:
 
           - **Marketing**: Coordinated releases with product launches and built site-wide promotions
 
-        skills:
-          [
-            React,
-            JavaScript,
-            Node,
-            Performance,
-            Authentication,
-            Sentry,
-            Communication,
-            Web Standards,
-            Documentation,
-            Fullstack,
-            UI/UX,
-            DeFi,
-            Marketing,
-          ]
+        skills: [React, Authentication, Performance, Sentry, Documentation]
 
   - company: Unqork
     logo:
@@ -303,20 +224,7 @@ experience:
 
 
           Finished on the Experience Engineering team, building new components on the Runtime team's Vega engine.
-        skills:
-          [
-            React,
-            Communication,
-            Bespoke Framework,
-            JavaScript,
-            Node,
-            Fullstack,
-            Web Standards,
-            Design Systems,
-            Recruitment,
-            Module Development,
-            Real-time Development,
-          ]
+        skills: [React, Design Systems, Module Development, Recruitment]
       - title: Software Engineer Contractor
         location: Manhattan, New York City
         remote: true
@@ -332,18 +240,7 @@ experience:
 
 
           Helped transition the Module/App Builder from v1 to v2; much of that work on design, styles, and behavior is still in use today.
-        skills:
-          [
-            Angular,
-            React,
-            Communication,
-            Node,
-            Fullstack,
-            Web Standards,
-            Theme Development,
-            Utility Classes,
-            Module Transition,
-          ]
+        skills: [Angular, Theme Development, Utility Classes, Module Transition]
 
   - company: Joey
     disabled: true
@@ -385,6 +282,7 @@ experience:
           ]
 
   - company: Adoptive
+    hidden: true
     logo:
       src: ${basePath}/assets/images/logos/adoptive.webp
       width: 200
@@ -409,20 +307,10 @@ experience:
 
 
           Led the deployment of the Yale School of Medicine website, built with Gulp, Webpack, React, and PostCSS and integrated with a .NET back end.
-        skills:
-          [
-            React,
-            .NET,
-            Communication,
-            JavaScript,
-            Web Standards,
-            UX Design,
-            Strategic Planning,
-            Development Standards,
-            Award-winning Development,
-          ]
+        skills: [React, ".NET", UX Design, Development Standards]
 
   - company: Studiografica
+    hidden: true
     logo:
       src: ${basePath}/assets/images/logos/sgc.svg
       width: 518
@@ -449,18 +337,10 @@ experience:
 
 
           Worked with high-profile brands such as Ciroc Vodka, Macy's, Casio, W.W. Glass, and David's Bridal, as well as the Venture Development Center, contributing significantly to both client-facing and internal projects.
-        skills:
-          [
-            Communication,
-            JavaScript,
-            Web Standards,
-            Technology Management,
-            Recruitment,
-            UI/UX Consultancy,
-            Progressive Enhancement,
-          ]
+        skills: [Technology Management, Recruitment, UI/UX Consultancy, Progressive Enhancement]
 
   - company: David's Bridal
+    hidden: true
     logo:
       src: ${basePath}/assets/images/logos/davids-bridal.svg
       width: 180
@@ -481,15 +361,7 @@ experience:
 
 
           Managed the relationship with an outsourced back-end development firm until late 2009. This collaboration continued until the company broadened its focus and created specialized roles for designers and developers.
-        skills:
-          [
-            Communication,
-            JavaScript,
-            Web Standards,
-            Email Marketing,
-            Corporate Style Guide,
-            Vendor Management,
-          ]
+        skills: [Email Marketing, Corporate Style Guide, Vendor Management]
 
   - company: Aquent
     logo:
@@ -576,9 +448,10 @@ experience:
           end: 2008-12-01
         description: >
           Developed a high number of highly conceptual email campaign templates for restaurants in the United States and European markets.
-        skills: [Communication, Email Marketing, Campaign Design]
+        skills: [Email Marketing, Campaign Design]
 
   - company: Virginia Commonwealth University
+    hidden: true
     logo:
       src: ${basePath}/assets/images/logos/vcu.svg
       width: 157
@@ -599,7 +472,7 @@ experience:
 
 
           This series was a collaboration between VCU's Department of English, School of Mass Communications, and the School of the Arts.
-        skills: [Communication, Web Design, Hosting, Digital Technologies]
+        skills: [Web Design, Hosting]
       - title: Art Director
         type: Full-time
         disabled: true
@@ -614,8 +487,7 @@ experience:
 
 
           Coordinated with various departments within VCU to ensure the series' successful representation through visual media.
-        skills:
-          [Communication, Art Direction, Print Design, Digital Technologies]
+        skills: [Art Direction, Print Design]
 ---
 
 My career has moved through design, front-end, and full-stack roles, always focused on blending technology and design into experiences people enjoy using.
