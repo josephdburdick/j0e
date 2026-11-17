@@ -31,7 +31,7 @@ links:
     icon: linkedIn
   github:
     url: https://github.com/josephdburdick
-    label: Github
+    label: GitHub
     icon: github
   instagram:
     url: https://instagr.am/d00m.exe

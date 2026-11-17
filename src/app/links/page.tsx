@@ -1,15 +1,10 @@
 import api from "@/api"
-import { HapticAudioToggle } from "@/components/global/HapticAudioToggle"
-import Icon from "@/components/global/Icon"
-import LinkTree from "@/components/links/LinkTree"
-import LinksLogo from "@/components/links/LinksLogo"
+import { SiteHeader } from "@/components/global/SiteHeader"
+import LinkTree, { type LinkItem } from "@/components/links/LinkTree"
 import QRCodeButton from "@/components/links/QRCodeButton"
-import { buttonVariants } from "@/components/ui/button"
 import { SOCIAL_IMAGE } from "@/lib/socialImage"
 import { ContactLink } from "@/lib/types"
-import { cn } from "@/lib/utils"
 import { Metadata, Viewport } from "next"
-import Link from "next/link"
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -59,66 +54,58 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Links() {
   const data = await api()
-  const { name } = data.profile.attributes
 
-  const additionalLinks: ContactLink[] = [
+  const links: LinkItem[] = [
+    ...Object.entries(
+      data.profile.attributes.links as Record<string, ContactLink>,
+    ).map(([id, link]) => ({ id, ...link })),
     {
+      id: "cue-quest",
       url: "https://cue.quest",
       label: "Cue Quest",
       icon: "mapPin",
     },
     {
+      id: "j0eme",
       url: "https://j0e.me",
       label: "j0e.me",
       icon: "globe",
     },
     {
+      id: "resume",
       url: "https://docs.google.com/document/d/e/2PACX-1vT4LDAcqXgtl7xK_vtt4S154K_xhJe8XSWJ2-wOB3Ra5vogHOhP6KxoTTm5ntrzUqdeSIQhnrrGTRxw/pub",
-      label: "Resume",
+      label: "Résumé",
       icon: "fileText",
     },
   ]
 
-  const links: ContactLink[] = [
-    ...Object.values({
-      ...(data.profile.attributes.links as Record<string, ContactLink>),
-    }),
-    ...additionalLinks,
-  ]
-
   return (
-    <main className="duration-1000 animate-in fade-in">
-      <div className="relative flex min-h-screen flex-col bg-gradient-to-b from-background to-background/80">
-        <h1 className="sr-only">Contact and links</h1>
-        <header className="relative top-0 z-0 flex flex-col items-center justify-center gap-3 p-4">
-          <div className="flex w-full items-center justify-between gap-4">
-            <Link
-              href="/"
-              className={cn(
-                buttonVariants({ variant: "outline", size: "icon" }),
-              )}
-            >
-              <Icon.arrowLeft />
-            </Link>
-
-            <LinksLogo />
-
-            <div className="flex items-center gap-2">
-              <QRCodeButton />
-            </div>
+    <div className="flex min-h-screen flex-col">
+      <SiteHeader />
+      <main className="shell flex-1">
+        <section
+          aria-labelledby="links-title"
+          className="flex flex-col gap-6 pb-10 pt-10 md:gap-8 md:pb-16 md:pt-[88px]"
+        >
+          <h1
+            id="links-title"
+            className="display text-[clamp(46px,8.6vw,132px)] leading-[0.96] tracking-[-0.03em]"
+          >
+            Links
+          </h1>
+          <div className="flex flex-wrap items-center justify-between gap-x-16 gap-y-5">
+            <p className="max-w-[54ch] text-xl text-dim">
+              Where to find me. Open a row for a QR code to hand to another
+              device.
+            </p>
+            <QRCodeButton />
           </div>
-        </header>
-
-        <div className="container relative z-20 mx-auto flex flex-1 flex-col px-4">
-          <div className="flex flex-1 flex-col items-center justify-start">
-            <LinkTree links={links} className="mx-auto w-full max-w-md" />
-          </div>
-        </div>
-
-        <footer className="shrink py-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Present Day</p>
-        </footer>
-      </div>
-    </main>
+        </section>
+        <LinkTree links={links} className="max-w-[760px]" />
+      </main>
+      <footer className="shell pb-8 pt-12 text-sm text-dim">
+        <p>&copy; {new Date().getFullYear()} Present Day</p>
+      </footer>
+    </div>
   )
 }
