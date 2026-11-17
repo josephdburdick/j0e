@@ -42,7 +42,7 @@ export default async function Record() {
               className="flex items-end gap-1.5 border-b-2 border-ink pt-6"
               style={{ height: CHART_HEIGHT + 24 }}
             >
-              {years.map((entry) => (
+              {years.map((entry, index) => (
                 <div
                   key={entry.year}
                   className="relative flex-1"
@@ -54,7 +54,13 @@ export default async function Record() {
                   }}
                 >
                   {labeled.includes(entry.year) && (
-                    <span className="absolute bottom-full left-1/2 -translate-x-1/2 pb-1 font-mono text-[11px] tabular-nums text-ink">
+                    <span
+                      className={cn(
+                        "absolute bottom-full left-1/2 -translate-x-1/2 pb-1 font-mono text-xs tabular-nums text-ink",
+                        (years[index + 1]?.total ?? Infinity) > entry.total &&
+                          "max-sm:left-auto max-sm:right-0 max-sm:translate-x-0",
+                      )}
+                    >
                       {entry.total.toLocaleString("en-US")}
                     </span>
                   )}
@@ -67,7 +73,7 @@ export default async function Record() {
                 </div>
               ))}
             </div>
-            <div className="flex gap-1.5 font-mono text-[11px] text-dim">
+            <div className="flex gap-1.5 font-mono text-xs text-dim">
               {years.map((entry) => (
                 <span key={entry.year} className="flex-1 text-center">
                   <span className="sm:hidden">

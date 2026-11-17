@@ -131,10 +131,10 @@ export default async function Experience() {
         {earlier.length > 0 && (
           <details className="group">
             <summary className="flex cursor-pointer list-none flex-wrap items-baseline gap-x-6 gap-y-1 border-b border-line py-6 transition-colors hover:text-brand [&::-webkit-details-marker]:hidden">
-              <span className="flex-[0_0_170px] font-mono text-[13px] text-dim">
+              <span className="flex-[0_0_100%] font-mono text-[13px] text-dim sm:flex-[0_0_170px]">
                 {earlierFrom} – {earlierTo}
               </span>
-              <span className="flex-1 text-[19px] font-semibold">
+              <span className="min-w-0 flex-1 text-[19px] font-semibold">
                 Earlier roles
                 <span className="ml-3 font-normal text-dim">
                   {earlier.map((item) => item.company).join(", ")}
@@ -142,7 +142,7 @@ export default async function Experience() {
               </span>
               <span
                 aria-hidden="true"
-                className="font-mono text-xl leading-none transition-transform group-open:rotate-45"
+                className="shrink-0 font-mono text-xl leading-none transition-transform group-open:rotate-45"
               >
                 +
               </span>

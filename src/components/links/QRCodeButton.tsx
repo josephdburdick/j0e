@@ -2,22 +2,24 @@
 
 import Icon from "@/components/global/Icon"
 import QRCodeDialog from "@/components/global/QRCodeDialog"
-import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
 
 export default function QRCodeButton() {
   const [url, setUrl] = useState<string>("")
 
   useEffect(() => {
-    // Get the current URL using client-side window object
     setUrl(window.location.href)
   }, [])
 
   return (
     <QRCodeDialog url={url}>
-      <Button variant="outline" size="icon">
-        <Icon.qrCode />
-      </Button>
+      <button
+        type="button"
+        className="label flex items-center gap-2.5 border border-line px-4 py-3 transition-colors hover:border-brand hover:text-brand"
+      >
+        <Icon.qrCode className="size-4" />
+        QR for this page
+      </button>
     </QRCodeDialog>
   )
 }
