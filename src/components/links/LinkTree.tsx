@@ -13,6 +13,20 @@ interface LinkTreeProps {
   className?: string
 }
 
+const EXPAND_MS = 300
+
+function revealOnceExpanded(id: string) {
+  window.setTimeout(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    document
+      .getElementById(id)
+      ?.scrollIntoView({
+        block: "nearest",
+        behavior: reduce ? "auto" : "smooth",
+      })
+  }, EXPAND_MS)
+}
+
 export default function LinkTree({ links, className }: LinkTreeProps) {
   const [openId, setOpenId] = useState<string | null>(null)
 
@@ -24,13 +38,14 @@ export default function LinkTree({ links, className }: LinkTreeProps) {
       "",
       next ? `#${next}` : window.location.pathname,
     )
+    if (next) revealOnceExpanded(next)
   }
 
   useEffect(() => {
     const syncFromHash = () => {
       const id = window.location.hash.slice(1)
       setOpenId(id || null)
-      if (id) document.getElementById(id)?.scrollIntoView({ block: "nearest" })
+      if (id) revealOnceExpanded(id)
     }
 
     syncFromHash()
