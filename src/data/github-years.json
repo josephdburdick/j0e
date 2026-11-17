@@ -1,0 +1,22 @@
+{
+  "asOf": "2026-11-15",
+  "currentSince": 2023,
+  "labeled": [2015, 2024, 2026],
+  "years": [
+    { "year": 2012, "total": 1 },
+    { "year": 2013, "total": 61 },
+    { "year": 2014, "total": 1035 },
+    { "year": 2015, "total": 1592 },
+    { "year": 2016, "total": 1101 },
+    { "year": 2017, "total": 1261 },
+    { "year": 2018, "total": 213 },
+    { "year": 2019, "total": 80 },
+    { "year": 2020, "total": 22 },
+    { "year": 2021, "total": 1 },
+    { "year": 2022, "total": 6 },
+    { "year": 2023, "total": 198 },
+    { "year": 2024, "total": 1894 },
+    { "year": 2025, "total": 5185 },
+    { "year": 2026, "total": 9744 }
+  ]
+}

@@ -1,11 +1,11 @@
 import api from "@/api"
 import { HapticAudioToggle } from "@/components/global/HapticAudioToggle"
 import Icon from "@/components/global/Icon"
-import { createJ0eLogoSvgSlot } from "@/components/global/J0eLogoSvgSlot"
-import { Logo } from "@/components/global/Logo"
 import LinkTree from "@/components/links/LinkTree"
+import LinksLogo from "@/components/links/LinksLogo"
 import QRCodeButton from "@/components/links/QRCodeButton"
 import { buttonVariants } from "@/components/ui/button"
+import { SOCIAL_IMAGE } from "@/lib/socialImage"
 import { ContactLink } from "@/lib/types"
 import { cn } from "@/lib/utils"
 import { Metadata, Viewport } from "next"
@@ -43,26 +43,13 @@ export async function generateMetadata(): Promise<Metadata> {
       description: `All important links and contact information for ${name}. Find social media profiles, resume, portfolio, and professional contact details.`,
       url: "https://j0e.me/links",
       type: "website",
-      images: [
-        {
-          url: "/assets/images/profile.webp",
-          width: 96,
-          height: 96,
-          alt: `${name} - Professional Profile Picture`,
-        },
-        {
-          url: "/assets/images/meta/icon.png",
-          width: 512,
-          height: 512,
-          alt: `${name} - Contact Information & Links Logo`,
-        },
-      ],
+      images: [SOCIAL_IMAGE],
     },
     twitter: {
       card: "summary_large_image",
       title: `${name} - Contact & Links`,
       description: `All important links and contact information for ${name}. Find social media profiles, resume, portfolio, and professional contact details.`,
-      images: ["/assets/images/profile.webp", "/assets/images/meta/icon.png"],
+      images: [SOCIAL_IMAGE],
     },
     alternates: {
       canonical: "https://j0e.me/links",
@@ -72,7 +59,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Links() {
   const data = await api()
-  const { name, logoSvgHoverGifs } = data.profile.attributes
+  const { name } = data.profile.attributes
 
   const additionalLinks: ContactLink[] = [
     {
@@ -102,6 +89,7 @@ export default async function Links() {
   return (
     <main className="duration-1000 animate-in fade-in">
       <div className="relative flex min-h-screen flex-col bg-gradient-to-b from-background to-background/80">
+        <h1 className="sr-only">Contact and links</h1>
         <header className="relative top-0 z-0 flex flex-col items-center justify-center gap-3 p-4">
           <div className="flex w-full items-center justify-between gap-4">
             <Link
@@ -113,16 +101,7 @@ export default async function Links() {
               <Icon.arrowLeft />
             </Link>
 
-            <Logo
-              logoSlot={createJ0eLogoSvgSlot({
-                className: "h-7 w-auto md:h-8",
-                role: "img",
-                "aria-hidden": true,
-              })}
-              name={name}
-              svgHoverFillUrls={logoSvgHoverGifs ?? []}
-              svgHoverCycleMs={180}
-            />
+            <LinksLogo />
 
             <div className="flex items-center gap-2">
               <QRCodeButton />

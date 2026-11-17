@@ -1,30 +1,24 @@
 "use client"
 
-import React, { createContext, useContext, ReactNode, useState } from "react"
+import { type ReactNode, createContext, useContext } from "react"
 
-interface DataContextProps {
-  data: any;
-  setData: React.Dispatch<React.SetStateAction<any>>;
+/** The slice of content client components read; it is serialized into every page. */
+export type SiteData = {
+  name: string
+  logoGifs: string[]
+  cta: { label: string; url: string }
 }
 
-const DataContext = createContext<DataContextProps | undefined>(undefined)
+const DataContext = createContext<SiteData | undefined>(undefined)
 
-interface DataProviderProps {
-  initialData: any;
-  children: ReactNode;
-}
-
-export const DataProvider: React.FC<DataProviderProps> = ({
-  initialData,
+export function DataProvider({
+  data,
   children,
-}) => {
-  const [data, setData] = useState(initialData)
-
-  return (
-    <DataContext.Provider value={{ data, setData }}>
-      {children}
-    </DataContext.Provider>
-  )
+}: {
+  data: SiteData
+  children: ReactNode
+}) {
+  return <DataContext.Provider value={data}>{children}</DataContext.Provider>
 }
 
 export const useApi = () => {

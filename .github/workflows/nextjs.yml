@@ -12,7 +12,7 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-  # Weekly rebuild so the GitHub contribution graph and npm counts stay fresh
+  # Weekly rebuild so the npm download counts stay fresh
   schedule:
     - cron: "0 6 * * 1"
 
@@ -104,10 +104,6 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock', '**/pnpm-lock.yaml', '**/bun.lock', '**/bun.lockb') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.install_command }}
-      - name: Fetch GitHub contribution data
-        run: node scripts/fetch-github-contributions.mjs
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
       - name: Fetch npm download counts
         run: node scripts/fetch-npm-downloads.mjs
       - name: Build with Next.js

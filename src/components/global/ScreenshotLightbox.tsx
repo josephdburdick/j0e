@@ -1,7 +1,7 @@
 "use client"
 
 import { triggerHaptic } from "@/lib/haptics"
-import { SCREENSHOT_SIZES, type Screenshot } from "@/lib/screenshots"
+import type { Screenshot } from "@/lib/screenshots"
 import { cn } from "@/lib/utils"
 import { Carousel } from "@present-day/carousel"
 import * as Dialog from "@radix-ui/react-dialog"
@@ -140,8 +140,8 @@ function Gallery({
               <Image
                 src={shot.src}
                 alt={shot.alt}
-                width={SCREENSHOT_SIZES[shot.kind].width}
-                height={SCREENSHOT_SIZES[shot.kind].height}
+                width={shot.width}
+                height={shot.height}
                 sizes="100vw"
                 className={cn(
                   "max-h-full w-auto max-w-full object-contain shadow-2xl",
@@ -170,7 +170,7 @@ function Gallery({
           }}
           renderMarker={(i) => {
             const shot = screenshots[i]
-            const { width, height } = SCREENSHOT_SIZES[shot.kind]
+            const { width, height } = shot
             return (
               <Image
                 src={shot.src}

@@ -30,7 +30,8 @@ async function fetchPackage(name, start, end) {
   ) {
     weekly.unshift(daily.slice(end - 7, end).reduce((a, b) => a + b, 0))
   }
-  return { name, lastWeek: weekly.at(-1) ?? 0, weekly }
+  const lastMonth = daily.slice(-30).reduce((a, b) => a + b, 0)
+  return { name, lastWeek: weekly.at(-1) ?? 0, lastMonth, weekly }
 }
 
 async function main() {
