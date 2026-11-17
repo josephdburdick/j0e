@@ -70,7 +70,7 @@ export default function LinkCard({ link, isOpen, onToggle }: LinkCardProps) {
           <span
             aria-hidden="true"
             className={cn(
-              "shrink-0 font-mono text-xl leading-none transition-transform",
+              "shrink-0 font-mono text-xl leading-none transition-transform duration-300 motion-reduce:transition-none",
               isOpen && "rotate-45",
             )}
           >
@@ -78,48 +78,61 @@ export default function LinkCard({ link, isOpen, onToggle }: LinkCardProps) {
           </span>
         </button>
       </h2>
-      {isOpen && (
-        <div
-          id={`${id}-panel`}
-          className="flex flex-wrap items-start gap-x-8 gap-y-5 pb-7 pt-1"
-        >
-          <div className="w-full max-w-[220px] bg-white p-4">
-            <QRCode
-              value={url}
-              size={200}
-              style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-              viewBox="0 0 256 256"
-            />
-          </div>
-          <div className="flex min-w-[220px] flex-1 flex-col items-start gap-3">
+      <div
+        id={`${id}-panel`}
+        inert={!isOpen}
+        className={cn(
+          "grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none",
+          isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+        )}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <div
+            className={cn(
+              "mb-5 flex w-full flex-col items-center gap-5 bg-sunk px-5 py-7 transition-opacity duration-300 motion-reduce:transition-none",
+              isOpen ? "opacity-100" : "opacity-0",
+            )}
+          >
+            <div className="w-full max-w-[240px] bg-white p-4">
+              <QRCode
+                value={url}
+                size={208}
+                style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                viewBox="0 0 256 256"
+              />
+            </div>
             <p className="text-sm text-dim">Scan to open on another device</p>
-            <a
-              href={url}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2.5 bg-brand px-[22px] py-3.5 font-semibold text-on-brand transition-opacity hover:opacity-90"
-            >
-              <Icon.externalLink aria-hidden="true" className="size-4" />
-              Open {label}
-            </a>
-            <button
-              type="button"
-              onClick={handleCopyUrl}
-              className="flex items-center gap-2.5 border border-ink px-[22px] py-3.5 font-semibold transition-colors hover:border-brand hover:text-brand"
-            >
-              {isCopied ? (
-                <>
-                  <Icon.check aria-hidden="true" className="size-4" /> Copied
-                </>
-              ) : (
-                <>
-                  <Icon.copy aria-hidden="true" className="size-4" /> Copy URL
-                </>
-              )}
-            </button>
+            <div className="flex w-full max-w-[300px] flex-col gap-3">
+              <a
+                href={url}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-2 bg-brand px-3 py-3.5 font-semibold text-on-brand transition-opacity hover:opacity-90"
+              >
+                <Icon.externalLink aria-hidden="true" className="size-4" />
+                Open {label}
+              </a>
+              <button
+                type="button"
+                onClick={handleCopyUrl}
+                className="flex items-center justify-center gap-2 border border-ink px-3 py-3.5 font-semibold transition-colors hover:border-brand hover:text-brand"
+              >
+                {isCopied ? (
+                  <>
+                    <Icon.check aria-hidden="true" className="size-4" />
+                    Copied
+                  </>
+                ) : (
+                  <>
+                    <Icon.copy aria-hidden="true" className="size-4" />
+                    Copy URL
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         </div>
-      )}
+      </div>
     </li>
   )
 }

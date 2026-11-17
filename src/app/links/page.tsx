@@ -73,7 +73,7 @@ export default async function Links() {
     },
     {
       id: "resume",
-      url: "https://docs.google.com/document/d/e/2PACX-1vT4LDAcqXgtl7xK_vtt4S154K_xhJe8XSWJ2-wOB3Ra5vogHOhP6KxoTTm5ntrzUqdeSIQhnrrGTRxw/pub",
+      url: "https://j0e.me/resume",
       label: "Résumé",
       icon: "fileText",
     },
