@@ -11,18 +11,25 @@ function pickRandomIndex(length: number, exclude?: number): number {
   return (candidate + 1) % length
 }
 
+let pickedThisLoad: string | undefined
+
 /**
  * Returns gifs[0] on first paint so server HTML and hydration match, then a
  * random pick that differs from the previous load in this tab. Static export
  * freezes server-side randomness at build time, so the pick runs on the client.
+ * The pick is kept for the life of the page so client navigations reuse it.
  */
 export function useLogoGif(gifs: string[]): string | undefined {
-  const [picked, setPicked] = useState<string | undefined>(undefined)
+  const [picked, setPicked] = useState<string | undefined>(pickedThisLoad)
   const signature = gifs.join("|")
 
   useEffect(() => {
     if (gifs.length === 0) {
       setPicked(undefined)
+      return
+    }
+    if (pickedThisLoad && gifs.includes(pickedThisLoad)) {
+      setPicked(pickedThisLoad)
       return
     }
     let previous: number | undefined
@@ -37,6 +44,7 @@ export function useLogoGif(gifs: string[]): string | undefined {
     try {
       window.sessionStorage.setItem(LOGO_GIF_INDEX_SESSION_KEY, String(next))
     } catch {}
+    pickedThisLoad = gifs[next]
     setPicked(gifs[next])
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [signature])

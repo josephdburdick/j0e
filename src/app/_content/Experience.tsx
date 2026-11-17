@@ -102,12 +102,16 @@ export default async function Experience() {
     )
   const recent = experience.filter((item) => !item.hidden)
   const earlier = experience.filter((item) => item.hidden)
-  const earlierRoles = earlier.flatMap((item) => item.roles)
+  const earlierRoles = earlier
+    .flatMap((item) => item.roles)
+    .filter((role) => role.disabled !== true)
   const earlierFrom = Math.min(
     ...earlierRoles.map((role) => year(role.date.start)),
   )
   const earlierTo = Math.max(
-    ...earlierRoles.map((role) => year(role.date.end ?? role.date.start)),
+    ...earlierRoles.map((role) =>
+      role.date.end ? year(role.date.end) : new Date().getUTCFullYear(),
+    ),
   )
 
   return (

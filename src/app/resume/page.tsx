@@ -1,15 +1,34 @@
 import { SiteFooter } from "@/components/global/SiteFooter"
 import { SiteHeader } from "@/components/global/SiteHeader"
+import { SOCIAL_IMAGE } from "@/lib/socialImage"
 import type { Metadata } from "next"
 
 import Experience from "../_content/Experience"
 import Recommendations from "../_content/Recommendations"
 
+const title = "Résumé"
+const description =
+  "Joe Burdick's full work history and what colleagues say about working with him."
+const url = "https://j0e.me/resume"
+
 export const metadata: Metadata = {
-  title: "Résumé",
-  description:
-    "Joe Burdick's full work history and what colleagues say about working with him.",
-  alternates: { canonical: "https://j0e.me/resume" },
+  title,
+  description,
+  alternates: { canonical: url },
+  openGraph: {
+    type: "profile",
+    url,
+    title: `Joe Burdick | ${title}`,
+    description,
+    siteName: "Joe Burdick",
+    images: [SOCIAL_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Joe Burdick | ${title}`,
+    description,
+    images: [SOCIAL_IMAGE],
+  },
 }
 
 export default function Resume() {

@@ -122,4 +122,7 @@
     outline: 2px solid var(--brand);
     outline-offset: 3px;
   }
+  .bg-brand :focus-visible {
+    outline-color: var(--on-brand);
+  }
 }

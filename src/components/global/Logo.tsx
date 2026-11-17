@@ -383,7 +383,7 @@ export function Logo({
   ])
 
   return (
-    <h1 className="z-50 dark:invert">
+    <div className="z-50 dark:invert">
       <Link
         href={href}
         onMouseEnter={() => {
@@ -422,6 +422,6 @@ export function Logo({
           ))}
         <span className="sr-only">{displayName}</span>
       </Link>
-    </h1>
+    </div>
   )
 }

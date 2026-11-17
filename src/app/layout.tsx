@@ -1,7 +1,9 @@
+import { ThemeColorSync } from "@/components/global/ThemeColorSync"
 import {
   DataProvider,
   type SiteData,
 } from "@/components/providers/DataProvider"
+import { SOCIAL_IMAGE } from "@/lib/socialImage"
 import type { Metadata, Viewport } from "next"
 import { Archivo, Inter, JetBrains_Mono } from "next/font/google"
 
@@ -24,17 +26,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   userScalable: true,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3f4f1" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b0e13" },
-  ],
-}
-
-const SOCIAL_IMAGE = {
-  url: "/assets/images/meta/social-card.png",
-  width: 1200,
-  height: 630,
-  alt: "Joe Burdick: I design and build the whole product.",
+  themeColor: "#f3f4f1",
 }
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -215,6 +207,7 @@ export default async function RootLayout({
       <body
         className={`${inter.variable} ${archivo.variable} ${jetbrainsMono.variable}`}
       >
+        <ThemeColorSync />
         <DataProvider data={siteData}>{children}</DataProvider>
       </body>
     </html>

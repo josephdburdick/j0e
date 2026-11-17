@@ -68,8 +68,14 @@ export default async function OpenSource() {
                 role="cell"
                 className="flex-[0_0_90px] font-mono text-sm tabular-nums md:text-right"
               >
-                {count === undefined ? "" : count.toLocaleString("en-US")}
-                <span className="text-dim md:hidden"> downloads</span>
+                {count === undefined ? (
+                  <span className="text-dim">n/a</span>
+                ) : (
+                  <>
+                    {count.toLocaleString("en-US")}
+                    <span className="text-dim md:hidden"> downloads</span>
+                  </>
+                )}
               </span>
             </div>
           )
