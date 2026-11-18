@@ -4,8 +4,6 @@ import { marked } from "marked"
 import path from "path"
 import { cache } from "react"
 
-import nextConfig from "../../next.config.mjs"
-
 interface FrontMatterAttributes {
   [key: string]: any;
 }
@@ -19,8 +17,6 @@ interface FrontMatterContent {
 interface Result {
   [key: string]: FrontMatterContent;
 }
-const searchRegex = /\$\{basePath\}/gi
-
 export async function api(): Promise<Result> {
   const dataDir = path.join(process.cwd(), "src/api/")
   const files = await fs.readdir(dataDir)
@@ -42,12 +38,7 @@ export async function api(): Promise<Result> {
       }
     }
   }
-  const processedResult = JSON.stringify(result).replaceAll(
-    searchRegex,
-    nextConfig.basePath,
-  )
-  const parsedResult = JSON.parse(processedResult)
-  return parsedResult
+  return result
 }
 
 const getApiData = cache(api)

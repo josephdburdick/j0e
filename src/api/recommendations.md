@@ -4,7 +4,7 @@ subtitle: "What clients and colleagues have to say"
 recommendations:
   - name: Orhan Özalp
     company: Exponential
-    avatar: ${basePath}/assets/images/avatars/orhan.webp
+    avatar: /assets/images/avatars/orhan.webp
     title: Staff Software Engineer at Exponential DeFi
     shortTitle: Staff Software Engineer
     date: 2025-03-21
@@ -14,7 +14,7 @@ recommendations:
 
   - name: Praneeth Moka
     company: unqork
-    avatar: ${basePath}/assets/images/avatars/praneeth.webp
+    avatar: /assets/images/avatars/praneeth.webp
     title: Staff Engineer at Unqork
     shortTitle: Staff Engineer
     date: 2024-06-25
@@ -31,7 +31,7 @@ recommendations:
     pull: "Joe is someone I consider to be a craftsman. His approach when working with code is to leave the code better than he found it."
     pullCredit: Director of Engineering at Unqork. Managed Joe directly.
     company: unqork
-    avatar: ${basePath}/assets/images/avatars/roy.webp
+    avatar: /assets/images/avatars/roy.webp
     title: Director of Engineering at Unqork
     shortTitle: Director of Engineering
     date: 2024-06-20
@@ -43,7 +43,7 @@ recommendations:
       One notable project Joe worked on was the company's internal design system. As part of his work, Joe assisted teams throughout the platform with getting the most from the system and helping them leverage the components to reduce code and styling. This work greatly improved readability, maintainability and consistency. In addition, Joe is a person I enjoyed working with.
   - name: Travis Hubbard
     company: unqork
-    avatar: ${basePath}/assets/images/avatars/travis.webp
+    avatar: /assets/images/avatars/travis.webp
     title: Staff Engineer | Technical Leadership & Mentorship
     shortTitle: Staff Engineer
     date: 2024-06-03
@@ -60,7 +60,7 @@ recommendations:
     pull: "I always felt more comfortable with a solution after talking it through with Joe."
     pullCredit: Senior Software Engineer at Datadog
     company: datadog
-    avatar: ${basePath}/assets/images/avatars/foley.webp
+    avatar: /assets/images/avatars/foley.webp
     title: Senior Software Engineer at Datadog
     shortTitle: Senior Software Engineer
     date: 2025-03-26
@@ -74,7 +74,7 @@ recommendations:
     pull: "He just doesn't do the work that he's assigned to do. Joe makes sure to understand the why."
     pullCredit: Engineering Manager at Unqork
     company: unqork
-    avatar: ${basePath}/assets/images/avatars/eric.webp
+    avatar: /assets/images/avatars/eric.webp
     title: Engineering Manager + Caregivers ERSG Engagement Co-Chair at Unqork
     shortTitle: Engineering Manager
     date: 2024-06-03
@@ -88,7 +88,7 @@ recommendations:
       I count myself lucky I had the opportunity to rely on his work and envy whoever gets to work with him in his career.
   - name: Nana T. Baffour-Awuah
     company: Adoptive
-    avatar: ${basePath}/assets/images/avatars/nana.webp
+    avatar: /assets/images/avatars/nana.webp
     title: Writer | Strategist | Consultant
     shortTitle: Writer
     date: 2016-07-23
@@ -99,7 +99,7 @@ recommendations:
       Joe is an asset--any team would be very lucky to have him!
   - name: Matt Staudt
     company: studiographica
-    avatar: ${basePath}/assets/images/avatars/matt.webp
+    avatar: /assets/images/avatars/matt.webp
     title: Bootstrap Entrepreneur | CEO @ GAME UP® Nutrition | President STAUDT agency
     shortTitle: CEO, Serial Entrepreneur
     date: 2014-03-06
@@ -108,7 +108,7 @@ recommendations:
       Having worked with Joe on multiple projects I am extremely confident in his abilities and work ethic which both exceed what I am accustomed to. Joe is my first call when I have a technical question and he has never ceased to amaze me with his insight and can-do attitude. He is extremely knowledgable and is a problem solver. Joe is a rare find, a pleasure to work with and as a result of his expertise and professionalism is an extremely valuable addition to any team.
   - name: Todd Post
     company: ncpc
-    avatar: ${basePath}/assets/images/avatars/todd.webp
+    avatar: /assets/images/avatars/todd.webp
     title: Strategic Communications Executive | Senior Public Affairs Advisor
     shortTitle: Communications Executive
     date: 2007-01-24

@@ -8,7 +8,7 @@ apps:
   - name: Cue Quest Shot Clock
     featured: true
     screenshots:
-      - src: ${basePath}/assets/images/shots/shot-clock-demo.webp
+      - src: /assets/images/shots/shot-clock-demo.webp
         kind: wide
         width: 2000
         height: 856
@@ -25,8 +25,8 @@ apps:
       - url: https://apps.apple.com/us/app/cue-quest-shot-clock/id6824671081
         label: Download on the App Store
         badge:
-          light: ${basePath}/assets/images/badges/app-store-download-en-black.svg
-          dark: ${basePath}/assets/images/badges/app-store-download-en-white.svg
+          light: /assets/images/badges/app-store-download-en-black.svg
+          dark: /assets/images/badges/app-store-download-en-white.svg
     tags: [Expo, React Native, Supabase Realtime, i18n]
     modes:
       title: Three ways to run it
@@ -42,17 +42,17 @@ apps:
         label: Try the demo
   - name: Cue Quest
     screenshots:
-      - src: ${basePath}/assets/images/shots/cue-quest-explore.webp
+      - src: /assets/images/shots/cue-quest-explore.webp
         kind: mobile
         width: 486
         height: 851
         alt: "Cue Quest explore view: a map of New York crowded with pool venue clusters, 475 places in view"
-      - src: ${basePath}/assets/images/shots/cue-quest-profile.webp
+      - src: /assets/images/shots/cue-quest-profile.webp
         kind: mobile
         width: 486
         height: 851
         alt: "Joe's Cue Quest profile: Pool Passport with 60 spots in 6 cities, 98 check-ins, 1,052 contributions"
-      - src: ${basePath}/assets/images/shots/cue-quest-matches.webp
+      - src: /assets/images/shots/cue-quest-matches.webp
         kind: mobile
         width: 486
         height: 851
@@ -69,13 +69,13 @@ apps:
     tags: [Next.js, TypeScript, Supabase]
   - name: Pooltabl.es
     screenshots:
-      - src: ${basePath}/assets/images/shots/pooltabl-es-home.webp
+      - src: /assets/images/shots/pooltabl-es-home.webp
         kind: desktop
         url: pooltabl.es
         width: 1440
         height: 900
         alt: "The Pooltabl.es homepage: buy, sell, move, and repair pool tables anywhere in the US, with a service and city search"
-      - src: ${basePath}/assets/images/shots/pooltabl-es-city-mobile.webp
+      - src: /assets/images/shots/pooltabl-es-city-mobile.webp
         kind: mobile
         width: 780
         height: 1688
@@ -92,13 +92,13 @@ apps:
     tags: [Next.js, Cloudflare Pages, SEO]
   - name: Where Is Johnny
     screenshots:
-      - src: ${basePath}/assets/images/shots/where-is-johnny-desktop.webp
+      - src: /assets/images/shots/where-is-johnny-desktop.webp
         kind: desktop
         url: whereisjohnny.com
         width: 1440
         height: 900
         alt: "Where Is Johnny on desktop: a globe with the route from New York to Baja California beside the trip feed"
-      - src: ${basePath}/assets/images/shots/where-is-johnny-mobile.webp
+      - src: /assets/images/shots/where-is-johnny-mobile.webp
         kind: mobile
         width: 780
         height: 1688

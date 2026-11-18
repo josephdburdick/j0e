@@ -4,7 +4,7 @@ subtitle: Full work history, most recent first
 experience:
   - company: Cue Quest
     logo:
-      src: ${basePath}/assets/images/logos/cue-quest.webp
+      src: /assets/images/logos/cue-quest.webp
       width: 250
       height: 198
     roles:
@@ -33,7 +33,7 @@ experience:
   - company: Present Day
     url: https://present.day
     logo:
-      src: ${basePath}/assets/images/logos/presentday.svg
+      src: /assets/images/logos/presentday.svg
       width: 190
       height: 152
     roles:
@@ -93,7 +93,7 @@ experience:
 
   - company: Assembled
     logo:
-      src: ${basePath}/assets/images/logos/assembled.svg
+      src: /assets/images/logos/assembled.svg
       width: 154
       height: 24
     roles:
@@ -125,7 +125,7 @@ experience:
   - company: Delaware Water Disaster
     disabled: true
     logo:
-      src: ${basePath}/assets/images/logos/delaware-water-disaster.webp
+      src: /assets/images/logos/delaware-water-disaster.webp
       width: 42
       height: 64
     roles:
@@ -174,7 +174,7 @@ experience:
 
   - company: Exponential.fi
     logo:
-      src: ${basePath}/assets/images/logos/exponential.svg
+      src: /assets/images/logos/exponential.svg
       width: 601
       height: 76
     roles:
@@ -202,7 +202,7 @@ experience:
 
   - company: Unqork
     logo:
-      src: ${basePath}/assets/images/logos/unqork.svg
+      src: /assets/images/logos/unqork.svg
       width: 120
       height: 32
     roles:
@@ -284,7 +284,7 @@ experience:
   - company: Adoptive
     hidden: true
     logo:
-      src: ${basePath}/assets/images/logos/adoptive.webp
+      src: /assets/images/logos/adoptive.webp
       width: 200
       height: 200
     remote: true
@@ -312,7 +312,7 @@ experience:
   - company: Studiografica
     hidden: true
     logo:
-      src: ${basePath}/assets/images/logos/sgc.svg
+      src: /assets/images/logos/sgc.svg
       width: 518
       height: 380
     remote: false
@@ -342,7 +342,7 @@ experience:
   - company: David's Bridal
     hidden: true
     logo:
-      src: ${basePath}/assets/images/logos/davids-bridal.svg
+      src: /assets/images/logos/davids-bridal.svg
       width: 180
       height: 40
     location: Midtown, New York City
@@ -365,7 +365,7 @@ experience:
 
   - company: Aquent
     logo:
-      src: ${basePath}/assets/images/logos/aquent.svg
+      src: /assets/images/logos/aquent.svg
       width: 332
       height: 46
     location: Washington DC
@@ -377,7 +377,7 @@ experience:
           start: 2007-01-01
           end: 2008-10-01
   - company: TMP Worldwide
-    logo: ${basePath}/assets/images/logos/tmp.svg
+    logo: /assets/images/logos/tmp.svg
     disabled: true
     location: McLean, Virginia
     roles:
@@ -399,7 +399,7 @@ experience:
 
   - company: National Crime Prevention Council
     logo:
-      src: ${basePath}/assets/images/logos/ncpc.webp
+      src: /assets/images/logos/ncpc.webp
 
     location: Washington, DC
     disabled: true
@@ -453,7 +453,7 @@ experience:
   - company: Virginia Commonwealth University
     hidden: true
     logo:
-      src: ${basePath}/assets/images/logos/vcu.svg
+      src: /assets/images/logos/vcu.svg
       width: 157
       height: 67
     roles:
