@@ -29,10 +29,17 @@ export interface Role {
   engagements?: Engagement[]
 }
 
+export type TextLink = {
+  label: string
+  href: string
+}
+
 export interface Engagement {
   name: string
   href?: string
   note?: string
+  /** Shown under the note, for an engagement with more than one destination. */
+  links?: TextLink[]
   start: string
   end: string | null
 }

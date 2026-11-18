@@ -1,9 +1,23 @@
 import api from "@/api"
+import type { TextLink } from "@/lib/types"
+import { cn } from "@/lib/utils"
 import { Fragment } from "react"
 
 type Stat = { value: string; label: string }
 
-type NowItem = { lead?: string; name: string; tail?: string; href?: string }
+type NowItem = {
+  lead?: string
+  name: string
+  tail?: string
+  href?: string
+  links?: TextLink[]
+}
+
+const nowLinkClassName =
+  "font-semibold text-brand underline underline-offset-4 hover:text-ink"
+
+const listSeparator = (index: number, count: number) =>
+  index === 0 ? null : index === count - 1 ? " and " : ", "
 
 export default async function Hero() {
   const data = await api()
@@ -72,16 +86,24 @@ export default async function Hero() {
               <span className="label mr-2 text-xs text-brand">Now</span>
               {now.lead && <>{now.lead} </>}
               {now.href ? (
-                <a
-                  href={now.href}
-                  className="font-semibold text-brand underline underline-offset-4 hover:text-ink"
-                >
+                <a href={now.href} className={nowLinkClassName}>
                   {now.name}
                 </a>
               ) : (
                 <b className="font-semibold text-ink">{now.name}</b>
               )}
               {now.tail && <> {now.tail}</>}
+              {now.links?.map((link, index, links) => (
+                <Fragment key={link.href}>
+                  {listSeparator(index, links.length) ?? " "}
+                  <a
+                    href={link.href}
+                    className={cn(nowLinkClassName, "whitespace-nowrap")}
+                  >
+                    {link.label}
+                  </a>
+                </Fragment>
+              ))}
             </p>
           )}
         </div>

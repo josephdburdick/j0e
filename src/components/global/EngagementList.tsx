@@ -73,6 +73,15 @@ export function EngagementList({ engagements, className }: Props) {
               {engagement.note && (
                 <span className="col-span-2 text-dim">{engagement.note}</span>
               )}
+              {engagement.links && engagement.links.length > 0 && (
+                <span className="col-span-2 flex flex-wrap gap-x-4 text-dim">
+                  {engagement.links.map((link) => (
+                    <ExternalLink key={link.href} href={link.href}>
+                      {link.label}
+                    </ExternalLink>
+                  ))}
+                </span>
+              )}
             </li>
           )
         })}

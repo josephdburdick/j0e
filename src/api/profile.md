@@ -69,7 +69,8 @@ studio, from January to September 2026. There I drove the Assemblage 2.0 design 
 across a production codebase of more than 10,000 commits—building the page architecture and global
 navigation foundations, then migrating the product onto them, and writing the codemods and custom lint
 rules that let a company-wide design token migration actually finish. Through the studio I also build
-my own products: Cue Quest, and its tournament Shot Clock, released on the App Store in November 2026.
+my own products: Cue Quest, and its tournament Shot Clock, released on the App Store and Google
+Play in November 2026.
 
 Previously I spent six years at Unqork, a SaaS platform based in New York City now valued at over
 $2 billion. As a founding member of the Platform UI team, I played a pivotal role in developing the
