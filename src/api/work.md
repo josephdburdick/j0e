@@ -1,6 +1,6 @@
 ---
 title: Client work
-headline: I ship the feature and fix the foundation under it.
+headline: I ship the feature and fix the foundation underneath.
 intro: >
   Clients hire Present Day for full-stack product work and design systems.
   Most recently that meant nine months at Assembled, as a top-five contributor
