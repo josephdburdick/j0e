@@ -55,6 +55,14 @@ export async function SiteFooter() {
             ))}
             <li>
               <Link
+                href="/posts"
+                className="inline-block py-3 underline underline-offset-4 hover:text-ink"
+              >
+                Posts
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/links"
                 className="inline-block py-3 underline underline-offset-4 hover:text-ink"
               >

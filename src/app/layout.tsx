@@ -131,6 +131,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        <link rel="me" href="https://bsky.app/profile/j0e.me" />
         <script
           id="dark-mode-bootstrap"
           dangerouslySetInnerHTML={{
@@ -151,6 +152,7 @@ export default async function RootLayout({
                 "https://linkedin.com/in/josephdburdick",
                 "https://github.com/josephdburdick",
                 "https://instagr.am/d00m.exe",
+                "https://bsky.app/profile/j0e.me",
               ],
               jobTitle: "Founder & Principal Engineer",
               worksFor: {

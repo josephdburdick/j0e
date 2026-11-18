@@ -37,6 +37,10 @@ links:
     url: https://instagr.am/d00m.exe
     label: Instagram
     icon: instagram
+  bluesky:
+    url: https://bsky.app/profile/j0e.me
+    label: Bluesky
+    icon: bluesky
   # email:
   #   url: mailto:josephdburdick@gmail.com
   #   label: Email
