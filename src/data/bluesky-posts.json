@@ -1,0 +1,106 @@
+{
+  "handle": "j0e.me",
+  "fetchedAt": "2026-11-18T21:06:35.078Z",
+  "posts": [
+    {
+      "uri": "at://did:plc:32icriovqwfaxdd4an7fnqmo/app.bsky.feed.post/3n2lzpme6lc24",
+      "rkey": "3n2lzpme6lc24",
+      "url": "https://bsky.app/profile/j0e.me/post/3n2lzpme6lc24",
+      "createdAt": "2026-11-18T16:58:21.929Z",
+      "text": "As a boy I'd fold up notebook pages and each crease was a boundary of a device I would draw with screens and buttons I would use to find imaginary foes.\n\nNow I'm an app developer.",
+      "segments": [
+        {
+          "text": "As a boy I'd fold up notebook pages and each crease was a boundary of a device I would draw with screens and buttons I would use to find imaginary foes.\n\nNow I'm an app developer."
+        }
+      ],
+      "images": [],
+      "counts": {
+        "likes": 1,
+        "reposts": 0,
+        "replies": 0
+      }
+    },
+    {
+      "uri": "at://did:plc:32icriovqwfaxdd4an7fnqmo/app.bsky.feed.post/3mzw6xtxyts2v",
+      "rkey": "3mzw6xtxyts2v",
+      "url": "https://bsky.app/profile/j0e.me/post/3mzw6xtxyts2v",
+      "createdAt": "2026-11-10T00:33:52.816Z",
+      "text": "Released my first App store app. A shot clock for billiards!",
+      "segments": [
+        {
+          "text": "Released my first App store app. A shot clock for billiards!"
+        }
+      ],
+      "images": [
+        {
+          "thumb": "https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:32icriovqwfaxdd4an7fnqmo/bafkreiat73uym4fiksht6ea7aogwx5zdjdu5bafs7n2jikk2aok4taemz4",
+          "fullsize": "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:32icriovqwfaxdd4an7fnqmo/bafkreiat73uym4fiksht6ea7aogwx5zdjdu5bafs7n2jikk2aok4taemz4",
+          "alt": "",
+          "aspectRatio": {
+            "height": 1350,
+            "width": 1080
+          }
+        }
+      ],
+      "counts": {
+        "likes": 0,
+        "reposts": 0,
+        "replies": 0
+      }
+    },
+    {
+      "uri": "at://did:plc:32icriovqwfaxdd4an7fnqmo/app.bsky.feed.post/3mytaqmvurc2x",
+      "rkey": "3mytaqmvurc2x",
+      "url": "https://bsky.app/profile/j0e.me/post/3mytaqmvurc2x",
+      "createdAt": "2026-10-27T03:02:27.168Z",
+      "text": "Negotiation with myself that another software project won't cost much time, money, and effort is a consistent battle.",
+      "segments": [
+        {
+          "text": "Negotiation with myself that another software project won't cost much time, money, and effort is a consistent battle."
+        }
+      ],
+      "images": [],
+      "counts": {
+        "likes": 0,
+        "reposts": 0,
+        "replies": 1
+      }
+    },
+    {
+      "uri": "at://did:plc:32icriovqwfaxdd4an7fnqmo/app.bsky.feed.post/3mymsfwlbnc2o",
+      "rkey": "3mymsfwlbnc2o",
+      "url": "https://bsky.app/profile/j0e.me/post/3mymsfwlbnc2o",
+      "createdAt": "2026-10-24T13:29:57.393Z",
+      "text": "Since AI has access to every sci-fi story ever made, is humanity's fate predetermined?",
+      "segments": [
+        {
+          "text": "Since AI has access to every sci-fi story ever made, is humanity's fate predetermined?"
+        }
+      ],
+      "images": [],
+      "counts": {
+        "likes": 0,
+        "reposts": 0,
+        "replies": 0
+      }
+    },
+    {
+      "uri": "at://did:plc:32icriovqwfaxdd4an7fnqmo/app.bsky.feed.post/3mxungqchff2u",
+      "rkey": "3mxungqchff2u",
+      "url": "https://bsky.app/profile/j0e.me/post/3mxungqchff2u",
+      "createdAt": "2026-10-14T22:57:01.937Z",
+      "text": "Hello World 👋",
+      "segments": [
+        {
+          "text": "Hello World 👋"
+        }
+      ],
+      "images": [],
+      "counts": {
+        "likes": 1,
+        "reposts": 0,
+        "replies": 0
+      }
+    }
+  ]
+}

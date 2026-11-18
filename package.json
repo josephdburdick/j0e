@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "deploy": "next build && next export",
     "generate-icons": "node scripts/generate-icons.js",
-    "fetch:npm": "node scripts/fetch-npm-downloads.mjs"
+    "fetch:npm": "node scripts/fetch-npm-downloads.mjs",
+    "fetch:bluesky": "node scripts/fetch-bluesky-posts.mjs",
+    "test": "node --test \"src/**/*.test.{mjs,ts}\""
   },
   "dependencies": {
     "@present-day/carousel": "0.0.2",
