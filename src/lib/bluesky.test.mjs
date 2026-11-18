@@ -1,7 +1,13 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
 
-import { normalizeFeed, summarizePost, toSegments } from "./bluesky.mjs"
+import {
+  keepNonEmpty,
+  normalizeFeed,
+  rkeyFromHash,
+  summarizePost,
+  toSegments,
+} from "./bluesky.mjs"
 
 const link = (byteStart, byteEnd, uri) => ({
   index: { byteStart, byteEnd },
@@ -123,4 +129,20 @@ test("summarizePost falls back by media", () => {
     "T",
   )
   assert.equal(summarizePost(basePost), "New post")
+})
+
+test("rkeyFromHash reads the id and survives malformed escapes", () => {
+  assert.equal(rkeyFromHash("#3abc"), "3abc")
+  assert.equal(rkeyFromHash(""), null)
+  assert.equal(rkeyFromHash("#"), null)
+  assert.doesNotThrow(() => rkeyFromHash("#%"))
+  assert.equal(rkeyFromHash("#%"), null)
+})
+
+test("keepNonEmpty keeps current posts when a fetch comes back empty", () => {
+  const current = [basePost]
+  assert.equal(keepNonEmpty(current, []), current)
+  const fresh = [{ ...basePost, rkey: "new" }]
+  assert.equal(keepNonEmpty(current, fresh), fresh)
+  assert.deepEqual(keepNonEmpty([], []), [])
 })

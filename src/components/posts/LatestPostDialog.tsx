@@ -3,6 +3,7 @@
 import Icon from "@/components/global/Icon"
 import type { BlueskyPost } from "@/lib/bluesky.mjs"
 import * as Dialog from "@radix-ui/react-dialog"
+import { useRef } from "react"
 
 import PostCounts from "./PostCounts"
 import PostMedia from "./PostMedia"
@@ -10,10 +11,20 @@ import PostText from "./PostText"
 import PostTime from "./PostTime"
 
 export default function LatestPostDialog({ post }: { post: BlueskyPost }) {
+  const leavingForPost = useRef(false)
+
   return (
     <Dialog.Portal>
       <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
-      <Dialog.Content className="fixed inset-x-4 top-24 z-50 mx-auto flex max-h-[calc(100dvh-8rem)] max-w-[480px] flex-col border-2 border-ink bg-surface text-ink shadow-[6px_6px_0_var(--ink)] focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 motion-reduce:animate-none">
+      <Dialog.Content
+        onCloseAutoFocus={(event) => {
+          // Returning focus to the balloon in the header would scroll /posts
+          // back to the top, away from the post the link just scrolled to.
+          if (leavingForPost.current) event.preventDefault()
+          leavingForPost.current = false
+        }}
+        className="fixed inset-x-4 top-24 z-50 mx-auto flex max-h-[calc(100dvh-8rem)] max-w-[480px] flex-col border-2 border-ink bg-surface text-ink shadow-[6px_6px_0_var(--ink)] focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 motion-reduce:animate-none"
+      >
         <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-3">
           <Dialog.Title className="label flex items-center gap-2.5 text-[12px] text-dim">
             <Icon.bluesky className="h-3.5 w-3.5 text-[#1185fe]" aria-hidden />
@@ -54,12 +65,17 @@ export default function LatestPostDialog({ post }: { post: BlueskyPost }) {
             <Icon.bluesky className="h-3.5 w-3.5 text-[#1185fe]" aria-hidden />
             Bluesky ↗
           </a>
-          <a
-            href={`/posts#${post.rkey}`}
-            className="bg-ink px-4 py-3.5 text-center text-paper transition-colors hover:bg-brand hover:text-on-brand"
-          >
-            All posts →
-          </a>
+          <Dialog.Close asChild>
+            <a
+              href={`/posts#${post.rkey}`}
+              onClick={() => {
+                leavingForPost.current = true
+              }}
+              className="bg-ink px-4 py-3.5 text-center text-paper transition-colors hover:bg-brand hover:text-on-brand"
+            >
+              All posts →
+            </a>
+          </Dialog.Close>
         </div>
       </Dialog.Content>
     </Dialog.Portal>

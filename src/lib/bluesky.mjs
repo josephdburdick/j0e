@@ -191,3 +191,23 @@ export function summarizePost(post) {
   if (post.external?.title) return post.external.title
   return "New post"
 }
+
+/**
+ * The post id in a `/posts#<rkey>` hash, or null. Record keys are base32, so
+ * anything else (including malformed escapes) is ignored rather than decoded.
+ * @param {string} hash
+ */
+export function rkeyFromHash(hash) {
+  const id = hash.replace(/^#/, "")
+  return /^[a-z0-9]+$/i.test(id) ? id : null
+}
+
+/**
+ * An empty but successful feed response is treated as a hiccup, not as the
+ * account having no posts, so it never replaces posts we already have.
+ * @param {BlueskyPost[]} current
+ * @param {BlueskyPost[]} fresh
+ */
+export function keepNonEmpty(current, fresh) {
+  return fresh.length === 0 ? current : fresh
+}

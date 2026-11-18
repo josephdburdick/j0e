@@ -1,7 +1,7 @@
 "use client"
 
 import useBlueskyPosts from "@/hooks/useBlueskyPosts"
-import { BLUESKY_PROFILE_URL } from "@/lib/bluesky.mjs"
+import { BLUESKY_PROFILE_URL, rkeyFromHash } from "@/lib/bluesky.mjs"
 import { useEffect, useState } from "react"
 
 import PostCounts from "./PostCounts"
@@ -13,8 +13,7 @@ function useHashId() {
   const [hashId, setHashId] = useState<string | null>(null)
 
   useEffect(() => {
-    const read = () =>
-      setHashId(decodeURIComponent(location.hash.slice(1)) || null)
+    const read = () => setHashId(rkeyFromHash(location.hash))
     read()
     window.addEventListener("hashchange", read)
     return () => window.removeEventListener("hashchange", read)
@@ -35,7 +34,7 @@ export default function PostTimeline() {
     const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches
     document.getElementById(hashId)?.scrollIntoView({
       block: "start",
-      behavior: reduceMotion ? "auto" : "smooth",
+      behavior: reduceMotion ? "instant" : "smooth",
     })
   }, [hasTarget, hashId])
 

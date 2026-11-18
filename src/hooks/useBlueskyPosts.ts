@@ -1,7 +1,7 @@
 "use client"
 
 import snapshot from "@/data/bluesky-posts.json"
-import { type BlueskyPost, fetchPosts } from "@/lib/bluesky.mjs"
+import { type BlueskyPost, fetchPosts, keepNonEmpty } from "@/lib/bluesky.mjs"
 import { useEffect, useState } from "react"
 
 const initialPosts = snapshot.posts as BlueskyPost[]
@@ -21,7 +21,7 @@ export default function useBlueskyPosts() {
     livePosts ??= fetchPosts(snapshot.handle)
     livePosts
       .then((fresh) => {
-        if (active) setPosts(fresh)
+        if (active) setPosts((current) => keepNonEmpty(current, fresh))
       })
       .catch(() => {
         livePosts = null

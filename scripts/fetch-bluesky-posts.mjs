@@ -25,6 +25,8 @@ async function hasSnapshot() {
 let posts
 try {
   posts = await fetchPosts(ACTOR)
+  if (posts.length === 0 && (await hasSnapshot()))
+    throw new Error("empty feed response")
 } catch (error) {
   if (await hasSnapshot()) {
     console.warn(

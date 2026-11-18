@@ -54,7 +54,10 @@ export default function PostMedia({ post }: { post: BlueskyPost }) {
           href={post.url}
           target="_blank"
           rel="noreferrer"
-          className="relative block max-w-[400px] border border-line bg-sunk"
+          className={cn(
+            "relative block max-w-[400px] border border-line bg-sunk",
+            !video.thumbnail && "aspect-video",
+          )}
         >
           {video.thumbnail && (
             // eslint-disable-next-line @next/next/no-img-element -- remote CDN image in a static export
