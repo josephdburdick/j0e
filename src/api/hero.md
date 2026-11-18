@@ -1,6 +1,6 @@
 ---
 eyebrow: [Open to new contracts, Present Day, Brooklyn]
-headline: I design and build the whole product.
+headline: I design and build your products.
 lede: >
   Database, API, interface, and the design system underneath. I've done this
   for twenty years and run Present Day, a design and engineering studio in
