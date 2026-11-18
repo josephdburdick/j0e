@@ -3,6 +3,7 @@
 import { createJ0eLogoSvgSlot } from "@/components/global/J0eLogoSvgSlot"
 import { Logo } from "@/components/global/Logo"
 import { ThemeToggle } from "@/components/global/ThemeToggle"
+import LatestPostBalloon from "@/components/posts/LatestPostBalloon"
 import { useApi } from "@/components/providers/DataProvider"
 import { useLogoGif } from "@/hooks/useLogoGif"
 import Link from "next/link"
@@ -20,19 +21,22 @@ export function SiteHeader() {
 
   return (
     <div className="shell">
-      <header className="flex flex-wrap items-center justify-between gap-x-5 gap-y-3 border-b border-line py-7">
-        <Logo
-          logoSlot={createJ0eLogoSvgSlot({
-            className: "h-7 w-auto",
-            role: "img",
-            "aria-hidden": true,
-          })}
-          name={name}
-          svgFillUrl={fill}
-          svgHoverFillUrls={gifs}
-          svgHoverCycleMs={180}
-          svgRandomizeOnLoad={gifs.length > 0 ? false : undefined}
-        />
+      <header className="flex flex-wrap items-center justify-between gap-x-2 gap-y-3 border-b border-line py-7 md:gap-x-5">
+        <div className="flex min-w-0 items-center gap-3 md:gap-5">
+          <Logo
+            logoSlot={createJ0eLogoSvgSlot({
+              className: "h-7 w-auto",
+              role: "img",
+              "aria-hidden": true,
+            })}
+            name={name}
+            svgFillUrl={fill}
+            svgHoverFillUrls={gifs}
+            svgHoverCycleMs={180}
+            svgRandomizeOnLoad={gifs.length > 0 ? false : undefined}
+          />
+          <LatestPostBalloon />
+        </div>
         <nav
           aria-label="Sections"
           className="flex items-center gap-7 text-[15px] font-medium"
@@ -41,7 +45,7 @@ export function SiteHeader() {
             <Link
               key={id}
               href={`/#${id}`}
-              className="hidden py-2.5 text-ink transition-colors hover:text-brand md:block"
+              className="hidden py-2.5 text-ink transition-colors hover:text-brand lg:block"
             >
               {label}
             </Link>
@@ -50,7 +54,7 @@ export function SiteHeader() {
             <ThemeToggle />
             <a
               href={cta.url}
-              className="bg-ink px-[18px] py-3 text-paper transition-colors hover:bg-brand hover:text-on-brand"
+              className="bg-ink px-2.5 py-3 text-sm text-paper transition-colors hover:bg-brand hover:text-on-brand md:px-[18px] md:text-base"
             >
               {cta.label}
             </a>

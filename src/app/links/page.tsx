@@ -66,6 +66,12 @@ export default async function Links() {
       icon: "mapPin",
     },
     {
+      id: "posts",
+      url: "https://j0e.me/posts",
+      label: "Posts",
+      icon: "send",
+    },
+    {
       id: "j0eme",
       url: "https://j0e.me",
       label: "j0e.me",
