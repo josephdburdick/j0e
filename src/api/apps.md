@@ -69,11 +69,17 @@ apps:
     tags: [Next.js, TypeScript, Supabase]
   - name: Pooltabl.es
     screenshots:
-      - src: ${basePath}/assets/images/shots/pooltabl-es-city.webp
+      - src: ${basePath}/assets/images/shots/pooltabl-es-home.webp
         kind: desktop
+        url: pooltabl.es
         width: 1440
         height: 900
-        alt: "The Pooltabl.es New York City page: 13 service businesses on a map, with local guides below"
+        alt: "The Pooltabl.es homepage: buy, sell, move, and repair pool tables anywhere in the US, with a service and city search"
+      - src: ${basePath}/assets/images/shots/pooltabl-es-city-mobile.webp
+        kind: mobile
+        width: 780
+        height: 1688
+        alt: "The Pooltabl.es New York City page on a phone: 13 service businesses pinned on a map of the city"
     tagline: Pool tables and the pros who move them, city by city.
     description: >
       A US marketplace for pool tables and a directory of the pros who move,
@@ -88,6 +94,7 @@ apps:
     screenshots:
       - src: ${basePath}/assets/images/shots/where-is-johnny-desktop.webp
         kind: desktop
+        url: whereisjohnny.com
         width: 1440
         height: 900
         alt: "Where Is Johnny on desktop: a globe with the route from New York to Baja California beside the trip feed"
