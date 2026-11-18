@@ -8,8 +8,10 @@ import Image from "next/image"
 type AppLink = {
   url: string
   label: string
-  badge?: { light: string; dark: string }
+  badge?: { light: string; dark: string; width?: number; height?: number }
 }
+
+type StoreLink = AppLink & Required<Pick<AppLink, "badge">>
 
 type Modes = {
   title: string
@@ -41,27 +43,23 @@ const formatReleased = (value: string) =>
   })
 
 // Store guidelines require the stores' own badge artwork for this wording.
-function StoreBadge({
-  link,
-  badge,
-}: {
-  link: AppLink
-  badge: NonNullable<AppLink["badge"]>
-}) {
+function StoreBadge({ link }: { link: StoreLink }) {
+  const { badge } = link
+  const { width = 120, height = 40 } = badge
   return (
-    <a href={link.url} className="inline-block self-start py-1">
+    <a href={link.url} className="inline-block py-1">
       <Image
         src={badge.light}
         alt={link.label}
-        width={120}
-        height={40}
+        width={width}
+        height={height}
         className="h-11 w-auto dark:hidden"
       />
       <Image
         src={badge.dark}
         alt={link.label}
-        width={120}
-        height={40}
+        width={width}
+        height={height}
         className="hidden h-11 w-auto dark:block"
       />
     </a>
@@ -69,6 +67,10 @@ function StoreBadge({
 }
 
 function AppDetails({ app }: { app: App }) {
+  const storeLinks = app.links.filter(
+    (link): link is StoreLink => link.badge !== undefined,
+  )
+  const textLinks = app.links.filter((link) => !link.badge)
   return (
     <div className="flex min-w-0 flex-[2_1_340px] flex-col gap-3.5">
       <p
@@ -84,15 +86,18 @@ function AppDetails({ app }: { app: App }) {
       <p className="text-[19px] font-medium">{app.tagline}</p>
       <p className="text-dim">{app.description}</p>
       <p className="font-mono text-[13px] text-dim">{app.tags.join(", ")}</p>
-      {app.links.map((link) =>
-        link.badge ? (
-          <StoreBadge key={link.url} link={link} badge={link.badge} />
-        ) : (
-          <a key={link.url} href={link.url} className="text-link self-start">
-            {link.label}
-          </a>
-        ),
+      {storeLinks.length > 0 && (
+        <div className="flex flex-wrap items-center gap-x-3">
+          {storeLinks.map((link) => (
+            <StoreBadge key={link.url} link={link} />
+          ))}
+        </div>
       )}
+      {textLinks.map((link) => (
+        <a key={link.url} href={link.url} className="text-link self-start">
+          {link.label}
+        </a>
+      ))}
     </div>
   )
 }

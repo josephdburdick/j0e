@@ -20,7 +20,7 @@ experience:
 
           - **Cue Quest app**: A match tracker and table finder for casual players. Log wins against friends, find the nearest billiards spot, and install it straight from the browser
 
-          - **Shot Clock**: A tournament shot clock released on the App Store in November 2026. A spare tablet becomes the display, the host runs it from their phone, and spectators watch live in the browser over Supabase Realtime
+          - **Shot Clock**: A tournament shot clock released on the App Store and Google Play in November 2026. A spare tablet becomes the display, the host runs it from their phone, and spectators watch live in the browser over Supabase Realtime
 
           - **Rack**: A venue product in pilot—table queue kiosk, reservations, and league blocks—sharing one Supabase project with the player app
 
@@ -62,8 +62,12 @@ experience:
             start: 2026-11-01
             end: 2026-11-01
           - name: Cue Quest Shot Clock
-            href: https://apps.apple.com/us/app/cue-quest-shot-clock/id6824671081
-            note: Tournament shot clock for iOS, released on the App Store Nov 2, 2026
+            note: Tournament shot clock for iOS and Android, released on the App Store Nov 2 and Google Play Nov 12, 2026
+            links:
+              - label: App Store
+                href: https://apps.apple.com/us/app/cue-quest-shot-clock/id6824671081
+              - label: Google Play
+                href: https://play.google.com/store/apps/details?id=app.cuequest.shotclock
             start: 2026-08-01
             end: 2026-11-01
           - name: Rack
@@ -496,7 +500,7 @@ Most recently I contracted at Assembled through Present Day, from January to Sep
 
 Earlier at Unqork, I was there from day one—helping build the Platform UI team and develop the Unqork Design System (UQDS), which became a cornerstone of the platform. I later integrated that system into component settings and built new components on the platform's Vega runtime engine.
 
-Through Present Day, I've led full-stack development projects for over a decade, including a major application for Paraguay's largest testing laboratory—work that meant collaborating across time zones and cultures. The studio also builds its own products: Cue Quest, a billiards match tracker and table finder, and Cue Quest Shot Clock, released on the App Store in November 2026.
+Through Present Day, I've led full-stack development projects for over a decade, including a major application for Paraguay's largest testing laboratory—work that meant collaborating across time zones and cultures. The studio also builds its own products: Cue Quest, a billiards match tracker and table finder, and Cue Quest Shot Clock, released on the App Store and Google Play in November 2026.
 
 At Adoptive, I led front-end work on YaleMedicine.org and Bundoo.com, the latter earning an honorable mention at the Webby Awards.
 

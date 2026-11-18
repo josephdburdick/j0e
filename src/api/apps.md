@@ -19,7 +19,7 @@ apps:
       controls it from the phone in their pocket, co-hosts can join in, and the
       crowd follows along live in their browser. It keeps counting if the wifi
       drops.
-    status: App Store
+    status: iOS and Android
     released: 2026-11-02
     links:
       - url: https://apps.apple.com/us/app/cue-quest-shot-clock/id6824671081
@@ -27,6 +27,13 @@ apps:
         badge:
           light: /assets/images/badges/app-store-download-en-black.svg
           dark: /assets/images/badges/app-store-download-en-white.svg
+      - url: https://play.google.com/store/apps/details?id=app.cuequest.shotclock
+        label: Get it on Google Play
+        badge:
+          light: /assets/images/badges/google-play-download-en.png
+          dark: /assets/images/badges/google-play-download-en.png
+          width: 564
+          height: 168
     tags: [Expo, React Native, Supabase Realtime, i18n]
     modes:
       title: Three ways to run it
