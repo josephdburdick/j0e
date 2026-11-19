@@ -24,7 +24,6 @@ export interface Env {
   }
   CONTACT_TO: string
   TURNSTILE_SECRET: string
-  ALLOW_LOCALHOST?: string
 }
 
 /** `website` is a honeypot: people never see it, so any value means a bot. */
@@ -39,17 +38,15 @@ export type StartResponse =
     }
 
 const ORIGINS = ["https://j0e.me", "https://www.j0e.me"]
-const LOCAL_ORIGIN = /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/
 const SITEVERIFY = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
 
 const reply = (status: number, body: StartResponse) =>
   Response.json(body, { status })
 
-function originAllowed(origin: string, env: Env) {
-  return (
-    ORIGINS.includes(origin) ||
-    (env.ALLOW_LOCALHOST === "1" && LOCAL_ORIGIN.test(origin))
-  )
+// Same-origin also covers `wrangler dev`, which rewrites both the URL and Origin.
+function originAllowed(request: Request) {
+  const origin = request.headers.get("Origin") ?? ""
+  return ORIGINS.includes(origin) || origin === new URL(request.url).origin
 }
 
 async function verifyTurnstile(
@@ -80,7 +77,7 @@ export async function handleStart(
   if (request.method !== "POST") {
     return new Response(null, { status: 405, headers: { Allow: "POST" } })
   }
-  if (!originAllowed(request.headers.get("Origin") ?? "", env)) {
+  if (!originAllowed(request)) {
     return reply(403, { ok: false, error: "origin" })
   }
 

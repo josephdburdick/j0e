@@ -109,6 +109,7 @@ const config = {
         line: "var(--line)",
         brand: "var(--brand)",
         "on-brand": "var(--on-brand)",
+        danger: "var(--danger)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -82,7 +82,7 @@ test("rejects other origins and a missing origin", async () => {
   assert.equal(sent.length, 0)
 })
 
-test("allows www and localhost only when enabled", async () => {
+test("allows www and same-origin requests", async () => {
   const www = setup()
   assert.equal(
     (
@@ -94,19 +94,33 @@ test("allows www and localhost only when enabled", async () => {
     ).status,
     200,
   )
-  const local = post(valid, { origin: "http://localhost:3000" })
-  const off = setup()
-  assert.equal((await handleStart(local, off.env, off.fetchImpl)).status, 403)
-  const on = setup({ env: { ALLOW_LOCALHOST: "1" } })
+  const local = (origin) =>
+    new Request("http://localhost:8787/api/start", {
+      method: "POST",
+      headers: { "content-type": "application/json", Origin: origin },
+      body: JSON.stringify(valid),
+    })
+  const same = setup()
   assert.equal(
     (
       await handleStart(
-        post(valid, { origin: "http://localhost:3000" }),
-        on.env,
-        on.fetchImpl,
+        local("http://localhost:8787"),
+        same.env,
+        same.fetchImpl,
       )
     ).status,
     200,
+  )
+  const cross = setup()
+  assert.equal(
+    (
+      await handleStart(
+        local("http://localhost:3000"),
+        cross.env,
+        cross.fetchImpl,
+      )
+    ).status,
+    403,
   )
 })
 
