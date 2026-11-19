@@ -6,6 +6,7 @@ import {
   GROUPS_FOR,
   INTENTS,
   PROMPTS,
+  firstInvalidField,
   stepHeading,
 } from "@/lib/startForm"
 import { cn } from "@/lib/utils"
@@ -128,6 +129,7 @@ export default function StartForm() {
     sent,
     failure,
     turnstileKey,
+    errorFocus,
     honeypot,
     setToken,
     update,
@@ -147,6 +149,22 @@ export default function StartForm() {
     }
     heading.current?.focus()
   }, [stepIndex, sent])
+
+  useEffect(() => {
+    if (errorFocus === 0) return
+    const field = firstInvalidField(errors)
+    if (field === "details") {
+      document
+        .querySelector<HTMLButtonElement>(
+          "fieldset button:not([aria-pressed=true])",
+        )
+        ?.focus()
+    } else if (field) {
+      document.getElementById(`start-${field}`)?.focus()
+    }
+    // Only a fresh validation failure should move focus, not every error edit.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [errorFocus])
 
   useEffect(() => {
     if (step !== "intent" || sent) return
@@ -356,13 +374,15 @@ export default function StartForm() {
               error={errors.company}
             />
             <div aria-hidden="true" className="absolute -left-[9999px]">
-              <label htmlFor="start-website">Website</label>
+              <label htmlFor="start-leave-empty">Leave this empty</label>
               <input
                 ref={honeypot}
-                id="start-website"
-                name="website"
+                id="start-leave-empty"
+                name="leave-empty"
                 tabIndex={-1}
                 autoComplete="off"
+                data-1p-ignore
+                data-lpignore="true"
               />
             </div>
             <Turnstile onToken={setToken} resetKey={turnstileKey} />

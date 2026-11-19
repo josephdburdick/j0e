@@ -159,7 +159,8 @@ export const LIMITS = {
   email: 254,
   company: 200,
   link: 2000,
-  body: 10240,
+  /** Bytes, not characters: every field at its limit in 4-byte UTF-8, plus a 2,048-character Turnstile token and JSON overhead. */
+  body: 49152,
 }
 
 export const SENDER = { email: "form@present.day", name: "j0e.me" }
@@ -266,6 +267,20 @@ export function validateStep(step: StepId, answers: Answers): Errors {
   }
 
   return errors
+}
+
+const FIELD_ORDER: Field[] = [
+  "intent",
+  "details",
+  "message",
+  "link",
+  "name",
+  "email",
+  "company",
+]
+
+export function firstInvalidField(errors: Errors): Field | null {
+  return FIELD_ORDER.find((field) => errors[field]) ?? null
 }
 
 export function validateAll(answers: Answers): Errors {

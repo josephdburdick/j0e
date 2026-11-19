@@ -212,3 +212,20 @@ test("other paths fall through to static assets", async () => {
   const response = await worker.fetch(new Request("https://j0e.me/posts"), env)
   assert.equal(await response.text(), "asset /posts")
 })
+
+test("accepts a message at the limit in multi-byte characters", async () => {
+  const { env, fetchImpl, sent } = setup()
+  const wide = {
+    ...answers,
+    message: "日".repeat(5000),
+    name: "名".repeat(200),
+    company: "社".repeat(200),
+  }
+  const response = await handleStart(
+    post({ answers: wide, token: "t".repeat(2048) }),
+    env,
+    fetchImpl,
+  )
+  assert.equal(response.status, 200)
+  assert.equal(sent.length, 1)
+})

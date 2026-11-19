@@ -1,10 +1,7 @@
 const DARK_MODE_STORAGE_KEY = "darkMode"
 const HAPTIC_AUDIO_STORAGE_KEY = "haptic-audio"
 
-export function getBooleanPreference(
-  key: string,
-  fallback: boolean,
-): boolean {
+export function getBooleanPreference(key: string, fallback: boolean): boolean {
   if (typeof window === "undefined") return fallback
 
   try {

@@ -207,3 +207,10 @@ test("toAnswers coerces untrusted input", async () => {
   assert.equal(parsed.via, null)
   assert.equal(toAnswers(null).name, "")
 })
+
+test("firstInvalidField follows step order", async () => {
+  const { firstInvalidField } = await import("./startForm.ts")
+  assert.equal(firstInvalidField({ email: "x", message: "y" }), "message")
+  assert.equal(firstInvalidField({ company: "x", name: "y" }), "name")
+  assert.equal(firstInvalidField({}), null)
+})

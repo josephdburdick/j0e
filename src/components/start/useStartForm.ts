@@ -38,6 +38,7 @@ export default function useStartForm() {
   const [failure, setFailure] = useState<Failure>(null)
   const [token, setToken] = useState<string | null>(null)
   const [turnstileKey, setTurnstileKey] = useState(0)
+  const [errorFocus, setErrorFocus] = useState(0)
   const inFlight = useRef(false)
   const honeypot = useRef<HTMLInputElement>(null)
 
@@ -104,6 +105,7 @@ export default function useStartForm() {
     if (result.error === "invalid" && result.fields) {
       const fields = result.fields
       setErrors(fields)
+      setErrorFocus((n) => n + 1)
       const first = steps.findIndex((s) =>
         (Object.keys(fields) as Field[]).some((f) => STEP_OF[f] === s),
       )
@@ -118,6 +120,7 @@ export default function useStartForm() {
     const stepErrors = validateStep(step, answers)
     if (Object.keys(stepErrors).length > 0) {
       setErrors(stepErrors)
+      setErrorFocus((n) => n + 1)
       return
     }
     setErrors({})
@@ -138,6 +141,7 @@ export default function useStartForm() {
     sent,
     failure,
     turnstileKey,
+    errorFocus,
     honeypot,
     setToken,
     update,
