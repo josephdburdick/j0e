@@ -7,7 +7,7 @@ lede: >
   Brooklyn.
 cta:
   label: Start a project
-  url: https://present.day
+  url: /start?from=hero
 secondary:
   label: See the work
   url: "#work"
