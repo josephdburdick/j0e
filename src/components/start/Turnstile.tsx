@@ -2,8 +2,7 @@
 
 import { useEffect, useRef } from "react"
 
-/** Cloudflare's always-pass test key until the real widget exists. */
-export const TURNSTILE_SITE_KEY = "1x00000000000000000000AA"
+export const TURNSTILE_SITE_KEY = "0x4AAAAAAGJawHkJjB_OBGCu"
 
 const SCRIPT_SRC =
   "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
