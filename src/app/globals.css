@@ -56,6 +56,7 @@
     --line: #d2d6d0;
     --brand: #1d4fd8;
     --on-brand: #ffffff;
+    --danger: #b42318;
 
     --background: 80 12% 95%;
     --foreground: 214 17% 8%;
@@ -88,6 +89,7 @@
     --line: #27303c;
     --brand: #8fb0ff;
     --on-brand: #0b0e13;
+    --danger: #ff9b8f;
 
     --background: 218 27% 6%;
     --foreground: 214 26% 95%;

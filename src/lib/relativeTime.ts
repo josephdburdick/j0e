@@ -46,11 +46,7 @@ function plural(count: number, unit: string) {
  * Bluesky trusts the posting client's clock, read as just now. Past 30 days
  * it falls back to the date.
  */
-export function formatRelative(
-  iso: string,
-  now: Date,
-  style: "long" | "tiny",
-) {
+export function formatRelative(iso: string, now: Date, style: "long" | "tiny") {
   const elapsed = Math.max(0, now.getTime() - new Date(iso).getTime())
   const tiny = style === "tiny"
 

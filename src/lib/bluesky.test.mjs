@@ -63,7 +63,9 @@ test("toSegments maps mentions and tags", () => {
 
 test("normalizeFeed drops reposts and replies", () => {
   const posts = normalizeFeed([
-    feedItem({ item: { reason: { $type: "app.bsky.feed.defs#reasonRepost" } } }),
+    feedItem({
+      item: { reason: { $type: "app.bsky.feed.defs#reasonRepost" } },
+    }),
     feedItem({
       post: {
         record: { text: "re", reply: { parent: {}, root: {} } },

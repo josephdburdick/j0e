@@ -10,5 +10,5 @@ export default defineConfig([
       "react-hooks/static-components": "off",
     },
   },
-  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
+  globalIgnores([".next/**", "out/**", "build/**", ".wrangler/**", "next-env.d.ts"]),
 ])

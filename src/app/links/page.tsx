@@ -60,6 +60,12 @@ export default async function Links() {
       data.profile.attributes.links as Record<string, ContactLink>,
     ).map(([id, link]) => ({ id, ...link })),
     {
+      id: "start",
+      url: "https://j0e.me/start?from=links",
+      label: "Start a project",
+      icon: "send",
+    },
+    {
       id: "cue-quest",
       url: "https://cue.quest",
       label: "Cue Quest",

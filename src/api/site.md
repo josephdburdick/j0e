@@ -13,7 +13,7 @@ contact:
   note: Open to new contracts through Present Day. Remote, based in Brooklyn.
   cta:
     label: Start a project
-    url: https://present.day
+    url: /start?from=contact
 
 footer:
   - label: GitHub

@@ -18,6 +18,6 @@ items:
     icon: /assets/images/apps/pooltabl-es.webp
   - lead: Open to new contracts through
     name: Present Day
-    href: https://present.day
+    href: /start?from=now
     icon: /assets/images/apps/present-day.webp
 ---
