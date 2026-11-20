@@ -54,7 +54,8 @@ export default function Posts() {
             id="posts-title"
             className="display flex-[1_1_420px] text-balance text-[clamp(34px,4.4vw,60px)] leading-none tracking-[-0.02em]"
           >
-            What I&rsquo;m building, what I shipped, and what&rsquo;s on my mind.
+            What I&rsquo;m building, what I shipped, and what&rsquo;s on my
+            mind.
           </h1>
           <div className="flex flex-[1_1_260px] flex-col items-start gap-3 text-dim">
             <p>Short posts from Bluesky, newest first.</p>
