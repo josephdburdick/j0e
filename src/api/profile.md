@@ -3,7 +3,6 @@ name: Joe Burdick
 title: Senior Software Engineer
 location: Brooklyn, New York
 coordinates: [40.7143, 73.9442]
-email: josephdburdick@gmail.com
 picture:
   src: /assets/images/profile.webp
   width: 96
@@ -41,10 +40,6 @@ links:
     url: https://bsky.app/profile/j0e.me
     label: Bluesky
     icon: bluesky
-  # email:
-  #   url: mailto:josephdburdick@gmail.com
-  #   label: Email
-  #   icon: mail
   # cuequest:
   #   url: https://cue.quest
   #   label: Cue Quest
